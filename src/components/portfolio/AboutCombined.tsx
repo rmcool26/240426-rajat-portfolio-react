@@ -13,7 +13,7 @@ export const AboutCombined = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto max-w-full text-center"
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">About</p>
           <h2 className="font-display text-4xl font-bold tracking-tight md:text-6xl">
@@ -33,7 +33,7 @@ export const AboutCombined = () => {
         <div className="mt-16 grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* LEFT — experience timeline */}
           <div>
-            <h3 className="mb-6 font-display text-2xl font-bold">Experience</h3>
+            <h3 className="mb-6 font-display text-2xl font-bold">Designing and shipping products under real‑world</h3>
             <ol className="relative border-l-2 border-border pl-6">
               {about.timeline.map((job, i) => (
                 <motion.li
@@ -61,7 +61,7 @@ export const AboutCombined = () => {
           {/* RIGHT — skills */}
           <div className="space-y-8">
             <div>
-              <h3 className="mb-4 font-display text-2xl font-bold">What I Do Well</h3>
+              <h3 className="mb-4 font-display text-2xl font-bold">What I actually bring to the table</h3>
               <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {about.coreSkills.map((s, i) => (
                   <motion.li
@@ -82,7 +82,7 @@ export const AboutCombined = () => {
             </div>
 
             <div>
-              <h3 className="mb-4 font-display text-2xl font-bold">Design & Development</h3>
+              <h3 className="mb-4 font-display text-2xl font-bold">{"Design Tools → Code → Analytics"}</h3>
               <div className="flex flex-wrap gap-2">
                 {[...about.designTools, ...about.techTools].map((t) => (
                   <span

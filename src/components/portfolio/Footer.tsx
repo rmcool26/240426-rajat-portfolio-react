@@ -7,7 +7,7 @@ export const Footer = () => (
         <span className="font-bold text-[hsl(var(--footer-fg))]">RMCOOL26</span>
         <span className="mx-2">·</span>© {new Date().getFullYear()} {content.meta.name}
       </p>
-      <p className="text-xs">Designed & coded with ☕ in {content.meta.location}</p>
+      <p className="text-xs">Designed & coded with ❤️ by Rajat Mishra from {content.meta.location}</p>
       <div className="flex items-center gap-6">
         <a
           href={content.contact.linkedin}

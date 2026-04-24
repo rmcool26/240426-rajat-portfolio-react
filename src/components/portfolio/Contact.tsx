@@ -19,11 +19,15 @@ export const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7 }}
-          className="mx-auto max-w-3xl text-center"
+          className="mx-auto max-w-full text-center"
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Contact</p>
           <h2 className="font-display text-4xl font-bold tracking-tight text-balance md:text-6xl">
-            {contact.heading}
+            {contact.heading}{" "}
+            <span className="relative inline-block text-primary">
+              {contact.headingAccent}
+              {/* <span className="absolute -bottom-1 left-0 right-0 h-3 rounded-full bg-primary/15" /> */}
+            </span>
           </h2>
           <p className="mt-5 text-base text-muted-foreground md:text-lg">{contact.sub}</p>
 
@@ -40,10 +44,11 @@ export const Contact = () => {
           </div>
 
           <p className="mt-8 text-sm text-muted-foreground">
-            Or just say hi —{" "}
+            Or just say hi at {" "} 
             <a href={`mailto:${contact.email}`} className="font-medium text-foreground underline-offset-4 hover:underline">
               {contact.email}
             </a>
+             {" "}  — I actually reply.
           </p>
         </motion.div>
       </div>
