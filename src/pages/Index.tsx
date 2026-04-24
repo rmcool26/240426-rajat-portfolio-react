@@ -40,7 +40,7 @@ const Index = () => {
       <ScrollProgress />
       <Nav />
       <Hero />
-      <Marquee />
+      {/* <Marquee /> */}
       <DesignProcess />
       <FeaturedWork />
       <AboutCombined />

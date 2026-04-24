@@ -20,7 +20,7 @@ export const AboutCombined = () => {
             {about.heading}{" "}
             <span className="relative inline-block text-primary">
               {about.headingAccent}
-              <span className="absolute -bottom-1 left-0 right-0 h-3 rounded-full bg-primary/15" />
+              {/* <span className="absolute -bottom-1 left-0 right-0 h-3 rounded-full bg-primary/15" /> */}
             </span>
           </h2>
           <div className="mt-6 space-y-4 text-base text-muted-foreground md:text-lg">
@@ -44,7 +44,7 @@ export const AboutCombined = () => {
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   className="relative mb-8 last:mb-0"
                 >
-                  <span className="absolute -left-[33px] top-1.5 grid h-5 w-5 place-items-center rounded-full border-2 border-background bg-primary shadow-soft">
+                  <span className="absolute -left-[35px] top-1.5 grid h-5 w-5 place-items-center rounded-full border-2 border-background bg-primary shadow-soft">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary-foreground" />
                   </span>
                   <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
@@ -61,7 +61,7 @@ export const AboutCombined = () => {
           {/* RIGHT — skills */}
           <div className="space-y-8">
             <div>
-              <h3 className="mb-4 font-display text-2xl font-bold">Core Skills</h3>
+              <h3 className="mb-4 font-display text-2xl font-bold">What I Do Well</h3>
               <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {about.coreSkills.map((s, i) => (
                   <motion.li

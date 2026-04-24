@@ -48,7 +48,7 @@ export const Hero = () => {
               I solve complex problems through{" "}
               <span className="relative inline-block">
                 <span className="relative z-10 text-primary">design</span>
-                <span className="absolute -bottom-1 left-0 right-0 -z-0 h-3 rounded-full bg-primary/20" />
+                {/* <span className="absolute -bottom-1 left-0 right-0 -z-0 h-3 rounded-full bg-primary/20" /> */}
               </span>{" "}
               & systems thinking
             </motion.h1>

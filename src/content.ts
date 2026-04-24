@@ -19,15 +19,14 @@ export const content = {
     name: "Rajat Mishra",
     handle: "RMCOOL26",
     role: "UI/UX Lead · Systems Designer",
-    location: "Mumbai, India",
+    location: "India",
     available: "Open to Senior / Lead roles",
   },
 
   nav: [
     { label: "Home", href: "#top" },
     { label: "Projects", href: "#work" },
-    { label: "Experience", href: "#about" },
-    { label: "Skills", href: "#about" },
+    { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ],
 
@@ -91,7 +90,7 @@ export const content = {
   },
 
   projects: [
-    {
+    /* {
       slug: "epc-portal",
       name: "EPC Portal Workflow",
       tagline: "Solar installation tracking that EPCs actually use.",
@@ -101,7 +100,7 @@ export const content = {
       gallery: [terranxtEpc, stringing, inputSystem],
       tags: ["B2B", "Workflow", "Enterprise"],
       stats: [
-        { value: "100+", label: "EPC Partners" },
+        { value: "25+", label: "EPC Partners" },
         { value: "~50%", label: "Fewer tracking calls" },
       ],
     },
@@ -129,55 +128,151 @@ export const content = {
       gallery: [iide],
       tags: ["EdTech", "Marketing", "CRO"],
       stats: [
-        { value: "+40%", label: "Engagement lift" },
+        { value: "+16%", label: "Engagement lift" },
         { value: "↑", label: "Qualified leads" },
       ],
-    },
+    }, */
+
+    {
+        slug: "terranxt-suite",
+        name: "pvNXT Solar Suite",
+        company: "Terranxt · 2022",
+        role: "Consumer · EPC · Installer portals",
+        tags: ["Enterprise SaaS", "Design System", "UI/UX/IA/CI"],
+        description:
+          "Unified three fragmented portals (Consumer, EPC, Installer) into one Solar Suite. Built the design system from scratch, sat with solar engineers to learn the domain, and shipped end-to-end across web and mobile.",
+        cover: solarDash1,
+        gallery: [solarDash1, solarDash2, inputSystem, locationPicker, stringing],
+        stats: [
+          { value: "30%", label: "Faster task completion" },
+          { value: "3", label: "Portals unified" },
+          { value: "30k+", label: "Active users" },
+        ],
+        featuredCaseStudy: true,
+        caseStudyHref: "/case/terranxt",
+      },
+      {
+        slug: "consumer-mobile",
+        name: "pvNXT Consumer Mobile App",
+        company: "Terranxt · 2024",
+        role: "Solar journey in your pocket",
+        tags: ["Mobile", "Android"],
+        description:
+          "Solar consumers wanted real-time generation data without opening a laptop. Designed live generation, savings tracker, service requests, and a location-aware onboarding.",
+        cover: locationPicker,
+        gallery: [locationPicker, sarCart, solarDash2],
+        stats: [
+          { value: "30k+", label: "Downloads" },
+          { value: "4.6★", label: "Play Store" },
+          { value: "iOS+And", label: "Cross-platform" },
+        ],
+      },
+      {
+        slug: "scada-portal",
+        name: "Terranxt SCADA Monitoring",
+        company: "Terranxt · 2025",
+        role: "Real-time solar plant operations",
+        tags: ["B2B", "Workflow", "Data viz"],
+        description:
+          "EPC partners juggled spreadsheets and WhatsApp to track installations. Mapped the full journey, designed a single workflow board with milestone gating, and automated handoffs.",
+        cover: terranxtEpc,
+        gallery: [terranxtEpc, stringing, inputSystem],
+        stats: [
+          { value: "100+", label: "EPC partners" },
+          { value: "~50%", label: "Fewer tracking calls" },
+        ],
+      },
+      {
+        slug: "spade",
+        name: "Spade — GIS Satellite Platform",
+        company: "Suhora · 2023",
+        role: "SAR imagery, AOI selection, ordering",
+        tags: ["GIS", "Data viz", "Enterprise"],
+        description:
+          "Designed satellite imagery + raster data tools used by government and enterprise teams. Translated dense GIS workflows into clean dashboards built alongside QGIS / ERDAS engineers.",
+        cover: stringing,
+        gallery: [stringing, inputSystem, terranxtEpc],
+        stats: [
+          { value: "Gov+Ent", label: "Customers" },
+          { value: "Raster", label: "Data layers" },
+        ],
+      },
+      {
+        slug: "iide",
+        name: "IIDE — Learning & Marketing",
+        company: "IIDE · 2021",
+        role: "Lead generation site pages redesign",
+        tags: ["EdTech", "Marketing", "CRO"],
+        description:
+          "High traffic, low course enrolment — the site looked good but didn't convert. Rewrote IA, redesigned course pages, A/B tested CTAs, partnered with growth on every section.",
+        cover: iide,
+        gallery: [iide],
+        stats: [
+          { value: "+40%", label: "Engagement" },
+          { value: "↑", label: "Qualified leads" },
+        ],
+      },
+      {
+        slug: "dreamz",
+        name: "Client Websites — Freelance",
+        company: "Dreamz Merchandising Solutions · 2017",
+        role: "Retaggio · Suhora · SRM Films · Make My Day Cafe",
+        tags: ["Web", "Branding", "Freelance"],
+        description:
+          "Shipped 20+ client websites and a few mobile apps across SMB, hospitality, and creative agencies. Where I learned 'pixel-perfect' is a design choice, not a personality.",
+        cover: iide,
+        gallery: [iide, terranxtEpc],
+        stats: [
+          { value: "20+", label: "Websites shipped" },
+          { value: "5+", label: "Industries" },
+        ],
+      },
   ],
 
   about: {
     heading: "The cool guy behind",
     headingAccent: "the pixels",
     paragraphs: [
-      "I'm a UI/UX Lead with 9+ years across SaaS, mobile apps, GIS, EdTech, and enterprise tools. I work best in ambiguity — early-stage products, complex domains, teams where design needs to do more than make things pretty.",
-      "I write enough HTML/CSS to keep my Figma honest, and enough QA tickets to keep my devs happy. Built the Terranxt design team from solo to 12.",
+      "I'm a UI/UX Lead with 9+ years across SaaS, mobile apps, GIS, EdTech, and enterprise tools. I'm comfortable from FigJam → Figma → HTML/CSS and I work best in ambiguity — early-stage products, complex domains, teams where design needs to do more than make things pretty.",
+      "I write enough HTML/CSS to keep my Figma honest, and enough QA tickets to keep my devs happy. Built the Terranxt team from solo to 12.",
     ],
     timeline: [
       {
         year: "2022 — Now",
         company: "Terranxt (pvNXT)",
         role: "UI/UX Design Lead",
-        desc: "Joined as #3. Scaled team 2→12. Owned Solar Suite end-to-end (~30% faster task completion). Built and maintain the pvNXT design system.",
+        desc: "Joined as #2. Scaled team 2→12. Owned Solar Suite end-to-end (~30% faster task completion). Built and maintain the pvNXT design system.",
       },
       {
         year: "2021 — 2022",
         company: "IIDE",
-        role: "Senior UI/UX Designer",
-        desc: "Redesigned core marketing site and course pages — +40% engagement. Mentored 3 junior designers; established design QA rituals.",
+        role: "Executive Web Designer",
+        desc: "Redesigned core marketing site and course pages → +16% engagement. Mentored 3 junior designers; established design QA rituals.",
       },
       {
-        year: "2019 — 2021",
+        year: "2019 — 2020",
         company: "Skymap Global",
-        role: "UI/UX Designer",
+        role: "Software Engineer (UI-Oriented)",
         desc: "Designed GIS visualisation tools used by gov & enterprise. Translated raster data into clean dashboards alongside QGIS / ERDAS engineers.",
       },
       {
-        year: "2017 — 2019",
-        company: "Dreamz Interactive",
-        role: "UI Designer",
+        year: "2016 — 2018",
+        company: "Dreamz Merchandising Solutions",
+        role: "Junior Web Developer",
         desc: "Shipped 20+ client websites and a few mobile apps. Where I learned that 'pixel-perfect' is a design choice, not a personality.",
       },
     ],
     coreSkills: [
-      "Design Systems",
-      "UX Research",
-      "Prototyping",
-      "Mentoring",
-      "Design Ops",
-      "Information Architecture",
+      "UX Strategy & Product Thinking",
+      "User Research & Usability Testing",
+      "Information Architecture & User Flows",
+      "Wireframing & Prototyping (Figma)",
+      "Conversion Rate Optimization (CRO)",
+      "Developer Handoff & Design QA",
+      "Stakeholder Management & Team Leadership",
     ],
-    designTools: ["Figma", "FigJam", "Zeplin", "Miro", "Notion", "Jira", "Framer", "Webflow"],
-    techTools: ["HTML", "CSS", "Tailwind", "QGIS", "ERDAS"],
+    designTools: ["Figma", "FigJam", "Miro", "Notion", "Jira", "Trello", "Confluence"],
+    techTools: ["HTML", "CSS", "Tailwind", "WordPress",  "QGIS", "ERDAS", "Google Analytics", "Google Workspace"],
     collaboration: [
       "Cross-functional teams",
       "Stakeholder management",
@@ -190,10 +285,10 @@ export const content = {
   contact: {
     heading: "Let's Build Something Cool Together",
     sub: "Open to Senior / Lead UX roles, freelance case studies, or just a chai chat about design systems.",
-    email: "rajatmishra.work@gmail.com",
-    phone: "+91 90000 00000",
+    email: "rmcool26@gmail.com",
+    phone: "+91 9719499553",
     linkedin: "https://www.linkedin.com/in/rajat-mishra-design",
-    whatsapp: "https://wa.me/919000000000?text=Hi%20Rajat%2C%20saw%20your%20portfolio%20—",
+    whatsapp: "https://wa.me/919719499553?text=Hi%20Rajat%2C%20saw%20your%20portfolio%20—",
     resume: "/RajatMishra_Resume.pdf",
   },
 };
