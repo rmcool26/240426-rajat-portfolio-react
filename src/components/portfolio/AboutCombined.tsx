@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { content } from "@/content";
+import { MagneticButton } from "./MagneticButton";
 
 export const AboutCombined = () => {
   const { about } = content;
@@ -60,7 +61,20 @@ export const AboutCombined = () => {
 
           {/* RIGHT — skills */}
           <div className="space-y-12">
-
+            <div>
+              <h3 className="mb-4 font-display text-2xl font-bold">{"rmcool Toolkit"}</h3>
+              <div className="flex flex-wrap gap-2">
+                {[...about.designTools, ...about.techTools].map((t) => (
+                  <span
+                    key={t}
+                    data-cursor="hover"
+                    className="cursor-default rounded-full border border-border bg-secondary px-3.5 py-1.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
 
             <div>
               <h3 className="mb-4 font-display text-2xl font-bold">What I actually bring to the table</h3>
@@ -82,32 +96,18 @@ export const AboutCombined = () => {
                 ))}
               </ul> */}
 
-              <ul className="space-y-3 text-base leading-relaxed text-muted-foreground">
-                {about.highlights.map((highlight, index) => (
-                  <li key={index} className="flex gap-3">
-                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                    <span>
-                      <span className="font-medium text-slate-700">{highlight.label}</span>{" "}
-                      <span className="text-slate-500">{highlight.text}</span>
+              {/* Dynamic Highlights - Bullet Points */}
+              <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {about.highlights1.map((highlight, index) => (
+                  <li key={index} className="flex flex-col items-start gap-4 rounded-2xl border border-border bg-card px-4 py-3 text-sm font-medium shadow-soft text-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary">
+                    <span className="grid h-5 w-5 place-items-center rounded-full bg-primary/15 text-primary">
+                      <Check className="h-3 w-3" />
                     </span>
+                    <span className="font-medium text-foreground">{highlight.label}</span>
+                    <span className="text-slate-500">{highlight.text}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-
-            <div>
-              <h3 className="mb-4 font-display text-base font-bold">{"rmcool Toolkit"}</h3>
-              <div className="flex flex-wrap gap-2">
-                {[...about.designTools, ...about.techTools].map((t) => (
-                  <span
-                    key={t}
-                    data-cursor="hover"
-                    className="cursor-default rounded-full border border-border bg-secondary px-3.5 py-1.5 text-sm font-medium text-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
             </div>
 
             {/* <div>

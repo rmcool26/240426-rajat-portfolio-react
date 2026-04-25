@@ -339,13 +339,13 @@ export const content = {
         desc: "Shipped 20+ client websites and a few mobile apps. Where I learned that 'pixel-perfect' is a design choice, not a personality.",
       },
     ],
-    highlights: [
+    highlights1: [
       {
-        label: "System Thinking over Screen Thinking:",
+        label: "System Thinking over Screen Thinking",
         text: "I don't just design screens; I architect systems. I map complex processes and identify leverage points to ensure we're building a scalable, coherent product, not just a collection of features.",
       },
       {
-        label: "Design-to-Dev Collaboration:",
+        label: "Design-to-Dev Collaboration",
         text: "My background in HTML/CSS and leading a dev team means I speak their language. This results in realistic designs, smoother handoffs, and a faster path from concept to code. No more 'devs couldn't build it' excuses.",
       },
       {

@@ -7,7 +7,7 @@ interface MagneticButtonProps {
   href?: string;
   onClick?: () => void;
   className?: string;
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: "primary" | "secondary" | "ghost" | "none";
   strength?: number;
 }
 
@@ -39,6 +39,8 @@ export const MagneticButton = ({
       "bg-foreground text-background hover:opacity-90",
     ghost:
       "border border-border bg-background/60 backdrop-blur hover:bg-secondary text-foreground",
+    none:
+      "bg-background/60 backdrop-blur",
   };
 
   const inner = (
