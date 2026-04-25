@@ -59,10 +59,12 @@ export const AboutCombined = () => {
           </div>
 
           {/* RIGHT — skills */}
-          <div className="space-y-8">
+          <div className="space-y-12">
+
+
             <div>
               <h3 className="mb-4 font-display text-2xl font-bold">What I actually bring to the table</h3>
-              <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+              {/* <ul className="grid grid-cols-1 gap-2 sm:grid-cols-2">
                 {about.coreSkills.map((s, i) => (
                   <motion.li
                     key={s}
@@ -78,11 +80,23 @@ export const AboutCombined = () => {
                     {s}
                   </motion.li>
                 ))}
+              </ul> */}
+
+              <ul className="space-y-3 text-base leading-relaxed text-muted-foreground">
+                {about.highlights.map((highlight, index) => (
+                  <li key={index} className="flex gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    <span>
+                      <span className="font-medium text-slate-700">{highlight.label}</span>{" "}
+                      <span className="text-slate-500">{highlight.text}</span>
+                    </span>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div>
-              <h3 className="mb-4 font-display text-2xl font-bold">{"Design Tools → Code → Analytics"}</h3>
+              <h3 className="mb-4 font-display text-base font-bold">{"rmcool Toolkit"}</h3>
               <div className="flex flex-wrap gap-2">
                 {[...about.designTools, ...about.techTools].map((t) => (
                   <span
@@ -96,8 +110,8 @@ export const AboutCombined = () => {
               </div>
             </div>
 
-            <div>
-              <h3 className="mb-4 font-display text-2xl font-bold">Collaboration</h3>
+            {/* <div>
+              <h3 className="mb-4 font-display text-base font-bold">Collaboration</h3>
               <div className="flex flex-wrap gap-2">
                 {about.collaboration.map((t) => (
                   <span
@@ -109,7 +123,7 @@ export const AboutCombined = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

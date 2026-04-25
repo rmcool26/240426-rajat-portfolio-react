@@ -18,7 +18,7 @@ export const DesignProcess = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl text-center"
+          className="mx-auto max-w-full text-center"
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Process</p>
           <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">

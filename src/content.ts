@@ -4,15 +4,16 @@
 // Images live in src/assets/ — replace files with same names to swap.
 // ============================================================
 
-import profile from "@/assets/profile.jpeg";
-import terranxtEpc from "@/assets/projects/terranxt-epc.png";
-import solarDash1 from "@/assets/projects/solar-dash-1.png";
-import solarDash2 from "@/assets/projects/solar-dash-2.png";
-import locationPicker from "@/assets/projects/location-picker.png";
-import stringing from "@/assets/projects/stringing.png";
-import inputSystem from "@/assets/projects/input-system.png";
-import iide from "@/assets/projects/iide.png";
-import sarCart from "@/assets/projects/sar-cart.png";
+import profile from "@/assets/rmcool26-profile.jpeg";
+import designSystem from "@/assets/projects/rmcool26-design-system.png";
+import iideCourse from "@/assets/projects/rmcool26-iide-coursepage.png";
+import rettagio from "@/assets/projects/rmcool26-rettagio.png";
+import consumerMobile from "@/assets/projects/rmcool26-pvNXT-consumer-mobile.png";
+import epcStringing from "@/assets/projects/rmcool26-pvNXT-epc-stringing.png";
+import epcWorkflow from "@/assets/projects/rmcool26-pvNXT-epc-workflow.png";
+import epcProposal from "@/assets/projects/rmcool26-pvNXT-proposal-pdf.png";
+import scada from "@/assets/projects/rmcool26-pvNXT-sacada.png";
+import sarCart from "@/assets/projects/rmcool26-sar-cart.png";
 
 export const content = {
   meta: {
@@ -33,7 +34,7 @@ export const content = {
   hero: {
     eyebrow: "Hi, I'm Rajat 👋",
     title: "I turn messy workflows into products that actually work",
-    sub: "Lead UI/UX Designer & product builder. From solar EPC platforms and SCADA dashboards to GIS tools and learning products, I design end‑to‑end systems with almost zero learning curve for first‑time users.",
+    sub: "As a Product Design Lead, I transform complex business needs into intuitive, scalable applications. From 0 to 1 products for startups to enhancing enterprise platforms, I bridge the gap between user problems and tangible business results.",
     primaryCta: { label: "View My Work", href: "#work" },
     secondaryCta: { label: "Let's Talk", href: "#contact" },
     profileImage: profile,
@@ -58,7 +59,7 @@ export const content = {
 
   process: {
     heading: "My Design Process",
-    sub: "Not a textbook 'Double Diamond'. Here is my system for turning manual chaos into scalable products.",
+    sub: "Not a textbook 'Double Diamond'. My job is to make ideas real using rmcool's design process (i.e FigJam → Figma → Developer Handoff → QA partnership → Iteration) that turns manual chaos into scalable products",
     steps: [
       { title: "Decode the reality", desc: "Stakeholder interviews, user research, competitive teardowns.", emoji: "🔍" },
       { title: "Break down the system", desc: "Wireframes, prototypes, usability tests with real users.", emoji: "🧪" },
@@ -70,20 +71,20 @@ export const content = {
 
   featured: {
     heading: "Featured Work",
-    sub: "Real products. Real users. Measurable business impact.",
+    sub: "Case studies, live projects, and the measurable impact I've delivered.",
     hero: {
       slug: "terranxt",
       name: "pvNXT Solar Suite",
       company: "Terranxt · 2022 — Now",
       role: "UI/UX Design Lead",
-      tags: ["Enterprise SaaS", "Design System", "Design Lead"],
+      tags: ["Enterprise SaaS", "Design System", "UI/UX"],
       description:
         "Replaced a chaotic 2-3 month manual process (PVsyst, AutoCAD, WhatsApp) with one unified ecosystem. Designed consumer, EPC, and installer portals from scratch, giving real-time visibility and slashing operations time down to 1-2 weeks.",
-      cover: solarDash1,
+      cover: epcStringing,
       stats: [
-        { value: "10k+", label: "Active Users" },
+        { value: "1k+", label: "Active Users" },
         { value: "15-min", label: "Roof Analysis" },
-        { value: "Zero-Chaos", label: "Execution" },
+        { value: "50+", label: "Screen Shipped" },
       ],
       caseStudyHref: "/case/terranxt",
     },
@@ -151,89 +152,165 @@ export const content = {
         featuredCaseStudy: true,
         caseStudyHref: "/case/terranxt",
       }, */
-      {
-        slug: "scada-portal",
-        name: "pvNXT SCADA Web App",
-        company: "Terranxt · 2025",
-        role: "Real-time solar plant operations",
-        tags: ["B2B", "Work Order", "Alert System"],
-        description:
-          "Designed a first-of-its-kind SCADA dashboard. It eliminates manual plant monitoring for O&M managers with smart alerts, faulty string detection, and automated work-order assignments in one place.",
-        cover: terranxtEpc,
-        gallery: [terranxtEpc, stringing, inputSystem],
-        stats: [
-          { value: "20+", label: "EPC partners" },
-          { value: "~30%", label: "Fewer tracking calls" },
-        ],
-      },
-      {
-        slug: "consumer-mobile",
-        name: "pvNXT Consumer Mobile App",
-        company: "Terranxt · 2024",
-        role: "Solar journey in your pocket",
-        tags: ["B2C Self-Serve", "Android"],
-        description:
-          "Designed an intuitive mobile app that lets homeowners estimate costs, check ROI, and track their solar installation journey independently, generating warm leads for the EPC team.",
-        cover: locationPicker,
-        gallery: [locationPicker, sarCart, solarDash2],
-        stats: [
-          { value: "10k+", label: "Downloads" },
-          { value: "4.6★", label: "Play Store" },
-          { value: "iOS+And", label: "Cross-platform" },
-        ],
-      },
-      {
-        slug: "spade",
-        name: "Spade — GIS Satellite Platform",
-        company: "Suhora · 2023",
-        role: "Archieve imagery, AOI selection, ordering",
-        tags: ["B2B Procurement", "E-commerce", "Satellite Imagery"],
-        description:
-          "Designed India's first self-serve platform for government agencies to purchase satellite imagery. Reduced a tedious 3-week procurement process into a fast 3-day flow with instant archive downloads.",
-        cover: stringing,
-        gallery: [stringing, inputSystem, terranxtEpc],
-        stats: [
-          { value: "Gov+Ent", label: "Customers" },
-          { value: "Raster", label: "Data layers" },
-        ],
-      },
-      {
-        slug: "iide",
-        name: "IIDE — Learning & Marketing",
-        company: "IIDE · 2021",
-        role: "Lead generation site pages redesign",
-        tags: ["EdTech", "Redesign", "CRO"],
-        description:
-          "Led the post-COVID redesign of core marketing pages. Engineered dynamic WordPress UI components to automate course deadlines, boosting yearly lead generation by 16%.",
-        cover: iide,
-        gallery: [iide],
-        stats: [
-          { value: "+16%", label: "Lead Generation" },
-          { value: "3+", label: "Intern Mentored" },
-        ],
-      },
-      {
-        slug: "dreamz",
-        name: "Client Websites — Freelance",
-        company: "Dreamz Merchandising Solutions · 2017",
-        role: "Retaggio · Suhora · SRM Films · Make My Day Cafe",
-        tags: ["Web Design", "Branding", "Multiple Brands"],
-        description:
-          "Designed and shipped conversion-focused marketing sites across manufacturing, geospatial, and automotive industries (Retaggio, Suhora, DG Car Studio).",
-        cover: iide,
-        gallery: [iide, terranxtEpc],
-        stats: [
-          { value: "20+", label: "Website Shipped" },
-          { value: "10+", label: "Industries" },
-        ],
-      },
+    {
+      slug: "scada-portal",
+      name: "pvNXT SCADA Web App",
+      company: "Terranxt · 2025",
+      role: "Real-time solar plant operations",
+      tags: ["O&M Dashboard", "Work Orders", "Alert System"],
+      description: "Designed a market-first centralized SCADA platform, analyzing competitor gaps and user needs.",
+      cover: scada,
+      gallery: [scada, scada, scada],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+        { value: "~30%", label: "Fewer tracking calls" },
+        { value: "20+", label: "Screens designed" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "Solar O&M managers lacked a single tool for multi-plant monitoring, work order assignment, and smart alerts.",
+        },
+        {
+          label: "Action:",
+          text: "Designed a real-time O&M dashboard for solar plants with inverter/string-level monitoring, alerts, work orders, and activity logs, eliminating manual monitoring and follow-ups.",
+        },
+        {
+          label: "Result:",
+          text: "Helping O&M managers with complete control, real-time insights, significantly reducing plant downtime, manual oversight, enabling faster fault detection and field work assignment without manual follow-ups.",
+        },
+      ],
+      link: "https://scada.pvnxt.com",
+    },
+    {
+      slug: "consumer-mobile",
+      name: "pvNXT Consumer Mobile App",
+      company: "Terranxt · 2024",
+      role: "Solar journey in your pocket",
+      tags: ["B2C Self-Serve", "Android"],
+      description:
+        "A self-serve solar app for homeowners to estimate rooftop feasibility, understand cost, raise requests, and track installation progress without depending on calls or WhatsApp.  ",
+      cover: consumerMobile,
+      gallery: [consumerMobile, consumerMobile, consumerMobile],
+      stats: [
+        { value: "10+", label: "Downloads" },
+        { value: "4.6★", label: "Play Store" },
+        { value: "iOS+And", label: "Cross-platform" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "The solar journey for homeowners was confusing, slow, and lacked transparency.",
+        },
+        {
+          label: "Action",
+          text: "Designed an intuitive mobile app that lets homeowners estimate costs, check ROI, quote generation, and real-time installation tracking.",
+        },
+        {
+          label: "Result",
+          text: "Empowered consumers and streamlined the lead-to-installation funnel for the business and generating warm leads for the EPC team.",
+        },
+      ],
+      link: "https://play.google.com/store/apps/details?id=com.PvNXT&pcampaignid=web_share",
+    },
+    {
+      slug: "spade",
+      name: "Spade — GIS Satellite Platform",
+      company: "Suhora · 2023",
+      role: "Archive imagery, live tasking, and satellite data procurement",
+      tags: ["B2B Procurement", "E-commerce", "Satellite Imagery"],
+      description:
+        "Designed India's first self-serve platform for government agencies to purchase satellite imagery. Reduced a tedious 3-week procurement process into a fast 3-day flow with instant archive downloads.",
+      cover: sarCart,
+      gallery: [sarCart, sarCart, sarCart],
+      stats: [
+        { value: "Gov+Ent", label: "Customers" },
+        { value: "Raster", label: "Data layers" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "The process for government agencies to purchase satellite imagery was a 2-3 week ordeal.",
+        },
+        {
+          label: "Action:",
+          text: "Designed 'Spade', India's first platform for satellite imagery marketplace where agencies can discover, preview, purchase, and download archive/new imagery.",
+        },
+        {
+          label: "Result",
+          text: "Reducing procurement timelines from weeks to just 2-3 days which improves decision-making and operational efficiency by creating a new standard for the industry.",
+        },
+      ],
+      link: "https://spade.suhora.com",
+    },
+    {
+      slug: "iide",
+      name: "IIDE — Learning & Marketing",
+      company: "IIDE · 2021",
+      role: "Lead generation sites and learning platforms",
+      tags: ["EdTech", "Redesign", "CRO"],
+      description:
+        "Led the post-COVID redesign of core marketing pages. Engineered dynamic WordPress UI components to automate course deadlines, boosting yearly lead generation by 16%.",
+      cover: iideCourse,
+      gallery: [iideCourse, iideCourse, iideCourse],
+      stats: [
+        { value: "+16%", label: "Lead Generation" },
+        { value: "3+", label: "Intern Mentored" },
+        { value: "4+", label: "Portals managed" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "Existing WordPress lead pages needed a higher conversion rate.",
+        },
+        {
+          label: "Action:",
+          text: "Led a team of 3+ interns for day to day tasks, redesigned high-intent course landing pages, built reusable WordPress components, automated deadline updates. Implemented complex jQuery solutions for better UX.",
+        },
+        {
+          label: "Result",
+          text: "Achieved a 16% YoY increase in lead generation and significantly reduced the page editing time for the marketing team.",
+        },
+      ],
+      link: "https://iide.co/bachelors-in-digital-business-program/",
+    },
+    {
+      slug: "dreamz",
+      name: "Client Websites — Freelance",
+      company: "DMS · 2017",
+      role: "Retaggio · SRM Films · MMD Cafe",
+      tags: ["Web Design", "Branding", "Multiple Brands"],
+      hyper: ["Web Design", "Branding", "Multiple Brands"],
+      description: `Designed and developed fast, clean websites for manufacturing, SaaS, automotive, and consulting brands with a focus on clarity, trust, and lead generation.`,
+      cover: rettagio,
+      gallery: [rettagio, rettagio, rettagio],
+      stats: [
+        { value: "25+", label: "Website Shipped" },
+        { value: "10+", label: "Industries" },
+      ],
+      highlights: [
+        {
+          /* label: "Problem:", */
+          text: "Before SaaS platforms, there were businesses that needed a proper web presence — fast. I built websites for a cookware manufacturer, jewellery manufacturer, satellite tech companies, film production houses, and cafes.",
+        },
+        {
+          /* label: "Problem:", */
+          text: "Each one had a different brief, a different audience, and a different definition of done. The common thread: responsive, clean, and actually representative of the brand.",
+        },
+        {
+          /* label: "Problem:", */
+          text: "Led each project from discovery to delivery — understanding client goals, competitive research, designing in Figma, building in WordPress or HTML/CSS, and handing off with proper documentation. Managed ₹10L+ worth of projects with consistent quality and timelines.",
+        },
+      ],
+      link: "https://retaggioindustries.com/",
+    },
   ],
 
   about: {
     heading: "The cool guy behind",
     headingAccent: "the pixels",
     paragraphs: [
-      "I’m a Lead UI/UX designer with almost a decade in SaaS, enterprise solar, GIS and EdTech. Most of my work lives where things are messy by default — complex workflows, multiple roles, and lots of moving parts. My job is to make that usable using FigJam → Figma → HTML/CSS",
+      "I’m a Lead UI/UX designer with ~10 years of experience, but my role often goes beyond Figma. Most of my work lives where things are messy by default — owning problems end-to-end, complex workflows, multiple roles, connecting the dots between business, technology, and user experience.",
       "I don’t chase trends. If a design reduces confusion, saves time or makes someone’s job easier, that’s a win.",
     ],
     timeline: [
@@ -262,6 +339,25 @@ export const content = {
         desc: "Shipped 20+ client websites and a few mobile apps. Where I learned that 'pixel-perfect' is a design choice, not a personality.",
       },
     ],
+    highlights: [
+      {
+        label: "System Thinking over Screen Thinking:",
+        text: "I don't just design screens; I architect systems. I map complex processes and identify leverage points to ensure we're building a scalable, coherent product, not just a collection of features.",
+      },
+      {
+        label: "Design-to-Dev Collaboration:",
+        text: "My background in HTML/CSS and leading a dev team means I speak their language. This results in realistic designs, smoother handoffs, and a faster path from concept to code. No more 'devs couldn't build it' excuses.",
+      },
+      {
+        label: "Data-Informed Decisions",
+        text: "I use tools like Google Analytics and user feedback not to create reports, but to make decisions. I focus on metrics that matter to find out what's working, what's not, and what to build next.",
+      },
+      {
+        label: "0-to-1 Execution",
+        text: "I excel in the ambiguity of a new venture. At TerraNXT, I was part of the founding product team, helping build the platform from a whiteboard sketch to a revenue-generating product incubated at IIT Delhi.",
+      },
+    ],
+
     coreSkills: [
       "UX Strategy & Product Thinking",
       "Complex Workflow Optimization",
@@ -271,8 +367,8 @@ export const content = {
       "Developer Handoff & Design QA",
       "Design Mentorship & Leadership",
     ],
-    designTools: ["Figma", "FigJam", "Miro", "Notion", "Jira", "Trello", "Confluence"],
-    techTools: ["Tailwind", "HTML/CSS", "WordPress",  "QGIS / ERDAS", "Jira/Trello", "Google Analytics"],
+    designTools: ["Figma", "FigJam", "Miro", "Notion"],
+    techTools: ["Tailwind", "HTML/CSS", "WordPress", "QGIS / ERDAS", "Jira/Trello", "Google Analytics"],
     collaboration: [
       "Stakeholder Management",
       "Cross-functional Teams",

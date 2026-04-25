@@ -67,7 +67,7 @@ const CaseStudy = () => {
         <div className="grid gap-12 md:grid-cols-3">
           <div className="md:col-span-2">
             <h2 className="font-display text-3xl font-bold">Overview</h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+            <p className="whitespace-pre-line mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
               {hero.description}
             </p>
 

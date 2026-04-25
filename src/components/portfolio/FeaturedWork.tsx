@@ -1,6 +1,6 @@
 import { useRef, useState, type MouseEvent } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Plus } from "lucide-react";
 import { Link } from "react-router-dom";
 import { content, type Project } from "@/content";
 
@@ -55,14 +55,14 @@ const ShowcasePanel = ({ item }: { item: Project }) => {
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 24 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-      className="grid gap-3 lg:grid-cols-[1.25fr_1fr]"
+      className="flex flex-col gap-6 md:gap-10"
     >
       <div
         ref={ref}
         onMouseMove={onMove}
         onMouseLeave={() => setTilt({ rx: 0, ry: 0 })}
         style={{ transform: `perspective(1100px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)` }}
-        className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border bg-secondary shadow-elegant transition-transform duration-300 ease-out"
+        className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-secondary shadow-elegant transition-transform duration-300 ease-out"
         data-cursor="hover"
       >
         <AnimatePresence mode="wait">
@@ -81,17 +81,16 @@ const ShowcasePanel = ({ item }: { item: Project }) => {
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/10 to-transparent" />
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
+      {/* <div className="flex flex-row gap-3">
         {gallery.slice(0, 4).map((src, i) => (
           <button
             key={`${src}-${i}`}
             onClick={() => setActiveImg(i)}
             data-cursor="hover"
-            className={`group relative aspect-[4/3] overflow-hidden rounded-xl border bg-secondary transition-all ${
-              activeImg === i
-                ? "border-primary shadow-soft ring-2 ring-primary/30"
-                : "border-border hover:border-primary/50"
-            }`}
+            className={`max-w-24 group relative aspect-video overflow-hidden rounded-xl border bg-secondary transition-all ${activeImg === i
+              ? "border-primary shadow-soft ring-2 ring-primary/30"
+              : "border-border hover:border-primary/50"
+              }`}
           >
             <img
               src={src}
@@ -105,10 +104,10 @@ const ShowcasePanel = ({ item }: { item: Project }) => {
           Array.from({ length: 4 - gallery.length }).map((_, i) => (
             <div
               key={`ph-${i}`}
-              className="aspect-[4/3] rounded-xl border border-dashed border-border bg-secondary/40"
+              className="max-w-24 aspect-video rounded-xl border border-dashed border-border bg-secondary/40"
             />
           ))}
-      </div>
+      </div> */}
     </motion.div>
   );
 };
@@ -130,9 +129,8 @@ const Row = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className={`group relative border-b border-border transition-colors ${
-        isOpen ? "bg-card/40" : "hover:bg-card/20"
-      }`}
+      className={`group relative border-b border-border transition-colors ${isOpen ? "bg-card/40" : "hover:bg-card/20"
+        }`}
     >
       <button
         onClick={onToggle}
@@ -146,9 +144,8 @@ const Row = ({
 
         <div className="flex-1 min-w-0">
           <h3
-            className={`font-display text-2xl font-bold leading-tight tracking-tight transition-colors md:text-3xl lg:text-4xl ${
-              isOpen ? "text-primary" : "text-foreground group-hover:text-primary"
-            }`}
+            className={`font-display text-2xl font-bold leading-tight tracking-tight transition-colors md:text-3xl lg:text-4xl ${isOpen ? "text-primary" : "text-foreground group-hover:text-primary"
+              }`}
           >
             {item.name}
           </h3>
@@ -171,11 +168,10 @@ const Row = ({
         <motion.span
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3 }}
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors ${
-            isOpen
-              ? "border-primary bg-primary text-primary-foreground"
-              : "border-border bg-background/50 text-foreground group-hover:border-primary group-hover:text-primary"
-          }`}
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors ${isOpen
+            ? "border-primary bg-primary text-primary-foreground"
+            : "border-border bg-background/50 text-foreground group-hover:border-primary group-hover:text-primary"
+            }`}
         >
           <Plus className="h-5 w-5" />
         </motion.span>
@@ -192,23 +188,25 @@ const Row = ({
           >
             <div className="grid gap-10 pb-10 md:grid-cols-[1fr_1.4fr] md:pb-12 md:pl-12">
               <div className="flex flex-col">
-                <p className="text-base leading-relaxed text-muted-foreground">
+                {/* <p className="whitespace-pre-line text-base leading-relaxed text-muted-foreground border-t border-border">
                   {item.description}
-                </p>
+                </p> */}
 
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {item.tags.map((t) => (
-                    <span
-                      key={t}
-                      className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
-                    >
-                      {t}
-                    </span>
+                {/* Dynamic Highlights - Bullet Points */}
+                <ul className="space-y-3 text-base leading-relaxed text-muted-foreground">
+                  {item.highlights.map((highlight, index) => (
+                    <li key={index} className="flex gap-3">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      <span>
+                        <span className="font-medium text-slate-700">{highlight.label}</span>{" "}
+                        <span className="text-slate-500">{highlight.text}</span>
+                      </span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
                 {item.stats?.length ? (
-                  <div className="mt-8 grid grid-cols-3 gap-3 border-t border-border pt-6">
+                  <div className="mt-4 grid grid-cols-3 gap-3 border-b border-border pb-6">
                     {item.stats.map((s) => (
                       <div key={s.label}>
                         <div className="font-display text-2xl font-bold text-primary md:text-3xl">
@@ -221,6 +219,29 @@ const Row = ({
                     ))}
                   </div>
                 ) : null}
+
+                <div className="mt-6 flex justify-between align-center gap-2">
+                  <div className="flex flex-wrap gap-2">
+                    {item.tags.map((t) => (
+                      <span
+                        key={t}
+                        className="h-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="hover"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow"
+                  >
+                    Visit Site <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
+
               </div>
 
               <ShowcasePanel item={item} />
@@ -310,14 +331,14 @@ export const FeaturedWork = () => {
                   data-cursor="hover"
                   className="group mt-6 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-transform hover:scale-105"
                 >
-                  View Case Study
+                  See how it works
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </Link>
               </div>
             </div>
           </div>
         </motion.div>
-        
+
 
         <div className="mt-12 border-t border-border md:mt-16">
           {content.projects.map((project, index) => (
