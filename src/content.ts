@@ -382,13 +382,13 @@ export const content = {
         desc: "Redesigned core marketing site and course pages → +16% engagement. Mentored 3 junior designers; established design QA rituals.",
       },
       {
-        year: "2019 — 2020",
+        year: "2019 — 2021",
         company: "Skymap Global",
         role: "Software Engineer (UI-Oriented)",
         desc: "Designed GIS visualisation tools used by gov & enterprise. Translated raster data into clean dashboards alongside QGIS / ERDAS engineers.",
       },
       {
-        year: "2016 — 2018",
+        year: "2016 — 2019",
         company: "Dreamz Merchandising Solutions",
         role: "Junior Web Developer",
         desc: "Shipped 20+ client websites and a few mobile apps. Where I learned that 'pixel-perfect' is a design choice, not a personality.",
@@ -437,7 +437,7 @@ export const content = {
   contact: {
     heading: "Let's Build Something",
     headingAccent: "Cool Together",
-    sub: "Open to Senior / Lead UX roles, freelance case studies, or got something complex? Let’s simplify it.",
+    sub: "Open to work, freelance case studies, or got something complex? Let’s simplify it.",
     email: "rmcool26@gmail.com",
     phone: "+91 9719499553",
     linkedin: "https://www.linkedin.com/in/rmcool26/",
