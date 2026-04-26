@@ -236,7 +236,7 @@ const Row = ({
                     target="_blank"
                     rel="noreferrer"
                     data-cursor="hover"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-foreground transition-transform hover:scale-105 hover:underline "
                   >
                     Visit Site <ExternalLink className="h-3.5 w-3.5" />
                   </a>
@@ -281,55 +281,29 @@ export const FeaturedWork = () => {
           transition={{ duration: 0.7 }}
           className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-card shadow-elegant md:mt-16"
         >
-          <div className="grid gap-0 md:grid-cols-2">
-            <div className="relative overflow-hidden bg-secondary">
-              <motion.img
-                whileHover={{ scale: 1.04 }}
-                transition={{ duration: 0.6 }}
-                src={hero.cover}
-                alt={hero.name}
-                className="h-full min-h-[300px] w-full object-cover md:min-h-[480px]"
-              />
-              <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1.5 text-xs font-medium shadow-soft backdrop-blur">
+          <div className="relative overflow-hidden bg-secondary">
+            <motion.img
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.6 }}
+              src={hero.cover}
+              alt={hero.name}
+              className="h-full min-h-[300px] w-full object-cover md:min-h-[480px]"
+            />
+
+            <div className="absolute right-4 bottom-4 flex flex-col items-start gap-2 rounded-md bg-background/90 px-6 py-3 text-xs font-medium shadow-soft backdrop-blur">
+              <div className="inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1.5 text-xs font-medium shadow-soft backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 Featured Case Study
               </div>
-            </div>
-
-            <div className="flex flex-col justify-between gap-6 p-8 md:p-10">
               <div>
-                <div className="mb-3 flex flex-wrap gap-1.5">
-                  {hero.tags.map((t) => (
-                    <span key={t} className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      {t}
-                    </span>
-                  ))}
-                </div>
                 <h3 className="font-display text-3xl font-bold leading-tight md:text-4xl">{hero.name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">
                   {hero.role} · {hero.company}
                 </p>
-                <p className="mt-5 text-base leading-relaxed text-muted-foreground">{hero.description}</p>
-              </div>
-
-              <div>
-                <div className="grid grid-cols-3 gap-3 border-t border-border pt-6">
-                  {hero.stats.map((s) => (
-                    <div key={s.label}>
-                      <div className="font-display text-2xl font-bold text-primary md:text-3xl">
-                        <CountUp value={s.value} />
-                      </div>
-                      <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
-                        {s.label}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
                 <Link
                   to={hero.caseStudyHref}
                   data-cursor="hover"
-                  className="group mt-6 inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-transform hover:scale-105"
+                  className="w-full group mt-6 inline-flex items-center justify-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-medium text-background transition-transform hover:scale-105"
                 >
                   See how it works
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -337,6 +311,7 @@ export const FeaturedWork = () => {
               </div>
             </div>
           </div>
+
         </motion.div>
 
 

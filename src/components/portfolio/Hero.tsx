@@ -45,12 +45,12 @@ export const Hero = () => {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.05] tracking-tight text-balance text-foreground"
             >
-              I turn {" "}
+              I make messy{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-primary">messy workflows into products</span>
+                <span className="relative z-10 text-primary">workflows</span>
                 {/* <span className="absolute -bottom-1 left-0 right-0 -z-0 h-3 rounded-full bg-primary/20" /> */}
               </span>{" "}
-              that actually work
+               work
             </motion.h1>
 
             <motion.p

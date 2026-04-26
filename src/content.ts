@@ -4,7 +4,7 @@
 // Images live in src/assets/ — replace files with same names to swap.
 // ============================================================
 
-import profile from "@/assets/projects/rmcool26-profile.jpeg";
+import profile from "@/assets/projects/rmcool26-profile.svg";
 import designSystem from "@/assets/projects/rmcool26-design-system.png";
 import iideCourse from "@/assets/projects/rmcool26-iide-coursepage.png";
 import rettagio from "@/assets/projects/rmcool26-freelance.svg";
@@ -33,8 +33,8 @@ export const content = {
 
   hero: {
     eyebrow: "Hi, I'm Rajat 👋",
-    title: "I turn messy workflows into products that actually work",
-    sub: "As a Product Design Lead, I transform complex business needs into intuitive, scalable applications. From 0 to 1 products for startups to enhancing enterprise platforms, I bridge the gap between user problems and tangible business results.",
+    title: "I make messy workflows work.",
+    sub: "As a Product Design Lead, I don’t design to impress trends. I design to reduce confusion, save time, and make someone’s workday a little easier.",
     primaryCta: { label: "View My Work", href: "#work" },
     secondaryCta: { label: "Let's Talk", href: "#contact" },
     profileImage: profile,
@@ -87,7 +87,7 @@ export const content = {
       stats: [
         { value: "20+", label: "Active users" },
         { value: "50+", label: "Screen Shipped" },
-        { value: "90%", label: "roject Turnaround" },
+        { value: "90%", label: "Project Turnaround" },
         { value: "10–15 min", label: "Site Roof analysis" },
         { value: "3 live portals", label: "Consumer · EPC · Installer" },
         { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" },
