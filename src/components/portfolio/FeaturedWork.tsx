@@ -279,9 +279,9 @@ export const FeaturedWork = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
-          className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-card shadow-elegant md:mt-16"
+          className="mt-12 overflow-hidden rounded-[2rem] md:mt-16"
         >
-          <div className="relative overflow-hidden bg-secondary">
+          <div className="relative overflow-hidden bg-transparent p-16">
             <motion.img
               whileHover={{ scale: 1.04 }}
               transition={{ duration: 0.6 }}
@@ -290,7 +290,7 @@ export const FeaturedWork = () => {
               className="h-full min-h-[300px] w-full object-cover md:min-h-[480px]"
             />
 
-            <div className="absolute right-4 bottom-4 flex flex-col items-start gap-2 rounded-md bg-background/90 px-6 py-3 text-xs font-medium shadow-soft backdrop-blur">
+            <div className="absolute right-40 top-8 flex flex-col items-start gap-2 rounded-md bg-background/90 px-8 py-4 text-xs font-medium shadow-soft backdrop-blur">
               <div className="inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1.5 text-xs font-medium shadow-soft backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 Featured Case Study

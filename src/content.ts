@@ -6,10 +6,11 @@
 
 import profile from "@/assets/projects/rmcool26-profile.svg";
 import designSystem from "@/assets/projects/rmcool26-design-system.png";
-import iideCourse from "@/assets/projects/rmcool26-iide-coursepage.png";
+import iideCourse from "@/assets/projects/rmcool26-iide-coursepage.svg";
 import rettagio from "@/assets/projects/rmcool26-freelance.svg";
 import consumerMobile from "@/assets/projects/rmcool26-pvNXT-consumer-mobile.svg";
 import epcStringing from "@/assets/projects/rmcool26-pvNXT-epc-stringing.png";
+import pvnxtSuite from "@/assets/projects/rmcool26-pvNXT-suite.png";
 import epcWorkflow from "@/assets/projects/rmcool26-pvNXT-epc-workflow.png";
 import epcProposal from "@/assets/projects/rmcool26-pvNXT-proposal-pdf.png";
 import scada from "@/assets/projects/rmcool26-pvNXT-sacada.svg";
@@ -83,7 +84,7 @@ export const content = {
         
         `I joined Terranxt when there was no product, no team, and no design system. Just a problem worth solving. Over the next three years, I designed — from scratch — three interconnected portals: a Consumer portal for homeowners to self-assess and submit leads, an EPC portal for engineers to analyse, propose, and manage projects, and an Installer portal to track on-ground execution in real time.`,
       ],
-      cover: epcStringing,
+      cover: pvnxtSuite,
       stats: [
         { value: "20+", label: "Active users" },
         { value: "50+", label: "Screen Shipped" },
