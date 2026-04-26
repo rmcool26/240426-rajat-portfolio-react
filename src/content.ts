@@ -4,16 +4,16 @@
 // Images live in src/assets/ — replace files with same names to swap.
 // ============================================================
 
-import profile from "@/assets/rmcool26-profile.jpeg";
+import profile from "@/assets/projects/rmcool26-profile.jpeg";
 import designSystem from "@/assets/projects/rmcool26-design-system.png";
 import iideCourse from "@/assets/projects/rmcool26-iide-coursepage.png";
-import rettagio from "@/assets/projects/rmcool26-rettagio.png";
-import consumerMobile from "@/assets/projects/rmcool26-pvNXT-consumer-mobile.png";
+import rettagio from "@/assets/projects/rmcool26-freelance.svg";
+import consumerMobile from "@/assets/projects/rmcool26-pvNXT-consumer-mobile.svg";
 import epcStringing from "@/assets/projects/rmcool26-pvNXT-epc-stringing.png";
 import epcWorkflow from "@/assets/projects/rmcool26-pvNXT-epc-workflow.png";
 import epcProposal from "@/assets/projects/rmcool26-pvNXT-proposal-pdf.png";
-import scada from "@/assets/projects/rmcool26-pvNXT-sacada.png";
-import sarCart from "@/assets/projects/rmcool26-sar-cart.png";
+import scada from "@/assets/projects/rmcool26-pvNXT-sacada.svg";
+import sarCart from "@/assets/projects/rmcool26-spade.svg";
 
 export const content = {
   meta: {
@@ -77,14 +77,38 @@ export const content = {
       name: "pvNXT Solar Suite",
       company: "Terranxt · 2022 — Now",
       role: "UI/UX Design Lead",
-      tags: ["Enterprise SaaS", "Design System", "UI/UX"],
-      description:
-        "Replaced a chaotic 2-3 month manual process (PVsyst, AutoCAD, WhatsApp) with one unified ecosystem. Designed consumer, EPC, and installer portals from scratch, giving real-time visibility and slashing operations time down to 1-2 weeks.",
+      tags: ["Enterprise SaaS", "Product Strategy", "Design System", "SolarTech", "Workflow Automation", "Figma · HTML/CSS · Tailwind", "Dev Handoff"],
+      description: [
+        `Before pvNXT Solar Suite existed, running a solar EPC business in India looked something like this: PVsyst open in one tab, AutoCAD on a second monitor, WhatsApp buzzing with updates from an installer 400km away, and a spreadsheet trying to hold it all together. A single project — from site visit to final handover — could take 2–3 months.`,
+        
+        `I joined Terranxt when there was no product, no team, and no design system. Just a problem worth solving. Over the next three years, I designed — from scratch — three interconnected portals: a Consumer portal for homeowners to self-assess and submit leads, an EPC portal for engineers to analyse, propose, and manage projects, and an Installer portal to track on-ground execution in real time. cover: epcStringing`,
+      ],
       cover: epcStringing,
       stats: [
-        { value: "1k+", label: "Active Users" },
-        { value: "15-min", label: "Roof Analysis" },
+        { value: "20+", label: "Active users" },
         { value: "50+", label: "Screen Shipped" },
+        { value: "90%", label: "roject Turnaround" },
+        { value: "10–15 min", label: "Site Roof analysis" },
+        { value: "3 live portals", label: "Consumer · EPC · Installer" },
+        { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" },
+      ],
+      challenge: [
+        {
+          label: "Fragmented tools and teams -",
+          text: "Consumers, EPCs and installers were all using different tools at different stages. Nothing was connected end‑to‑end.",
+        },
+        {
+          label: "Slow, manual workflows -",
+          text: "EPCs spent weeks on manual rooftop analysis, proposals designing, approvals and handovers, with repeated site visits and endless back‑and‑forth on WhatsApp.",
+        },
+        {
+          label: "Zero single source of truth -",
+          text: "No central view of where a project was stuck, who owned the next step, or managing installers was a nightmare of phone calls with no real-time project visibility.",
+        },
+        {
+          label: "Building from Zero -",
+          text: "As part of a 3rd-person of founding team, I had to do it all: define the product, design the experience, and help build the process to deliver it.",
+        },
       ],
       caseStudyHref: "/case/terranxt",
     },
@@ -303,6 +327,37 @@ export const content = {
         },
       ],
       link: "https://retaggioindustries.com/",
+    },
+  ],
+
+  pvnxtCases: [
+    {
+      slug: "workflow-mapping",
+      name: "Workflow Mapping",
+      company: "",
+      role: "",
+      tags: ["Roles", "States", "Edge Cases", "Data Flow"],
+      description: "",
+      cover: scada,
+      gallery: [],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "My first step was to map the entire messy, manual process on a FigJam board with actual EPCs.  ",
+        },
+        {
+          label: "Action:",
+          text: "We didn't talk about features; we talked about pain points.",
+        },
+        {
+          label: "Result:",
+          text: "This visual map became our single source of truth.",
+        },
+      ],
+      link: "",
     },
   ],
 

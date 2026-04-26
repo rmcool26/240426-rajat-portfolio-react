@@ -5,6 +5,7 @@ import { ArrowLeft, ExternalLink } from "lucide-react";
 import { content } from "@/content";
 import { Footer } from "@/components/portfolio/Footer";
 import { Cursor } from "@/components/portfolio/Cursor";
+import { CaseStudyAccordion } from "@/components/portfolio/CaseStudyAccordion";
 
 const CaseStudy = () => {
   const { hero } = content.featured;
@@ -32,7 +33,7 @@ const CaseStudy = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="mt-10 max-w-3xl"
+            className="mt-10 max-w-full"
           >
             <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Case Study</p>
             <h1 className="font-display text-4xl font-bold leading-tight tracking-tight md:text-6xl">
@@ -72,11 +73,33 @@ const CaseStudy = () => {
             </p>
 
             <h2 className="mt-12 font-display text-3xl font-bold">The Challenge</h2>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              Three fragmented portals — Consumer, EPC, and Installer — each built by different teams at different
-              times. Overlapping flows, inconsistent UI patterns, and a pile-up of support tickets from users who
-              couldn't figure out where to do what.
+            <p className="whitespace-pre-line mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+              When I joined TerraNXT, the 'product' was just an idea. The Indian solar industry was stuck, as single project took 2-3 months, full of communication gaps and costly errors.
+              <br /><br />
+              Consumers had to call or message for basic feasibility and cost clarity. EPC(engineers) teams were switching between multiple tools like SAM, pvsyst, spreadsheets, WhatsApp chats, and manual AutoCAD designs for analysis and proposals. Installers were updating progress through WhatsApp and calls, so managers had no reliable daily visibility. After commissioning, O&M teams needed fault and work-order context connected back to the plant.
             </p>
+            <div>
+              <h3 className="m-4 font-display text-xl font-bold">My challenge was to not just design an app, but to architect a digital flexible enough for real EPC operations, but simple enough that each role only sees what they need.</h3>
+              <ul className="space-y-3 text-lg leading-relaxed text-muted-foreground">
+                {hero.challenge.map((highlight, index) => (
+                  <li key={index} className="flex gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                    <span>
+                      <span className="font-medium text-slate-700">{highlight.label}</span>{" "}
+                      <span className="text-slate-500">{highlight.text}</span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+
+            </div>
+
+            <h2 className="mt-12 font-display text-3xl font-bold">My Process: From Whiteboard to Working Product</h2>
+            <p className="whitespace-pre-line mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+              This is how I transformed a complex industrial problem into a simple, elegant software solution.
+            </p>
+            <CaseStudyAccordion pvnxtCases={content.pvnxtCases} />
+
 
             <h2 className="mt-12 font-display text-3xl font-bold">What I Did</h2>
             <ul className="mt-4 space-y-3 text-base text-muted-foreground md:text-lg">
@@ -115,7 +138,7 @@ const CaseStudy = () => {
               <h3 className="font-display text-sm font-bold uppercase tracking-widest text-muted-foreground">
                 Impact
               </h3>
-              <div className="mt-4 space-y-5">
+              <div className="mt-4 flex flex-wrap gap-y-8 justify-between">
                 {hero.stats.map((s) => (
                   <div key={s.label}>
                     <div className="font-display text-3xl font-bold text-primary">{s.value}</div>
@@ -123,15 +146,35 @@ const CaseStudy = () => {
                   </div>
                 ))}
               </div>
-              <a
-                href="https://pvnxt.com"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="hover"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow"
-              >
-                Visit pvNXT <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              <div className="flex flex-wrap justify-between gap-x-4">
+                <a
+                  href="https://consumer.pvnxt.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="hover"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+                >
+                  Visit Consumer <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+                <a
+                  href="https://epc.pvnxt.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="hover"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+                >
+                  Visit EPC <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+                <a
+                  href="https://installer.pvnxt.com"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor="hover"
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+                >
+                  Visit Installer <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
             </div>
 
             <p className="mt-6 text-xs text-muted-foreground">

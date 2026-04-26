@@ -62,7 +62,7 @@ const ShowcasePanel = ({ item }: { item: Project }) => {
         onMouseMove={onMove}
         onMouseLeave={() => setTilt({ rx: 0, ry: 0 })}
         style={{ transform: `perspective(1100px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)` }}
-        className="relative aspect-video overflow-hidden rounded-2xl border border-border bg-secondary shadow-elegant transition-transform duration-300 ease-out"
+        className="relative overflow-hidden rounded-2xl transition-transform duration-300 ease-out"
         data-cursor="hover"
       >
         <AnimatePresence mode="wait">
@@ -78,7 +78,7 @@ const ShowcasePanel = ({ item }: { item: Project }) => {
             loading="lazy"
           />
         </AnimatePresence>
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/10 to-transparent" />
+        {/* <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/10 to-transparent" /> */}
       </div>
 
       {/* <div className="flex flex-row gap-3">
@@ -236,7 +236,7 @@ const Row = ({
                     target="_blank"
                     rel="noreferrer"
                     data-cursor="hover"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
                   >
                     Visit Site <ExternalLink className="h-3.5 w-3.5" />
                   </a>
