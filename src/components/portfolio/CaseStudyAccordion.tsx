@@ -137,7 +137,7 @@ const Row = ({
                     <li key={index} className="flex gap-3">
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                       <span>
-                        <span className="font-medium text-slate-700">{highlight.label}</span>{" "}
+                        {/* <span className="font-medium text-slate-700">{highlight.label}</span>{" "} */}
                         <span className="text-slate-500">{highlight.text}</span>
                       </span>
                     </li>

@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, Check, ExternalLink } from "lucide-react";
 import { content } from "@/content";
 import { Footer } from "@/components/portfolio/Footer";
 import { Cursor } from "@/components/portfolio/Cursor";
 import { CaseStudyAccordion } from "@/components/portfolio/CaseStudyAccordion";
+import { MagneticButton } from "@/components/portfolio/MagneticButton";
 
 const CaseStudy = () => {
   const { hero } = content.featured;
@@ -58,7 +59,7 @@ const CaseStudy = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="overflow-hidden rounded-3xl border border-border shadow-elegant"
+          className="overflow-hidden rounded-3xl"
         >
           <img src={hero.cover} alt={hero.name} className="h-auto w-full object-cover" />
         </motion.div>
@@ -79,7 +80,7 @@ const CaseStudy = () => {
               Consumers had to call or message for basic feasibility and cost clarity. EPC(engineers) teams were switching between multiple tools like SAM, pvsyst, spreadsheets, WhatsApp chats, and manual AutoCAD designs for analysis and proposals. Installers were updating progress through WhatsApp and calls, so managers had no reliable daily visibility. After commissioning, O&M teams needed fault and work-order context connected back to the plant.
             </p>
             <div>
-              <h3 className="m-4 font-display text-xl font-bold">My challenge was to not just design an app, but to architect a digital flexible enough for real EPC operations, but simple enough that each role only sees what they need.</h3>
+              <h3 className="my-4 font-display text-xl font-bold ">My challenge was to not just design an app, but to architect a digital flexible enough for real EPC operations, but simple enough that each role only sees what they need.</h3>
               <ul className="space-y-3 text-lg leading-relaxed text-muted-foreground">
                 {hero.challenge.map((highlight, index) => (
                   <li key={index} className="flex gap-3">
@@ -91,45 +92,129 @@ const CaseStudy = () => {
                   </li>
                 ))}
               </ul>
-
             </div>
 
-            <h2 className="mt-12 font-display text-3xl font-bold">My Process: From Whiteboard to Working Product</h2>
-            <p className="whitespace-pre-line mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              This is how I transformed a complex industrial problem into a simple, elegant software solution.
+            <h2 className="mt-12 font-display text-3xl font-bold">My Role</h2>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+              I owned the product design process across research, workflows, UI, design system, dev handoff, QA support, and release coordination.
             </p>
-            <CaseStudyAccordion pvnxtCases={content.pvnxtCases} />
 
-
-            <h2 className="mt-12 font-display text-3xl font-bold">What I Did</h2>
             <ul className="mt-4 space-y-3 text-base text-muted-foreground md:text-lg">
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                Sat with solar engineers and EPC partners to learn the domain end-to-end before touching Figma.
+                Consumer portal experience
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                Mapped the unified user journey across all three personas.
+                EPC dashboard and roof analysis flow
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                Built the pvNXT design system from scratch — tokens, components, motion specs.
+                Installer assignment and daily progress tracking
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                Owned dev handoff, wrote the QA tickets, partnered with engineering on every release.
+                O&M / SCADA-connected workflows
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                Scaled the design team from solo to 12 across web, mobile, and brand.
+                Design system and reusable components
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                Developer handoff, edge states, QA checks, and bug iteration
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                Developer handoff, edge states, QA checks, and bug iteration
               </li>
             </ul>
 
+            <h2 className="mt-12 font-display text-3xl font-bold">My Process: From Whiteboard to Working Product</h2>
+            <p className="whitespace-pre-line mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+              What I did is how I transformed a complex industrial problem into a simple, elegant software solution.
+            </p>
+            <CaseStudyAccordion pvnxtCases={content.pvnxtCases} />
+
+            <h2 className="mt-12 font-display text-3xl font-bold">Key Product Decisions</h2>
+            <div>
+              <h3 className="my-4 font-display text-xl font-bold">Role-based experience</h3>
+              <p className="whitespace-pre-line mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+                Instead of showing everyone everything, each portal was designed around the user’s actual job.
+              </p>
+              <ul className="mt-4 space-y-3 text-base text-muted-foreground md:text-lg">
+                <li className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Consumers see request status, estimates, and progress.
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  EPC teams see leads, analysis, proposals, assignments, and execution status.
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  Installers see assigned work and daily update requirements.
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  O&M / SCADA-connected workflows
+                </li>
+                <li className="flex gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                  O&M teams get plant monitoring, alerts, faults, and work-order context.
+                </li>
+              </ul>
+
+              <h3 className="my-4 font-display text-xl font-bold">Design for handoff, not just presentation</h3>
+              <p className="whitespace-pre-line mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+                The pvNXT Solar Suite is no longer an idea. It's a live, revenue-generating platform incubated at IIT Delhi that is fundamentally changing how solar projects are executed in India/UAE.
+
+                For the team, it means fewer support tickets, fewer “kya status hai?” calls, and one place to see how the business is actually running. For me, it turned into an ongoing 0 → 1 → n product, not a one‑off redesign.
+
+                typical rooftop analysis now takes ~15 minutes vs 1–2 days with site visits
+
+                The product had many states: pending, approved, rejected, assigned, in progress, completed, failed, delayed, alert, fault, and more.
+                <br /><br />
+                So I designed reusable status patterns, validation behavior, empty states, and error states to make development smoother and reduce confusion during implementation.
+              </p>
+            </div>
+
+
             <h2 className="mt-12 font-display text-3xl font-bold">Outcome</h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-              A single Solar Suite that real EPCs, installers, and homeowners use every day. Faster task completion,
-              fewer support tickets, and a design system that lets the team ship 3× faster than before.
+              The pvNXT Solar Suite is no longer an idea. It's a live, revenue-generating platform <span className="font-medium text-foreground">incubated at IIT Delhi</span> that is fundamentally changing how solar projects are executed in India.
             </p>
+            <ul className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-">
+              <li className="flex flex-col items-start gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-sm font-medium shadow-soft text-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary">
+                <section className="flex items-start gap-2">
+                  <span className="grid h-5 w-5 place-items-center rounded-full bg-primary/15 text-primary">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  <span className="font-medium text-foreground">Revolutionized Efficiency</span>
+                </section>
+                <span className="text-slate-500">We reduced the time for detailed site analysis and proposal generation from 2 weeks to under 15 minutes.</span>
+              </li>
+              <li className="flex flex-col items-start gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-sm font-medium shadow-soft text-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary">
+                <section className="flex items-start gap-2">
+                  <span className="grid h-5 w-5 place-items-center rounded-full bg-primary/15 text-primary">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  <span className="font-medium text-foreground">Accelerated Timelines</span>
+
+                </section>
+                <span className="text-slate-500">The entire project lifecycle was compressed from a chaotic 2-3 months to a streamlined 1-2 weeks.</span>
+              </li>
+              <li className="flex flex-col items-start gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-sm font-medium shadow-soft text-foreground transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary">
+                <section className="flex items-start gap-2">
+                  <span className="grid h-5 w-5 place-items-center rounded-full bg-primary/15 text-primary">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  <span className="font-medium text-foreground">Business & Personal Growth</span>
+                </section>
+                <span className="text-slate-500">The platform attracted investment and secured incubation at a prestigious institution. For me, I evolved from a designer to a product leader who built a product and a process from the ground up.</span>
+              </li>
+            </ul>
+
           </div>
 
           {/* Sticky stats sidebar */}
@@ -138,7 +223,7 @@ const CaseStudy = () => {
               <h3 className="font-display text-sm font-bold uppercase tracking-widest text-muted-foreground">
                 Impact
               </h3>
-              <div className="mt-4 flex flex-wrap gap-y-8 justify-between">
+              <div className="mt-4 flex flex-col gap-y-8 justify-between">
                 {hero.stats.map((s) => (
                   <div key={s.label}>
                     <div className="font-display text-3xl font-bold text-primary">{s.value}</div>
@@ -146,39 +231,43 @@ const CaseStudy = () => {
                   </div>
                 ))}
               </div>
-              <div className="flex flex-wrap justify-between gap-x-4">
-                <a
-                  href="https://consumer.pvnxt.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor="hover"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
-                >
-                  Visit Consumer <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-                <a
-                  href="https://epc.pvnxt.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor="hover"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
-                >
-                  Visit EPC <ExternalLink className="h-3.5 w-3.5" />
-                </a>
-                <a
-                  href="https://installer.pvnxt.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor="hover"
-                  className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
-                >
-                  Visit Installer <ExternalLink className="h-3.5 w-3.5" />
-                </a>
+              <div className="flex justify-start items-center gap-x-2 mt-6">
+                <span className="font-medium text-foreground">Visit:</span>
+                <div className="flex justify-between gap-x-6">
+                  <a
+                    href="https://consumer.pvnxt.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="hover"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+                  >
+                    Consumer <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                  <a
+                    href="https://epc.pvnxt.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="hover"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+                  >
+                    EPC <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                  <a
+                    href="https://installer.pvnxt.com"
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="hover"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+                  >
+                    Installer <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                </div>
               </div>
             </div>
 
             <p className="mt-6 text-xs text-muted-foreground">
               Full case study with research artifacts, wireframes, and design system docs available on request.
+              Full research artifacts, workflows, wireframes, design system, and QA notes <a href={`mailto:${content.contact.email}`} target="_blank" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline">available on request.</a>
             </p>
           </aside>
         </div>

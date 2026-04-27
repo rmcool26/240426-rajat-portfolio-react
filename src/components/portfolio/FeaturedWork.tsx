@@ -290,7 +290,7 @@ export const FeaturedWork = () => {
               className="h-full min-h-[300px] w-full object-cover md:min-h-[480px]"
             />
 
-            <div className="absolute right-40 top-8 flex flex-col items-start gap-2 rounded-md bg-background/90 px-8 py-4 text-xs font-medium shadow-soft backdrop-blur">
+            <div className="absolute right-40 top-8 flex flex-col items-start gap-2 rounded-md px-8 py-4 text-xs font-medium backdrop-blur">
               <div className="inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1.5 text-xs font-medium shadow-soft backdrop-blur">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
                 Featured Case Study

@@ -86,12 +86,12 @@ export const content = {
       ],
       cover: pvnxtSuite,
       stats: [
-        { value: "20+", label: "Active users" },
+        { value: "20+", label: "EPC Organisations" },
+        { value: "1k+", label: "End Users" },
         { value: "50+", label: "Screen Shipped" },
-        { value: "90%", label: "Project Turnaround" },
         { value: "10–15 min", label: "Site Roof analysis" },
-        { value: "3 live portals", label: "Consumer · EPC · Installer" },
-        { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" },
+        /* { value: "3 live portals", label: "Consumer · EPC · Installer" }, */
+        /* { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" }, */
       ],
       challenge: [
         {
@@ -337,9 +337,9 @@ export const content = {
       name: "Workflow Mapping",
       company: "",
       role: "",
-      tags: ["Roles", "States", "Edge Cases", "Data Flow"],
-      description: "",
-      cover: scada,
+      tags: ["Roles", "Role-based Workflow", "Edge Cases", "Digital Flow"],
+      description: "Purpose: Show that you started with process clarity, not random UI.",
+      cover: sarCart,
       gallery: [],
       stats: [
         { value: "20+", label: "EPC partners" },
@@ -347,7 +347,7 @@ export const content = {
       highlights: [
         {
           label: "Problem:",
-          text: "My first step was to map the entire messy, manual process on a FigJam board with actual EPCs.  ",
+          text: "My first step was to map the entire messy, manual process on a FigJam board with actual EPCs.",
         },
         {
           label: "Action:",
@@ -356,6 +356,194 @@ export const content = {
         {
           label: "Result:",
           text: "This visual map became our single source of truth.",
+        },
+      ],
+      link: "",
+    },
+    {
+      slug: "data-flow",
+      name: "Architecting the Data Flow",
+      company: "",
+      role: "",
+      tags: ["Input Field Mapping", "Data Dependencies"],
+      description: "Purpose: Shows product thinking and complexity handling.",
+      cover: sarCart,
+      gallery: [],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "With a clear workflow, I defined the system's logic.",
+        },
+        {
+          label: "Action:",
+          text: "What information is needed at each stage? Who inputs it? Who sees it?",
+        },
+        {
+          label: "Result:",
+          text: "This translated the business logic into a system blueprint, ensuring data flowed correctly between all three portals.",
+        },
+      ],
+      link: "",
+    },
+    {
+      slug: "mid-fidelity-screens",
+      name: "Validating the Flow with Mid-Fidelity Screens",
+      company: "",
+      role: "",
+      tags: ["User Journey", "Mid-Fidelity Prototypes", "Stakeholders Approval",],
+      description: "Purpose: Shows that you validate structure before final UI.",
+      cover: sarCart,
+      gallery: [],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "Turning those flows into medium‑fidelity screens to validate journeys and permissions with stakeholders.",          
+        },
+        {
+          label: "Action:",
+          text: "Before adding color, I built mid-fidelity prototypes focused purely on the user journey. ",
+        },
+        {
+          label: "Result:",
+          text: "I ran these by our partner EPCs in quick review meetings to validate the core logic.",
+        },
+        {
+          label: "Result:",
+          text: "This 'measure twice, cut once' approach saved us weeks of rework",
+        },
+      ],
+      link: "",
+    },
+    {
+      slug: "design-system",
+      name: "Building the Foundation: Design System",
+      company: "",
+      role: "",
+      tags: ["Global components", "tables", "cards", "filters", "forms", "status badges", "toasts"],
+      description: "Purpose: Shows scalability and consistency.",
+      cover: sarCart,
+      gallery: [],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "To build three portals fast and consistently, a design system was critical. ",
+        },
+        {
+          label: "Result:",
+          text: "This foundation allowed us to assemble new screens in minutes, not hours, and gave our brand a cohesive feel.",
+        },
+        {
+          label: "Result:",
+          text: "Building the pvNXT design system:variables, style, typography, color tokens, layout grid and reusable components in Figma for web and mobile.",
+        },
+      ],
+      link: "",
+    },
+    {
+      slug: "high-fidelity-ui",
+      name: "Crafting the High-Fidelity Experience",
+      company: "",
+      role: "",
+      tags: ["Color theory", "legends", "tooltip", "motion specs"],
+      description: "Purpose: Shows final product quality.",
+      cover: sarCart,
+      gallery: [],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "The goal: a powerful interface that felt simple. An EPC should be able to manage 10 projects as easily as one. ",
+        },
+        {
+          label: "Result:",
+          text: "Every screen was designed to make their job faster, easier, and more profitable.",
+        },
+        {
+          label: "Result:",
+          text: "Final UI for core journeys — consumer, EPC dashboard, installer app and SCADA views.",
+        },
+      ],
+      link: "",
+    },
+    {
+      slug: "handoff-collab",
+      name: "The Perfect Handoff & Collaboration",
+      company: "",
+      role: "",
+      tags: ["States", "interaction", "toast/info messages", "UI responses"],
+      description: "Purpose: Shows final product quality.",
+      cover: sarCart,
+      gallery: [],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "Detailed handoff in Figma: annotating every state, interaction, loading/empty/error cases, toast/info messages, microcopy and component behaviour documented for the dev team.",
+        },
+        {
+          label: "Result:",
+          text: "I was the communication bridge, ensuring what we designed is what we shipped.",
+        },
+      ],
+      link: "",
+    },
+    {
+      slug: "testing-iteration",
+      name: "Closing the Loop: Testing, Bugs & Iteration",
+      company: "",
+      role: "",
+      tags: ["Testing", "Feedback", "Cross-functional collaboration", "Iteration"],
+      description: "Purpose: Shows final product quality.",
+      cover: sarCart,
+      gallery: [],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "During development, I coordinated with frontend and backend teams, clarified API requirements, tested builds, logged issues, assigned bugs, and helped close release gaps.",
+        },
+        {
+          label: "Problem:",
+          text: "Using feedback from real EPCs at our parent company, we continuously iterated to make the product better with every release by logging issues and tightening UX.",
+        },
+        {
+          label: "Result:",
+          text: "We ship, we test, we learn. I was actively involved in testing, logging bugs, and prioritizing fixes with the dev team.",
+        },
+      ],
+      link: "",
+    },
+    {
+      slug: "scaled-suite",
+      name: "Scaled the suite beyond one product",
+      company: "",
+      role: "",
+      tags: ["Scalability", "New Modules", "Integration"],
+      description: "Purpose: Shows final product quality.",
+      cover: sarCart,
+      gallery: [],
+      stats: [
+        { value: "20+", label: "EPC partners" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "Extended the same foundation to consumer mobile, SCADA monitoring, and future O&M integration, so new modules plug into the same system instead of becoming separate apps.",
         },
       ],
       link: "",
