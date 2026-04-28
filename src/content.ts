@@ -10,7 +10,7 @@ import iideCourse from "@/assets/projects/rmcool26-iide-coursepage.svg";
 import rettagio from "@/assets/projects/rmcool26-freelance.svg";
 import consumerMobile from "@/assets/projects/rmcool26-pvNXT-consumer-mobile.svg";
 import epcStringing from "@/assets/projects/rmcool26-pvNXT-epc-stringing.png";
-import pvnxtSuite from "@/assets/projects/rmcool26-pvNXT-suite.png";
+import pvnxtSuite from "@/assets/projects/rmcool26-pvNXT-suite.svg";
 import epcWorkflow from "@/assets/projects/rmcool26-pvNXT-epc-workflow.png";
 import epcProposal from "@/assets/projects/rmcool26-pvNXT-proposal-pdf.png";
 import scada from "@/assets/projects/rmcool26-pvNXT-sacada.svg";
