@@ -18,9 +18,9 @@ export const DesignProcess = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-full text-center"
+          className="mx-auto max-w-2xl text-center"
         >
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Process</p>
+          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Design Process</p>
           <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
             {content.process.heading}
           </h2>
@@ -35,7 +35,7 @@ export const DesignProcess = () => {
             className="absolute left-0 top-10 hidden h-[2px] bg-gradient-to-r from-primary via-primary-glow to-primary md:block"
           />
 
-          <div className="grid gap-10 md:grid-cols-5 md:gap-4">
+          <div className="grid gap-10 md:grid-cols-4 md:gap-4">
             {content.process.steps.map((step, i) => (
               <motion.div
                 key={step.title}

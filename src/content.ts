@@ -10,10 +10,11 @@ import iideCourse from "@/assets/projects/rmcool26-iide-coursepage.svg";
 import rettagio from "@/assets/projects/rmcool26-freelance.svg";
 import consumerMobile from "@/assets/projects/rmcool26-pvNXT-consumer-mobile.svg";
 import epcStringing from "@/assets/projects/rmcool26-pvNXT-epc-stringing.png";
-import pvnxtSuite from "@/assets/projects/rmcool26-pvNXT-suite.svg";
+import pvnxtSuite from "@/assets/projects/rmcool26-pvNXT-suite-675.svg";
 import epcWorkflow from "@/assets/projects/rmcool26-pvNXT-epc-workflow.png";
 import epcProposal from "@/assets/projects/rmcool26-pvNXT-proposal-pdf.png";
 import scada from "@/assets/projects/rmcool26-pvNXT-sacada.svg";
+import scadaAlert from "@/assets/projects/rmcool26-pvNXT-sacada-alert.svg";
 import sarCart from "@/assets/projects/rmcool26-spade.svg";
 
 export const content = {
@@ -26,25 +27,27 @@ export const content = {
   },
 
   nav: [
-    { label: "Home", href: "#top" },
-    { label: "Projects", href: "#work" },
+    /* { label: "Home", href: "#top" }, */
+    { label: "Work", href: "#work" },
     { label: "About", href: "#about" },
+/*     { label: "Experience", href: "#experience" }, */
     { label: "Contact", href: "#contact" },
   ],
 
   hero: {
-    eyebrow: "Hi, I'm Rajat 👋",
+    eyebrow: "Pragmatic Product Designer👋",
     title: "I make messy workflows work.",
-    sub: "As a Product Design Lead, I don’t design to impress trends. I design to reduce confusion, save time, and make someone’s workday a little easier.",
+    sub: "Ideas to apps. Audits to fixes. I ship products that simplify real work.",
     primaryCta: { label: "View My Work", href: "#work" },
     secondaryCta: { label: "Let's Talk", href: "#contact" },
     profileImage: profile,
     badges: [
-      { label: "Tools", value: "10+", emoji: "🛠️" },
-      { label: "Live Products", value: "5+", emoji: "🚀" },
-      { label: "Years", value: "9+", emoji: "⏳" },
-      { label: "Projects", value: "50+", emoji: "✨" },
+      { label: "Figjam → Jira", value: "10+ Tools Mastered", emoji: "🛠️" },
+      { label: "Real users & results", value: "20+ Live Products", emoji: "🚀" },
+      { label: "Shipping since 2014", value: "Hi, I'm Rajat Mishra", emoji: "👋" },
+      { label: "Delivered · Audited", value: "50+ Projects", emoji: "✨" },
       { label: "Team Scaled", value: "2→12", emoji: "👥" },
+      /* { label: "Design Process", value: "Your idea → My Figma → Live Product", emoji: "👥" }, */
     ],
   },
 
@@ -59,14 +62,14 @@ export const content = {
   ],
 
   process: {
-    heading: "My Design Process",
-    sub: "Not a textbook 'Double Diamond'. My job is to make ideas real using rmcool's design process (i.e FigJam → Figma → Developer Handoff → QA partnership → Iteration) that turns manual chaos into scalable products",
+    heading: "How I Ship",
+    sub: "No theory. No Fluff. No double diamonds. Building systems that scale and teams that ship.",
     steps: [
-      { title: "Decode the reality", desc: "Stakeholder interviews, user research, competitive teardowns.", emoji: "🔍" },
-      { title: "Break down the system", desc: "Wireframes, prototypes, usability tests with real users.", emoji: "🧪" },
-      { title: "Design for clarity", desc: "High-fidelity UI, design systems, motion specs.", emoji: "🎨" },
-      { title: "Build with dev alignment", desc: "Dev handoff, QA partnership, design tickets I write myself.", emoji: "🚢" },
-      { title: "Scale the system", desc: "Measure, iterate, mentor the team to ship faster.", emoji: "📈" },
+      { title: "Decode", desc: "Talk to real people. Understand the actual mess first.", emoji: "🔍" },
+      { title: "Craft", desc: "Blueprinting systems that make technical sense, not just pretty screens.", emoji: "🎨" },
+      { title: "Deliver", desc: "I don't throw files over the wall. I align with devs until it works.", emoji: "🚢" },
+      /* { title: "Scale", desc: "I don't just throw designs over the wall. I review, test, and align with devs until it works.", emoji: "🚢" }, */
+      { title: "Scale", desc: "Launch, track data, mentor the team, and iterate for better results.", emoji: "📈" },
     ],
   },
 
@@ -81,8 +84,93 @@ export const content = {
       tags: ["Enterprise SaaS", "Product Strategy", "Design System", "SolarTech", "Workflow Automation", "Figma · HTML/CSS · Tailwind", "Dev Handoff"],
       description: [
         `Before pvNXT Solar Suite existed, running a solar EPC business in India looked something like this: PVsyst open in one tab, AutoCAD on a second monitor, WhatsApp buzzing with updates from an installer 400km away, and a spreadsheet trying to hold it all together. A single project — from site visit to final handover — could take 2–3 months.`,
-        
+
         `I joined Terranxt when there was no product, no team, and no design system. Just a problem worth solving. Over the next three years, I designed — from scratch — three interconnected portals: a Consumer portal for homeowners to self-assess and submit leads, an EPC portal for engineers to analyse, propose, and manage projects, and an Installer portal to track on-ground execution in real time.`,
+
+        `When we took this to IIT Delhi's FITT programme — first as a Figma prototype, later as a live product — it got accepted for incubation. We've run multiple booths there since 2022. I managed the booth, ran the demos, explained the product to investors live — with nothing but a prototype and the actual problem it was solving.`
+      ],
+      cover: pvnxtSuite,
+      stats: [
+        { value: "20+", label: "EPC Organisations" },
+        { value: "1k+", label: "End Users" },
+        { value: "50+", label: "Screen Shipped" },
+        { value: "10–15 min", label: "Site Roof analysis" },
+        /* { value: "3 live portals", label: "Consumer · EPC · Installer" }, */
+        /* { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" }, */
+      ],
+      challenge: [
+        {
+          label: "Fragmented tools and teams -",
+          text: "Consumers, EPCs and installers were all using different tools at different stages. Nothing was connected end‑to‑end.",
+        },
+        {
+          label: "Slow, manual workflows -",
+          text: "EPCs spent weeks on manual rooftop analysis, proposals designing, approvals and handovers, with repeated site visits and endless back‑and‑forth on WhatsApp.",
+        },
+        {
+          label: "Zero single source of truth -",
+          text: "No central view of where a project was stuck, who owned the next step, or managing installers was a nightmare of phone calls with no real-time project visibility.",
+        },
+        {
+          label: "Building from Zero -",
+          text: "As part of a 3rd-person of founding team, I had to do it all: define the product, design the experience, and help build the process to deliver it.",
+        },
+      ],
+      caseStudyHref: "/case/terranxt",
+    },
+  },
+
+  caseStudies: [
+    {
+      slug: "pvnxt-suite",
+      name: "pvNXT Solar Suite",
+      eyebrow: "Live Product · pvNXT Solar Suite",
+      headline: "From spreadsheets to a full solar OS.",
+      body: "Solar EPCs ran on WhatsApp and Excel. I built the system that replaced all of it — end to end.\nEPC portal. Consumer portal. Installer portal. Web + mobile. One suite. Actually used by real people.",
+      cover: pvnxtSuite,
+      stats: [
+        { value: "20+", label: "EPCs Onboarded" },
+        { value: "100+", label: "Users" },
+        { value: "3+", label: "Portals" },
+        { value: "IIT Delhi", label: "Icubated At" },
+      ],
+      badge: "IIT Delhi",
+      cta: { label: "See the case study", href: "/case/terranxt" },
+      isLive: true,
+    },
+    {
+      slug: "scada-monitoring",
+      name: "SCADA Monitoring",
+      eyebrow: "Redesign in Progress · SCADA Monitoring",
+      headline: "One dashboard.\nEvery plant. Every alert.",
+      body: "O&M managers juggled calls, spreadsheets, and site visits just to know if a plant was running.\nThis fixes that — real-time monitoring, work orders, and field ops. Web + mobile. Multiple roles.",
+      cover: scadaAlert,
+      stats: [
+        { value: "5", label: "Roles Covered" },
+        { value: "50+", label: "Screens Designed" },
+        { value: "3+", label: "Portals" },
+        { value: "Web + mobile", label: "Cross Platform" },
+      ],
+      cta: { label: "Case study coming soon", href: "#" },
+      isLive: false,
+    },
+  ],
+
+  other: {
+    heading: "Featured Work",
+    sub: "Case studies, live projects, and the measurable impact I've delivered.",
+    hero: {
+      slug: "terranxt",
+      name: "pvNXT Solar Suite",
+      company: "Terranxt · 2022 — Now",
+      role: "UI/UX Design Lead",
+      tags: ["Enterprise SaaS", "Product Strategy", "Design System", "SolarTech", "Workflow Automation", "Figma · HTML/CSS · Tailwind", "Dev Handoff"],
+      description: [
+        `Before pvNXT Solar Suite existed, running a solar EPC business in India looked something like this: PVsyst open in one tab, AutoCAD on a second monitor, WhatsApp buzzing with updates from an installer 400km away, and a spreadsheet trying to hold it all together. A single project — from site visit to final handover — could take 2–3 months.`,
+
+        `I joined Terranxt when there was no product, no team, and no design system. Just a problem worth solving. Over the next three years, I designed — from scratch — three interconnected portals: a Consumer portal for homeowners to self-assess and submit leads, an EPC portal for engineers to analyse, propose, and manage projects, and an Installer portal to track on-ground execution in real time.`,
+
+        `When we took this to IIT Delhi's FITT programme — first as a Figma prototype, later as a live product — it got accepted for incubation. We've run multiple booths there since 2022. I managed the booth, ran the demos, explained the product to investors live — with nothing but a prototype and the actual problem it was solving.`
       ],
       cover: pvnxtSuite,
       stats: [
@@ -116,80 +204,19 @@ export const content = {
   },
 
   projects: [
-    /* {
-      slug: "epc-portal",
-      name: "EPC Portal Workflow",
-      tagline: "Solar installation tracking that EPCs actually use.",
-      description:
-        "EPC partners juggled spreadsheets and WhatsApp to track installations. I mapped the full journey, designed a single workflow board with milestone gating, and automated handoffs.",
-      cover: terranxtEpc,
-      gallery: [terranxtEpc, stringing, inputSystem],
-      tags: ["B2B", "Workflow", "Enterprise"],
-      stats: [
-        { value: "25+", label: "EPC Partners" },
-        { value: "~50%", label: "Fewer tracking calls" },
-      ],
-    },
-    {
-      slug: "consumer-mobile",
-      name: "Consumer Mobile App",
-      tagline: "Solar generation in your pocket. iOS + Android.",
-      description:
-        "Solar consumers wanted real-time generation data without opening a laptop. Designed live generation, savings tracker, service requests, and a location-aware onboarding.",
-      cover: locationPicker,
-      gallery: [locationPicker, sarCart, solarDash2],
-      tags: ["Mobile", "iOS", "Android"],
-      stats: [
-        { value: "30k+", label: "Active users" },
-        { value: "4.6★", label: "Play Store rating" },
-      ],
-    },
-    {
-      slug: "iide",
-      name: "IIDE Lead Gen Site",
-      tagline: "EdTech site rebuild that actually converted.",
-      description:
-        "High traffic, low course enrolment — the site looked good but didn't convert. Rewrote IA, redesigned course pages, A/B tested CTAs, partnered with growth on every section.",
-      cover: iide,
-      gallery: [iide],
-      tags: ["EdTech", "Marketing", "CRO"],
-      stats: [
-        { value: "+16%", label: "Engagement lift" },
-        { value: "↑", label: "Qualified leads" },
-      ],
-    }, */
-
-    /* {
-        slug: "terranxt-suite",
-        name: "pvNXT Solar Suite",
-        company: "Terranxt · 2022",
-        role: "Consumer · EPC · Installer portals",
-        tags: ["Enterprise SaaS", "Design System", "UI/UX/IA/CI"],
-        description:
-          "Unified three fragmented portals (Consumer, EPC, Installer) into one Solar Suite. Built the design system from scratch, sat with solar engineers to learn the domain, and shipped end-to-end across web and mobile.",
-        cover: solarDash1,
-        gallery: [solarDash1, solarDash2, inputSystem, locationPicker, stringing],
-        stats: [
-          { value: "30%", label: "Faster task completion" },
-          { value: "3", label: "Portals unified" },
-          { value: "30k+", label: "Active users" },
-        ],
-        featuredCaseStudy: true,
-        caseStudyHref: "/case/terranxt",
-      }, */
     {
       slug: "scada-portal",
       name: "pvNXT SCADA Web App",
-      company: "Terranxt · 2025",
+      company: "Current Live Version · Terranxt · 2025",
       role: "Real-time solar plant operations",
       tags: ["O&M Dashboard", "Work Orders", "Alert System"],
       description: "Designed a market-first centralized SCADA platform, analyzing competitor gaps and user needs.",
       cover: scada,
       gallery: [scada, scada, scada],
       stats: [
-        { value: "20+", label: "EPC partners" },
-        { value: "~30%", label: "Fewer tracking calls" },
-        { value: "20+", label: "Screens designed" },
+        { value: "10+", label: "Users onboarded" },
+        { value: "~60%", label: "Fewer manual check-ins" },
+        { value: "20+", label: "Formats supported" },
       ],
       highlights: [
         {
@@ -210,9 +237,9 @@ export const content = {
     {
       slug: "consumer-mobile",
       name: "pvNXT Consumer Mobile App",
-      company: "Terranxt · 2024",
-      role: "Solar journey in your pocket",
-      tags: ["B2C Self-Serve", "Android"],
+      company: "Terranxt · Beta Release",
+      role: "Simplifying the solar decision journey",
+      tags: ["B2C Self-Serve", "Mobile UI/UX"],
       description:
         "A self-serve solar app for homeowners to estimate rooftop feasibility, understand cost, raise requests, and track installation progress without depending on calls or WhatsApp.  ",
       cover: consumerMobile,
@@ -220,50 +247,51 @@ export const content = {
       stats: [
         { value: "10+", label: "Downloads" },
         { value: "4.6★", label: "Play Store" },
-        { value: "iOS+And", label: "Cross-platform" },
+        { value: "iOS+And", label: "Live Beta" },
       ],
       highlights: [
         {
           label: "Problem:",
-          text: "The solar journey for homeowners was confusing, slow, and lacked transparency.",
+          text: "Homeowners had no idea what solar would cost, when it will arrive, or who was tracking their order.",
         },
         {
           label: "Action",
-          text: "Designed an intuitive mobile app that lets homeowners estimate costs, check ROI, quote generation, and real-time installation tracking.",
+          text: "Built a mobile app — cost estimator, ROI calculator, quote flow, live installation tracker. Full journey, one app.",
         },
         {
           label: "Result",
-          text: "Empowered consumers and streamlined the lead-to-installation funnel for the business and generating warm leads for the EPC team.",
+          text: "Consumers in control end-to-end. Generated high-quality, verified leads directly to the EPC team with fewer manual follow-ups.",
         },
       ],
       link: "https://play.google.com/store/apps/details?id=com.PvNXT&pcampaignid=web_share",
     },
     {
       slug: "spade",
-      name: "Spade — GIS Satellite Platform",
+      name: "Spade — Geo-Intelligence Marketplace",
       company: "Suhora · 2023",
-      role: "Archive imagery, live tasking, and satellite data procurement",
+      role: "India's leading satellite imagery marketplace",
       tags: ["B2B Procurement", "E-commerce", "Satellite Imagery"],
       description:
         "Designed India's first self-serve platform for government agencies to purchase satellite imagery. Reduced a tedious 3-week procurement process into a fast 3-day flow with instant archive downloads.",
       cover: sarCart,
       gallery: [sarCart, sarCart, sarCart],
       stats: [
-        { value: "Gov+Ent", label: "Customers" },
-        { value: "Raster", label: "Data layers" },
+        { value: "Govt + Ent", label: "B2B Customers" },
+        { value: "2–3 days", label: "Procurement" },
+        /* { value: "Raster", label: "Data layers" }, */
       ],
       highlights: [
         {
           label: "Problem:",
-          text: "The process for government agencies to purchase satellite imagery was a 2-3 week ordeal.",
+          text: "Buying satellite imagery for govt agencies took 2–3 weeks. Manual, slow, no single platform.",
         },
         {
           label: "Action:",
-          text: "Designed 'Spade', India's first platform for satellite imagery marketplace where agencies can discover, preview, purchase, and download archive/new imagery.",
+          text: "Designed the end-to-end platform — browse, preview, order, download. One flow replacing weeks of back-and-forth.",
         },
         {
           label: "Result",
-          text: "Reducing procurement timelines from weeks to just 2-3 days which improves decision-making and operational efficiency by creating a new standard for the industry.",
+          text: "Procurement dropped from 2–3 weeks to 2–3 days which help agencies moved faster and by creating a new standard for the industry.",
         },
       ],
       link: "https://spade.suhora.com",
@@ -272,40 +300,40 @@ export const content = {
       slug: "iide",
       name: "IIDE — Learning & Marketing",
       company: "IIDE · 2021",
-      role: "Lead generation sites and learning platforms",
-      tags: ["EdTech", "Redesign", "CRO"],
+      role: "Boosting course enrollment via CRO",
+      tags: ["EdTech", "Redesign", "Product Strategy", "Frontend Logic"],
       description:
         "Led the post-COVID redesign of core marketing pages. Engineered dynamic WordPress UI components to automate course deadlines, boosting yearly lead generation by 16%.",
       cover: iideCourse,
       gallery: [iideCourse, iideCourse, iideCourse],
       stats: [
-        { value: "+16%", label: "Lead Generation" },
-        { value: "3+", label: "Intern Mentored" },
+        { value: "+16%", label: "Lead Conversion" },
+        { value: "3 Person", label: "Team Led" },
         { value: "4+", label: "Portals managed" },
       ],
       highlights: [
         {
           label: "Problem:",
-          text: "Existing WordPress lead pages needed a higher conversion rate.",
+          text: "Course and Marketing lead pages weren't converting. Good traffic, weak results.",
         },
         {
           label: "Action:",
-          text: "Led a team of 3+ interns for day to day tasks, redesigned high-intent course landing pages, built reusable WordPress components, automated deadline updates. Implemented complex jQuery solutions for better UX.",
+          text: "Led a team of 3 juniors for day to day tasks, to implement modular design systems and custom interactions that simplified the student journey. Redesigned high-intent course landing pages, built reusable WordPress components, automated deadline updates. Implemented complex jQuery solutions for better UX.",
         },
         {
           label: "Result",
-          text: "Achieved a 16% YoY increase in lead generation and significantly reduced the page editing time for the marketing team.",
+          text: "Drove a 16% increase in leads while reducing internal update time by ~30%.",
         },
       ],
       link: "https://iide.co/bachelors-in-digital-business-program/",
     },
     {
       slug: "dreamz",
-      name: "Client Websites — Freelance",
-      company: "DMS · 2017",
-      role: "Retaggio · SRM Films · MMD Cafe",
+      name: "Freelance Web Design",
+      company: "Dreamz Group · Early Career Era",
+      role: "Built custom solutions for Multi-industry clients",
       tags: ["Web Design", "Branding", "Multiple Brands"],
-      hyper: ["Web Design", "Branding", "Multiple Brands"],
+      hyper: ["Web Design11", "Branding", "Multiple Brands"],
       description: `Designed and developed fast, clean websites for manufacturing, SaaS, automotive, and consulting brands with a focus on clarity, trust, and lead generation.`,
       cover: rettagio,
       gallery: [rettagio, rettagio, rettagio],
@@ -315,16 +343,16 @@ export const content = {
       ],
       highlights: [
         {
-          /* label: "Problem:", */
-          text: "Before SaaS platforms, there were businesses that needed a proper web presence — fast. I built websites for a cookware manufacturer, jewellery manufacturer, satellite tech companies, film production houses, and cafes.",
+          label: "Problem:",
+          text: "Before SaaS platforms, small businesses needed a web presence but had no idea where to start or who to trust.",
         },
         {
-          /* label: "Problem:", */
-          text: "Each one had a different brief, a different audience, and a different definition of done. The common thread: responsive, clean, and actually representative of the brand.",
+          label: "Problem:",
+          text: "Took each from zero → discovery, design, build, handoff. Cafes, film studios, manufacturers, satellite companies, real estate, and hospitality. Different brief every time. Same quality every time.",
         },
         {
-          /* label: "Problem:", */
-          text: "Led each project from discovery to delivery — understanding client goals, competitive research, designing in Figma, building in WordPress or HTML/CSS, and handing off with proper documentation. Managed ₹10L+ worth of projects with consistent quality and timelines.",
+          label: "Result:",
+          text: "25+ websites shipped across 10+ industries. Some clients are still running the same sites. Few Clients: Retaggio Industries, SRM Films, MMD Cafe.",
         },
       ],
       link: "https://retaggioindustries.com/",
@@ -403,7 +431,7 @@ export const content = {
       highlights: [
         {
           label: "Problem:",
-          text: "Turning those flows into medium‑fidelity screens to validate journeys and permissions with stakeholders.",          
+          text: "Turning those flows into medium‑fidelity screens to validate journeys and permissions with stakeholders.",
         },
         {
           label: "Action:",
@@ -554,8 +582,8 @@ export const content = {
     heading: "The cool guy behind",
     headingAccent: "the pixels",
     paragraphs: [
-      "I’m a Lead UI/UX designer with ~10 years of experience, but my role often goes beyond Figma. Most of my work lives where things are messy by default — owning problems end-to-end, complex workflows, multiple roles, connecting the dots between business, technology, and user experience.",
-      "I don’t chase trends. If a design reduces confusion, saves time or makes someone’s job easier, that’s a win.",
+      "I’m a pragmatic designer with ~10 years of experience, who understands code, collaborates closely with engineers, and builds systems that are simple to use, scalable to maintain, and practical to ship.",
+      "My role often goes beyond Figma. Most of my work lives where things are messy by default.",
     ],
     timeline: [
       {
@@ -637,3 +665,4 @@ export const content = {
 
 export type Project = (typeof content.projects)[number];
 export type FeaturedProject = typeof content.featured.hero;
+export type CaseStudyItem = (typeof content.caseStudies)[number];

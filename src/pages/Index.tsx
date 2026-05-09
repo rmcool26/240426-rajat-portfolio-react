@@ -11,6 +11,7 @@ import { AboutCombined } from "@/components/portfolio/AboutCombined";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import { content } from "@/content";
+import { OtherWork } from "@/components/portfolio/OtherWork";
 
 const Index = () => {
   useEffect(() => {
@@ -41,8 +42,9 @@ const Index = () => {
       <Nav />
       <Hero />
       {/* <Marquee /> */}
-      <DesignProcess />
       <FeaturedWork />
+      {/* <OtherWork /> */}
+      <DesignProcess />
       <AboutCombined />
       <Contact />
       <Footer />

@@ -3,11 +3,11 @@ import { content } from "@/content";
 
 // Positions around the profile photo (percent)
 const positions = [
-  { top: "-6%", left: "-22%", delay: 0 },
-  { top: "12%", right: "-26%", delay: 0.4 },
-  { bottom: "18%", left: "-28%", delay: 0.8 },
-  { bottom: "-4%", right: "-14%", delay: 1.2 },
-  { top: "44%", left: "-34%", delay: 1.6 },
+  { top: "-4%", left: "-30%", delay: 0 },
+  { top: "4%", right: "-48%", delay: 0.4 },
+  { bottom: "-8%", left: "26%", delay: 0.8 },
+  { bottom: "28%", right: "-50%", delay: 1.2 },
+  { top: "46%", left: "-40%", delay: 1.6 },
 ];
 
 export const StatBadges = () => {

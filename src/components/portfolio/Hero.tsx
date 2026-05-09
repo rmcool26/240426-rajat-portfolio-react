@@ -1,16 +1,20 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { useState } from "react";
 import { content } from "@/content";
 import { StatBadges } from "./StatBadges";
 import { MagneticButton } from "./MagneticButton";
 
+
 export const Hero = () => {
   const { hero } = content;
+  const [showTooltip, setShowTooltip] = useState(false);
+
 
   return (
     <section
       id="top"
-      className="relative isolate overflow-hidden bg-hero pt-32 pb-20 md:pt-40 md:pb-32"
+      className="relative isolate overflow-hidden bg-hero pt-32 pb-20 md:pt-44 md:pb-32"
     >
       {/* Soft mesh blobs */}
       <div
@@ -26,7 +30,7 @@ export const Hero = () => {
         <div className="grid items-center gap-12 lg:grid-cols-[1.3fr_1fr] lg:gap-20">
           {/* LEFT — copy */}
           <div>
-            <motion.p
+            {/* <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -37,7 +41,42 @@ export const Hero = () => {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
               </span>
               {hero.eyebrow}
-            </motion.p>
+            </motion.p> */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-4 py-1.5 text-sm font-medium text-foreground shadow-soft backdrop-blur"
+            >
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              {/* <span>Shipping since 2014</span> */}
+              {/* <span className="mx-1 h-4 w-px bg-border" /> */}
+              <span
+                className="relative cursor-help text-primary font-semibold"
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+                onClick={() => setShowTooltip((v) => !v)}
+              >
+                Pragmatic Product Designer {/* ✦ */}
+                <AnimatePresence>
+                  {showTooltip && (
+                    <motion.span
+                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 4, scale: 0.97 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute -left-1/4 bottom-full z-50 mb-3 w-64 -translate-x-1/2 rounded-xl border border-border bg-background/95 px-4 py-3 text-xs font-normal leading-relaxed text-muted-foreground shadow-elegant backdrop-blur-md"
+                    >
+                      <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 h-3 w-3 rotate-45 border-r border-b border-border bg-background/95" />
+                      <span className="relative z-10">
+                        I design clear, practical systems that balance user needs, business goals, and technical constraints.
+                      </span>
+                    </motion.span>
+                  )}
+                </AnimatePresence>
+              </span>
+            </motion.div>
+
 
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
@@ -45,19 +84,19 @@ export const Hero = () => {
               transition={{ duration: 0.7, delay: 0.1 }}
               className="font-display text-[clamp(2.5rem,6vw,5rem)] font-bold leading-[1.05] tracking-tight text-balance text-foreground"
             >
-              I make messy{" "}
+              The cool guy who{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-primary">workflows</span>
+                <span className="relative z-10 text-primary">makes messy</span>
                 {/* <span className="absolute -bottom-1 left-0 right-0 -z-0 h-3 rounded-full bg-primary/20" /> */}
               </span>{" "}
-               work
+              workflows work
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 max-w-xl text-base text-muted-foreground md:text-lg"
+              className="mt-6 max-w-full text-base text-muted-foreground md:text-lg"
             >
               {hero.sub}
             </motion.p>
@@ -108,7 +147,7 @@ export const Hero = () => {
             <StatBadges />
           </motion.div>
         </div>
-      </div>
-    </section>
+      </div >
+    </section >
   );
 };

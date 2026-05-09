@@ -13,12 +13,23 @@ export const Nav = () => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
       // active section detection
-      const sections = ["#top", "#work", "#about", "#contact"];
+      const sections = ["#top", "#work", "#about", "#experience", "#contact"];
+      const nearBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
       const y = window.scrollY + 140;
       let current = "#top";
       for (const s of sections) {
         const el = document.querySelector(s);
         if (el && (el as HTMLElement).offsetTop <= y) current = s;
+      }
+      // If page is scrolled to the bottom, force the last existing section active
+      if (nearBottom) {
+        for (let i = sections.length - 1; i >= 0; i--) {
+          if (document.querySelector(sections[i])) {
+            current = sections[i];
+            break;
+          }
+        }
       }
       setActive(current);
     };
@@ -30,9 +41,8 @@ export const Nav = () => {
   return (
     <header className="fixed left-0 right-0 top-4 z-40 px-4">
       <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border px-4 py-2.5 transition-all duration-300 ${
-          scrolled ? "bg-background/85 shadow-soft backdrop-blur-xl" : "bg-background/70 backdrop-blur-md"
-        }`}
+        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border px-4 py-2.5 transition-all duration-300 ${scrolled ? "bg-background/85 shadow-soft backdrop-blur-xl" : "bg-background/70 backdrop-blur-md"
+          }`}
       >
         <a href="#top" data-cursor="hover" className="font-display text-base font-bold tracking-tight">
           <span className="text-primary">RM</span>
