@@ -28,14 +28,14 @@ export const content = {
 
   nav: [
     /* { label: "Home", href: "#top" }, */
-    { label: "Work", href: "#work" },
     { label: "About", href: "#about" },
+    { label: "Work", href: "#work" },
     { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" },
   ],
 
   hero: {
-    eyebrow: "Pragmatic Product Designer👋",
+    eyebrow: "Pragmatic Product & UX Designer",
     title: "I make messy workflows work.",
     sub: "Ideas to apps. Audits to fixes. I ship products that simplify real work.",
     primaryCta: { label: "View My Work", href: "#work" },
@@ -44,7 +44,7 @@ export const content = {
     badges: [
       { label: "Figjam → Jira", value: "10+ Tools Mastered", emoji: "🛠️" },
       { label: "Real users & results", value: "20+ Live Products", emoji: "🚀" },
-      { label: "Shipping since 2014", value: "Hi, I'm Rajat Mishra", emoji: "👋" },
+      { label: "Shipping since 2016", value: "Hi, I'm Rajat Mishra", emoji: "👋" },
       { label: "Delivered · Audited", value: "50+ Projects", emoji: "✨" },
       { label: "Team Scaled", value: "2→12", emoji: "👥" },
       /* { label: "Design Process", value: "Your idea → My Figma → Live Product", emoji: "👥" }, */
@@ -69,7 +69,7 @@ export const content = {
       { title: "Craft", desc: "Blueprinting systems that make technical sense, not just pretty screens.", emoji: "🎨" },
       { title: "Deliver", desc: "I don't throw files over the wall. I align with devs until it works.", emoji: "🚢" },
       /* { title: "Scale", desc: "I don't just throw designs over the wall. I review, test, and align with devs until it works.", emoji: "🚢" }, */
-      { title: "Scale", desc: "Launch, track data, mentor the team, and iterate for better results.", emoji: "📈" },
+      { title: "Launch", desc: "Scale, track data, mentor the team, and iterate for better results.", emoji: "📈" },
     ],
   },
 
@@ -141,7 +141,7 @@ export const content = {
     {
       slug: "scada-monitoring",
       name: "SCADA Monitoring",
-      eyebrow: "Redesign in Progress · SCADA Monitoring",
+      eyebrow: "Design in Progress · SCADA Monitoring",
       headline: "One dashboard.\nEvery plant. Every alert.",
       body: "O&M managers juggled calls, spreadsheets, and site visits just to know if a plant was running.\nThis fixes that — real-time monitoring, work orders, and field ops. Web + mobile. Multiple roles.",
       cover: scadaAlert,
@@ -204,7 +204,7 @@ export const content = {
   },
 
   projects: [
-    {
+    /* {
       slug: "scada-portal",
       name: "pvNXT SCADA Web App",
       company: "Current Live Version · Terranxt · 2025",
@@ -233,7 +233,7 @@ export const content = {
         },
       ],
       link: "https://scada.pvnxt.com",
-    },
+    }, */
     {
       slug: "consumer-mobile",
       name: "pvNXT Consumer Mobile App",

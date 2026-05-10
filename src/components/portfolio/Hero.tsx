@@ -57,7 +57,7 @@ export const Hero = () => {
                 onMouseLeave={() => setShowTooltip(false)}
                 onClick={() => setShowTooltip((v) => !v)}
               >
-                Pragmatic Product Designer {/* ✦ */}
+                Pragmatic Product & UX Designer {/* ✦ */}
                 <AnimatePresence>
                   {showTooltip && (
                     <motion.span

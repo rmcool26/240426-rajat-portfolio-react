@@ -28,7 +28,7 @@ export const About = () => {
           </div>
 
           {/* Inline stat strip */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 border-y border-border py-5">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-24 gap-y-4 border-y border-border py-5">
             {about.stats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="font-display text-2xl font-bold text-foreground md:text-3xl">
@@ -43,7 +43,7 @@ export const About = () => {
         </motion.div>
 
         {/* Value cards — titles + 1-line subtitle */}
-        <div className="mx-auto mt-12 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mx-auto mt-12 grid max-w-6xl gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {about.highlights.map((h, i) => (
             <motion.div
               key={h.label}

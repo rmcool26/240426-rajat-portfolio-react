@@ -43,15 +43,15 @@ const Index = () => {
       <ScrollProgress />
       <Nav />
       <Hero />
-      {/* <Marquee /> */}
-      <FeaturedWork />
-      {/* <OtherWork /> */}
-      {/* <AboutCombined /> */}
       <About />
-      <Experience />
+      <FeaturedWork />
       <DesignProcess />
+      <Experience />
       <Contact />
       <Footer />
+      {/* <Marquee /> */}
+      {/* <OtherWork /> */}
+      {/* <AboutCombined /> */}
     </main>
   );
 };
