@@ -30,7 +30,7 @@ export const content = {
     /* { label: "Home", href: "#top" }, */
     { label: "Work", href: "#work" },
     { label: "About", href: "#about" },
-/*     { label: "Experience", href: "#experience" }, */
+    { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" },
   ],
 
@@ -579,75 +579,76 @@ export const content = {
   ],
 
   about: {
-    heading: "The cool guy behind",
-    headingAccent: "the pixels",
+    eyebrow: "About",
+    heading: "Not just a designer.",
+    headingAccent: "A finisher.",
     paragraphs: [
-      "I’m a pragmatic designer with ~10 years of experience, who understands code, collaborates closely with engineers, and builds systems that are simple to use, scalable to maintain, and practical to ship.",
-      "My role often goes beyond Figma. Most of my work lives where things are messy by default.",
+      "I work where design meets reality → messy briefs, tight timelines, real constraints. Most designers hand off. I stay until it ships.",
+      "There are 10,000+ designers who can make you a nice Figma file. I'm one of the few who'll also ship it to real users.",
+      "A decade of building real products has taught me one thing: reduce manual chaos, speed up dev, solve real problems. Everything else is decoration.",
     ],
+    stats: [
+      { value: "9+", label: "Years shipping" },
+      { value: "20+", label: "Live products" },
+      { value: "4", label: "Designers Mentored" },
+      { value: "6", label: "Developers Led" },
+    ],
+    highlights: [
+      { label: "Systems, not screens", text: "Architect the flow, not just the frame." },
+      { label: "I speak dev", text: "HTML/CSS fluent. Smoother handoffs, fewer excuses." },
+      { label: "Numbers > opinions", text: "GA + user feedback drive the next decision." },
+      { label: "Whiteboard → live app", text: "0-to-1 builder. Ambiguity is home." },
+    ],
+  },
+
+  experience: {
+    eyebrow: "Experience & Stack",
+    heading: "Where I've shipped",
+    headingAccent: "and how.",
     timeline: [
       {
         year: "2022 — Now",
         company: "Terranxt (pvNXT)",
         role: "UI/UX Design Lead",
-        desc: "Joined as #2. Scaled team 2→12. Owned Solar Suite end-to-end (~30% faster task completion). Built and maintain the pvNXT design system.",
+        desc: "Joined as #2. Scaled team 2→12. Owned the full Solar Suite — EPC, Consumer, Installer + Mobile App. Built the pvNXT design system from zero.",
       },
       {
         year: "2021 — 2022",
         company: "IIDE",
         role: "Executive Web Designer",
-        desc: "Redesigned core marketing site and course pages → +16% engagement. Mentored 3 junior designers; established design QA rituals.",
+        desc: "+16% lead conversion via redesigning responsive course & marketing pages. Mentored 3 junior designers. Set up the team's first design QA ritual.",
       },
       {
         year: "2019 — 2021",
         company: "Skymap Global",
         role: "Software Engineer (UI-Oriented)",
-        desc: "Designed GIS visualisation tools used by gov & enterprise. Translated raster data into clean dashboards alongside QGIS / ERDAS engineers.",
+        desc: "Designed govt-grade web applications for land monitoring by working alongside SOI / ERDAS engineers. First experience shipping real apps used by govt field officers.",
       },
       {
         year: "2016 — 2019",
-        company: "Dreamz Merchandising Solutions",
-        role: "Junior Web Developer",
-        desc: "Shipped 20+ client websites and a few mobile apps. Where I learned that 'pixel-perfect' is a design choice, not a personality.",
+        company: "Dreamz Merchandising",
+        role: "Junior Web Developer & Designer",
+        desc: "Shipped 20+ client sites. Learned 'pixel-perfect' is a choice, not a personality. Built a strong foundation in HTML/CSS, design principles, and client communication.",
       },
     ],
-    highlights1: [
-      {
-        label: "System Thinking over Screen Thinking",
-        text: "I don't just design screens; I architect systems. I map complex processes and identify leverage points to ensure we're building a scalable, coherent product, not just a collection of features.",
-      },
-      {
-        label: "Design-to-Dev Collaboration",
-        text: "My background in HTML/CSS and leading a dev team means I speak their language. This results in realistic designs, smoother handoffs, and a faster path from concept to code. No more 'devs couldn't build it' excuses.",
-      },
-      {
-        label: "Data-Informed Decisions",
-        text: "I use tools like Google Analytics and user feedback not to create reports, but to make decisions. I focus on metrics that matter to find out what's working, what's not, and what to build next.",
-      },
-      {
-        label: "0-to-1 Execution",
-        text: "I excel in the ambiguity of a new venture. At TerraNXT, I was part of the founding product team, helping build the platform from a whiteboard sketch to a revenue-generating product incubated at IIT Delhi.",
-      },
+    currently: {
+      label: "Currently",
+      role: "UI/UX Design Lead",
+      company: "Terranxt · Hybrid",
+      status: "Open to Senior / Lead roles",
+    },
+    stackGrouped: [
+      { group: "Design", tools: ["Figma", "FigJam", "Miro", "Notion"] },
+      { group: "Build", tools: ["Tailwind", "HTML/CSS", "WordPress"] },
+      { group: "Data & Ops", tools: ["Google Analytics", "Jira", "QGIS / ERDAS"] },
     ],
-
-    coreSkills: [
-      "UX Strategy & Product Thinking",
-      "Complex Workflow Optimization",
-      "Information Architecture & User Flows",
-      /* "Rapid Wireframing & Prototyping", */
-      "Conversion Rate Optimization (CRO)",
-      "Developer Handoff & Design QA",
-      "Design Mentorship & Leadership",
+    education: [
+      { year: "2016 — 2019", title: "BCA", school: "Bachelor of Computer Applications" },
+      { year: "2014 — 2016", title: "Diploma in IT", school: "TCS iON" },
     ],
-    designTools: ["Figma", "FigJam", "Miro", "Notion"],
-    techTools: ["Tailwind", "HTML/CSS", "WordPress", "QGIS / ERDAS", "Jira/Trello", "Google Analytics"],
-    collaboration: [
-      "Stakeholder Management",
-      "Cross-functional Teams",
-      "User-Centric Approach",
-      "Agile Methodology",
-      "System Thinking",
-      "Product Roadmap Alignment",
+    recognition: [
+      { label: "My designed product Incubated at", value: "IIT Delhi" },
+      { label: "Founding product team", value: "Terranxt · 2023" },
     ],
   },
 

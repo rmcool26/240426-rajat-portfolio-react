@@ -12,6 +12,8 @@ import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
 import { content } from "@/content";
 import { OtherWork } from "@/components/portfolio/OtherWork";
+import { Experience } from "@/components/portfolio/Experience";
+import { About } from "@/components/portfolio/About";
 
 const Index = () => {
   useEffect(() => {
@@ -44,8 +46,10 @@ const Index = () => {
       {/* <Marquee /> */}
       <FeaturedWork />
       {/* <OtherWork /> */}
+      {/* <AboutCombined /> */}
+      <About />
+      <Experience />
       <DesignProcess />
-      <AboutCombined />
       <Contact />
       <Footer />
     </main>
