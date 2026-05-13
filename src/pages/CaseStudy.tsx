@@ -232,7 +232,7 @@ const CaseStudy = () => {
                 ))}
               </div>
               <div className="flex justify-start items-center gap-x-2 mt-6">
-                <span className="font-medium text-foreground">Visit:</span>
+                <span className="font-medium text-white">Visit:</span>
                 <div className="flex justify-between gap-x-6">
                   <a
                     href="https://consumer.pvnxt.com"

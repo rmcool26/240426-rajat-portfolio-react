@@ -18,6 +18,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { KeyScreen } from "./KeyScreen";
 
 // TODO:image — swap with real imports
 const epcShot = "@/assets/projects/rmcool26-spade.svg";
@@ -101,9 +102,9 @@ function Hero() {
           variants={fadeUp}
           className="mt-8 max-w-3xl text-2xl font-medium leading-snug text-neutral-200 md:text-3xl"
         >
-          India's most manual solar workflow,
+          Manual solar operations,
           <br className="hidden md:inline" />{" "}
-          turned into a product incubated at IIT Delhi.
+          turned into a live product ecosystem incubated at IIT Delhi.
         </motion.p>
 
         <motion.p variants={fadeUp} className="mt-6 text-base text-neutral-400 md:text-lg">
@@ -117,9 +118,9 @@ function Hero() {
         >
           {[
             { n: "20+", l: "EPCs onboarded" },
-            { n: "100+", l: "End users" },
-            { n: "2–3 wks", l: "Was 2–3 months" },
-            { n: "5", l: "Products shipped" },
+            { n: "100+", l: "Users enrolled" },
+            { n: "2–3 wks", l: "Project cycle now" },
+            { n: "IIT Delhi", l: "FITT incubated" },
           ].map((s) => (
             <div key={s.l}>
               <div className="text-4xl font-bold text-indigo-400 md:text-5xl">{s.n}</div>
@@ -135,10 +136,10 @@ function Hero() {
 // ---------- 02 BEFORE ----------
 function Before() {
   const points = [
-    "Proposals stitched together on WhatsApp",
-    "Site analysis split across AutoCAD + Excel",
-    "Installer updates through phone calls",
-    "No one knew where a project actually stood",
+    "Proposals stitched across WhatsApp and Excel",
+    "Site analysis split between AutoCAD, PVsyst and spreadsheets",
+    "Installer updates came through calls, photos and voice notes",
+    "No single place to seewhere a project actually stood",
   ];
 
   return (
@@ -152,7 +153,7 @@ function Before() {
           variants={fadeUp}
           className="mt-5 max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl"
         >
-          Before pvNXT, running a solar EPC looked like this.
+          Before pvNXT, running a solar EPC project looked like this.
         </motion.h2>
 
         <div className="mt-14 grid gap-12 md:grid-cols-[1.2fr_1fr] md:gap-16">
@@ -179,9 +180,9 @@ function Before() {
           variants={fadeUp}
           className="mt-16 max-w-3xl text-2xl font-semibold leading-snug text-neutral-900 md:text-3xl"
         >
-          A 3-week job was taking 2–3 months. Manual. Invisible. Broken.
+          A 3-week job was taking 2–3 months. Manual. Invisible. Broken. Expensive.
           <span className="mt-3 block text-neutral-500">
-            I was hired as employee #2 to fix it — from scratch.
+            I joined as employee #2 to turn that idea into a product.
           </span>
         </motion.p>
       </motion.div>
@@ -262,7 +263,7 @@ function System() {
             Everything connected. Real-time. Role-based.
           </p>
           <p className="mt-3 text-sm italic text-neutral-500">
-            EPC mobile app — currently in design.
+            EPC mobile app is currently in design.
           </p>
         </motion.div>
       </motion.div>
@@ -275,7 +276,7 @@ function MyRole() {
   const chips = [
     "Stakeholder research with real EPCs",
     "Full UX architecture across 5 products",
-    "Design system from scratch (5 devs use it daily)",
+    "Design system from scratch, used by devs daily",
     "Annotated dev handoffs, flow-by-flow",
     "Hired and led a 5-person dev squad",
     "Live booth demos at IIT Delhi FITT to investors",
@@ -298,7 +299,7 @@ function MyRole() {
         </motion.h2>
 
         <motion.p variants={fadeUp} className="mt-6 text-lg text-neutral-300">
-          I built all of it.
+          I didn’t just design screens. I owned the path to shipping.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-12 grid gap-3 md:grid-cols-2">
@@ -327,12 +328,12 @@ function Process() {
     {
       n: "01",
       title: "Decode",
-      body: "Sat with real EPCs. Walked their actual process. Mapped every manual step on FigJam. Pain points became the product brief.",
+      body: "Sat with real EPCs. Walked through their actual work. Mapped every manual step on FigJam. Pain points became the product brief.",
     },
     {
       n: "02",
       title: "Architect",
-      body: "Mid-fidelity first. Always. Validated with stakeholders before touching hi-fi. No pixel-pushing until the system made sense.",
+      body: "Mid-fidelity first. Always. Mapped roles, permissions, data flow and edge cases before touching hi-fi. No pixel-pushing until the system made sense.",
     },
     {
       n: "03",
@@ -342,7 +343,7 @@ function Process() {
     {
       n: "04",
       title: "Ship & scale",
-      body: "QA, iteration, edge cases. Then SCADA monitoring, consumer portal, installer app. One suite, multiple roles.",
+      body: "QA, iteration, edge cases. Then scaled it to SCADA monitoring with one suite, multiple roles.",
     },
   ];
 
@@ -384,7 +385,8 @@ function Process() {
 }
 
 // ---------- 06 KEY SCREENS ----------
-function Screens() {
+{/* <KeyScreen /> */ }
+/* function Screens() {
   const screens = [
     {
       img: epcShot,
@@ -454,7 +456,7 @@ function Screens() {
       </motion.div>
     </Section>
   );
-}
+} */
 
 // ---------- 07 KEY DECISIONS ----------
 function Decisions() {
@@ -483,7 +485,7 @@ function Decisions() {
           variants={fadeUp}
           className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
         >
-          Two calls that shaped the product.
+          Two strategic decisions that shaped the product.
         </motion.h2>
 
         <motion.div variants={fadeUp} className="mt-14 grid gap-6 md:grid-cols-2">
@@ -516,7 +518,7 @@ function Decisions() {
 function Outcome() {
   const stats = [
     { n: "20+", l: "EPCs onboarded" },
-    { n: "100+", l: "Active users" },
+    { n: "100+", l: "Users enrolled" },
     { n: "2–3 wks", l: "Down from 2–3 mo" },
     { n: "IIT Delhi", l: "FITT incubated", icon: GraduationCap },
   ];
@@ -558,10 +560,10 @@ function Outcome() {
             installations tracked end-to-end.
           </p>
           <p className="mt-8 text-2xl font-bold text-white md:text-3xl">
-            That's the only metric that matters.
+            That’s the metric I care about.
           </p>
           <div className="flex justify-start items-center gap-x-2 mt-6">
-            <span className="font-medium text-foreground">Visit:</span>
+            <span className="font-medium text-white">Visit:</span>
             <div className="flex justify-between gap-x-6">
               <a
                 href="https://consumer.pvnxt.com"
@@ -684,16 +686,14 @@ function TableOfContents() {
                 className="flex items-center gap-3"
               >
                 <span
-                  className={`flex h-2 w-2 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
-                    isActive
+                  className={`flex h-2 w-2 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${isActive
                       ? "scale-150 bg-indigo-500"
                       : "bg-neutral-300 group-hover/toc:bg-neutral-400"
-                  }`}
+                    }`}
                 />
                 <span
-                  className={`max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium uppercase tracking-wider opacity-0 transition-all duration-300 group-hover/toc:max-w-[160px] group-hover/toc:opacity-100 ${
-                    isActive ? "text-indigo-600" : "text-neutral-600"
-                  }`}
+                  className={`max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium uppercase tracking-wider opacity-0 transition-all duration-300 group-hover/toc:max-w-[160px] group-hover/toc:opacity-100 ${isActive ? "text-indigo-600" : "text-neutral-600"
+                    }`}
                 >
                   <span className="mr-2 text-neutral-400">{String(i + 1).padStart(2, "0")}</span>
                   {item.label}
@@ -716,7 +716,7 @@ export default function CaseStudyPvNXT() {
       <System />
       <MyRole />
       <Process />
-      <Screens />
+      <KeyScreen />
       <Decisions />
       <Outcome />
       <Next />
