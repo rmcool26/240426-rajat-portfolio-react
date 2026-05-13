@@ -650,6 +650,11 @@ export const content = {
       { label: "My designed product Incubated at", value: "IIT Delhi" },
       { label: "Founding product team", value: "Terranxt · 2023" },
     ],
+    hobbies: [
+      { label: "Studying ancient UX at monuments", value: "🏛️" },
+      { label: "Chasing local food", value: "🍜" },
+      { label: "Quick on the badminton court", value: "🏸" },
+    ],
   },
 
   contact: {

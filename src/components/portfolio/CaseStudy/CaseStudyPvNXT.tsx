@@ -1,0 +1,725 @@
+/**
+ * CaseStudyPvNXT.tsx
+ * 9 sections, alternating dark/light rhythm.
+ * Replace 5 placeholder images (search TODO:image) with @/assets imports.
+ */
+import { motion, type Variants } from "framer-motion";
+import { Link } from "react-router-dom";
+import {
+  ArrowLeft,
+  CheckCircle2,
+  Layers,
+  Users,
+  HardHat,
+  Briefcase,
+  Wrench,
+  GraduationCap,
+  Network,
+  ExternalLink,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+
+// TODO:image — swap with real imports
+const epcShot = "@/assets/projects/rmcool26-spade.svg";
+const consumerShot = "@/assets/projects/rmcool26-spade.svg";
+const installerShot = "@/assets/projects/rmcool26-spade.svg";
+const scadaShot = "@/assets/projects/rmcool26-spade.svg";
+
+// ---------- motion presets ----------
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
+};
+
+const stagger: Variants = {
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+// ---------- atoms ----------
+function Eyebrow({ children, tone = "accent" }: { children: React.ReactNode; tone?: "accent" | "muted" }) {
+  return (
+    <p
+      className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${tone === "accent" ? "text-indigo-400" : "text-neutral-500"
+        }`}
+    >
+      {children}
+    </p>
+  );
+}
+
+function Section({
+  bg,
+  children,
+  className = "",
+  id,
+}: {
+  bg: "dark" | "darker" | "deepest" | "grey" | "softgrey" | "white";
+  children: React.ReactNode;
+  className?: string;
+  id?: string;
+}) {
+  const bgMap: Record<string, string> = {
+    dark: "bg-[#111111] text-neutral-100",
+    darker: "bg-[#0D0D0D] text-neutral-100",
+    deepest: "bg-[#0A0A0A] text-neutral-100",
+    grey: "bg-[#F5F5F7] text-neutral-900",
+    softgrey: "bg-[#F8F8F8] text-neutral-900",
+    white: "bg-white text-neutral-900",
+  };
+  return (
+    <section id={id} className={`scroll-mt-20 ${bgMap[bg]} ${className}`}>
+      <div className="mx-auto max-w-[1200px] px-6 py-24 md:py-28 lg:py-32">{children}</div>
+    </section>
+  );
+}
+
+// ---------- 01 HERO ----------
+function Hero() {
+  return (
+    <Section id="hero" bg="darker" className="relative overflow-hidden">
+      {/* back link */}
+      <Link
+        to="/"
+        className="mb-12 inline-flex items-center gap-2 text-sm text-neutral-400 transition hover:text-white"
+      >
+        <ArrowLeft className="h-4 w-4" /> Back to portfolio
+      </Link>
+
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+        <motion.div variants={fadeUp}>
+          <Eyebrow>Case Study · UI/UX Design Lead · Terranxt · 2022 — Now</Eyebrow>
+        </motion.div>
+
+        <motion.h1
+          variants={fadeUp}
+          className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl"
+        >
+          pvNXT Solar Suite
+        </motion.h1>
+
+        <motion.p
+          variants={fadeUp}
+          className="mt-8 max-w-3xl text-2xl font-medium leading-snug text-neutral-200 md:text-3xl"
+        >
+          India's most manual solar workflow,
+          <br className="hidden md:inline" />{" "}
+          turned into a product incubated at IIT Delhi.
+        </motion.p>
+
+        <motion.p variants={fadeUp} className="mt-6 text-base text-neutral-400 md:text-lg">
+          Enterprise SaaS · 3 web portals · 2 mobile apps · Live, in production.
+        </motion.p>
+
+        {/* impact strip */}
+        <motion.div
+          variants={fadeUp}
+          className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-neutral-800 pt-12 md:grid-cols-4"
+        >
+          {[
+            { n: "20+", l: "EPCs onboarded" },
+            { n: "100+", l: "End users" },
+            { n: "2–3 wks", l: "Was 2–3 months" },
+            { n: "5", l: "Products shipped" },
+          ].map((s) => (
+            <div key={s.l}>
+              <div className="text-4xl font-bold text-indigo-400 md:text-5xl">{s.n}</div>
+              <div className="mt-2 text-sm text-neutral-400">{s.l}</div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 02 BEFORE ----------
+function Before() {
+  const points = [
+    "Proposals stitched together on WhatsApp",
+    "Site analysis split across AutoCAD + Excel",
+    "Installer updates through phone calls",
+    "No one knew where a project actually stood",
+  ];
+
+  return (
+    <Section id="before" bg="grey">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+        <motion.div variants={fadeUp}>
+          <Eyebrow>The Problem</Eyebrow>
+        </motion.div>
+
+        <motion.h2
+          variants={fadeUp}
+          className="mt-5 max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl"
+        >
+          Before pvNXT, running a solar EPC looked like this.
+        </motion.h2>
+
+        <div className="mt-14 grid gap-12 md:grid-cols-[1.2fr_1fr] md:gap-16">
+          <motion.ul variants={fadeUp} className="space-y-5">
+            {points.map((p) => (
+              <li key={p} className="flex items-start gap-3 text-base text-neutral-700 md:text-lg">
+                <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
+                {p}
+              </li>
+            ))}
+          </motion.ul>
+
+          <motion.div variants={fadeUp} className="border-l border-neutral-300 pl-8">
+            <div className="text-6xl font-bold leading-none tracking-tight text-neutral-900 md:text-7xl">
+              2–3 mo
+            </div>
+            <div className="mt-3 text-sm uppercase tracking-wider text-neutral-500">
+              Average project cycle
+            </div>
+          </motion.div>
+        </div>
+
+        <motion.p
+          variants={fadeUp}
+          className="mt-16 max-w-3xl text-2xl font-semibold leading-snug text-neutral-900 md:text-3xl"
+        >
+          A 3-week job was taking 2–3 months. Manual. Invisible. Broken.
+          <span className="mt-3 block text-neutral-500">
+            I was hired as employee #2 to fix it — from scratch.
+          </span>
+        </motion.p>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 03 SYSTEM ----------
+function System() {
+  const portals = [
+    {
+      icon: Briefcase,
+      name: "EPC Portal",
+      tag: "Web",
+      bullets: ["Leads & proposals", "RFP bidding", "Installer assignment", "Project + O&M tracking"],
+    },
+    {
+      icon: Users,
+      name: "Consumer Portal",
+      tag: "Web + Mobile",
+      bullets: ["Solar feasibility", "ROI calculator", "Live install tracking", "Plant monitoring"],
+    },
+    {
+      icon: HardHat,
+      name: "Installer Portal",
+      tag: "Web + Mobile",
+      bullets: ["Site assignment", "Rooftop analysis", "Daily progress", "Work orders & status"],
+    },
+  ];
+
+  return (
+    <Section id="system" bg="white">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+        <motion.div variants={fadeUp} className="text-center">
+          <Eyebrow>The System</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            3 portals. 2 apps. 1 connected reality.
+          </h2>
+          <p className="mx-auto mt-5 max-w-2xl text-base text-neutral-600 md:text-lg">
+            Not one app — an ecosystem where every role sees exactly what they need,
+            and nothing they don't.
+          </p>
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="mt-16 grid gap-6 md:grid-cols-3">
+          {portals.map((p) => {
+            const Icon = p.icon;
+            return (
+              <div
+                key={p.name}
+                className="group rounded-2xl border border-neutral-200 bg-white p-7 transition hover:-translate-y-1 hover:border-indigo-300 hover:shadow-lg"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div className="mt-5 flex items-baseline gap-2">
+                  <h3 className="text-xl font-semibold text-neutral-900">{p.name}</h3>
+                  <span className="text-xs font-medium uppercase tracking-wider text-neutral-400">
+                    {p.tag}
+                  </span>
+                </div>
+                <ul className="mt-5 space-y-2.5">
+                  {p.bullets.map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-sm text-neutral-600">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-indigo-500" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="mt-12 text-center">
+          <p className="inline-flex items-center gap-3 text-base font-semibold text-neutral-900 md:text-lg">
+            <Network className="h-5 w-5 text-indigo-500" />
+            Everything connected. Real-time. Role-based.
+          </p>
+          <p className="mt-3 text-sm italic text-neutral-500">
+            EPC mobile app — currently in design.
+          </p>
+        </motion.div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 04 MY ROLE ----------
+function MyRole() {
+  const chips = [
+    "Stakeholder research with real EPCs",
+    "Full UX architecture across 5 products",
+    "Design system from scratch (5 devs use it daily)",
+    "Annotated dev handoffs, flow-by-flow",
+    "Hired and led a 5-person dev squad",
+    "Live booth demos at IIT Delhi FITT to investors",
+  ];
+
+  return (
+    <Section id="role" bg="dark">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+        <motion.div variants={fadeUp}>
+          <Eyebrow tone="muted">Ownership</Eyebrow>
+        </motion.div>
+
+        <motion.h2
+          variants={fadeUp}
+          className="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl"
+        >
+          I was employee #2.
+          <br />
+          <span className="text-neutral-500">No design team. No system. No process.</span>
+        </motion.h2>
+
+        <motion.p variants={fadeUp} className="mt-6 text-lg text-neutral-300">
+          I built all of it.
+        </motion.p>
+
+        <motion.div variants={fadeUp} className="mt-12 grid gap-3 md:grid-cols-2">
+          {chips.map((c) => (
+            <div
+              key={c}
+              className="flex items-start gap-3 rounded-xl border border-neutral-800 bg-neutral-900/40 px-5 py-4 transition hover:border-indigo-500/60"
+            >
+              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-indigo-400" />
+              <span className="text-sm text-neutral-200 md:text-base">{c}</span>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.p variants={fadeUp} className="mt-12 text-xl font-semibold text-white md:text-2xl">
+          From first sketch to final ship — I owned it.
+        </motion.p>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 05 PROCESS ----------
+function Process() {
+  const steps = [
+    {
+      n: "01",
+      title: "Decode",
+      body: "Sat with real EPCs. Walked their actual process. Mapped every manual step on FigJam. Pain points became the product brief.",
+    },
+    {
+      n: "02",
+      title: "Architect",
+      body: "Mid-fidelity first. Always. Validated with stakeholders before touching hi-fi. No pixel-pushing until the system made sense.",
+    },
+    {
+      n: "03",
+      title: "Build with devs",
+      body: "Annotated Figma handoff — flows, edge states, dev-ready components. Sat with developers till every screen made sense to them.",
+    },
+    {
+      n: "04",
+      title: "Ship & scale",
+      body: "QA, iteration, edge cases. Then SCADA monitoring, consumer portal, installer app. One suite, multiple roles.",
+    },
+  ];
+
+  return (
+    <Section id="process" bg="white">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+        <motion.div variants={fadeUp}>
+          <Eyebrow>How I Work</Eyebrow>
+        </motion.div>
+        <motion.h2
+          variants={fadeUp}
+          className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
+        >
+          Whiteboard → Working product, in 4 steps.
+        </motion.h2>
+
+        <motion.div variants={fadeUp} className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s) => (
+            <div
+              key={s.n}
+              className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 transition hover:-translate-y-1 hover:border-indigo-400 hover:shadow-lg"
+            >
+              <div className="pointer-events-none absolute right-3 top-2 select-none text-7xl font-bold text-neutral-100 transition group-hover:scale-110 group-hover:text-indigo-50">
+                {s.n}
+              </div>
+              <div className="relative">
+                <div className="text-xs font-semibold uppercase tracking-widest text-indigo-500">
+                  Step {s.n}
+                </div>
+                <h3 className="mt-3 text-xl font-semibold text-neutral-900">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.body}</p>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 06 KEY SCREENS ----------
+function Screens() {
+  const screens = [
+    {
+      img: epcShot,
+      name: "EPC Dashboard",
+      tag: "Web",
+      caption: "Complete pipeline view — leads to handover. One screen replaces 4 tools.",
+    },
+    {
+      img: consumerShot,
+      name: "Consumer Portal",
+      tag: "Web + Mobile",
+      caption: "Feasibility to monitoring — the full solar journey for a homeowner who just wants clarity.",
+    },
+    {
+      img: installerShot,
+      name: "Installer App",
+      tag: "Mobile",
+      caption: "Site assignment, rooftop analysis, daily progress. Built for people who work on rooftops, not desks.",
+    },
+    {
+      img: scadaShot,
+      name: "SCADA Monitoring",
+      tag: "Web",
+      caption: "Real-time inverter data, alerts, work orders. O&M teams finally have one place to look.",
+    },
+  ];
+
+  return (
+    <Section id="screens" bg="softgrey">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+        <motion.div variants={fadeUp}>
+          <Eyebrow>The Work</Eyebrow>
+        </motion.div>
+        <motion.h2
+          variants={fadeUp}
+          className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
+        >
+          What it actually looks like.
+        </motion.h2>
+
+        <motion.div variants={fadeUp} className="mt-14 grid gap-6 md:grid-cols-2">
+          {screens.map((s) => (
+            <figure
+              key={s.name}
+              className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white"
+            >
+              <div className="overflow-hidden bg-neutral-100">
+                <img
+                  src={s.img}
+                  alt={s.name}
+                  className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+              </div>
+              <figcaption className="p-6">
+                <div className="flex items-baseline gap-2">
+                  <h3 className="text-lg font-semibold text-neutral-900">{s.name}</h3>
+                  <span className="text-[11px] font-medium uppercase tracking-wider text-neutral-400">
+                    {s.tag}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-600">{s.caption}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </motion.div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 07 KEY DECISIONS ----------
+function Decisions() {
+  const cards = [
+    {
+      icon: Layers,
+      title: "Why role-based, not one-size-fits-all",
+      body: "EPC, Installer, and Consumer all touch the same project. But they should never see each other's data.",
+      result: "One login. Three realities. Fewer support calls. Zero access confusion.",
+    },
+    {
+      icon: Wrench,
+      title: "Why mid-fidelity first, always",
+      body: "A polished UI in Week 1 looks great and gets the wrong feedback. \"This flow doesn't match how we work\" is easier to hear when you're looking at boxes — not beautiful screens.",
+      result: "Stakeholder validation before pixel-perfection. Every time.",
+    },
+  ];
+
+  return (
+    <Section id="decisions" bg="white">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+        <motion.div variants={fadeUp}>
+          <Eyebrow>Trade-offs</Eyebrow>
+        </motion.div>
+        <motion.h2
+          variants={fadeUp}
+          className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
+        >
+          Two calls that shaped the product.
+        </motion.h2>
+
+        <motion.div variants={fadeUp} className="mt-14 grid gap-6 md:grid-cols-2">
+          {cards.map((c) => {
+            const Icon = c.icon;
+            return (
+              <div
+                key={c.title}
+                className="rounded-2xl border border-neutral-200 bg-white p-8 transition hover:border-indigo-300 hover:shadow-lg"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-xl font-semibold text-neutral-900 md:text-2xl">{c.title}</h3>
+                <p className="mt-4 text-base leading-relaxed text-neutral-600">{c.body}</p>
+                <div className="my-6 h-px w-full bg-neutral-200" />
+                <p className="text-base font-semibold text-indigo-600">
+                  Result: <span className="text-neutral-900">{c.result}</span>
+                </p>
+              </div>
+            );
+          })}
+        </motion.div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 08 OUTCOME ----------
+function Outcome() {
+  const stats = [
+    { n: "20+", l: "EPCs onboarded" },
+    { n: "100+", l: "Active users" },
+    { n: "2–3 wks", l: "Down from 2–3 mo" },
+    { n: "IIT Delhi", l: "FITT incubated", icon: GraduationCap },
+  ];
+
+  return (
+    <Section id="outcome" bg="deepest">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }} variants={stagger}>
+        <motion.div variants={fadeUp}>
+          <Eyebrow tone="muted">Outcome</Eyebrow>
+        </motion.div>
+
+        <motion.h2
+          variants={fadeUp}
+          className="mt-6 max-w-4xl text-3xl font-bold leading-tight tracking-tight md:text-5xl"
+        >
+          From a FigJam board to a live product
+          <br className="hidden md:inline" /> used by real solar companies every day.
+        </motion.h2>
+
+        <motion.div
+          variants={fadeUp}
+          className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-y border-neutral-800 py-12 md:grid-cols-4"
+        >
+          {stats.map((s) => (
+            <div key={s.l}>
+              <div className="text-3xl font-bold text-indigo-400 md:text-5xl">{s.n}</div>
+              <div className="mt-2 text-sm text-neutral-400">{s.l}</div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="mt-14 max-w-2xl">
+          <p className="text-base italic leading-relaxed text-neutral-400 md:text-lg">
+            We presented at IIT Delhi FITT with nothing but a Figma prototype and a real
+            problem worth solving.
+            <br />
+            <br />
+            Today, it's a live platform. Real companies. Real data. Real solar
+            installations tracked end-to-end.
+          </p>
+          <p className="mt-8 text-2xl font-bold text-white md:text-3xl">
+            That's the only metric that matters.
+          </p>
+          <div className="flex justify-start items-center gap-x-2 mt-6">
+            <span className="font-medium text-foreground">Visit:</span>
+            <div className="flex justify-between gap-x-6">
+              <a
+                href="https://consumer.pvnxt.com"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+              >
+                Consumer <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+              <a
+                href="https://epc.pvnxt.com"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+              >
+                EPC <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+              <a
+                href="https://installer.pvnxt.com"
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="hover"
+                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
+              >
+                Installer <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 09 NEXT ----------
+function Next() {
+  return (
+    <section className="border-t border-neutral-200 bg-white">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 py-16 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-sm text-neutral-500">Next up →</p>
+          <div className="mt-2 flex flex-wrap items-center gap-3">
+            <h3 className="text-2xl font-semibold tracking-tight text-neutral-900">
+              SCADA Solar Monitoring
+            </h3>
+            <span className="rounded-full border border-neutral-300 px-3 py-1 text-xs font-medium uppercase tracking-wider text-neutral-600">
+              Redesign in progress
+            </span>
+          </div>
+        </div>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-5 py-3 text-sm font-medium text-neutral-700 transition hover:border-neutral-900 hover:text-neutral-900"
+        >
+          <ArrowLeft className="h-4 w-4" /> Back to all work
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+// ---------- export ----------
+
+const TOC_ITEMS = [
+  { id: "hero", label: "Overview" },
+  { id: "before", label: "The Problem" },
+  { id: "system", label: "The System" },
+  { id: "role", label: "My Role" },
+  { id: "process", label: "Process" },
+  { id: "screens", label: "Key Screens" },
+  { id: "decisions", label: "Trade-offs" },
+  { id: "outcome", label: "Outcome" },
+];
+function TableOfContents() {
+  const [active, setActive] = useState<string>("hero");
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+    const visible = new Map<string, number>();
+    TOC_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) visible.set(id, e.intersectionRatio);
+            else visible.delete(id);
+          });
+          if (visible.size) {
+            const top = [...visible.entries()].sort((a, b) => b[1] - a[1])[0][0];
+            setActive(top);
+          }
+        },
+        { rootMargin: "-30% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, []);
+  const handleClick = (e: React.MouseEvent, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  return (
+    <nav
+      aria-label="Case study sections"
+      className="group/toc fixed left-4 top-1/2 z-50 hidden -translate-y-1/2 lg:block"
+    >
+      <ul className="flex flex-col gap-3 rounded-full border border-neutral-200/60 bg-white/70 px-3 py-4 shadow-sm backdrop-blur transition-all duration-300 group-hover/toc:rounded-2xl group-hover/toc:bg-white group-hover/toc:px-4 group-hover/toc:shadow-lg">
+        {TOC_ITEMS.map((item, i) => {
+          const isActive = active === item.id;
+          return (
+            <li key={item.id}>
+              <a
+                href={`#${item.id}`}
+                onClick={(e) => handleClick(e, item.id)}
+                className="flex items-center gap-3"
+              >
+                <span
+                  className={`flex h-2 w-2 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                    isActive
+                      ? "scale-150 bg-indigo-500"
+                      : "bg-neutral-300 group-hover/toc:bg-neutral-400"
+                  }`}
+                />
+                <span
+                  className={`max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium uppercase tracking-wider opacity-0 transition-all duration-300 group-hover/toc:max-w-[160px] group-hover/toc:opacity-100 ${
+                    isActive ? "text-indigo-600" : "text-neutral-600"
+                  }`}
+                >
+                  <span className="mr-2 text-neutral-400">{String(i + 1).padStart(2, "0")}</span>
+                  {item.label}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+  );
+}
+
+export default function CaseStudyPvNXT() {
+  return (
+    <main className="bg-white">
+      <TableOfContents />
+      <Hero />
+      <Before />
+      <System />
+      <MyRole />
+      <Process />
+      <Screens />
+      <Decisions />
+      <Outcome />
+      <Next />
+    </main>
+  );
+}

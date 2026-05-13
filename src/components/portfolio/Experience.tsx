@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Award, Briefcase } from "lucide-react";
+import { GraduationCap, Award, Briefcase, Heart } from "lucide-react";
 import { content } from "@/content";
 
 export const Experience = () => {
@@ -24,7 +24,7 @@ export const Experience = () => {
           </h2>
         </motion.div>
 
-        <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-14">  
+        <div className="mt-16 grid gap-10 lg:grid-cols-2 lg:gap-14">
           {/* LEFT — timeline */}
           <div>
             <h3 className="mb-6 flex items-center gap-2 font-display text-sm font-bold uppercase tracking-wider text-muted-foreground">
@@ -172,6 +172,31 @@ export const Experience = () => {
                 ))}
               </ul>
             </motion.div>
+
+            {/* Hobbies */}
+            {/* <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="rounded-2xl border border-border bg-card p-5 shadow-soft"
+            >
+              <h4 className="mb-3 flex items-center gap-2 font-display text-sm font-bold uppercase tracking-wider text-muted-foreground">
+                <Heart className="h-4 w-4 text-primary" /> When not designing
+              </h4>
+              <ul className="space-y-2.5">
+                {experience.hobbies.map((h) => (
+                  <li
+                    key={h.label}
+                    className="flex items-baseline justify-between gap-3"
+                  >
+                    <span className="text-sm text-muted-foreground">{h.label}</span>
+                    <span className="text-sm font-bold text-foreground">{h.value}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div> */}
+
           </div>
         </div>
       </div>
