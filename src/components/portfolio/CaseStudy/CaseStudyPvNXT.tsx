@@ -16,15 +16,12 @@ import {
   GraduationCap,
   Network,
   ExternalLink,
+  Monitor,
+  Smartphone,
+  Sparkles,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { KeyScreen } from "./KeyScreen";
-
-// TODO:image — swap with real imports
-const epcShot = "@/assets/projects/rmcool26-spade.svg";
-const consumerShot = "@/assets/projects/rmcool26-spade.svg";
-const installerShot = "@/assets/projects/rmcool26-spade.svg";
-const scadaShot = "@/assets/projects/rmcool26-spade.svg";
 
 // ---------- motion presets ----------
 const fadeUp: Variants = {
@@ -102,8 +99,8 @@ function Hero() {
           variants={fadeUp}
           className="mt-8 max-w-3xl text-2xl font-medium leading-snug text-neutral-200 md:text-3xl"
         >
-          Manual solar operations,
-          <br className="hidden md:inline" />{" "}
+          Manual solar operations,{" "}
+          {/* <br className="hidden md:inline" />{" "} */}
           turned into a live product ecosystem incubated at IIT Delhi.
         </motion.p>
 
@@ -286,7 +283,7 @@ function MyRole() {
     <Section id="role" bg="dark">
       <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
         <motion.div variants={fadeUp}>
-          <Eyebrow tone="muted">Ownership</Eyebrow>
+          <Eyebrow tone="muted">My Role</Eyebrow>
         </motion.div>
 
         <motion.h2
@@ -384,6 +381,212 @@ function Process() {
   );
 }
 
+// ---------- 06 KEY SCREENS (tabs + sticky header + 2-col grid) ----------
+type ScreenTab = {
+  id: string;
+  name: string;
+  platform: "Web" | "Web + App" | "Mobile";
+  headline: string;
+  body: string;
+  chips: string[];
+  replaced: string;
+  replacedNote: string;
+  shots: number; // number of placeholder mockups in 2-col grid
+};
+
+function Screens() {
+  const tabs: ScreenTab[] = [
+    {
+      id: "epc",
+      name: "EPC Dashboard",
+      platform: "Web",
+      headline: "One screen replaces 4 tools.",
+      body:
+        "EPC teams manage their entire pipeline here — leads, proposals, RFP bidding, installer assignment, project tracking, and O&M. Before this, all of it lived across WhatsApp, Excel, and phone calls.",
+      chips: ["Lead-to-handover pipeline", "Installer assignment & tracking", "O&M dashboard + alerts", "Real-time project visibility"],
+      replaced: "WhatsApp + Excel + AutoCAD + Phone calls",
+      replacedNote: "Manual. Invisible. Broken.",
+      shots: 4,
+    },
+    {
+      id: "consumer",
+      name: "Consumer Portal",
+      platform: "Web + App",
+      headline: "The full solar journey, finally clear.",
+      body:
+        "From feasibility to live monitoring — built for homeowners who just want to know what's happening with their rooftop. No jargon, no spreadsheets, no calls to the EPC.",
+      chips: ["Solar feasibility check", "ROI calculator", "Live install tracking", "Plant monitoring"],
+      replaced: "Phone calls + PDF quotes + No visibility",
+      replacedNote: "Customers chasing updates.",
+      shots: 4,
+    },
+    {
+      id: "installer",
+      name: "Installer App",
+      platform: "Web + App",
+      headline: "Built for rooftops, not desks.",
+      body:
+        "Site assignment, rooftop analysis, daily progress capture. Designed for installers working in the sun with one hand on a ladder — large tap targets, offline-first, photo-led.",
+      chips: ["Site assignment", "Rooftop analysis", "Daily progress capture", "Work orders & status"],
+      replaced: "Paper checklists + WhatsApp photos",
+      replacedNote: "Lost in chat threads.",
+      shots: 4,
+    },
+    {
+      id: "scada",
+      name: "SCADA Monitoring",
+      platform: "Web",
+      headline: "Every inverter, one place.",
+      body:
+        "Real-time inverter data, alerts, work orders. O&M teams finally have one place to look instead of logging into 5 vendor dashboards every morning.",
+      chips: ["Live inverter data", "Alert routing", "Work-order generation", "Plant-level analytics"],
+      replaced: "5 vendor dashboards + Excel logs",
+      replacedNote: "Reactive, not proactive.",
+      shots: 4,
+    },
+  ];
+
+  const [activeId, setActiveId] = useState(tabs[0].id);
+  const active = tabs.find((t) => t.id === activeId)!;
+
+  return (
+    <section id="screens" className="scroll-mt-20 bg-[#F8F8F8] text-neutral-900 py-24">
+      {/* Sticky tabs header */}
+      <div className="sticky top-0 z-30 border-b border-neutral-200/80 bg-[#F8F8F8]/85 backdrop-blur-md">
+        <div className="mx-auto max-w-[1200px] px-6">
+          <div className="flex items-center justify-between gap-6 py-4">
+            <div className="flex items-center gap-3">
+              <Eyebrow>The Work</Eyebrow>
+            </div>
+            <p className="hidden text-xs italic text-neutral-500 md:block">
+              <Sparkles className="mr-1.5 inline h-3.5 w-3.5 text-indigo-400" />
+              The cool guy behind the pixels.
+            </p>
+          </div>
+
+          {/* Tab strip — underline style, not buttons */}
+          <nav role="tablist" className="-mb-px flex gap-1">
+            {tabs.map((t) => {
+              const isActive = t.id === activeId;
+              return (
+                <button
+                  key={t.id}
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => setActiveId(t.id)}
+                  className={`group relative flex shrink-0 items-center gap-2.5 px-4 py-4 text-sm font-medium transition ${isActive ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-800"
+                    }`}
+                >
+                  {t.platform === "Mobile" ? (
+                    <Smartphone className="h-4 w-4" />
+                  ) : (
+                    <Monitor className="h-4 w-4" />
+                  )}
+                  <span>{t.name}</span>
+                  <span
+                    className={`hidden rounded-full px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider transition md:inline-block ${isActive ? "bg-indigo-50 text-indigo-600" : "bg-neutral-100 text-neutral-500"
+                      }`}
+                  >
+                    {t.platform}
+                  </span>
+                  {/* underline indicator */}
+                  <span
+                    className={`absolute inset-x-3 -bottom-px h-[2px] rounded-full transition-all duration-300 ${isActive ? "scale-x-100 bg-neutral-900" : "scale-x-0 bg-neutral-300"
+                      }`}
+                  />
+                </button>
+              );
+            })}
+          </nav>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="mx-auto max-w-[1200px] px-6 py-16 md:py-20">
+        <motion.div
+          key={active.id}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {/* headline + body */}
+          <div className="grid gap-10 md:grid-cols-[1.6fr_1fr] md:gap-16">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+                {active.headline}
+              </h2>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 md:text-lg">
+                {active.body}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {active.chips.map((c) => (
+                  <span
+                    key={c}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-indigo-100 bg-indigo-50/60 px-3 py-1.5 text-xs font-medium text-indigo-700"
+                  >
+                    <CheckCircle2 className="h-3.5 w-3.5" />
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <aside className="rounded-2xl border border-neutral-200 bg-white p-6">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-400">
+                What this replaced
+              </div>
+              <p className="mt-3 text-base font-semibold text-neutral-900">{active.replaced}</p>
+              <div className="mt-4 inline-flex items-center gap-2 rounded-lg bg-rose-50 px-3 py-2 text-xs font-medium text-rose-700">
+                {active.replacedNote}
+              </div>
+            </aside>
+          </div>
+
+          {/* 2-col placeholder grid */}
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {Array.from({ length: active.shots }).map((_, i) => (
+              <figure
+                key={i}
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-gradient-to-br from-neutral-100 to-neutral-200/60"
+              >
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-neutral-400">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-300 bg-white/70">
+                    {active.platform === "Mobile" ? (
+                      <Smartphone className="h-5 w-5" />
+                    ) : (
+                      <Monitor className="h-5 w-5" />
+                    )}
+                  </div>
+                  <p className="text-xs font-medium uppercase tracking-wider">
+                    {active.name} — Screen {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="text-[10px] text-neutral-400">Replace with mockup</p>
+                </div>
+                {/* subtle grid pattern */}
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
+                    backgroundSize: "24px 24px",
+                  }}
+                />
+              </figure>
+            ))}
+          </div>
+
+          {/* footer stats strip */}
+          <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-neutral-200 pt-8 text-sm text-neutral-600">
+            <span><strong className="text-neutral-900">3</strong> Web portals</span>
+            <span><strong className="text-neutral-900">2</strong> Mobile apps</span>
+            <span><strong className="text-neutral-900">5</strong> Products shipped</span>
+            <span><strong className="text-neutral-900">1</strong> Connected system</span>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
 // ---------- 06 KEY SCREENS ----------
 {/* <KeyScreen /> */ }
 /* function Screens() {
@@ -557,11 +760,23 @@ function Outcome() {
             <br />
             <br />
             Today, it's a live platform. Real companies. Real data. Real solar
-            installations tracked end-to-end.
+            installations tracked end-to-end. That’s the metric I care about.
           </p>
-          <p className="mt-8 text-2xl font-bold text-white md:text-3xl">
+          {/* <p className="mt-8 text-2xl font-bold text-white md:text-3xl">
             That’s the metric I care about.
-          </p>
+          </p> */}
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="mt-8 text-2xl font-bold text-white md:text-3xl"
+          >
+            The cool guy behind{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 text-primary">the pixels</span>
+              {/* <span className="absolute -bottom-1 left-0 right-0 -z-0 h-3 rounded-full bg-primary/20" /> */}
+            </span>{" "}
+          </motion.h1>
           <div className="flex justify-start items-center gap-x-2 mt-6">
             <span className="font-medium text-white">Visit:</span>
             <div className="flex justify-between gap-x-6">
@@ -634,8 +849,8 @@ const TOC_ITEMS = [
   { id: "before", label: "The Problem" },
   { id: "system", label: "The System" },
   { id: "role", label: "My Role" },
-  { id: "process", label: "Process" },
-  { id: "screens", label: "Key Screens" },
+  { id: "process", label: "How I Work" },
+  { id: "screens", label: "The Work" },
   { id: "decisions", label: "Trade-offs" },
   { id: "outcome", label: "Outcome" },
 ];
@@ -673,29 +888,32 @@ function TableOfContents() {
   return (
     <nav
       aria-label="Case study sections"
-      className="group/toc fixed left-4 top-1/2 z-50 hidden -translate-y-1/2 lg:block"
+      className="group/toc fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block"
     >
-      <ul className="flex flex-col gap-3 rounded-full border border-neutral-200/60 bg-white/70 px-3 py-4 shadow-sm backdrop-blur transition-all duration-300 group-hover/toc:rounded-2xl group-hover/toc:bg-white group-hover/toc:px-4 group-hover/toc:shadow-lg">
+      <ul className="flex flex-col gap-1.5">
         {TOC_ITEMS.map((item, i) => {
           const isActive = active === item.id;
+          const num = String(i + 1).padStart(2, "0");
+
           return (
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
                 onClick={(e) => handleClick(e, item.id)}
-                className="flex items-center gap-3"
+                className="flex items-center justify-end gap-3"
               >
                 <span
-                  className={`flex h-2 w-2 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${isActive
-                      ? "scale-150 bg-indigo-500"
-                      : "bg-neutral-300 group-hover/toc:bg-neutral-400"
-                    }`}
-                />
-                <span
-                  className={`max-w-0 overflow-hidden whitespace-nowrap text-xs font-medium uppercase tracking-wider opacity-0 transition-all duration-300 group-hover/toc:max-w-[160px] group-hover/toc:opacity-100 ${isActive ? "text-indigo-600" : "text-neutral-600"
+                  className={`order-2 inline-block w-7 text-right font-mono text-xs tabular-nums transition-all duration-300 ${isActive ? "font-semibold text-primary-glow" : "text-neutral-400 group-hover/toc:text-neutral-600"
                     }`}
                 >
-                  <span className="mr-2 text-neutral-400">{String(i + 1).padStart(2, "0")}</span>
+                  {num}
+                </span>
+                <span
+                  className={`order-1 max-w-0 overflow-hidden whitespace-nowrap text-right text-[11px] font-medium uppercase tracking-[0.14em] opacity-0 transition-all duration-500 ease-out group-hover/toc:max-w-[180px] group-hover/toc:opacity-100 ${isActive
+                    ? "text-primary-glow max-w-[180px] opacity-100"
+                    : "text-neutral-500"
+                    }`}
+                >
                   {item.label}
                 </span>
               </a>
@@ -716,7 +934,8 @@ export default function CaseStudyPvNXT() {
       <System />
       <MyRole />
       <Process />
-      <KeyScreen />
+      <Screens />
+      {/* <KeyScreen /> */}
       <Decisions />
       <Outcome />
       <Next />
