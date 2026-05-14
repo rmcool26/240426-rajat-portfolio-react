@@ -22,7 +22,8 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { KeyScreen } from "./KeyScreen";
-import testImg from "@/assets/projects/test_image.svg";
+import epcAll from "@/assets/projects/rmcool26-pvNXT-epc-all.svg";
+import { ZoomableImage } from "./ZoomableImage";
 
 // ---------- motion presets ----------
 const fadeUp: Variants = {
@@ -409,7 +410,7 @@ function Screens() {
       replaced: "WhatsApp + Excel + AutoCAD + Phone calls",
       replacedNote: "Manual. Invisible. Broken.",
       shots: 4,
-      images: [testImg, testImg, testImg, testImg],
+      images: [epcAll, epcAll, epcAll, epcAll],
     },
     {
       id: "consumer",
@@ -422,7 +423,7 @@ function Screens() {
       replaced: "Phone calls + PDF quotes + No visibility",
       replacedNote: "Customers chasing updates.",
       shots: 4,
-      images: [testImg, testImg, testImg, testImg],
+      images: [epcAll, epcAll, epcAll, epcAll],
     },
     {
       id: "installer",
@@ -435,7 +436,7 @@ function Screens() {
       replaced: "Paper checklists + WhatsApp photos",
       replacedNote: "Lost in chat threads.",
       shots: 4,
-      images: [testImg, testImg, testImg, testImg],
+      images: [epcAll, epcAll, epcAll, epcAll],
     },
     {
       id: "scada",
@@ -448,7 +449,7 @@ function Screens() {
       replaced: "5 vendor dashboards + Excel logs",
       replacedNote: "Reactive, not proactive.",
       shots: 4,
-      images: [testImg],
+      images: [epcAll],
     },
   ];
 
@@ -549,10 +550,49 @@ function Screens() {
           </div>
 
           <div className="mt-12">
-            <img
+            {/* <img
               src={active.images[0]}
               className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-            />
+            /> */}
+
+            <ZoomableImage
+                src={active.images[0]}
+                alt={`${active.name} — Screen`}
+                caption={`${active.name} · Screen`}
+                className=""
+              ></ZoomableImage>
+
+           {/*  {Array.from({ length: active.shots }).map((_, i) => (
+              <ZoomableImage
+                key={i}
+                alt={`${active.name} — Screen ${String(i + 1).padStart(2, "0")}`}
+                caption={`${active.name} · Screen ${String(i + 1).padStart(2, "0")}`}
+                className="aspect-[4/3] bg-gradient-to-br from-neutral-100 to-neutral-200/60"
+              >
+                <div className="relative flex h-full w-full flex-col items-center justify-center gap-2 text-neutral-400">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-300 bg-white/70">
+                    {active.platform === "Mobile" ? (
+                      <Smartphone className="h-5 w-5" />
+                    ) : (
+                      <Monitor className="h-5 w-5" />
+                    )}
+                  </div>
+                  <p className="text-xs font-medium uppercase tracking-wider">
+                    {active.name} — Screen {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="text-[10px] text-neutral-400">Replace with mockup</p>
+                  <div
+                    className="pointer-events-none absolute inset-0 opacity-[0.04]"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                    }}
+                  />
+                </div>
+              </ZoomableImage>
+            ))} */}
+
             {/* 2-col placeholder grid */}
             {/* <div className="mt-12 grid gap-5 md:grid-cols-2">
            {Array.from({ length: active.shots }).map((_, i) => (
