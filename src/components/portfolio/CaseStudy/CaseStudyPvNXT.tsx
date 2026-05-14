@@ -23,6 +23,7 @@ import {
 import { useState, useEffect } from "react";
 import { KeyScreen } from "./KeyScreen";
 import epcAll from "@/assets/projects/rmcool26-pvNXT-epc-all.svg";
+import consumerAll from "@/assets/projects/rmcool26-pvNXT-consumer-all.svg";
 import { ZoomableImage } from "./ZoomableImage";
 
 // ---------- motion presets ----------
@@ -423,7 +424,7 @@ function Screens() {
       replaced: "Phone calls + PDF quotes + No visibility",
       replacedNote: "Customers chasing updates.",
       shots: 4,
-      images: [epcAll, epcAll, epcAll, epcAll],
+      images: [consumerAll, consumerAll, consumerAll, consumerAll],
     },
     {
       id: "installer",
