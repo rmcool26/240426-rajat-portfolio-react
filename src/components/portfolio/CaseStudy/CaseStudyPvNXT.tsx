@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { KeyScreen } from "./KeyScreen";
+import testImg from "@/assets/projects/test_image.svg";
 
 // ---------- motion presets ----------
 const fadeUp: Variants = {
@@ -392,6 +393,7 @@ type ScreenTab = {
   replaced: string;
   replacedNote: string;
   shots: number; // number of placeholder mockups in 2-col grid
+  images?: string[];
 };
 
 function Screens() {
@@ -407,6 +409,7 @@ function Screens() {
       replaced: "WhatsApp + Excel + AutoCAD + Phone calls",
       replacedNote: "Manual. Invisible. Broken.",
       shots: 4,
+      images: [testImg, testImg, testImg, testImg],
     },
     {
       id: "consumer",
@@ -419,6 +422,7 @@ function Screens() {
       replaced: "Phone calls + PDF quotes + No visibility",
       replacedNote: "Customers chasing updates.",
       shots: 4,
+      images: [testImg, testImg, testImg, testImg],
     },
     {
       id: "installer",
@@ -431,6 +435,7 @@ function Screens() {
       replaced: "Paper checklists + WhatsApp photos",
       replacedNote: "Lost in chat threads.",
       shots: 4,
+      images: [testImg, testImg, testImg, testImg],
     },
     {
       id: "scada",
@@ -443,6 +448,7 @@ function Screens() {
       replaced: "5 vendor dashboards + Excel logs",
       replacedNote: "Reactive, not proactive.",
       shots: 4,
+      images: [testImg],
     },
   ];
 
@@ -542,8 +548,44 @@ function Screens() {
             </aside>
           </div>
 
-          {/* 2-col placeholder grid */}
-          <div className="mt-12 grid gap-5 md:grid-cols-2">
+          <div className="mt-12">
+            <img
+              src={active.images[0]}
+              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+            />
+            {/* 2-col placeholder grid */}
+            {/* <div className="mt-12 grid gap-5 md:grid-cols-2">
+           {Array.from({ length: active.shots }).map((_, i) => (
+              <figure
+                key={i}
+                className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100"
+              >
+                {active.images?.[i] ? (
+                  <img
+                    src={active.images[i]}
+                    alt={`${active.name} — Screen ${i + 1}`}
+                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-neutral-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-300 bg-white/70">
+                      {active.platform === "Mobile" ? (
+                        <Smartphone className="h-5 w-5" />
+                      ) : (
+                        <Monitor className="h-5 w-5" />
+                      )}
+                    </div>
+                    <p className="text-xs font-medium uppercase tracking-wider">
+                      {active.name} — Screen {String(i + 1).padStart(2, "0")}
+                    </p>
+                    <p className="text-[10px] text-neutral-400">Replace with mockup</p>
+                  </div>
+                )}
+              </figure>
+            ))} */}
+          </div>
+
+          {/* <div className="mt-12 grid gap-5 md:grid-cols-2">
             {Array.from({ length: active.shots }).map((_, i) => (
               <figure
                 key={i}
@@ -562,7 +604,7 @@ function Screens() {
                   </p>
                   <p className="text-[10px] text-neutral-400">Replace with mockup</p>
                 </div>
-                {/* subtle grid pattern */}
+
                 <div
                   className="pointer-events-none absolute inset-0 opacity-[0.04]"
                   style={{
@@ -573,7 +615,7 @@ function Screens() {
                 />
               </figure>
             ))}
-          </div>
+          </div> */}
 
           {/* footer stats strip */}
           <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-neutral-200 pt-8 text-sm text-neutral-600">
@@ -587,6 +629,7 @@ function Screens() {
     </section>
   );
 }
+
 // ---------- 06 KEY SCREENS ----------
 {/* <KeyScreen /> */ }
 /* function Screens() {
