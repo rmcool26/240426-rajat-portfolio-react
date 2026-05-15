@@ -24,6 +24,7 @@ import { useState, useEffect } from "react";
 import { KeyScreen } from "./KeyScreen";
 import epcAll from "@/assets/projects/rmcool26-pvNXT-epc-all.svg";
 import consumerAll from "@/assets/projects/rmcool26-pvNXT-consumer-all.svg";
+import installerAll from "@/assets/projects/rmcool26-pvNXT-installer-all.svg";
 import { ZoomableImage } from "./ZoomableImage";
 
 // ---------- motion presets ----------
@@ -437,9 +438,9 @@ function Screens() {
       replaced: "Paper checklists + WhatsApp photos",
       replacedNote: "Lost in chat threads.",
       shots: 4,
-      images: [epcAll, epcAll, epcAll, epcAll],
+      images: [installerAll, installerAll, installerAll, installerAll],
     },
-    {
+    /* {
       id: "scada",
       name: "SCADA Monitoring",
       platform: "Web",
@@ -451,7 +452,7 @@ function Screens() {
       replacedNote: "Reactive, not proactive.",
       shots: 4,
       images: [epcAll],
-    },
+    }, */
   ];
 
   const [activeId, setActiveId] = useState(tabs[0].id);
