@@ -26,6 +26,10 @@ import epcAll from "@/assets/projects/rmcool26-pvNXT-epc-all.svg";
 import consumerAll from "@/assets/projects/rmcool26-pvNXT-consumer-all.svg";
 import installerAll from "@/assets/projects/rmcool26-pvNXT-installer-all.svg";
 import { ZoomableImage } from "./ZoomableImage";
+import { Cursor } from "../Cursor";
+import { Footer } from "../Footer";
+import { ScrollProgress } from "../ScrollProgress";
+import { Contact } from "../Contact";
 
 // ---------- motion presets ----------
 const fadeUp: Variants = {
@@ -109,7 +113,7 @@ function Hero() {
         </motion.p>
 
         <motion.p variants={fadeUp} className="mt-6 text-base text-neutral-400 md:text-lg">
-          Enterprise SaaS · 3 web portals · 2 mobile apps · Live, in production.
+          Enterprise SaaS · 3 web portals · 2 mobile apps · Live in production.
         </motion.p>
 
         {/* impact strip */}
@@ -120,7 +124,7 @@ function Hero() {
           {[
             { n: "20+", l: "EPCs onboarded" },
             { n: "100+", l: "Users enrolled" },
-            { n: "2–3 wks", l: "Project cycle now" },
+            { n: "2–3 wks", l: "Current project cycle" },
             { n: "IIT Delhi", l: "FITT incubated" },
           ].map((s) => (
             <div key={s.l}>
@@ -140,7 +144,8 @@ function Before() {
     "Proposals stitched across WhatsApp and Excel",
     "Site analysis split between AutoCAD, PVsyst and spreadsheets",
     "Installer updates came through calls, photos and voice notes",
-    "No single place to seewhere a project actually stood",
+    "No single place to see status, owner or blocker for a project",
+    "There was no product. No team. No process. Just the problem.",
   ];
 
   return (
@@ -183,7 +188,7 @@ function Before() {
         >
           A 3-week job was taking 2–3 months. Manual. Invisible. Broken. Expensive.
           <span className="mt-3 block text-neutral-500">
-            I joined as employee #2 to turn that idea into a product.
+            I joined as employee #2 to turn that chaos into a product.
           </span>
         </motion.p>
       </motion.div>
@@ -223,8 +228,7 @@ function System() {
             3 portals. 2 apps. 1 connected reality.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-base text-neutral-600 md:text-lg">
-            Not one app — an ecosystem where every role sees exactly what they need,
-            and nothing they don't.
+            Not one app. A full ecosystem where every role sees exactly what they need, and nothing they don’t.
           </p>
         </motion.div>
 
@@ -461,7 +465,7 @@ function Screens() {
   return (
     <section id="screens" className="scroll-mt-20 bg-[#F8F8F8] text-neutral-900 py-24">
       {/* Sticky tabs header */}
-      <div className="sticky top-0 z-30 border-b border-neutral-200/80 bg-[#F8F8F8]/85 backdrop-blur-md">
+      <div className="sticky top-0 z-30 border-b border-neutral-200/80 bg-[#F8F8F8]/85 backdrop-blur-md overflow-x-auto">
         <div className="mx-auto max-w-[1200px] px-6">
           <div className="flex items-center justify-between gap-6 py-4">
             <div className="flex items-center gap-3">
@@ -558,13 +562,13 @@ function Screens() {
             /> */}
 
             <ZoomableImage
-                src={active.images[0]}
-                alt={`${active.name} — Screen`}
-                caption={`${active.name} · Screen`}
-                className=""
-              ></ZoomableImage>
+              src={active.images[0]}
+              alt={`${active.name} — Screen`}
+              caption={`${active.name} · Screen`}
+              className=""
+            ></ZoomableImage>
 
-           {/*  {Array.from({ length: active.shots }).map((_, i) => (
+            {/*  {Array.from({ length: active.shots }).map((_, i) => (
               <ZoomableImage
                 key={i}
                 alt={`${active.name} — Screen ${String(i + 1).padStart(2, "0")}`}
@@ -773,7 +777,8 @@ function Decisions() {
           variants={fadeUp}
           className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
         >
-          Two strategic decisions that shaped the product.
+          {/* Two strategic decisions that shaped the product. */}
+          Two calls that changed the product.
         </motion.h2>
 
         <motion.div variants={fadeUp} className="mt-14 grid gap-6 md:grid-cols-2">
@@ -854,13 +859,14 @@ function Outcome() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-8 text-2xl font-bold text-white md:text-3xl"
+            className="mt-8 text-xl font-bold text-white md:text-2xl"
           >
             The cool guy behind{" "}
             <span className="relative inline-block">
               <span className="relative z-10 text-primary">the pixels</span>
               {/* <span className="absolute -bottom-1 left-0 right-0 -z-0 h-3 rounded-full bg-primary/20" /> */}
             </span>{" "}
+            that actually shipped.
           </motion.h1>
           <div className="flex justify-start items-center gap-x-2 mt-6">
             <span className="font-medium text-white">Visit:</span>
@@ -1011,8 +1017,21 @@ function TableOfContents() {
 }
 
 export default function CaseStudyPvNXT() {
+
+  useEffect(() => {
+    // Force scroll-to-top on mount so navigation always lands on Overview,
+    // not on whatever section the previous IntersectionObserver activated.
+    if (typeof window !== "undefined") {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    }
+  }, []);
+
+
   return (
-    <main className="bg-white">
+    <main className="relative bg-white min-h-screen overflow-x-clip">
+      <Cursor />
+      <ScrollProgress />
       <TableOfContents />
       <Hero />
       <Before />
@@ -1024,6 +1043,8 @@ export default function CaseStudyPvNXT() {
       <Decisions />
       <Outcome />
       <Next />
+      {/* <Contact /> */}
+      <Footer />
     </main>
   );
 }
