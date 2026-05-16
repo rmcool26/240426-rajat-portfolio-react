@@ -13,7 +13,7 @@ export const Nav = () => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
       // active section detection
-      const sections = ["#top", "#work", "#about", "#experience", "#contact"];
+      const sections = ["#top", "#about", "#work", "#experience", "#contact"];
       const nearBottom =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
       const y = window.scrollY + 140;
