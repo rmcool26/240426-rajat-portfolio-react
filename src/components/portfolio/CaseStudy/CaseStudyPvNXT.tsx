@@ -122,8 +122,8 @@ function Hero() {
           className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-neutral-800 pt-12 md:grid-cols-4"
         >
           {[
-            { n: "20+", l: "EPCs onboarded" },
-            { n: "100+", l: "Users enrolled" },
+            { n: "5+", l: "EPCs onboarded" },
+            { n: "50+", l: "Users enrolled" },
             { n: "2–3 wks", l: "Current project cycle" },
             { n: "IIT Delhi", l: "FITT incubated" },
           ].map((s) => (
@@ -810,8 +810,8 @@ function Decisions() {
 // ---------- 08 OUTCOME ----------
 function Outcome() {
   const stats = [
-    { n: "20+", l: "EPCs onboarded" },
-    { n: "100+", l: "Users enrolled" },
+    { n: "5+", l: "EPCs onboarded" },
+    { n: "50+", l: "Users enrolled" },
     { n: "2–3 wks", l: "Down from 2–3 mo" },
     { n: "IIT Delhi", l: "FITT incubated", icon: GraduationCap },
   ];

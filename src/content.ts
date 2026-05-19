@@ -329,8 +329,8 @@ export const content = {
     },
     {
       slug: "dreamz",
-      name: "Freelance Web Design",
-      company: "Dreamz Group · Early Career Era",
+      name: "DMS - Web Design & Development",
+      company: "Dreamz Merchandising Solutions · Early Career Era",
       role: "Built custom solutions for Multi-industry clients",
       tags: ["Web Design", "Branding", "Multiple Brands"],
       hyper: ["Web Design11", "Branding", "Multiple Brands"],
@@ -340,6 +340,7 @@ export const content = {
       stats: [
         { value: "25+", label: "Website Shipped" },
         { value: "10+", label: "Industries" },
+        { value: "₹10L+", label: "Managed Projects" },
       ],
       highlights: [
         {
@@ -626,8 +627,8 @@ export const content = {
       },
       {
         year: "2016 — 2019",
-        company: "Dreamz Merchandising",
-        role: "Junior Web Developer & Designer",
+        company: "Dreamz Merchandising Solutions",
+        role: "Junior Web Designer & Developer",
         desc: "Shipped 20+ client sites. Learned 'pixel-perfect' is a choice, not a personality. Built a strong foundation in HTML/CSS, design principles, and client communication.",
       },
     ],
