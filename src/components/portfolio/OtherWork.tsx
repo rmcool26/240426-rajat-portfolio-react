@@ -99,9 +99,8 @@ const Row = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.5, delay: index * 0.05 }}
-      className={`group relative border-b border-border transition-colors ${
-        isOpen ? "bg-card/40" : "hover:bg-card/20"
-      }`}
+      className={`group relative border-b border-border transition-colors ${isOpen ? "bg-card/40" : "hover:bg-card/20"
+        }`}
     >
       <button
         onClick={onToggle}
@@ -115,9 +114,8 @@ const Row = ({
 
         <div className="flex-1 min-w-0">
           <h3
-            className={`font-display text-2xl font-bold leading-tight tracking-tight transition-colors md:text-3xl lg:text-4xl ${
-              isOpen ? "text-primary" : "text-foreground group-hover:text-primary"
-            }`}
+            className={`font-display text-2xl font-bold leading-tight tracking-tight transition-colors md:text-3xl lg:text-4xl ${isOpen ? "text-primary" : "text-foreground group-hover:text-primary"
+              }`}
           >
             {item.name}
           </h3>
@@ -140,11 +138,10 @@ const Row = ({
         <motion.span
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3 }}
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors ${
-            isOpen
-              ? "border-primary bg-primary text-primary-foreground"
-              : "border-border bg-background/50 text-foreground group-hover:border-primary group-hover:text-primary"
-          }`}
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-colors ${isOpen
+            ? "border-primary bg-primary text-primary-foreground"
+            : "border-border bg-background/50 text-foreground group-hover:border-primary group-hover:text-primary"
+            }`}
         >
           <Plus className="h-5 w-5" />
         </motion.span>
@@ -199,7 +196,7 @@ const Row = ({
                       </span>
                     ))}
                   </div>
-                  <a
+                  {/* <a
                     href={item.link}
                     target="_blank"
                     rel="noreferrer"
@@ -207,7 +204,26 @@ const Row = ({
                     className="inline-flex items-center gap-2 text-sm font-medium text-foreground transition-transform hover:scale-105 hover:underline"
                   >
                     Visit Site <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
+                  </a> */}
+                  {item.link ? (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor="hover"
+                      data-cursor-label="Open site"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                    >
+                      Visit Site <ExternalLink className="h-4 w-4" />
+                    </a>
+                  ) : (
+                    <span
+                      className="inline-flex items-center gap-2 rounded-full border border-dashed border-border bg-background/40 px-3 py-1 text-xs font-medium uppercase tracking-wider text-muted-foreground"
+                    >
+                      In Use Internally
+                    </span>
+                  )}
+
                 </div>
               </div>
 

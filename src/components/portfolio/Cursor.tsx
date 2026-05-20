@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
 /**
@@ -15,6 +15,7 @@ export const Cursor = () => {
   const [hover, setHover] = useState(false);
   const [label, setLabel] = useState<string | null>(null);
   const [touch, setTouch] = useState(false);
+  const targetRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -22,18 +23,28 @@ export const Cursor = () => {
       setTouch(true);
       return;
     }
-    const move = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-      const t = e.target as HTMLElement | null;
+    const updateFromTarget = (t: HTMLElement | null) => {
       if (!t) return;
+      targetRef.current = t;
       const interactive = t.closest('a, button, [data-cursor="hover"]') as HTMLElement | null;
       setHover(!!interactive);
       const labelEl = t.closest("[data-cursor-label]") as HTMLElement | null;
       setLabel(labelEl?.getAttribute("data-cursor-label") ?? null);
     };
+    const move = (e: MouseEvent) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
+      updateFromTarget(e.target as HTMLElement | null);
+    };
+    const refresh = () => setTimeout(() => updateFromTarget(targetRef.current), 0);
     window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
+    window.addEventListener("click", refresh, true);
+    window.addEventListener("pointerup", refresh, true);
+    return () => {
+      window.removeEventListener("mousemove", move);
+      window.removeEventListener("click", refresh, true);
+      window.removeEventListener("pointerup", refresh, true);
+    };
   }, [x, y]);
 
   if (touch) return null;

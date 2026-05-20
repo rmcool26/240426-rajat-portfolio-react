@@ -234,6 +234,37 @@ export const content = {
       ],
       link: "https://scada.pvnxt.com",
     }, */
+    /* {
+      slug: "field-app",
+      name: "pvNXT Field App",
+      company: "Terranxt · Beta Release",
+      role: "Internal EPC field tool → site-to-design in one visit",
+      tags: ["Mobile", "Field Ops", "Internal Tool", "Lead Capture"],
+      description:
+        "A self-serve solar app for homeowners to estimate rooftop feasibility, understand cost, raise requests, and track installation progress without depending on calls or WhatsApp.  ",
+      cover: consumerMobile,
+      gallery: [consumerMobile, consumerMobile, consumerMobile],
+      stats: [
+        { value: "1 Visit", label: "Per Lead" },
+        { value: "Same-day", label: "Design Handoff" },
+        { value: "No", label: "Paper Forms" },
+      ],
+      highlights: [
+        {
+          label: "Problem:",
+          text: "EPC team visited sites with pen, paper, and a phone camera. Design team got a WhatsApp dump and still neededa second visit to fill the gaps.",
+        },
+        {
+          label: "Action",
+          text: "Built an internal mobile app for field EPCs for lead capture, roof survey, keepout marking, measurements, entry and termination points. Everything logged on-site, synced to the design team by end of day.",
+        },
+        {
+          label: "Result",
+          text: "One visit. Full data. Design team gets a complete handoff no calls, no re-visits, no guessing. Proposal out within 24 hours of site visit.",
+        },
+      ],
+      link: "",
+    }, */
     {
       slug: "consumer-mobile",
       name: "pvNXT Consumer Mobile App",
