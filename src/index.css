@@ -139,6 +139,31 @@
   ::selection {
     @apply bg-accent text-accent-foreground;
   }
+
+  /* SiteGuards — no text select / image drag when protection is on */
+  html.site-guards-active,
+  html.site-guards-active body {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  html.site-guards-active input,
+  html.site-guards-active textarea,
+  html.site-guards-active select,
+  html.site-guards-active [contenteditable="true"],
+  html.site-guards-active [data-allow-copy] {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+
+  html.site-guards-active img,
+  html.site-guards-active picture img,
+  html.site-guards-active svg {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+  }
 }
 
 @layer utilities {

@@ -1,31 +1,78 @@
 import { useEffect } from "react";
+import {
+  shouldBlockClipboard,
+  shouldBlockDrag,
+  shouldBlockKeyboard,
+  shouldBlockSelection,
+} from "@/lib/siteGuards";
 
 /**
- * Disables right-click context menu and common dev-tools shortcuts site-wide.
- * Buttons, links, and form interactions remain fully functional.
- * Note: this is a UX deterrent, not real security.
+ * Site-wide UX deterrent: blocks right-click, text copy, image drag,
+ * common devtools shortcuts, and Print Screen key.
+ *
+ * Not real security — determined users can still view source, screenshot via OS tools,
+ * or disable JS. Set VITE_DISABLE_SITE_GUARDS=true in .env to turn off during local dev.
  */
 export function SiteGuards() {
+  const enabled = import.meta.env.VITE_DISABLE_SITE_GUARDS !== "true";
+
   useEffect(() => {
+    if (!enabled) return;
+
+    const root = document.documentElement;
+    root.classList.add("site-guards-active");
+
     const onContext = (e: MouseEvent) => e.preventDefault();
-    const onKey = (e: KeyboardEvent) => {
-      const k = e.key.toLowerCase();
-      // F12, Ctrl/Cmd+Shift+I/J/C, Ctrl/Cmd+U
+
+    const onCopy = (e: ClipboardEvent) => {
+      if (shouldBlockClipboard(e.target)) e.preventDefault();
+    };
+
+    const onCut = (e: ClipboardEvent) => {
+      if (shouldBlockClipboard(e.target)) e.preventDefault();
+    };
+
+    const onSelectStart = (e: Event) => {
+      if (shouldBlockSelection(e.target)) e.preventDefault();
+    };
+
+    const onDragStart = (e: DragEvent) => {
+      if (shouldBlockDrag(e.target)) e.preventDefault();
+    };
+
+    const onKeyDown = (e: KeyboardEvent) => {
       if (
-        e.key === "F12" ||
-        ((e.ctrlKey || e.metaKey) && e.shiftKey && (k === "i" || k === "j" || k === "c")) ||
-        ((e.ctrlKey || e.metaKey) && k === "u")
+        shouldBlockKeyboard({
+          key: e.key,
+          ctrlKey: e.ctrlKey,
+          metaKey: e.metaKey,
+          shiftKey: e.shiftKey,
+          altKey: e.altKey,
+          target: e.target,
+        })
       ) {
         e.preventDefault();
       }
     };
+
     document.addEventListener("contextmenu", onContext);
-    document.addEventListener("keydown", onKey);
+    document.addEventListener("copy", onCopy);
+    document.addEventListener("cut", onCut);
+    document.addEventListener("selectstart", onSelectStart);
+    document.addEventListener("dragstart", onDragStart);
+    document.addEventListener("keydown", onKeyDown, true);
+
     return () => {
+      root.classList.remove("site-guards-active");
       document.removeEventListener("contextmenu", onContext);
-      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("copy", onCopy);
+      document.removeEventListener("cut", onCut);
+      document.removeEventListener("selectstart", onSelectStart);
+      document.removeEventListener("dragstart", onDragStart);
+      document.removeEventListener("keydown", onKeyDown, true);
     };
-  }, []);
+  }, [enabled]);
+
   return null;
 }
 
