@@ -25,6 +25,7 @@ import { KeyScreen } from "./KeyScreen";
 import epcAll from "@/assets/projects/rmcool26-pvNXT-epc-all.svg";
 import consumerAll from "@/assets/projects/rmcool26-pvNXT-consumer-all.svg";
 import installerAll from "@/assets/projects/rmcool26-pvNXT-installer-all.svg";
+import epcProposal from "@/assets/projects/rmcool26-pvNXT-epc-proposal.svg";
 import { ZoomableImage } from "./ZoomableImage";
 import { Cursor } from "../Cursor";
 import { Footer } from "../Footer";
@@ -393,7 +394,7 @@ function Process() {
 type ScreenTab = {
   id: string;
   name: string;
-  platform: "Web" | "Web + App" | "Mobile";
+  platform: "Web" | "Web + App" | "Mobile" | "PDF";
   headline: string;
   body: string;
   chips: string[];
@@ -417,6 +418,19 @@ function Screens() {
       replacedNote: "Manual. Invisible. Broken.",
       shots: 4,
       images: [epcAll, epcAll, epcAll, epcAll],
+    },
+    {
+      id: "proposal",
+      name: "Proposal Report",
+      platform: "PDF",
+      headline: "A proposal Customer actually understand.",
+      body:
+        "EPCs generate this report from the portal after details site analysis. Customer didn't know what they were agreeing to so it explains the problem, roof potential, expected generation, cost, subsidy, savings and environmental impact in one clean PDF.",
+      chips: ["Consumer-ready proposal", "Cost + subsidy clarity", "Generation estimate", "PDF + portal sharing" ],
+      replaced: "Excel cost sheet + Manual site images + WhatsApp forwards + Follow-up calls + The consumer still had one question: “Kitna lagega, subsidy kitni milegi, aur fayda kya hoga?”" ,
+      replacedNote: "Manual. Confusing. Hard to trust.",
+      shots: 4,
+      images: [epcProposal, epcProposal, epcProposal, epcProposal],
     },
     {
       id: "consumer",
@@ -667,6 +681,7 @@ function Screens() {
           <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-neutral-200 pt-8 text-sm text-neutral-600">
             <span><strong className="text-neutral-900">3</strong> Web portals</span>
             <span><strong className="text-neutral-900">2</strong> Mobile apps</span>
+            <span><strong className="text-neutral-900">1</strong> Proposal flow</span>
             <span><strong className="text-neutral-900">5</strong> Products shipped</span>
             <span><strong className="text-neutral-900">1</strong> Connected system</span>
           </div>
@@ -687,7 +702,7 @@ function Screens() {
       caption: "Complete pipeline view — leads to handover. One screen replaces 4 tools.",
     },
     {
-      img: consumerShot,
+      img: Customerhot,
       name: "Consumer Portal",
       tag: "Web + Mobile",
       caption: "Feasibility to monitoring — the full solar journey for a homeowner who just wants clarity.",
