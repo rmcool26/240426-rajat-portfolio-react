@@ -16,6 +16,7 @@ import epcProposal from "@/assets/projects/rmcool26-pvNXT-proposal-pdf.png";
 import scada from "@/assets/projects/rmcool26-pvNXT-sacada.svg";
 import scadaAlert from "@/assets/projects/rmcool26-pvNXT-sacada-alert.svg";
 import sarCart from "@/assets/projects/rmcool26-spade.svg";
+import fieldApp from "@/assets/projects/rmcool26-pvNXT-epc-fieldapp.svg";
 
 export const content = {
   meta: {
@@ -234,7 +235,7 @@ export const content = {
       ],
       link: "https://scada.pvnxt.com",
     }, */
-    /* {
+    {
       slug: "field-app",
       name: "pvNXT Field App",
       company: "Terranxt · Beta Release",
@@ -242,8 +243,8 @@ export const content = {
       tags: ["Mobile", "Field Ops", "Internal Tool", "Lead Capture"],
       description:
         "A self-serve solar app for homeowners to estimate rooftop feasibility, understand cost, raise requests, and track installation progress without depending on calls or WhatsApp.  ",
-      cover: consumerMobile,
-      gallery: [consumerMobile, consumerMobile, consumerMobile],
+      cover: fieldApp,
+      gallery: [fieldApp, fieldApp, fieldApp],
       stats: [
         { value: "1 Visit", label: "Per Lead" },
         { value: "Same-day", label: "Design Handoff" },
@@ -264,7 +265,7 @@ export const content = {
         },
       ],
       link: "",
-    }, */
+    },
     {
       slug: "consumer-mobile",
       name: "pvNXT Consumer Mobile App",
