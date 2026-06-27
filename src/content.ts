@@ -380,7 +380,7 @@ export const content = {
           text: "Before SaaS platforms, small businesses needed a web presence but had no idea where to start or who to trust.",
         },
         {
-          label: "Problem:",
+          label: "Action:",
           text: "Took each from zero → discovery, design, build, handoff. Cafes, film studios, manufacturers, satellite companies, real estate, and hospitality. Different brief every time. Same quality every time.",
         },
         {
