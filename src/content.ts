@@ -246,7 +246,7 @@ export const content = {
       cover: fieldApp,
       gallery: [fieldApp, fieldApp, fieldApp],
       stats: [
-        { value: "1 Visit", label: "Per Lead" },
+        { value: "Zero Site Visits", label: "Per Lead" },
         { value: "Same-day", label: "Design Handoff" },
         { value: "No", label: "Paper Forms" },
       ],
