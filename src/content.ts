@@ -705,3 +705,171 @@ export const content = {
 export type Project = (typeof content.projects)[number];
 export type FeaturedProject = typeof content.featured.hero;
 export type CaseStudyItem = (typeof content.caseStudies)[number];
+
+// ============================================================
+// 🗂️ UNIFIED WORK GRID — content for the redesigned #work section
+// Edit workItems to update the main 8-card grid.
+// Edit archiveItems to update the Earlier Work text block.
+// ============================================================
+
+export type FilterKey = "all" | "website" | "web-app" | "mobile-app";
+
+export type WorkItem = {
+  slug: string;
+  name: string;
+  company: string;
+  tagline: string;
+  cover: string | null; // null → neutral placeholder rendered inline
+  tags: string[];
+  filters: FilterKey[];
+  status: "live" | "wip" | "internal";
+  pvnxtEcosystem?: true;
+  cta?: { label: string; href: string };
+  ctaExternal?: true; // true → open in new tab
+};
+
+export type ArchiveItem = {
+  name: string;
+  company: string;
+  year: string;
+  tags: string[];
+  link?: string;
+};
+
+export const workItems: WorkItem[] = [
+  {
+    slug: "pvnxt-suite",
+    name: "pvNXT Solar Suite",
+    company: "Terranxt · 2022 — Now",
+    tagline: "From spreadsheets to a full solar OS — EPC, Consumer, Installer.",
+    cover: pvnxtSuite,
+    tags: ["Enterprise SaaS", "Design System", "3 Portals"],
+    filters: ["all", "web-app"],
+    status: "live",
+    pvnxtEcosystem: true,
+    cta: { label: "See case study", href: "/case/terranxt" },
+  },
+  {
+    slug: "scada-monitoring",
+    name: "SCADA Monitoring",
+    company: "Terranxt · In Progress",
+    tagline: "One dashboard. Every plant. Every alert. Real-time O&M.",
+    cover: scadaAlert,
+    tags: ["O&M Dashboard", "Real-time", "Multi-role"],
+    filters: ["all", "web-app"],
+    status: "wip",
+    pvnxtEcosystem: true,
+  },
+  {
+    slug: "spade",
+    name: "Spade",
+    company: "Suhora · 2023",
+    tagline: "India's first self-serve satellite imagery marketplace.",
+    cover: sarCart,
+    tags: ["B2B", "Geo-Intelligence", "E-commerce"],
+    filters: ["all", "web-app"],
+    status: "live",
+    cta: { label: "Visit site", href: "https://spade.suhora.com" },
+    ctaExternal: true,
+  },
+  {
+    slug: "iide",
+    name: "IIDE",
+    company: "IIDE · 2021",
+    tagline: "+16% lead conversion via CRO and course page redesign.",
+    cover: iideCourse,
+    tags: ["EdTech", "Redesign", "CRO"],
+    filters: ["all", "website"],
+    status: "live",
+    cta: { label: "Visit site", href: "https://iide.co/bachelors-in-digital-business-program/" },
+    ctaExternal: true,
+  },
+  {
+    slug: "operation-comfort",
+    name: "Operation Comfort",
+    company: "Independent · Redesign",
+    tagline: "Full website redesign and UX assessment for a comfort-focused brand.",
+    cover: null, // placeholder — real asset needed from Rajat
+    tags: ["Website", "Redesign", "Assessment"],
+    filters: ["all", "website"],
+    status: "live",
+  },
+  {
+    slug: "arthanxt",
+    name: "ArthaNXT",
+    company: "ArthaNXT · Website",
+    tagline: "Clean, trust-building web presence for a fintech brand.",
+    cover: null, // placeholder — real asset needed from Rajat
+    tags: ["Website", "Fintech", "Branding"],
+    filters: ["all", "website"],
+    status: "live",
+  },
+  {
+    slug: "retaggio",
+    name: "Retaggio Industries",
+    company: "Dreamz · Multi-industry",
+    tagline: "Fast, clean websites for manufacturing, SaaS, and consulting brands.",
+    cover: rettagio,
+    tags: ["Web Design", "Branding", "Multi-industry"],
+    filters: ["all", "website"],
+    status: "live",
+    cta: { label: "Visit site", href: "https://www.retaggioindustries.com" },
+    ctaExternal: true,
+  },
+  {
+    slug: "pvnxt-field-app",
+    name: "pvNXT Field App",
+    company: "Terranxt · Beta",
+    tagline: "Internal EPC field tool — site survey to design handoff in one visit.",
+    cover: fieldApp,
+    tags: ["Mobile App", "Field Ops", "Internal Tool"],
+    filters: ["all", "mobile-app"],
+    status: "internal",
+    pvnxtEcosystem: true,
+  },
+];
+
+export const archiveItems: ArchiveItem[] = [
+  {
+    name: "MMD Cafe",
+    company: "Dreamz Merchandising Solutions",
+    year: "2016–2019",
+    tags: ["Website", "F&B", "Branding"],
+  },
+  {
+    name: "Brijbhumi",
+    company: "Dreamz Merchandising Solutions",
+    year: "2016–2019",
+    tags: ["Website", "Real Estate"],
+  },
+  {
+    name: "Lastella Bakery",
+    company: "Dreamz Merchandising Solutions",
+    year: "2016–2019",
+    tags: ["Website", "F&B"],
+  },
+  {
+    name: "Chaudhary Charan Singh School",
+    company: "Dreamz Merchandising Solutions",
+    year: "2016–2019",
+    tags: ["Website", "Education"],
+  },
+  {
+    name: "Lions Club Mumbai SOL",
+    company: "Dreamz Merchandising Solutions",
+    year: "2016–2019",
+    tags: ["Website", "NGO"],
+  },
+  {
+    name: "Hind Vijay",
+    company: "Dreamz Merchandising Solutions",
+    year: "2016–2019",
+    tags: ["Website", "Media"],
+  },
+  {
+    name: "Nemi Enterprises",
+    company: "Dreamz Merchandising Solutions",
+    year: "2016–2019",
+    tags: ["Website", "Manufacturing"],
+  },
+];
