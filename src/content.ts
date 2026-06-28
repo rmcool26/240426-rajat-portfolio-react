@@ -388,7 +388,7 @@ export const content = {
           text: "25+ websites shipped across 10+ industries. Some clients are still running the same sites. Few Clients: Retaggio Industries, SRM Films, MMD Cafe.",
         },
       ],
-      link: "https://retaggioindustries.com/",
+      link: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=2-2148&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2%3A2148&page-id=0%3A1&show-proto-sidebar=1",
     },
   ],
 
