@@ -57,8 +57,11 @@ export const WorkGrid = () => {
               role="tab"
               id={`work-filter-${f.key}`}
               aria-selected={isActive}
+              aria-label={`Filter by ${f.label} — ${count} project${count !== 1 ? "s" : ""}`}
+              title={`Show ${f.label} projects (${count})`}
               onClick={() => handleFilterChange(f.key)}
               data-cursor="hover"
+              data-cursor-label={`${f.label} (${count})`}
               className={`
                 shrink-0 inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-200
                 ${isActive
@@ -110,6 +113,9 @@ export const WorkGrid = () => {
           <button
             onClick={() => setAllExpanded((prev) => !prev)}
             data-cursor="hover"
+            data-cursor-label={allExpanded ? "Show less" : "View all work"}
+            aria-label={allExpanded ? "Show fewer projects" : `View all ${workItems.length} projects`}
+            title={allExpanded ? "Show fewer projects" : `View all ${workItems.length} projects`}
             className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-5 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:text-foreground"
           >
             {allExpanded ? (

@@ -5,17 +5,24 @@
 // ============================================================
 
 import profile from "@/assets/projects/rmcool26-profile.svg";
-import designSystem from "@/assets/projects/rmcool26-design-system.png";
+import designSystem from "@/assets/projects/rmcool26-desing-system.png";
 import iideCourse from "@/assets/projects/rmcool26-iide-coursepage.svg";
+import iideCourseDetail from "@/assets/projects/rmcool26-iide-coursepage.png";       // PNG — used for detail page
 import rettagio from "@/assets/projects/rmcool26-freelance.svg";
 import consumerMobile from "@/assets/projects/rmcool26-pvNXT-consumer-mobile.svg";
+import consumerAll from "@/assets/projects/rmcool26-pvNXT-consumer-all.svg";           // full consumer detail
+import installerAll from "@/assets/projects/rmcool26-pvNXT-installer-all.svg";         // installer detail
 import epcStringing from "@/assets/projects/rmcool26-pvNXT-epc-stringing.png";
-import pvnxtSuite from "@/assets/projects/rmcool26-pvNXT-suite-675.svg";
+import epcAll from "@/assets/projects/rmcool26-pvNXT-epc-all.svg";                     // full EPC portal detail
+import pvnxtSuite from "@/assets/projects/rmcool26-pvNXT-suite-675.svg";               // card — tight crop
+import pvnxtSuiteFull from "@/assets/projects/rmcool26-pvNXT-suite.svg";               // detail — wider full view
 import epcWorkflow from "@/assets/projects/rmcool26-pvNXT-epc-workflow.png";
 import epcProposal from "@/assets/projects/rmcool26-pvNXT-proposal-pdf.png";
-import scada from "@/assets/projects/rmcool26-pvNXT-sacada.svg";
-import scadaAlert from "@/assets/projects/rmcool26-pvNXT-sacada-alert.svg";
-import sarCart from "@/assets/projects/rmcool26-spade.svg";
+import epcProposalFull from "@/assets/projects/rmcool26-pvNXT-epc-proposal.svg";       // full proposal detail
+import scada from "@/assets/projects/rmcool26-pvNXT-sacada.svg";                       // full SCADA detail
+import scadaAlert from "@/assets/projects/rmcool26-pvNXT-sacada-alert.svg";            // card — alert view
+import sarCart from "@/assets/projects/rmcool26-spade.svg";                            // card — SVG
+import sarCartDetail from "@/assets/projects/rmcool26-sar-cart.png";                   // detail — PNG render
 import fieldApp from "@/assets/projects/rmcool26-pvNXT-epc-fieldapp.svg";
 
 export const content = {
@@ -727,7 +734,12 @@ export type WorkItem = {
   name: string;
   company: string;
   tagline: string;
-  cover: string | null;  // null → neutral placeholder (initials on bg-muted)
+  /** Card cover (homepage grid). null → initials placeholder */
+  cover: string | null;
+  /** Detail page main visual. Falls back to cover if not set. */
+  detailVisual?: string | null;
+  /** Optional additional images shown below the main visual on the detail page */
+  detailImages?: string[];
   tags: string[];
   filters: FilterKey[];  // which filter tab(s) this item belongs to
   showInAll?: true;      // appears in the default "All" curated view (max 8)
@@ -779,6 +791,7 @@ export const workItems: WorkItem[] = [
     company: "Terranxt · 2022 — Now",
     tagline: "3 portals. 2 apps. One solar workflow.",
     cover: pvnxtSuite,
+    detailVisual: pvnxtSuiteFull,   // wider full-suite view vs tight card crop
     tags: ["Web App", "Case Study", "Live"],
     filters: ["web-app"],
     showInAll: true,
@@ -798,6 +811,7 @@ export const workItems: WorkItem[] = [
     company: "Terranxt · In Progress",
     tagline: "Monitoring, alerts, and work orders in one view.",
     cover: scadaAlert,
+    detailVisual: scada,             // full SCADA view vs alert-focused card crop
     tags: ["Web App", "Enterprise", "WIP"],
     filters: ["web-app"],
     showInAll: true,
@@ -819,6 +833,7 @@ export const workItems: WorkItem[] = [
     company: "Suhora · 2023",
     tagline: "Satellite imagery buying, shortened from weeks to days.",
     cover: sarCart,
+    detailVisual: sarCartDetail,     // PNG render vs SVG card
     tags: ["Web App", "GIS", "Live"],
     filters: ["web-app"],
     showInAll: true,
@@ -838,6 +853,7 @@ export const workItems: WorkItem[] = [
     company: "IIDE · 2021",
     tagline: "Lead-page redesigns that improved yearly conversions.",
     cover: iideCourse,
+    detailVisual: iideCourseDetail,  // PNG version vs SVG card
     tags: ["Website", "CRO", "Live"],
     filters: ["website"],
     showInAll: true,
@@ -919,6 +935,7 @@ export const workItems: WorkItem[] = [
     company: "Terranxt · Beta",
     tagline: "Field capture app for same-day design handoff.",
     cover: fieldApp,
+    detailVisual: epcStringing,      // physical site image vs app UI card
     tags: ["Mobile App", "Field Ops", "Internal"],
     filters: ["mobile-app"],
     showInAll: true,
@@ -1125,6 +1142,7 @@ export const workItems: WorkItem[] = [
     company: "Terranxt · Consumer App",
     tagline: "Consumer app for explore, estimate, and track.",
     cover: consumerMobile,
+    detailVisual: consumerAll,       // all consumer screens vs single mobile card
     tags: ["Mobile App", "Consumer", "Live"],
     filters: ["mobile-app"],
     status: "live",
@@ -1211,6 +1229,7 @@ export const workItems: WorkItem[] = [
     company: "Terranxt · Sales",
     tagline: "Proposal document built for clarity and trust.",
     cover: epcProposal,
+    detailVisual: epcProposalFull,   // full proposal SVG vs PNG cover card
     tags: ["PPT/PDF", "Proposal", "Enterprise"],
     filters: ["ppt-pdf"],
     status: "live",

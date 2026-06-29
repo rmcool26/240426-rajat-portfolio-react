@@ -54,6 +54,8 @@ const ActionButton = ({
     <ExternalLink className="h-3 w-3" />
   );
 
+  const tooltipLabel = isFigma ? "Open in Figma" : action.isRoute ? "View project details" : "Open link";
+
   const cls =
     variant === "primary"
       ? "group inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-semibold text-background transition-colors hover:bg-primary"
@@ -61,7 +63,14 @@ const ActionButton = ({
 
   if (action.isRoute) {
     return (
-      <Link to={action.href} data-cursor="hover" className={cls}>
+      <Link
+        to={action.href}
+        data-cursor="hover"
+        data-cursor-label={tooltipLabel}
+        aria-label={`${action.label} — ${tooltipLabel}`}
+        title={tooltipLabel}
+        className={cls}
+      >
         {action.label}
         {icon}
       </Link>
@@ -73,6 +82,9 @@ const ActionButton = ({
       target="_blank"
       rel="noreferrer"
       data-cursor="hover"
+      data-cursor-label={tooltipLabel}
+      aria-label={`${action.label} — ${tooltipLabel}`}
+      title={tooltipLabel}
       className={cls}
     >
       {action.label}
