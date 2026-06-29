@@ -4,69 +4,82 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { workItems, type FilterKey } from "@/content";
 import { WorkCard } from "./WorkCard";
 
+// ── Filter definitions with live counts ──────────────────────────────────────
+const getFilterCount = (key: FilterKey): number => {
+  if (key === "all") return workItems.length;
+  return workItems.filter((item) => item.filters.includes(key)).length;
+};
+
 const FILTERS: { key: FilterKey; label: string }[] = [
   { key: "all",        label: "All" },
   { key: "website",    label: "Website" },
   { key: "web-app",    label: "Web App" },
   { key: "mobile-app", label: "Mobile App" },
+  { key: "ppt-pdf",    label: "PPT/PDF" },
 ];
 
 export const WorkGrid = () => {
-  const [active, setActive] = useState<FilterKey>("all");
+  const [active, setActive]       = useState<FilterKey>("all");
   const [allExpanded, setAllExpanded] = useState(false);
 
-  // "All" tab: curated 8 first, then rest on expand
   const allCurated = workItems.filter((item) => item.showInAll === true);
   const allExtra   = workItems.filter((item) => !item.showInAll);
 
-  // Category tabs: full list for that filter
-  const categoryItems = workItems.filter((item) =>
-    item.filters.includes(active)
-  );
+  const categoryItems = workItems.filter((item) => item.filters.includes(active));
 
-  // What to actually render
-  const isAllTab = active === "all";
+  const isAllTab    = active === "all";
   const visibleItems = isAllTab
-    ? allExpanded
-      ? workItems // all 20 when expanded
-      : allCurated // 8 curated by default
+    ? (allExpanded ? workItems : allCurated)
     : categoryItems;
 
   const hasExtra = isAllTab && allExtra.length > 0;
 
   const handleFilterChange = (key: FilterKey) => {
     setActive(key);
-    if (key !== "all") setAllExpanded(false); // reset expand when switching tabs
+    if (key !== "all") setAllExpanded(false);
   };
 
   return (
     <div className="mt-12 md:mt-16">
+
       {/* ── Filter bar ── */}
       <div
         className="mb-8 flex gap-2 overflow-x-auto pb-1 scrollbar-none md:flex-wrap md:overflow-visible"
         role="tablist"
         aria-label="Filter work by type"
       >
-        {FILTERS.map((f) => (
-          <button
-            key={f.key}
-            role="tab"
-            id={`work-filter-${f.key}`}
-            aria-selected={active === f.key}
-            onClick={() => handleFilterChange(f.key)}
-            data-cursor="hover"
-            className={`
-              shrink-0 rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-200
-              ${
-                active === f.key
+        {FILTERS.map((f) => {
+          const count = getFilterCount(f.key);
+          const isActive = active === f.key;
+          return (
+            <button
+              key={f.key}
+              role="tab"
+              id={`work-filter-${f.key}`}
+              aria-selected={isActive}
+              onClick={() => handleFilterChange(f.key)}
+              data-cursor="hover"
+              className={`
+                shrink-0 inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-200
+                ${isActive
                   ? "border-primary bg-primary text-primary-foreground shadow-soft"
                   : "border-border bg-background/60 text-muted-foreground hover:border-primary/50 hover:text-foreground"
-              }
-            `}
-          >
-            {f.label}
-          </button>
-        ))}
+                }
+              `}
+            >
+              {f.label}
+              <span
+                className={`rounded-full px-1.5 py-0.5 text-[10px] font-semibold tabular-nums ${
+                  isActive
+                    ? "bg-primary-foreground/20 text-primary-foreground"
+                    : "bg-secondary text-muted-foreground"
+                }`}
+              >
+                {count}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {/* ── Card grid ── */}
@@ -82,7 +95,7 @@ export const WorkGrid = () => {
       </motion.div>
 
       {visibleItems.length === 0 && (
-        <div className="py-20 text-center text-muted-foreground text-sm">
+        <div className="py-20 text-center text-sm text-muted-foreground">
           No projects in this category yet.
         </div>
       )}

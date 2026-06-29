@@ -3,7 +3,7 @@ import { ArrowUpRight, ExternalLink, Figma } from "lucide-react";
 import { Link } from "react-router-dom";
 import type { WorkItem, WorkAction } from "@/content";
 
-// ─── Neutral placeholder for items without a real cover image ───────────────
+// ─── Neutral placeholder ─────────────────────────────────────────────────────
 const CoverPlaceholder = ({ name }: { name: string }) => {
   const initials = name
     .split(/\s+/)
@@ -13,14 +13,14 @@ const CoverPlaceholder = ({ name }: { name: string }) => {
     .toUpperCase();
   return (
     <div className="flex h-full w-full items-center justify-center bg-muted">
-      <span className="font-display text-4xl font-bold tracking-tight text-muted-foreground/40 select-none">
+      <span className="select-none font-display text-4xl font-bold tracking-tight text-muted-foreground/30">
         {initials}
       </span>
     </div>
   );
 };
 
-// ─── Status pill (cover overlay, top-left) ───────────────────────────────────
+// ─── Status pill ─────────────────────────────────────────────────────────────
 const StatusPill = ({ status }: { status: WorkItem["status"] }) => {
   const config = {
     live:     { dot: "bg-green-500", label: "Live" },
@@ -36,8 +36,7 @@ const StatusPill = ({ status }: { status: WorkItem["status"] }) => {
   );
 };
 
-// ─── CTA action button ────────────────────────────────────────────────────────
-// variant "primary" → filled; "secondary" → ghost/outline
+// ─── CTA button — always renders as internal route (View Project) or Figma ──
 const ActionButton = ({
   action,
   variant,
@@ -45,26 +44,26 @@ const ActionButton = ({
   action: WorkAction;
   variant: "primary" | "secondary";
 }) => {
-  const isDesignLink = action.label === "Design";
+  const isFigma = action.label.toLowerCase() === "figma";
 
-  const iconEl = action.isRoute ? (
+  const icon = action.isRoute ? (
     <ArrowUpRight className="h-3 w-3 transition-transform group-hover:rotate-45" />
-  ) : isDesignLink ? (
+  ) : isFigma ? (
     <Figma className="h-3 w-3" />
   ) : (
     <ExternalLink className="h-3 w-3" />
   );
 
-  const baseClass =
+  const cls =
     variant === "primary"
-      ? "inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-semibold text-background transition-colors hover:bg-primary"
-      : "inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-3 py-1.5 text-[11px] font-semibold text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground";
+      ? "group inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-semibold text-background transition-colors hover:bg-primary"
+      : "group inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-3 py-1.5 text-[11px] font-semibold text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground";
 
   if (action.isRoute) {
     return (
-      <Link to={action.href} data-cursor="hover" className={baseClass}>
+      <Link to={action.href} data-cursor="hover" className={cls}>
         {action.label}
-        {iconEl}
+        {icon}
       </Link>
     );
   }
@@ -74,10 +73,10 @@ const ActionButton = ({
       target="_blank"
       rel="noreferrer"
       data-cursor="hover"
-      className={baseClass}
+      className={cls}
     >
       {action.label}
-      {iconEl}
+      {icon}
     </a>
   );
 };
@@ -89,6 +88,21 @@ interface WorkCardProps {
 }
 
 export const WorkCard = ({ item, index }: WorkCardProps) => {
+  // Build homepage CTAs from data:
+  // Primary = "View Project" → internal projectPageHref
+  // Secondary = "Figma" → figmaLink only if available
+  const primaryAction: WorkAction | undefined = item.projectPageHref
+    ? {
+        label: "View Project",
+        href: item.projectPageHref,
+        isRoute: true,
+      }
+    : item.primaryAction;
+
+  const secondaryAction: WorkAction | undefined = item.figmaLink
+    ? { label: "Figma", href: item.figmaLink, external: true }
+    : undefined;
+
   return (
     <motion.article
       layout
@@ -125,7 +139,7 @@ export const WorkCard = ({ item, index }: WorkCardProps) => {
         {/* pvNXT ecosystem chip — top right */}
         {item.pvnxtEcosystem && (
           <div className="absolute right-3 top-3">
-            <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur-sm border border-primary/20">
+            <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur-sm">
               pvNXT ecosystem
             </span>
           </div>
@@ -140,13 +154,13 @@ export const WorkCard = ({ item, index }: WorkCardProps) => {
         <h3 className="mt-1 font-display text-lg font-bold leading-snug tracking-tight text-foreground md:text-xl">
           {item.name}
         </h3>
-        <p className="mt-2 text-sm leading-relaxed text-muted-foreground line-clamp-2">
+        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
           {item.tagline}
         </p>
 
         <div className="flex-1" />
 
-        {/* Tags row */}
+        {/* Tags */}
         <div className="mt-4 flex flex-wrap gap-1.5 border-t border-border pt-4">
           {item.tags.slice(0, 3).map((tag) => (
             <span
@@ -158,26 +172,21 @@ export const WorkCard = ({ item, index }: WorkCardProps) => {
           ))}
         </div>
 
-        {/* Action row — max 2 visible CTAs + optional status label */}
+        {/* CTA row — View Project (primary) + Figma (secondary, if available) */}
         <div className="mt-3 flex flex-wrap items-center gap-2">
-          {/* Primary action */}
-          {item.primaryAction && (
-            <ActionButton action={item.primaryAction} variant="primary" />
+          {primaryAction && (
+            <ActionButton action={primaryAction} variant="primary" />
           )}
-
-          {/* Secondary action */}
-          {item.secondaryAction && (
-            <ActionButton action={item.secondaryAction} variant="secondary" />
+          {secondaryAction && (
+            <ActionButton action={secondaryAction} variant="secondary" />
           )}
-
-          {/* Status label — shown when no primary action, or alongside primary (e.g. SCADA) */}
-          {item.statusLabel && !item.primaryAction && (
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border bg-background/40 px-3 py-1.5 text-[11px] font-medium text-muted-foreground">
-              {item.statusLabel}
-            </span>
-          )}
-          {item.statusLabel && item.primaryAction && (
-            <span className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-dashed border-border bg-background/40 px-3 py-1 text-[10px] font-medium text-muted-foreground">
+          {/* Status label: alongside primary, or solo if no primary */}
+          {item.statusLabel && (
+            <span
+              className={`inline-flex items-center gap-1.5 rounded-full border border-dashed border-border bg-background/40 px-3 py-1 text-[10px] font-medium text-muted-foreground ${
+                primaryAction ? "ml-auto" : ""
+              }`}
+            >
               {item.statusLabel}
             </span>
           )}

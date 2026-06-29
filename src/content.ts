@@ -713,13 +713,13 @@ export type CaseStudyItem = (typeof content.caseStudies)[number];
 // archiveItems: text-only Earlier Work block
 // ============================================================
 
-export type FilterKey = "all" | "website" | "web-app" | "mobile-app";
+export type FilterKey = "all" | "website" | "web-app" | "mobile-app" | "ppt-pdf";
 
 export type WorkAction = {
   label: string;
   href: string;
-  external?: true;        // opens in new tab
-  isRoute?: true;         // internal react-router Link (e.g. /case/terranxt)
+  external?: true;   // opens in new tab
+  isRoute?: true;    // internal react-router Link
 };
 
 export type WorkItem = {
@@ -727,17 +727,30 @@ export type WorkItem = {
   name: string;
   company: string;
   tagline: string;
-  cover: string | null;   // null → neutral placeholder (initials on bg-muted)
+  cover: string | null;  // null → neutral placeholder (initials on bg-muted)
   tags: string[];
-  filters: FilterKey[];   // which filter tab(s) this item belongs to
-  showInAll?: true;       // if true, card appears in the default "All" view (max 8)
+  filters: FilterKey[];  // which filter tab(s) this item belongs to
+  showInAll?: true;      // appears in the default "All" curated view (max 8)
   status: "live" | "wip" | "internal" | "review";
   pvnxtEcosystem?: true;
-  primaryAction?: WorkAction;    // main CTA button
-  secondaryAction?: WorkAction;  // secondary CTA button (lighter style)
-  statusLabel?: string;          // text-only pill: "In Use Internally", "Redesign in progress"
-  resourceLinks?: WorkAction[];  // stored in data only, not rendered in the card
-  projectPageHref?: string;      // future internal page route — do NOT render a button until the page exists
+  statusLabel?: string;  // text-only pill e.g. "In Use Internally"
+
+  // ── Homepage card CTAs (max 2 shown) ──────────────────────
+  primaryAction?: WorkAction;    // "View Project" → internal page
+  secondaryAction?: WorkAction;  // "Figma" → external, only if available
+
+  // ── Internal project page detail data ─────────────────────
+  projectPageHref?: string;      // "/work/:slug" or "/case/terranxt" for pvNXT Suite
+  figmaLink?: string;
+  liveLink?: string;
+  caseNotesLink?: string;
+  appLink?: string;
+  whatItIs?: string;
+  whatIDid?: string;
+  whyItMatters?: string;
+
+  // ── Data-only links (not rendered on card) ─────────────────
+  resourceLinks?: WorkAction[];
 };
 
 export type ArchiveItem = {
@@ -748,9 +761,17 @@ export type ArchiveItem = {
   link?: string;
 };
 
+// ─────────────────────────────────────────────────────────────
+// WORK ITEMS — 24 total
+//  • 8  showInAll (default "All" grid)
+//  • 6  Website extras
+//  • 4  Web App extras
+//  • 2  Mobile App extras
+//  • 4  PPT/PDF
+// ─────────────────────────────────────────────────────────────
 export const workItems: WorkItem[] = [
 
-  // ── ALL VIEW (showInAll: true) — exactly 8 cards ────────────────────────
+  // ── ALL VIEW (showInAll: true) — exactly 8 curated cards ──────────────────
 
   {
     slug: "pvnxt-suite",
@@ -763,7 +784,12 @@ export const workItems: WorkItem[] = [
     showInAll: true,
     status: "live",
     pvnxtEcosystem: true,
-    primaryAction: { label: "Case Study", href: "/case/terranxt", isRoute: true },
+    projectPageHref: "/case/terranxt",          // reuses existing case study page
+    primaryAction: { label: "View Project", href: "/case/terranxt", isRoute: true },
+    liveLink: "https://epc.pvnxt.com/",
+    whatItIs: "A full solar OS — EPC portal, Consumer portal, and Installer portal — built from scratch over 3 years.",
+    whatIDid: "Led end-to-end UX design across all 3 portals. Built the design system, ran dev handoff, and pitched at IIT Delhi.",
+    whyItMatters: "Real EPC organisations use it daily. Replaced spreadsheets, WhatsApp, and manual site visits.",
   },
 
   {
@@ -777,8 +803,14 @@ export const workItems: WorkItem[] = [
     showInAll: true,
     status: "wip",
     pvnxtEcosystem: true,
-    primaryAction: { label: "Live Product", href: "https://scada.pvnxt.com/", external: true },
+    projectPageHref: "/work/scada-monitoring",
+    primaryAction: { label: "View Project", href: "/work/scada-monitoring", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4480&page-id=0%3A1",
+    liveLink: "https://scada.pvnxt.com/",
     statusLabel: "Redesign in progress",
+    whatItIs: "Real-time O&M dashboard for multi-plant solar monitoring, alerts, and work order management.",
+    whatIDid: "Designed the full dashboard — inverter/string-level monitoring, alert system, work orders, activity logs, and multi-role access.",
+    whyItMatters: "O&M managers get complete plant visibility without manual check-ins or WhatsApp threads.",
   },
 
   {
@@ -791,7 +823,13 @@ export const workItems: WorkItem[] = [
     filters: ["web-app"],
     showInAll: true,
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://spade.suhora.com/", external: true },
+    projectPageHref: "/work/spade",
+    primaryAction: { label: "View Project", href: "/work/spade", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4478&page-id=0%3A1",
+    liveLink: "https://spade.suhora.com/",
+    whatItIs: "India's first self-serve satellite imagery marketplace — browse, preview, order, download.",
+    whatIDid: "Designed end-to-end procurement flow for govt and enterprise buyers. Replaced a 3-week manual process.",
+    whyItMatters: "Procurement dropped from 3 weeks to 2–3 days. Set a new standard for the industry.",
   },
 
   {
@@ -804,12 +842,13 @@ export const workItems: WorkItem[] = [
     filters: ["website"],
     showInAll: true,
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://iide.co/bachelors-in-digital-business-program/", external: true },
-    secondaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4472&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4472&page-id=0%3A1&show-proto-sidebar=1",
-      external: true,
-    },
+    projectPageHref: "/work/iide",
+    primaryAction: { label: "View Project", href: "/work/iide", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4472&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4472&page-id=0%3A1&show-proto-sidebar=1",
+    liveLink: "https://iide.co/bachelors-in-digital-business-program/",
+    whatItIs: "Post-COVID redesign of IIDE's core marketing and course pages with dynamic WordPress components.",
+    whatIDid: "Led a 3-person team. Redesigned landing pages, engineered countdown logic, improved information hierarchy.",
+    whyItMatters: "+16% improvement in lead conversion. Automated deadline urgency that previously required manual updates.",
     resourceLinks: [
       { label: "IIDE Learn", href: "https://learn.iide.co/", external: true },
       { label: "IIDE Careers", href: "https://careers.iide.co/", external: true },
@@ -821,24 +860,19 @@ export const workItems: WorkItem[] = [
     name: "Operation Comfort",
     company: "Independent · Redesign",
     tagline: "Assessment redesign with cleaner UX and sharper decisions.",
-    cover: null, // placeholder — awaiting real cover from Rajat
+    cover: null,
     tags: ["Website", "Redesign", "Assessment"],
     filters: ["website"],
     showInAll: true,
     status: "live",
-    primaryAction: {
-      label: "Case Study",
-      href: "https://app.notion.com/p/rmcool26/190526-iQuinceSoft-Assessment-36851a6dbcd8806a8e20e87e70cdaf30",
-      external: true,
-    },
-    secondaryAction: { label: "Live Site", href: "https://operationcomfortcontrolllc.com/", external: true },
-    resourceLinks: [
-      {
-        label: "Design",
-        href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=2-2148&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2%3A2148&page-id=0%3A1&show-proto-sidebar=1",
-        external: true,
-      },
-    ],
+    projectPageHref: "/work/operation-comfort",
+    primaryAction: { label: "View Project", href: "/work/operation-comfort", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=2-2148&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2%3A2148&page-id=0%3A1&show-proto-sidebar=1",
+    liveLink: "https://operationcomfortcontrolllc.com/",
+    caseNotesLink: "https://app.notion.com/p/rmcool26/190526-iQuinceSoft-Assessment-36851a6dbcd8806a8e20e87e70cdaf30",
+    whatItIs: "Full website redesign and UX assessment for a comfort-solutions brand.",
+    whatIDid: "Conducted UX audit, restructured site architecture, redesigned core pages with cleaner layouts.",
+    whyItMatters: "Turned a cluttered site into a clear, trust-building web presence aligned with what the brand actually does.",
   },
 
   {
@@ -846,17 +880,18 @@ export const workItems: WorkItem[] = [
     name: "ArthaNXT",
     company: "ArthaNXT · Website",
     tagline: "Solar investment website built from scratch.",
-    cover: null, // placeholder — awaiting real cover from Rajat
+    cover: null,
     tags: ["Website", "Finance", "Scratch"],
     filters: ["website"],
     showInAll: true,
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://artha.pvnxt.com/", external: true },
-    secondaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-3152&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A3152&page-id=0%3A1&show-proto-sidebar=1",
-      external: true,
-    },
+    projectPageHref: "/work/arthanxt",
+    primaryAction: { label: "View Project", href: "/work/arthanxt", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-3152&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A3152&page-id=0%3A1&show-proto-sidebar=1",
+    liveLink: "https://artha.pvnxt.com/",
+    whatItIs: "Clean, trust-building website for a solar investment and financing brand.",
+    whatIDid: "Designed full site from scratch — information architecture, messaging hierarchy, and visual identity.",
+    whyItMatters: "First web presence for a new fintech brand in the solar space. Designed to build confidence with investors.",
   },
 
   {
@@ -869,12 +904,13 @@ export const workItems: WorkItem[] = [
     filters: ["website"],
     showInAll: true,
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://retaggioindustries.com/", external: true },
-    secondaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4477&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1&show-proto-sidebar=1",
-      external: true,
-    },
+    projectPageHref: "/work/retaggio",
+    primaryAction: { label: "View Project", href: "/work/retaggio", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4477&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1&show-proto-sidebar=1",
+    liveLink: "https://retaggioindustries.com/",
+    whatItIs: "Corporate website for a publicly listed multi-industry group (jewellery, manufacturing, consulting).",
+    whatIDid: "Designed and delivered the full site — brand positioning, page layouts, and responsive design.",
+    whyItMatters: "A clean, professional web presence for a listed company that previously had none.",
   },
 
   {
@@ -888,10 +924,15 @@ export const workItems: WorkItem[] = [
     showInAll: true,
     status: "internal",
     pvnxtEcosystem: true,
+    projectPageHref: "/work/pvnxt-field-app",
+    primaryAction: { label: "View Project", href: "/work/pvnxt-field-app", isRoute: true },
     statusLabel: "In Use Internally",
+    whatItIs: "Internal mobile app for EPC field teams — lead capture, roof survey, keepout marking, and full handoff.",
+    whatIDid: "Designed all screens and user flows for field EPCs. No paper forms, no follow-up calls.",
+    whyItMatters: "One visit. Full data. Design team gets complete handoff by end of day. Proposals out in 24 hrs.",
   },
 
-  // ── WEBSITE FILTER EXTRAS ─────────────────────────────────────────────────
+  // ── WEBSITE FILTER EXTRAS ──────────────────────────────────────────────────
 
   {
     slug: "pvnxt-website",
@@ -902,12 +943,14 @@ export const workItems: WorkItem[] = [
     tags: ["Website", "Solar", "Scratch"],
     filters: ["website"],
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://pvnxt.com/", external: true },
-    secondaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-3030&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A3030&page-id=0%3A1&show-proto-sidebar=1",
-      external: true,
-    },
+    pvnxtEcosystem: true,
+    projectPageHref: "/work/pvnxt-website",
+    primaryAction: { label: "View Project", href: "/work/pvnxt-website", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-3030&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A3030&page-id=0%3A1&show-proto-sidebar=1",
+    liveLink: "https://pvnxt.com/",
+    whatItIs: "Brand and marketing website for the entire pvNXT solar product ecosystem.",
+    whatIDid: "Designed and launched the full website — hero, product sections, ecosystem overview.",
+    whyItMatters: "Unified web presence for a product family spanning 3 portals and 2 mobile apps.",
   },
 
   {
@@ -919,12 +962,14 @@ export const workItems: WorkItem[] = [
     tags: ["Website", "Solar", "Live"],
     filters: ["website"],
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://astongreens.pvnxt.com/", external: true },
-    secondaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-308&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A308&page-id=0%3A1",
-      external: true,
-    },
+    pvnxtEcosystem: true,
+    projectPageHref: "/work/astongreen",
+    primaryAction: { label: "View Project", href: "/work/astongreen", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-308&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A308&page-id=0%3A1",
+    liveLink: "https://astongreens.pvnxt.com/",
+    whatItIs: "Website for AstonGreen — the EPC-facing brand within the Terranxt ecosystem.",
+    whatIDid: "Designed the full site connecting brand identity to the pvNXT product system.",
+    whyItMatters: "Gave the EPC arm a professional web presence aligned with the broader product story.",
   },
 
   {
@@ -936,12 +981,13 @@ export const workItems: WorkItem[] = [
     tags: ["Website", "Enterprise", "Live"],
     filters: ["website"],
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://terranxt.com/", external: true },
-    secondaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4481&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
-      external: true,
-    },
+    projectPageHref: "/work/terranxt-website",
+    primaryAction: { label: "View Project", href: "/work/terranxt-website", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4481&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
+    liveLink: "https://terranxt.com/",
+    whatItIs: "Corporate site for Terranxt — a B2B solar automation company targeting enterprise and EPC clients.",
+    whatIDid: "Led design and positioning for the corporate web presence.",
+    whyItMatters: "Established credibility for an early-stage company competing with established solar brands.",
   },
 
   {
@@ -953,11 +999,12 @@ export const workItems: WorkItem[] = [
     tags: ["Website", "GIS", "Design"],
     filters: ["website"],
     status: "live",
-    primaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4478&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
-      external: true,
-    },
+    projectPageHref: "/work/suhora-website",
+    primaryAction: { label: "View Project", href: "/work/suhora-website", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4478&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
+    whatItIs: "Website for Suhora — a GIS and geospatial data company working with government and enterprise.",
+    whatIDid: "Designed the core marketing site and service pages.",
+    whyItMatters: "Positioned a technical GIS company as accessible and enterprise-ready.",
   },
 
   {
@@ -969,12 +1016,13 @@ export const workItems: WorkItem[] = [
     tags: ["Website", "Media", "Live"],
     filters: ["website"],
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://srmfilms.in/", external: true },
-    secondaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4479&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
-      external: true,
-    },
+    projectPageHref: "/work/srm-films",
+    primaryAction: { label: "View Project", href: "/work/srm-films", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4479&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
+    liveLink: "https://srmfilms.in/",
+    whatItIs: "Website for SRM Films — a production house specialising in ad films and short-form content.",
+    whatIDid: "Designed the full website, portfolio layout, and brand language.",
+    whyItMatters: "Clean, visual-first site that lets the work speak. No clutter.",
   },
 
   {
@@ -986,15 +1034,16 @@ export const workItems: WorkItem[] = [
     tags: ["Website", "Automotive", "Live"],
     filters: ["website"],
     status: "live",
-    primaryAction: { label: "Live Site", href: "https://dgcarstudio.com/", external: true },
-    secondaryAction: {
-      label: "Design",
-      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4476&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
-      external: true,
-    },
+    projectPageHref: "/work/dg-car-studio",
+    primaryAction: { label: "View Project", href: "/work/dg-car-studio", isRoute: true },
+    figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4476&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
+    liveLink: "https://dgcarstudio.com/",
+    whatItIs: "Website for DG Car Studio covering repair, paint protection, and pre-owned car sales.",
+    whatIDid: "Designed the full site — service pages, image-forward layouts, and mobile-friendly structure.",
+    whyItMatters: "Helped a local business build trust online with a clean, professional presence.",
   },
 
-  // ── WEB APP FILTER EXTRAS ─────────────────────────────────────────────────
+  // ── WEB APP FILTER EXTRAS ──────────────────────────────────────────────────
 
   {
     slug: "pvnxt-connect-web",
@@ -1006,7 +1055,12 @@ export const workItems: WorkItem[] = [
     filters: ["web-app"],
     status: "live",
     pvnxtEcosystem: true,
-    primaryAction: { label: "Live Portal", href: "https://consumer.pvnxt.com/", external: true },
+    projectPageHref: "/work/pvnxt-connect-web",
+    primaryAction: { label: "View Project", href: "/work/pvnxt-connect-web", isRoute: true },
+    liveLink: "https://consumer.pvnxt.com/",
+    whatItIs: "Consumer-facing web portal for solar cost estimation, quote tracking, and installation progress.",
+    whatIDid: "Designed the full consumer portal — estimation flow, quote views, and installation tracker.",
+    whyItMatters: "Puts consumers in control without calls or WhatsApp. Direct, self-serve lead capture.",
   },
 
   {
@@ -1019,7 +1073,12 @@ export const workItems: WorkItem[] = [
     filters: ["web-app"],
     status: "live",
     pvnxtEcosystem: true,
-    primaryAction: { label: "Live Portal", href: "https://epc.pvnxt.com/", external: true },
+    projectPageHref: "/work/pvnxt-studio",
+    primaryAction: { label: "View Project", href: "/work/pvnxt-studio", isRoute: true },
+    liveLink: "https://epc.pvnxt.com/",
+    whatItIs: "EPC-facing portal for rooftop analysis, system layout, proposal generation, and project management.",
+    whatIDid: "Designed all EPC workflows — CAD-like layout tools, proposal builder, and project tracker.",
+    whyItMatters: "Reduced 2–3 month project cycles. EPCs go from site to proposal inside the same tool.",
   },
 
   {
@@ -1032,7 +1091,12 @@ export const workItems: WorkItem[] = [
     filters: ["web-app"],
     status: "live",
     pvnxtEcosystem: true,
-    primaryAction: { label: "Live Portal", href: "https://installer.pvnxt.com/", external: true },
+    projectPageHref: "/work/pvnxt-go-web",
+    primaryAction: { label: "View Project", href: "/work/pvnxt-go-web", isRoute: true },
+    liveLink: "https://installer.pvnxt.com/",
+    whatItIs: "Installer-facing portal for task management, site proof uploads, and real-time execution tracking.",
+    whatIDid: "Designed the installer workflow — task list, photo proof, issue logging, and status updates.",
+    whyItMatters: "Eliminated phone-tag between EPCs and installers. Everything tracked in one view.",
   },
 
   {
@@ -1045,10 +1109,15 @@ export const workItems: WorkItem[] = [
     filters: ["web-app"],
     status: "internal",
     pvnxtEcosystem: true,
-    primaryAction: { label: "Live Portal", href: "https://atlas.pvnxt.com/", external: true },
+    projectPageHref: "/work/pvnxt-atlas",
+    primaryAction: { label: "View Project", href: "/work/pvnxt-atlas", isRoute: true },
+    statusLabel: "In Use Internally",
+    whatItIs: "Internal GIS quality assurance tool for reviewing, correcting, and approving map data.",
+    whatIDid: "Designed the full QA interface — map canvas, review workflow, and approval states.",
+    whyItMatters: "Brought map QA in-house. Faster turnarounds, fewer errors, less dependency on third-party tools.",
   },
 
-  // ── MOBILE APP FILTER EXTRAS ──────────────────────────────────────────────
+  // ── MOBILE APP FILTER EXTRAS ───────────────────────────────────────────────
 
   {
     slug: "pvnxt-connect-mobile",
@@ -1060,11 +1129,12 @@ export const workItems: WorkItem[] = [
     filters: ["mobile-app"],
     status: "live",
     pvnxtEcosystem: true,
-    primaryAction: {
-      label: "App Link",
-      href: "https://play.google.com/store/apps/details?id=com.PvNXT&pcampaignid=web_share",
-      external: true,
-    },
+    projectPageHref: "/work/pvnxt-connect-mobile",
+    primaryAction: { label: "View Project", href: "/work/pvnxt-connect-mobile", isRoute: true },
+    appLink: "https://play.google.com/store/apps/details?id=com.PvNXT&pcampaignid=web_share",
+    whatItIs: "Consumer mobile app for solar exploration — cost estimator, ROI calculator, quote flow, live tracker.",
+    whatIDid: "Designed all screens — onboarding, estimation, quote request, and installation tracking.",
+    whyItMatters: "Consumers manage their solar journey without a single call. High-quality verified leads to EPCs.",
   },
 
   {
@@ -1077,7 +1147,78 @@ export const workItems: WorkItem[] = [
     filters: ["mobile-app"],
     status: "review",
     pvnxtEcosystem: true,
-    statusLabel: "Review Mode",
+    projectPageHref: "/work/pvnxt-go-mobile",
+    primaryAction: { label: "View Project", href: "/work/pvnxt-go-mobile", isRoute: true },
+    statusLabel: "In Review",
+    whatItIs: "Mobile app for installers to receive tasks, upload proof, and log progress from the field.",
+    whatIDid: "Designed mobile-first installer UX — notifications, task flow, photo uploads, site logging.",
+    whyItMatters: "Gives installers a real tool instead of WhatsApp and calls. Keeps EPCs updated in real time.",
+  },
+
+  // ── PPT/PDF FILTER ─────────────────────────────────────────────────────────
+
+  {
+    slug: "dms-property-ppt",
+    name: "DMS Property Showcase",
+    company: "Dreamz · Real Estate",
+    tagline: "Property deck for visual sales conversations.",
+    cover: null,
+    tags: ["PPT/PDF", "Real Estate", "Sales"],
+    filters: ["ppt-pdf"],
+    status: "live",
+    projectPageHref: "/work/dms-property-ppt",
+    primaryAction: { label: "View Project", href: "/work/dms-property-ppt", isRoute: true },
+    whatItIs: "Property showcase presentation deck designed for in-person sales and investor conversations.",
+    whatIDid: "Designed the full deck — layout, visual hierarchy, property renders, and data storytelling.",
+    whyItMatters: "Replaced printed brochures with a polished, slide-ready deck that works in any meeting.",
+  },
+
+  {
+    slug: "terranxt-pitch-ppt",
+    name: "Terranxt Pitch PPT",
+    company: "Terranxt · Fundraising",
+    tagline: "Pitch deck for product and business storytelling.",
+    cover: null,
+    tags: ["PPT/PDF", "Pitch Deck", "Startup"],
+    filters: ["ppt-pdf"],
+    status: "live",
+    projectPageHref: "/work/terranxt-pitch-ppt",
+    primaryAction: { label: "View Project", href: "/work/terranxt-pitch-ppt", isRoute: true },
+    whatItIs: "Investor pitch deck used to present Terranxt's product, market, and business case.",
+    whatIDid: "Designed the complete deck — narrative arc, data visualisation, and slide templates.",
+    whyItMatters: "Used in real investor meetings. Helped secure early conversations and accelerator entry.",
+  },
+
+  {
+    slug: "terranxt-flyer",
+    name: "Terranxt Flyer",
+    company: "Terranxt · Collateral",
+    tagline: "Quick brand collateral for fast communication.",
+    cover: null,
+    tags: ["PPT/PDF", "Collateral", "Brand"],
+    filters: ["ppt-pdf"],
+    status: "live",
+    projectPageHref: "/work/terranxt-flyer",
+    primaryAction: { label: "View Project", href: "/work/terranxt-flyer", isRoute: true },
+    whatItIs: "Single-page brand flyer for Terranxt used at events, booths, and investor hand-outs.",
+    whatIDid: "Designed layout, messaging, and visual treatment for quick scanning and brand recall.",
+    whyItMatters: "Consistently used at every IIT Delhi FITT booth since 2022.",
+  },
+
+  {
+    slug: "proposal-design",
+    name: "Proposal Design",
+    company: "Terranxt · Sales",
+    tagline: "Proposal document built for clarity and trust.",
+    cover: epcProposal,
+    tags: ["PPT/PDF", "Proposal", "Enterprise"],
+    filters: ["ppt-pdf"],
+    status: "live",
+    projectPageHref: "/work/proposal-design",
+    primaryAction: { label: "View Project", href: "/work/proposal-design", isRoute: true },
+    whatItIs: "Solar project proposal document template for EPC organisations to send to clients.",
+    whatIDid: "Designed the full proposal template — layout, data tables, system diagrams, and cover design.",
+    whyItMatters: "Replaced ad-hoc Word docs. EPCs generate proposals directly from pvNXT Studio.",
   },
 ];
 
@@ -1125,3 +1266,4 @@ export const archiveItems: ArchiveItem[] = [
     tags: ["Website", "Manufacturing"],
   },
 ];
+

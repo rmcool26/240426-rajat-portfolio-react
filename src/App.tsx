@@ -7,8 +7,8 @@ import { SiteGuards } from "@/components/portfolio/SiteGuards";
 import { MobileRecruiterBar } from "@/components/portfolio/MobileRecruiterBar";
 import Index from "./pages/Index.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
+import WorkDetail from "./pages/WorkDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import TerranxtCaseStudy from "./components/portfolio/CaseStudy/CaseStudyPvNXT.tsx";
 import CaseStudyPvNXT from "./components/portfolio/CaseStudy/CaseStudyPvNXT.tsx";
 
 const queryClient = new QueryClient();
@@ -24,7 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/case/terranxt" element={<CaseStudyPvNXT />} />
-            {/* <Route path="/case/terranxt" element={<CaseStudy />} /> */}
+            <Route path="/work/:slug" element={<WorkDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
