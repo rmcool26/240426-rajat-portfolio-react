@@ -30,7 +30,7 @@ export const FeaturedWork = () => {
         <WorkGrid />
 
         {/* ── Earlier work archive (text-only, visually secondary) ── */}
-        <EarlierWork />
+        {/* <EarlierWork /> */}
       </div>
     </section>
   );

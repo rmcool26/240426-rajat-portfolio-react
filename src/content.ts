@@ -1,4 +1,4 @@
-// ============================================================
+﻿// ============================================================
 // 📝 EDIT THIS FILE TO UPDATE YOUR PORTFOLIO
 // All text, links, and project data live here.
 // Images live in src/assets/ — replace files with same names to swap.
@@ -24,6 +24,25 @@ import scadaAlert from "@/assets/projects/rmcool26-pvNXT-sacada-alert.svg";     
 import sarCart from "@/assets/projects/rmcool26-spade.svg";                            // card — SVG
 import sarCartDetail from "@/assets/projects/rmcool26-sar-cart.png";                   // detail — PNG render
 import fieldApp from "@/assets/projects/rmcool26-pvNXT-epc-fieldapp.svg";
+
+import arthaCard from "@/assets/projects/arthanxt-website-card-rajat-mishra.svg";
+import arthaDetail from "@/assets/projects/arthanxt-website-card-rajat-mishra.svg";
+import agCard from "@/assets/projects/astongreen-website-card-rajat-mishra.svg";
+import agDetail from "@/assets/projects/astongreen-website-card-rajat-mishra.svg";
+import iideCard from "@/assets/projects/iide-website-card-rajat-mishra.svg";
+import iideDetail from "@/assets/projects/iide-website-card-rajat-mishra.svg";
+import comfortCard from "@/assets/projects/operation-website-card-rajat-mishra.svg";
+import comfortDetail from "@/assets/projects/operation-website-card-rajat-mishra.svg";
+import dgcarCard from "@/assets/projects/dgcarstudio-website-card-rajat-mishra.svg";
+import dgcarDetail from "@/assets/projects/dgcarstudio-website-card-rajat-mishra.svg";
+import pvnxtCard from "@/assets/projects/pvnxt-website-card-rajat-mishra.svg";
+import pvnxtDetail from "@/assets/projects/pvnxt-website-card-rajat-mishra.svg";
+import terranxtCard from "@/assets/projects/terranxt-website-card-rajat-mishra.svg";
+import terranxtDetail from "@/assets/projects/terranxt-website-card-rajat-mishra.svg";
+import srmCard from "@/assets/projects/srm-website-card-rajat-mishra.svg";
+import srmDetail from "@/assets/projects/srm-website-card-rajat-mishra.svg";
+import rettagioCard from "@/assets/projects/rettagio-website-card-rajat-mishra.svg";
+import rettagioDetail from "@/assets/projects/rettagio-website-card-rajat-mishra.svg";
 
 export const content = {
   meta: {
@@ -791,7 +810,7 @@ export const workItems: WorkItem[] = [
     company: "Terranxt · 2022 — Now",
     tagline: "3 portals. 2 apps. One solar workflow.",
     cover: pvnxtSuite,
-    detailVisual: pvnxtSuiteFull,   // wider full-suite view vs tight card crop
+    detailVisual: null,
     tags: ["Web App", "Case Study", "Live"],
     filters: ["web-app"],
     showInAll: true,
@@ -811,7 +830,7 @@ export const workItems: WorkItem[] = [
     company: "Terranxt · In Progress",
     tagline: "Monitoring, alerts, and work orders in one view.",
     cover: scadaAlert,
-    detailVisual: scada,             // full SCADA view vs alert-focused card crop
+    detailVisual: null,          // full SCADA view vs alert-focused card crop
     tags: ["Web App", "Enterprise", "WIP"],
     filters: ["web-app"],
     showInAll: true,
@@ -833,7 +852,7 @@ export const workItems: WorkItem[] = [
     company: "Suhora · 2023",
     tagline: "Satellite imagery buying, shortened from weeks to days.",
     cover: sarCart,
-    detailVisual: sarCartDetail,     // PNG render vs SVG card
+    detailVisual: null,
     tags: ["Web App", "GIS", "Live"],
     filters: ["web-app"],
     showInAll: true,
@@ -852,8 +871,8 @@ export const workItems: WorkItem[] = [
     name: "IIDE",
     company: "IIDE · 2021",
     tagline: "Lead-page redesigns that improved yearly conversions.",
-    cover: iideCourse,
-    detailVisual: iideCourseDetail,  // PNG version vs SVG card
+    cover: iideCard,
+    detailVisual: null,
     tags: ["Website", "CRO", "Live"],
     filters: ["website"],
     showInAll: true,
@@ -876,7 +895,8 @@ export const workItems: WorkItem[] = [
     name: "Operation Comfort",
     company: "Independent · Redesign",
     tagline: "Assessment redesign with cleaner UX and sharper decisions.",
-    cover: null,
+    cover: comfortCard,
+    detailVisual: null,
     tags: ["Website", "Redesign", "Assessment"],
     filters: ["website"],
     showInAll: true,
@@ -894,9 +914,10 @@ export const workItems: WorkItem[] = [
   {
     slug: "arthanxt",
     name: "ArthaNXT",
-    company: "ArthaNXT · Website",
+    company: "ArthaNXT · Investment",
     tagline: "Solar investment website built from scratch.",
-    cover: null,
+    cover: arthaCard,
+    detailVisual: null,
     tags: ["Website", "Finance", "Scratch"],
     filters: ["website"],
     showInAll: true,
@@ -913,9 +934,10 @@ export const workItems: WorkItem[] = [
   {
     slug: "retaggio",
     name: "Retaggio Industries",
-    company: "Dreamz · Multi-industry",
-    tagline: "Corporate site for a listed jewellery manufacturer.",
-    cover: rettagio,
+    company: "Dreamz · Jewellery Manufacturer",
+    tagline: "Designed and shipped a website for a listed company.",
+    cover: rettagioCard,
+    detailVisual: null,
     tags: ["Website", "Manufacturing", "Live"],
     filters: ["website"],
     showInAll: true,
@@ -935,7 +957,7 @@ export const workItems: WorkItem[] = [
     company: "Terranxt · Beta",
     tagline: "Field capture app for same-day design handoff.",
     cover: fieldApp,
-    detailVisual: epcStringing,      // physical site image vs app UI card
+    detailVisual: null,
     tags: ["Mobile App", "Field Ops", "Internal"],
     filters: ["mobile-app"],
     showInAll: true,
@@ -956,7 +978,8 @@ export const workItems: WorkItem[] = [
     name: "pvNXT",
     company: "Terranxt · Website",
     tagline: "Brand site for the full solar product ecosystem.",
-    cover: null,
+    cover: pvnxtCard,
+    detailVisual: null,
     tags: ["Website", "Solar", "Scratch"],
     filters: ["website"],
     status: "live",
@@ -973,9 +996,10 @@ export const workItems: WorkItem[] = [
   {
     slug: "astongreen",
     name: "AstonGreen",
-    company: "Terranxt · EPC Brand",
+    company: "Terranxt · Solar EPC",
     tagline: "EPC parent-brand site tied to real execution.",
-    cover: null,
+    cover: agCard,
+    detailVisual: null,
     tags: ["Website", "Solar", "Live"],
     filters: ["website"],
     status: "live",
@@ -994,7 +1018,8 @@ export const workItems: WorkItem[] = [
     name: "Terranxt",
     company: "Terranxt · Corporate",
     tagline: "Solar automation company site for enterprise positioning.",
-    cover: null,
+    cover: terranxtCard,
+    detailVisual: null,
     tags: ["Website", "Enterprise", "Live"],
     filters: ["website"],
     status: "live",
@@ -1007,12 +1032,13 @@ export const workItems: WorkItem[] = [
     whyItMatters: "Established credibility for an early-stage company competing with established solar brands.",
   },
 
-  {
+  /* {
     slug: "suhora-website",
     name: "Suhora",
     company: "Suhora · GIS",
     tagline: "GIS company site focused on spatial data services.",
-    cover: null,
+    cover: iideCard,
+    detailVisual: null,
     tags: ["Website", "GIS", "Design"],
     filters: ["website"],
     status: "live",
@@ -1022,14 +1048,15 @@ export const workItems: WorkItem[] = [
     whatItIs: "Website for Suhora — a GIS and geospatial data company working with government and enterprise.",
     whatIDid: "Designed the core marketing site and service pages.",
     whyItMatters: "Positioned a technical GIS company as accessible and enterprise-ready.",
-  },
+  }, */
 
   {
     slug: "srm-films",
     name: "SRM Films",
     company: "Dreamz · Media",
     tagline: "Production house site for ads and short films.",
-    cover: null,
+    cover: srmCard,
+    detailVisual: null,
     tags: ["Website", "Media", "Live"],
     filters: ["website"],
     status: "live",
@@ -1047,7 +1074,8 @@ export const workItems: WorkItem[] = [
     name: "DG Car Studio",
     company: "Dreamz · Automotive",
     tagline: "Automotive services site for repair, paint, and sales.",
-    cover: null,
+    cover: dgcarCard,
+    detailVisual: null,
     tags: ["Website", "Automotive", "Live"],
     filters: ["website"],
     status: "live",
@@ -1067,7 +1095,8 @@ export const workItems: WorkItem[] = [
     name: "pvNXT Connect (Web)",
     company: "Terranxt · Consumer Portal",
     tagline: "Consumer portal for cost, tracking, and solar decisions.",
-    cover: null,
+    cover: iideCard,
+    detailVisual: null,
     tags: ["Web App", "Consumer", "Live"],
     filters: ["web-app"],
     status: "live",
@@ -1085,7 +1114,8 @@ export const workItems: WorkItem[] = [
     name: "pvNXT Studio (Web)",
     company: "Terranxt · EPC Portal",
     tagline: "EPC portal for layouts, analysis, and proposals.",
-    cover: null,
+    cover: iideCard,
+    detailVisual: null,
     tags: ["Web App", "EPC", "Live"],
     filters: ["web-app"],
     status: "live",
@@ -1103,7 +1133,8 @@ export const workItems: WorkItem[] = [
     name: "pvNXT Go (Web)",
     company: "Terranxt · Installer Portal",
     tagline: "Installer portal for tasks, proof, and live updates.",
-    cover: null,
+    cover: iideCard,
+    detailVisual: null,
     tags: ["Web App", "Installer", "Live"],
     filters: ["web-app"],
     status: "live",
@@ -1121,7 +1152,8 @@ export const workItems: WorkItem[] = [
     name: "pvNXT Atlas",
     company: "Terranxt · GIS Tool",
     tagline: "GIS QA tool for map correction and approval.",
-    cover: null,
+    cover: iideCard,
+    detailVisual: null,
     tags: ["Web App", "GIS", "Internal"],
     filters: ["web-app"],
     status: "internal",
@@ -1141,8 +1173,8 @@ export const workItems: WorkItem[] = [
     name: "pvNXT Connect (Mobile)",
     company: "Terranxt · Consumer App",
     tagline: "Consumer app for explore, estimate, and track.",
-    cover: consumerMobile,
-    detailVisual: consumerAll,       // all consumer screens vs single mobile card
+    cover: consumerAll,
+    detailVisual: null,
     tags: ["Mobile App", "Consumer", "Live"],
     filters: ["mobile-app"],
     status: "live",
@@ -1160,7 +1192,8 @@ export const workItems: WorkItem[] = [
     name: "pvNXT Go (Mobile)",
     company: "Terranxt · Installer App",
     tagline: "Installer app for real-time field updates.",
-    cover: null,
+    cover: installerAll,
+    detailVisual: null,
     tags: ["Mobile App", "Installer", "In Review"],
     filters: ["mobile-app"],
     status: "review",
@@ -1180,7 +1213,8 @@ export const workItems: WorkItem[] = [
     name: "DMS Property Showcase",
     company: "Dreamz · Real Estate",
     tagline: "Property deck for visual sales conversations.",
-    cover: null,
+    cover: iideCard,
+    detailVisual: null,
     tags: ["PPT/PDF", "Real Estate", "Sales"],
     filters: ["ppt-pdf"],
     status: "live",
@@ -1196,7 +1230,8 @@ export const workItems: WorkItem[] = [
     name: "Terranxt Pitch PPT",
     company: "Terranxt · Fundraising",
     tagline: "Pitch deck for product and business storytelling.",
-    cover: null,
+    cover: iideCard,
+    detailVisual: null,
     tags: ["PPT/PDF", "Pitch Deck", "Startup"],
     filters: ["ppt-pdf"],
     status: "live",
@@ -1212,7 +1247,8 @@ export const workItems: WorkItem[] = [
     name: "Terranxt Flyer",
     company: "Terranxt · Collateral",
     tagline: "Quick brand collateral for fast communication.",
-    cover: null,
+    cover: iideCard,
+    detailVisual: null,
     tags: ["PPT/PDF", "Collateral", "Brand"],
     filters: ["ppt-pdf"],
     status: "live",
