@@ -12,12 +12,12 @@ export const EarlierWork = () => {
       className="mt-16 border-t border-border pt-10 md:mt-20 md:pt-12"
     >
       {/* Heading */}
-      <div className="mb-6 flex items-baseline gap-3">
+      <div className="mb-6 flex flex-wrap items-baseline gap-3">
         <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
           Earlier Work
         </p>
         <span className="text-xs text-muted-foreground/50">
-          — 2016 – 2019, client websites shipped at Dreamz Merchandising Solutions
+          — Older projects. Still shipped.
         </span>
       </div>
 

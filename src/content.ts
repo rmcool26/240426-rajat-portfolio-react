@@ -706,26 +706,38 @@ export type Project = (typeof content.projects)[number];
 export type FeaturedProject = typeof content.featured.hero;
 export type CaseStudyItem = (typeof content.caseStudies)[number];
 
+
 // ============================================================
 // 🗂️ UNIFIED WORK GRID — content for the redesigned #work section
-// Edit workItems to update the main 8-card grid.
-// Edit archiveItems to update the Earlier Work text block.
+// workItems: 8 shown in "All" (showInAll: true) + extras per filter tab
+// archiveItems: text-only Earlier Work block
 // ============================================================
 
 export type FilterKey = "all" | "website" | "web-app" | "mobile-app";
+
+export type WorkAction = {
+  label: string;
+  href: string;
+  external?: true;        // opens in new tab
+  isRoute?: true;         // internal react-router Link (e.g. /case/terranxt)
+};
 
 export type WorkItem = {
   slug: string;
   name: string;
   company: string;
   tagline: string;
-  cover: string | null; // null → neutral placeholder rendered inline
+  cover: string | null;   // null → neutral placeholder (initials on bg-muted)
   tags: string[];
-  filters: FilterKey[];
-  status: "live" | "wip" | "internal";
+  filters: FilterKey[];   // which filter tab(s) this item belongs to
+  showInAll?: true;       // if true, card appears in the default "All" view (max 8)
+  status: "live" | "wip" | "internal" | "review";
   pvnxtEcosystem?: true;
-  cta?: { label: string; href: string };
-  ctaExternal?: true; // true → open in new tab
+  primaryAction?: WorkAction;    // main CTA button
+  secondaryAction?: WorkAction;  // secondary CTA button (lighter style)
+  statusLabel?: string;          // text-only pill: "In Use Internally", "Redesign in progress"
+  resourceLinks?: WorkAction[];  // stored in data only, not rendered in the card
+  projectPageHref?: string;      // future internal page route — do NOT render a button until the page exists
 };
 
 export type ArchiveItem = {
@@ -737,95 +749,335 @@ export type ArchiveItem = {
 };
 
 export const workItems: WorkItem[] = [
+
+  // ── ALL VIEW (showInAll: true) — exactly 8 cards ────────────────────────
+
   {
     slug: "pvnxt-suite",
     name: "pvNXT Solar Suite",
     company: "Terranxt · 2022 — Now",
-    tagline: "From spreadsheets to a full solar OS — EPC, Consumer, Installer.",
+    tagline: "3 portals. 2 apps. One solar workflow.",
     cover: pvnxtSuite,
-    tags: ["Enterprise SaaS", "Design System", "3 Portals"],
-    filters: ["all", "web-app"],
+    tags: ["Web App", "Case Study", "Live"],
+    filters: ["web-app"],
+    showInAll: true,
     status: "live",
     pvnxtEcosystem: true,
-    cta: { label: "See case study", href: "/case/terranxt" },
+    primaryAction: { label: "Case Study", href: "/case/terranxt", isRoute: true },
   },
+
   {
     slug: "scada-monitoring",
     name: "SCADA Monitoring",
     company: "Terranxt · In Progress",
-    tagline: "One dashboard. Every plant. Every alert. Real-time O&M.",
+    tagline: "Monitoring, alerts, and work orders in one view.",
     cover: scadaAlert,
-    tags: ["O&M Dashboard", "Real-time", "Multi-role"],
-    filters: ["all", "web-app"],
+    tags: ["Web App", "Enterprise", "WIP"],
+    filters: ["web-app"],
+    showInAll: true,
     status: "wip",
     pvnxtEcosystem: true,
+    primaryAction: { label: "Live Product", href: "https://scada.pvnxt.com/", external: true },
+    statusLabel: "Redesign in progress",
   },
+
   {
     slug: "spade",
     name: "Spade",
     company: "Suhora · 2023",
-    tagline: "India's first self-serve satellite imagery marketplace.",
+    tagline: "Satellite imagery buying, shortened from weeks to days.",
     cover: sarCart,
-    tags: ["B2B", "Geo-Intelligence", "E-commerce"],
-    filters: ["all", "web-app"],
+    tags: ["Web App", "GIS", "Live"],
+    filters: ["web-app"],
+    showInAll: true,
     status: "live",
-    cta: { label: "Visit site", href: "https://spade.suhora.com" },
-    ctaExternal: true,
+    primaryAction: { label: "Live Site", href: "https://spade.suhora.com/", external: true },
   },
+
   {
     slug: "iide",
     name: "IIDE",
     company: "IIDE · 2021",
-    tagline: "+16% lead conversion via CRO and course page redesign.",
+    tagline: "Lead-page redesigns that improved yearly conversions.",
     cover: iideCourse,
-    tags: ["EdTech", "Redesign", "CRO"],
-    filters: ["all", "website"],
+    tags: ["Website", "CRO", "Live"],
+    filters: ["website"],
+    showInAll: true,
     status: "live",
-    cta: { label: "Visit site", href: "https://iide.co/bachelors-in-digital-business-program/" },
-    ctaExternal: true,
+    primaryAction: { label: "Live Site", href: "https://iide.co/bachelors-in-digital-business-program/", external: true },
+    secondaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4472&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4472&page-id=0%3A1&show-proto-sidebar=1",
+      external: true,
+    },
+    resourceLinks: [
+      { label: "IIDE Learn", href: "https://learn.iide.co/", external: true },
+      { label: "IIDE Careers", href: "https://careers.iide.co/", external: true },
+    ],
   },
+
   {
     slug: "operation-comfort",
     name: "Operation Comfort",
     company: "Independent · Redesign",
-    tagline: "Full website redesign and UX assessment for a comfort-focused brand.",
-    cover: null, // placeholder — real asset needed from Rajat
+    tagline: "Assessment redesign with cleaner UX and sharper decisions.",
+    cover: null, // placeholder — awaiting real cover from Rajat
     tags: ["Website", "Redesign", "Assessment"],
-    filters: ["all", "website"],
+    filters: ["website"],
+    showInAll: true,
     status: "live",
+    primaryAction: {
+      label: "Case Study",
+      href: "https://app.notion.com/p/rmcool26/190526-iQuinceSoft-Assessment-36851a6dbcd8806a8e20e87e70cdaf30",
+      external: true,
+    },
+    secondaryAction: { label: "Live Site", href: "https://operationcomfortcontrolllc.com/", external: true },
+    resourceLinks: [
+      {
+        label: "Design",
+        href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=2-2148&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=2%3A2148&page-id=0%3A1&show-proto-sidebar=1",
+        external: true,
+      },
+    ],
   },
+
   {
     slug: "arthanxt",
     name: "ArthaNXT",
     company: "ArthaNXT · Website",
-    tagline: "Clean, trust-building web presence for a fintech brand.",
-    cover: null, // placeholder — real asset needed from Rajat
-    tags: ["Website", "Fintech", "Branding"],
-    filters: ["all", "website"],
+    tagline: "Solar investment website built from scratch.",
+    cover: null, // placeholder — awaiting real cover from Rajat
+    tags: ["Website", "Finance", "Scratch"],
+    filters: ["website"],
+    showInAll: true,
     status: "live",
+    primaryAction: { label: "Live Site", href: "https://artha.pvnxt.com/", external: true },
+    secondaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-3152&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A3152&page-id=0%3A1&show-proto-sidebar=1",
+      external: true,
+    },
   },
+
   {
     slug: "retaggio",
     name: "Retaggio Industries",
     company: "Dreamz · Multi-industry",
-    tagline: "Fast, clean websites for manufacturing, SaaS, and consulting brands.",
+    tagline: "Corporate site for a listed jewellery manufacturer.",
     cover: rettagio,
-    tags: ["Web Design", "Branding", "Multi-industry"],
-    filters: ["all", "website"],
+    tags: ["Website", "Manufacturing", "Live"],
+    filters: ["website"],
+    showInAll: true,
     status: "live",
-    cta: { label: "Visit site", href: "https://www.retaggioindustries.com" },
-    ctaExternal: true,
+    primaryAction: { label: "Live Site", href: "https://retaggioindustries.com/", external: true },
+    secondaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4477&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1&show-proto-sidebar=1",
+      external: true,
+    },
   },
+
   {
     slug: "pvnxt-field-app",
     name: "pvNXT Field App",
     company: "Terranxt · Beta",
-    tagline: "Internal EPC field tool — site survey to design handoff in one visit.",
+    tagline: "Field capture app for same-day design handoff.",
     cover: fieldApp,
-    tags: ["Mobile App", "Field Ops", "Internal Tool"],
-    filters: ["all", "mobile-app"],
+    tags: ["Mobile App", "Field Ops", "Internal"],
+    filters: ["mobile-app"],
+    showInAll: true,
     status: "internal",
     pvnxtEcosystem: true,
+    statusLabel: "In Use Internally",
+  },
+
+  // ── WEBSITE FILTER EXTRAS ─────────────────────────────────────────────────
+
+  {
+    slug: "pvnxt-website",
+    name: "pvNXT",
+    company: "Terranxt · Website",
+    tagline: "Brand site for the full solar product ecosystem.",
+    cover: null,
+    tags: ["Website", "Solar", "Scratch"],
+    filters: ["website"],
+    status: "live",
+    primaryAction: { label: "Live Site", href: "https://pvnxt.com/", external: true },
+    secondaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-3030&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A3030&page-id=0%3A1&show-proto-sidebar=1",
+      external: true,
+    },
+  },
+
+  {
+    slug: "astongreen",
+    name: "AstonGreen",
+    company: "Terranxt · EPC Brand",
+    tagline: "EPC parent-brand site tied to real execution.",
+    cover: null,
+    tags: ["Website", "Solar", "Live"],
+    filters: ["website"],
+    status: "live",
+    primaryAction: { label: "Live Site", href: "https://astongreens.pvnxt.com/", external: true },
+    secondaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-308&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A308&page-id=0%3A1",
+      external: true,
+    },
+  },
+
+  {
+    slug: "terranxt-website",
+    name: "Terranxt",
+    company: "Terranxt · Corporate",
+    tagline: "Solar automation company site for enterprise positioning.",
+    cover: null,
+    tags: ["Website", "Enterprise", "Live"],
+    filters: ["website"],
+    status: "live",
+    primaryAction: { label: "Live Site", href: "https://terranxt.com/", external: true },
+    secondaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4481&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
+      external: true,
+    },
+  },
+
+  {
+    slug: "suhora-website",
+    name: "Suhora",
+    company: "Suhora · GIS",
+    tagline: "GIS company site focused on spatial data services.",
+    cover: null,
+    tags: ["Website", "GIS", "Design"],
+    filters: ["website"],
+    status: "live",
+    primaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4478&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
+      external: true,
+    },
+  },
+
+  {
+    slug: "srm-films",
+    name: "SRM Films",
+    company: "Dreamz · Media",
+    tagline: "Production house site for ads and short films.",
+    cover: null,
+    tags: ["Website", "Media", "Live"],
+    filters: ["website"],
+    status: "live",
+    primaryAction: { label: "Live Site", href: "https://srmfilms.in/", external: true },
+    secondaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4479&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
+      external: true,
+    },
+  },
+
+  {
+    slug: "dg-car-studio",
+    name: "DG Car Studio",
+    company: "Dreamz · Automotive",
+    tagline: "Automotive services site for repair, paint, and sales.",
+    cover: null,
+    tags: ["Website", "Automotive", "Live"],
+    filters: ["website"],
+    status: "live",
+    primaryAction: { label: "Live Site", href: "https://dgcarstudio.com/", external: true },
+    secondaryAction: {
+      label: "Design",
+      href: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4476&viewport=532%2C188%2C0.05&t=AzZZTqfBesB3eU6V-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=10%3A4476&page-id=0%3A1",
+      external: true,
+    },
+  },
+
+  // ── WEB APP FILTER EXTRAS ─────────────────────────────────────────────────
+
+  {
+    slug: "pvnxt-connect-web",
+    name: "pvNXT Connect (Web)",
+    company: "Terranxt · Consumer Portal",
+    tagline: "Consumer portal for cost, tracking, and solar decisions.",
+    cover: null,
+    tags: ["Web App", "Consumer", "Live"],
+    filters: ["web-app"],
+    status: "live",
+    pvnxtEcosystem: true,
+    primaryAction: { label: "Live Portal", href: "https://consumer.pvnxt.com/", external: true },
+  },
+
+  {
+    slug: "pvnxt-studio",
+    name: "pvNXT Studio (Web)",
+    company: "Terranxt · EPC Portal",
+    tagline: "EPC portal for layouts, analysis, and proposals.",
+    cover: null,
+    tags: ["Web App", "EPC", "Live"],
+    filters: ["web-app"],
+    status: "live",
+    pvnxtEcosystem: true,
+    primaryAction: { label: "Live Portal", href: "https://epc.pvnxt.com/", external: true },
+  },
+
+  {
+    slug: "pvnxt-go-web",
+    name: "pvNXT Go (Web)",
+    company: "Terranxt · Installer Portal",
+    tagline: "Installer portal for tasks, proof, and live updates.",
+    cover: null,
+    tags: ["Web App", "Installer", "Live"],
+    filters: ["web-app"],
+    status: "live",
+    pvnxtEcosystem: true,
+    primaryAction: { label: "Live Portal", href: "https://installer.pvnxt.com/", external: true },
+  },
+
+  {
+    slug: "pvnxt-atlas",
+    name: "pvNXT Atlas",
+    company: "Terranxt · GIS Tool",
+    tagline: "GIS QA tool for map correction and approval.",
+    cover: null,
+    tags: ["Web App", "GIS", "Internal"],
+    filters: ["web-app"],
+    status: "internal",
+    pvnxtEcosystem: true,
+    primaryAction: { label: "Live Portal", href: "https://atlas.pvnxt.com/", external: true },
+  },
+
+  // ── MOBILE APP FILTER EXTRAS ──────────────────────────────────────────────
+
+  {
+    slug: "pvnxt-connect-mobile",
+    name: "pvNXT Connect (Mobile)",
+    company: "Terranxt · Consumer App",
+    tagline: "Consumer app for explore, estimate, and track.",
+    cover: consumerMobile,
+    tags: ["Mobile App", "Consumer", "Live"],
+    filters: ["mobile-app"],
+    status: "live",
+    pvnxtEcosystem: true,
+    primaryAction: {
+      label: "App Link",
+      href: "https://play.google.com/store/apps/details?id=com.PvNXT&pcampaignid=web_share",
+      external: true,
+    },
+  },
+
+  {
+    slug: "pvnxt-go-mobile",
+    name: "pvNXT Go (Mobile)",
+    company: "Terranxt · Installer App",
+    tagline: "Installer app for real-time field updates.",
+    cover: null,
+    tags: ["Mobile App", "Installer", "In Review"],
+    filters: ["mobile-app"],
+    status: "review",
+    pvnxtEcosystem: true,
+    statusLabel: "Review Mode",
   },
 ];
 
