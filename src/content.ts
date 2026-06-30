@@ -780,6 +780,22 @@ export type WorkItem = {
   whatIDid?: string;
   whyItMatters?: string;
 
+  // ── New Layout Support ────────────────────────────────────
+  detailIntro?: string;
+  meta?: {
+    role?: string;
+    platform?: string;
+    scope?: string;
+    industry?: string;
+    users?: string;
+    impact?: string;
+  };
+  problem?: string;
+  myMove?: string;
+  result?: string;
+  designDecisions?: string[];
+  punchLine?: string;
+
   // ── Data-only links (not rendered on card) ─────────────────
   resourceLinks?: WorkAction[];
 };

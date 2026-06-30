@@ -89,6 +89,35 @@ const InfoBlock = ({ label, text }: { label: string; text: string }) => (
   </div>
 );
 
+// ── Story Card ──────────────────────────────────────────────────────────────────
+const StoryCard = ({ label, text, index }: { label: string; text: string; index: number }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    className="flex flex-col gap-3 rounded-2xl border border-border bg-card/50 p-6 transition-all hover:border-primary/30 hover:bg-card"
+  >
+    <div className="flex items-center gap-3">
+      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10 text-[10px] font-bold text-primary">
+        {index + 1}
+      </span>
+      <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
+        {label}
+      </p>
+    </div>
+    <p className="text-sm leading-relaxed text-foreground/80">{text}</p>
+  </motion.div>
+);
+
+// ── Meta Chip ───────────────────────────────────────────────────────────────────
+const MetaChip = ({ label, value }: { label: string; value: string }) => (
+  <div className="flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-[12px]">
+    <span className="text-muted-foreground/60">{label}:</span>
+    <span className="font-medium text-foreground/80">{value}</span>
+  </div>
+);
+
 // ─── Page ─────────────────────────────────────────────────────────────────────
 const WorkDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -136,12 +165,15 @@ const WorkDetail = () => {
   const isPrivate = item.status === "internal" || item.status === "review";
 
   // Resolve the visual for the detail page:
-  // If detailVisual is explicitly set → use it (different from card cover)
-  // If detailVisual is null (explicitly none) → use placeholder
-  // If detailVisual is undefined (not set) → fall back to cover
   const mainVisual = "detailVisual" in item
-    ? item.detailVisual    // explicitly set (may be different asset or null)
-    : item.cover;          // fallback to card cover
+    ? item.detailVisual
+    : item.cover;
+
+  // ── Fallbacks ────────────────────────────────────────────────────────────────
+  const detailIntro = item.detailIntro ?? item.tagline;
+  const problem = item.problem ?? item.whatItIs;
+  const myMove = item.myMove ?? item.whatIDid;
+  const result = item.result ?? item.whyItMatters;
 
   return (
     <div className="min-h-screen bg-background">
@@ -194,9 +226,21 @@ const WorkDetail = () => {
           <h1 className="mt-5 font-display text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
             {item.name}
           </h1>
-          <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-lg">
-            {item.tagline}
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
+            {detailIntro}
           </p>
+
+          {/* Metadata Chips */}
+          {item.meta && (
+            <div className="mt-6 flex flex-wrap gap-2">
+              {item.meta.role && <MetaChip label="Role" value={item.meta.role} />}
+              {item.meta.platform && <MetaChip label="Platform" value={item.meta.platform} />}
+              {item.meta.scope && <MetaChip label="Scope" value={item.meta.scope} />}
+              {item.meta.industry && <MetaChip label="Industry" value={item.meta.industry} />}
+              {item.meta.users && <MetaChip label="Users" value={item.meta.users} />}
+              {item.meta.impact && <MetaChip label="Impact" value={item.meta.impact} />}
+            </div>
+          )}
 
           {/* Tags */}
           <div className="mt-4 flex flex-wrap gap-2">
@@ -225,7 +269,7 @@ const WorkDetail = () => {
             <ZoomableImage
               src={mainVisual}
               alt={`${item.name} — main visual`}
-              className="aspect-[16/9] w-full"
+              className="aspect-[16/9] w-full rounded-2xl shadow-elegant"
             />
           ) : (
             <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl border border-border">
@@ -234,44 +278,74 @@ const WorkDetail = () => {
           )}
         </motion.div>
 
+        {/* ── Story Section (Three-Card Story) ── */}
+        {(problem || myMove || result) && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-16"
+          >
+            <div className="grid gap-6 sm:grid-cols-3">
+              {problem && <StoryCard index={0} label="Problem" text={problem} />}
+              {myMove && <StoryCard index={1} label="My Move" text={myMove} />}
+              {result && <StoryCard index={2} label="Result" text={result} />}
+            </div>
+          </motion.div>
+        )}
+
+        {/* ── Design Decisions ── */}
+        {item.designDecisions && item.designDecisions.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12 rounded-2xl border border-border bg-card/30 p-6 sm:p-8"
+          >
+            <h3 className="mb-4 font-display text-lg font-bold tracking-tight">
+              Design Decisions
+            </h3>
+            <ul className="space-y-3">
+              {item.designDecisions.map((decision, i) => (
+                <li key={i} className="flex gap-3 text-sm leading-relaxed text-foreground/80">
+                  <span className="shrink-0 text-primary">•</span>
+                  {decision}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+
         {/* ── Secondary images (zoomable, if any) ── */}
         {item.detailImages && item.detailImages.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mt-4 grid gap-4 sm:grid-cols-2"
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-12 grid gap-4 sm:grid-cols-2"
           >
             {item.detailImages.map((img, i) => (
               <ZoomableImage
                 key={i}
                 src={img}
                 alt={`${item.name} — view ${i + 2}`}
-                className="aspect-[4/3] w-full"
+                className="aspect-[4/3] w-full rounded-2xl shadow-elegant"
               />
             ))}
           </motion.div>
         )}
 
-        {/* ── Info sections ── */}
-        {(item.whatItIs || item.whatIDid || item.whyItMatters) && (
+        {/* ── Closing Punchline ── */}
+        {item.punchLine && (
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="mt-12 border-t border-border pt-10"
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-16 text-center"
           >
-            <div className="grid gap-8 sm:gap-10 md:grid-cols-3">
-              {item.whatItIs && (
-                <InfoBlock label="What it is" text={item.whatItIs} />
-              )}
-              {item.whatIDid && (
-                <InfoBlock label="What I did" text={item.whatIDid} />
-              )}
-              {item.whyItMatters && (
-                <InfoBlock label="Why it matters" text={item.whyItMatters} />
-              )}
-            </div>
+            <p className="text-xl font-display font-medium leading-relaxed text-foreground/90 italic">
+              "{item.punchLine}"
+            </p>
           </motion.div>
         )}
 
@@ -279,8 +353,8 @@ const WorkDetail = () => {
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 border-t border-border pt-8"
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-16 border-t border-border pt-8"
         >
           {hasLinks ? (
             <div className="flex flex-wrap gap-3">
@@ -334,7 +408,7 @@ const WorkDetail = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
           className="mt-14 sm:mt-16 border-t border-border pt-8"
         >
           <div className="flex items-center justify-between gap-3">
