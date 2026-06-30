@@ -36,11 +36,11 @@ import comfortDetail from "@/assets/projects/operation-website-detail-rajat-mish
 import dgcarCard from "@/assets/projects/dgcarstudio-website-card-rajat-mishra.svg";
 import dgcarDetail from "@/assets/projects/dgcarstudio-website-card-rajat-mishra.svg";
 import pvnxtCard from "@/assets/projects/pvnxt-website-card-rajat-mishra.svg";
-import pvnxtDetail from "@/assets/projects/pvnxt-website-card-rajat-mishra.svg";
+import pvnxtDetail from "@/assets/projects/pvnxt-website-detail-rajat-mishra.svg";
 import terranxtCard from "@/assets/projects/terranxt-website-card-rajat-mishra.svg";
-import terranxtDetail from "@/assets/projects/terranxt-website-card-rajat-mishra.svg";
+import terranxtDetail from "@/assets/projects/terranxt-website-detail-rajat-mishra.svg";
 import srmCard from "@/assets/projects/srm-website-card-rajat-mishra.svg";
-import srmDetail from "@/assets/projects/srm-website-card-rajat-mishra.svg";
+import srmDetail from "@/assets/projects/srm-website-detail-rajat-mishra.svg";
 import rettagioCard from "@/assets/projects/rettagio-website-card-rajat-mishra.svg";
 import rettagioDetail from "@/assets/projects/rettagio-website-detail-rajat-mishra.svg";
 
@@ -856,8 +856,26 @@ export const workItems: WorkItem[] = [
     primaryAction: { label: "View Project", href: "/work/scada-monitoring", isRoute: true },
     figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4480&page-id=0%3A1",
     liveLink: "https://scada.pvnxt.com/",
-    statusLabel: "Redesign in progress",
-    whatItIs: "Real-time O&M dashboard for multi-plant solar monitoring, alerts, and work order management.",
+      statusLabel: "Redesign in progress",
+      detailIntro: "A solar monitoring dashboard built to turn plant issues into assigned action.",
+      meta: {
+        role: "Product/UI UX Designer",
+        platform: "Web App",
+        scope: "Competitor Analysis + O&M Workflow UX",
+        industry: "Solar O&M / Monitoring",
+        users: "EPC Managers, Plant Owners, Field Techs, Admin/O&M Owners",
+        impact: "Live audit use + positive EPC feedback",
+      },
+      problem: "EPC managers, plant owners, field techs, and O&M owners were stuck with manual checks, scattered screenshots, delayed alerts, and unclear issue ownership.",
+      myMove: "I mapped user suffering, competitor gaps, role-based workflows, alerts, work orders, activity logs, and plant-level monitoring into one dashboard experience.",
+      result: "The product is used for audits and by Aston Greens EPC teams, with positive feedback and ongoing Figma updates handed to development.",
+      designDecisions: [
+        "Designed around real roles: EPC Manager, Plant Owner, Field Tech, and Admin/O&M Owner.",
+        "Connected alerts, inverter/string issues, assignments, and activity history in one flow.",
+        "Kept future mobile status out of the public story until screens are ready.",
+      ],
+      punchLine: "Big plants, fewer blind spots — SCADA makes every alert accountable.",
+      whatItIs: "Real-time O&M dashboard for multi-plant solar monitoring, alerts, and work order management.",
     whatIDid: "Designed the full dashboard — inverter/string-level monitoring, alert system, work orders, activity logs, and multi-role access.",
     whyItMatters: "O&M managers get complete plant visibility without manual check-ins or WhatsApp threads.",
   },
@@ -876,8 +894,26 @@ export const workItems: WorkItem[] = [
     projectPageHref: "/work/spade",
     primaryAction: { label: "View Project", href: "/work/spade", isRoute: true },
     figmaLink: "https://www.figma.com/proto/Bt1zGIq7GrMNDkr5pSXkzP/rmcool26-Workspace?node-id=10-4478&page-id=0%3A1",
-    liveLink: "https://spade.suhora.com/",
-    whatItIs: "India's first self-serve satellite imagery marketplace — browse, preview, order, download.",
+      liveLink: "https://spade.suhora.com/",
+      detailIntro: "A GIS marketplace that shortened satellite imagery buying from weeks to days.",
+      meta: {
+        role: "Product/UI UX Designer",
+        platform: "Web App",
+        scope: "Marketplace UX + Procurement Flow",
+        industry: "GIS / Satellite Imagery",
+        users: "Government Agencies, GIS Teams, Enterprise Buyers",
+        impact: "2–3 weeks reduced to 2–3 days",
+      },
+      problem: "Satellite imagery procurement was slow, manual, and hard to browse. Users had no simple India-first platform to preview, request, purchase, and download imagery.",
+      myMove: "I designed the marketplace flow for archive imagery, fresh imagery requests, preview, purchase, and download so buyers could move faster with less manual coordination.",
+      result: "Archive imagery became easier to access immediately, while fresh imagery buying could move from 2–3 weeks to roughly 2–3 days.",
+      designDecisions: [
+        "Separated archive imagery and fresh imagery flows for faster user decisions.",
+        "Designed a self-serve buying journey for specialized GIS users.",
+        "Reduced procurement friction by clarifying preview, order, and download steps.",
+      ],
+      punchLine: "Imagery, without the waiting game — Spade makes space searchable.",
+      whatItIs: "India's first self-serve satellite imagery marketplace — browse, preview, order, download.",
     whatIDid: "Designed end-to-end procurement flow for govt and enterprise buyers. Replaced a 3-week manual process.",
     whyItMatters: "Procurement dropped from 3 weeks to 2–3 days. Set a new standard for the industry.",
   },
@@ -888,7 +924,7 @@ export const workItems: WorkItem[] = [
       company: "IIDE · 2021",
       tagline: "Lead-page redesigns that improved yearly conversions.",
       cover: iideCard,
-      detailVisual: null,
+      detailVisual: iideDetail,
       tags: ["Website", "CRO", "Live"],
       filters: ["website"],
       showInAll: true,
@@ -1143,7 +1179,7 @@ export const workItems: WorkItem[] = [
       company: "Terranxt · Corporate",
       tagline: "Solar automation company site for enterprise positioning.",
       cover: terranxtCard,
-      detailVisual: null,
+      detailVisual: terranxtDetail,
       tags: ["Website", "Enterprise", "Live"],
       filters: ["website"],
       status: "live",
@@ -1198,7 +1234,7 @@ export const workItems: WorkItem[] = [
       company: "Dreamz · Media",
       tagline: "Production house site for ads and short films.",
       cover: srmCard,
-      detailVisual: null,
+      detailVisual: srmDetail,
       tags: ["Website", "Media", "Live"],
       filters: ["website"],
       status: "live",
@@ -1229,7 +1265,7 @@ export const workItems: WorkItem[] = [
       whyItMatters: "Clean, visual-first site that lets the work speak. No clutter.",
     },
 
-  {
+  /* {
     slug: "dg-car-studio",
     name: "DG Car Studio",
     company: "Dreamz · Automotive",
@@ -1246,7 +1282,7 @@ export const workItems: WorkItem[] = [
     whatItIs: "Website for DG Car Studio covering repair, paint protection, and pre-owned car sales.",
     whatIDid: "Designed the full site — service pages, image-forward layouts, and mobile-friendly structure.",
     whyItMatters: "Helped a local business build trust online with a clean, professional presence.",
-  },
+  }, */
 
   // ── WEB APP FILTER EXTRAS ──────────────────────────────────────────────────
 
@@ -1263,8 +1299,27 @@ export const workItems: WorkItem[] = [
     pvnxtEcosystem: true,
     projectPageHref: "/work/pvnxt-connect-web",
     primaryAction: { label: "View Project", href: "/work/pvnxt-connect-web", isRoute: true },
-    liveLink: "https://consumer.pvnxt.com/",
-    whatItIs: "Consumer-facing web portal for solar cost estimation, quote tracking, and installation progress.",
+      liveLink: "https://consumer.pvnxt.com/",
+      figmaLink: "https://www.figma.com/proto/q1pjkV1vbWbj0Bqd2VdcBj/-91-9719499553---rmcool26-webapp-portfolio?node-id=12-165&viewport=551%2C291%2C0.05&t=BL9aZlR0EDSjPHUC-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=12%3A165&show-proto-sidebar=1&page-id=0%3A1",
+      detailIntro: "A homeowner solar experience that makes feasibility, cost, status, and monitoring easy to follow.",
+      meta: {
+        role: "Product/UI UX Designer",
+        platform: "Web + App",
+        scope: "Consumer UX + Solar Journey Design",
+        industry: "Solar Tech",
+        users: "Homeowners, Solar Customers, EPC Teams",
+        impact: "4 customers used it + 2 active journeys",
+      },
+      problem: "Homeowners interested in solar had to depend on calls, PDF quotes, and repeated follow-ups to understand cost, feasibility, and order progress.",
+      myMove: "I designed a simple consumer flow for feasibility, ROI, order tracking, installation visibility, and plant monitoring without EPC-heavy jargon.",
+      result: "The app has been used by 4 customers, with 2 active customer journeys currently running and easier status tracking for users.",
+      designDecisions: [
+        "Kept language homeowner-friendly instead of EPC-heavy.",
+        "Created simple entry points for feasibility, ROI, tracking, and monitoring.",
+        "Designed Connect as the bridge between users and EPC execution teams.",
+      ],
+      punchLine: "Solar, minus the jargon — Connect keeps homeowners in the loop.",
+      whatItIs: "Consumer-facing web portal for solar cost estimation, quote tracking, and installation progress.",
     whatIDid: "Designed the full consumer portal — estimation flow, quote views, and installation tracker.",
     whyItMatters: "Puts consumers in control without calls or WhatsApp. Direct, self-serve lead capture.",
   },
@@ -1282,8 +1337,27 @@ export const workItems: WorkItem[] = [
     pvnxtEcosystem: true,
     projectPageHref: "/work/pvnxt-studio",
     primaryAction: { label: "View Project", href: "/work/pvnxt-studio", isRoute: true },
-    liveLink: "https://epc.pvnxt.com/",
-    whatItIs: "EPC-facing portal for rooftop analysis, system layout, proposal generation, and project management.",
+      liveLink: "https://epc.pvnxt.com/",
+      figmaLink: "https://www.figma.com/proto/q1pjkV1vbWbj0Bqd2VdcBj/-91-9719499553---rmcool26-webapp-portfolio?node-id=22-161&viewport=551%2C291%2C0.05&t=BL9aZlR0EDSjPHUC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=22%3A161&show-proto-sidebar=1&page-id=0%3A1",
+      detailIntro: "An EPC workspace for creating solar layouts, reports, BOQs, and proposal-ready designs.",
+      meta: {
+        role: "Product/UI UX Designer",
+        platform: "Web App",
+        scope: "EPC Workflow + Design Tool UX",
+        industry: "Solar EPC",
+        users: "EPC Designers, Sales Teams, Solar Businesses",
+        impact: "Used by 4 EPCs + active iteration",
+      },
+      problem: "EPC teams were moving between tools for layouts, shadow checks, proposals, reports, and BOQs, making the project flow slow and scattered.",
+      myMove: "I shaped Studio as the creation workspace where EPC teams can design, analyze, estimate, and prepare project outputs from one place.",
+      result: "The portal is used by 4 EPCs, with positive feedback and ongoing feature updates handled through Figma-to-dev handoff.",
+      designDecisions: [
+        "Positioned Studio as the creation layer of the pvNXT ecosystem.",
+        "Grouped design, analysis, reports, and BOQ actions into one workspace.",
+        "Kept the flow flexible so new EPC requirements can be updated and handed off quickly.",
+      ],
+      punchLine: "From rooftop to proposal — Studio makes solar buildable.",
+      whatItIs: "EPC-facing portal for rooftop analysis, system layout, proposal generation, and project management.",
     whatIDid: "Designed all EPC workflows — CAD-like layout tools, proposal builder, and project tracker.",
     whyItMatters: "Reduced 2–3 month project cycles. EPCs go from site to proposal inside the same tool.",
   },
@@ -1301,13 +1375,32 @@ export const workItems: WorkItem[] = [
     pvnxtEcosystem: true,
     projectPageHref: "/work/pvnxt-go-web",
     primaryAction: { label: "View Project", href: "/work/pvnxt-go-web", isRoute: true },
-    liveLink: "https://installer.pvnxt.com/",
-    whatItIs: "Installer-facing portal for task management, site proof uploads, and real-time execution tracking.",
+      liveLink: "https://installer.pvnxt.com/",
+      figmaLink: "https://www.figma.com/proto/q1pjkV1vbWbj0Bqd2VdcBj/-91-9719499553---rmcool26-webapp-portfolio?node-id=26-3143&viewport=551%2C291%2C0.05&t=BL9aZlR0EDSjPHUC-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=26%3A3143&show-proto-sidebar=1&page-id=0%3A1",
+      detailIntro: "A field-first installer app for rooftop tasks, photo proof, and daily progress tracking.",
+      meta: {
+        role: "Product/UI UX Designer",
+        platform: "Web + App",
+        scope: "Field UX + Task Tracking",
+        industry: "Solar Installation",
+        users: "Installers, Site Teams, EPC Managers",
+        impact: "Clearer work status + delay reasons",
+      },
+      problem: "Installers were working from sites with paper checklists, WhatsApp photos, scattered updates, and unclear delay reasons.",
+      myMove: "I designed a field-first flow for site assignment, rooftop analysis, work status, photo uploads, verification, and reason-based delay updates.",
+      result: "EPC teams get a clearer picture of site progress, while installers can quickly report what happened today and why work was delayed.",
+      designDecisions: [
+        "Designed for rooftop conditions with quick actions and photo-led updates.",
+        "Added status and delay-reason thinking for weather, human, or site issues.",
+        "Reduced dependency on WhatsApp follow-ups for daily project tracking.",
+      ],
+      punchLine: "Built for rooftops, not desks — Go keeps the crew moving.",
+      whatItIs: "Installer-facing portal for task management, site proof uploads, and real-time execution tracking.",
     whatIDid: "Designed the installer workflow — task list, photo proof, issue logging, and status updates.",
     whyItMatters: "Eliminated phone-tag between EPCs and installers. Everything tracked in one view.",
   },
 
-  {
+  /* {
     slug: "pvnxt-atlas",
     name: "pvNXT Atlas",
     company: "Terranxt · GIS Tool",
@@ -1324,7 +1417,7 @@ export const workItems: WorkItem[] = [
     whatItIs: "Internal GIS quality assurance tool for reviewing, correcting, and approving map data.",
     whatIDid: "Designed the full QA interface — map canvas, review workflow, and approval states.",
     whyItMatters: "Brought map QA in-house. Faster turnarounds, fewer errors, less dependency on third-party tools.",
-  },
+  }, */
 
   // ── MOBILE APP FILTER EXTRAS ───────────────────────────────────────────────
 
