@@ -102,108 +102,101 @@ interface WorkCardProps {
 export const WorkCard = ({ item, index }: WorkCardProps) => {
   // Build homepage CTAs from data:
   // Primary = "View Project" → internal projectPageHref
-  // Secondary = "Figma" → figmaLink only if available
-  const primaryAction: WorkAction | undefined = item.projectPageHref
-    ? {
-        label: "View Project",
-        href: item.projectPageHref,
-        isRoute: true,
-      }
-    : item.primaryAction;
-
-  const secondaryAction: WorkAction | undefined = item.figmaLink
-    ? { label: "Figma", href: item.figmaLink, external: true }
-    : undefined;
+  const primaryActionLabel = "View Project";
+  const projectHref = item.projectPageHref || "/";
 
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: 12, scale: 0.97 }}
-      transition={{
-        duration: 0.45,
-        delay: index * 0.07,
-        ease: [0.22, 1, 0.36, 1],
-      }}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant"
+    <Link
+      to={projectHref}
+      className="block group"
+      data-cursor="hover"
+      data-cursor-label={`View ${item.name}`}
     >
-      {/* Cover */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
-        {item.cover ? (
-          <motion.img
-            whileHover={{ scale: 1.04 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            src={item.cover}
-            alt={item.name}
-            className="h-full w-full object-cover"
-            loading="lazy"
-          />
-        ) : (
-          <CoverPlaceholder name={item.name} />
-        )}
+      <motion.article
+        layout
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 12, scale: 0.97 }}
+        transition={{
+          duration: 0.45,
+          delay: index * 0.07,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant"
+      >
+        {/* Cover */}
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+          {item.cover ? (
+            <motion.img
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              src={item.cover}
+              alt={item.name}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <CoverPlaceholder name={item.name} />
+          )}
 
-        {/* Status pill — top left */}
-        <div className="absolute left-3 top-3">
-          <StatusPill status={item.status} />
-        </div>
-
-        {/* pvNXT ecosystem chip — top right */}
-        {item.pvnxtEcosystem && (
-          <div className="absolute right-3 top-3">
-            <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur-sm">
-              pvNXT ecosystem
-            </span>
+          {/* Status pill — top left */}
+          <div className="absolute left-3 top-3">
+            <StatusPill status={item.status} />
           </div>
-        )}
-      </div>
 
-      {/* Info */}
-      <div className="flex flex-1 flex-col p-5">
-        <p className="text-[11px] font-medium uppercase tracking-widest text-muted-foreground">
-          {item.company}
-        </p>
-        <h3 className="mt-1 font-display text-lg font-bold leading-snug tracking-tight text-foreground md:text-xl">
-          {item.name}
-        </h3>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-          {item.tagline}
-        </p>
-
-        <div className="flex-1" />
-
-        {/* Tags */}
-        <div className="mt-4 flex flex-wrap gap-1.5 border-t border-border pt-4">
-          {item.tags.slice(0, 3).map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full bg-secondary px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* CTA row — View Project (primary) + Figma (secondary, if available) */}
-        <div className="mt-3 flex flex-wrap items-center gap-2">
-          {primaryAction && (
-            <ActionButton action={primaryAction} variant="primary" />
-          )}
-          {secondaryAction && (
-            <ActionButton action={secondaryAction} variant="secondary" />
-          )}
-          {/* Status label: alongside primary, or solo if no primary */}
-          {item.statusLabel && (
-            <span
-              className={`inline-flex items-center gap-1.5 rounded-full border border-dashed border-border bg-background/40 px-3 py-1 text-[10px] font-medium text-muted-foreground ${
-                primaryAction ? "ml-auto" : ""
-              }`}
-            >
-              {item.statusLabel}
-            </span>
+          {/* pvNXT ecosystem chip — top right */}
+          {item.pvnxtEcosystem && (
+            <div className="absolute right-3 top-3">
+              <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur-sm">
+                pvNXT ecosystem
+              </span>
+            </div>
           )}
         </div>
-      </div>
-    </motion.article>
+
+        {/* Info */}
+        <div className="flex flex-1 flex-col p-5">
+          <h3 className="font-display text-lg font-bold leading-snug tracking-tight text-foreground md:text-xl">
+            {item.name}
+          </h3>
+          <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+            {item.tagline}
+          </p>
+
+          <div className="flex-1" />
+
+          {/* Tags / Meta Chips */}
+          <div className="mt-4 flex flex-wrap gap-1.5 border-t border-border pt-4">
+            {(item.meta 
+              ? [item.meta.platform, item.meta.scope, item.meta.impact].filter(Boolean)
+              : item.tags
+            ).slice(0, 3).map((chip) => (
+              <span
+                key={chip}
+                className="rounded-full bg-secondary px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+
+          {/* CTA row — View Project only */}
+          <div className="mt-3 flex flex-wrap items-center gap-2">
+            <div className="group inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-semibold text-background transition-colors group-hover:bg-primary">
+              {primaryActionLabel}
+              <ArrowUpRight className="h-3 w-3 transition-transform group-hover:rotate-45" />
+            </div>
+            {/* Status label: alongside primary, or solo if no primary */}
+            {item.statusLabel && (
+              <span
+                className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border bg-background/40 px-3 py-1 text-[10px] font-medium text-muted-foreground ml-auto"
+              >
+                {item.statusLabel}
+              </span>
+            )}
+          </div>
+        </div>
+      </motion.article>
+    </Link>
   );
 };

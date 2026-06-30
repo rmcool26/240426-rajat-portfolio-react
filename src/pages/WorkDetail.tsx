@@ -14,6 +14,7 @@ import {
 import { Nav } from "@/components/portfolio/Nav";
 import { Footer } from "@/components/portfolio/Footer";
 import { ZoomableImage } from "@/components/portfolio/CaseStudy/ZoomableImage";
+import { Cursor } from "@/components/portfolio/Cursor";
 import { workItems, type WorkItem } from "@/content";
 
 // ─── Placeholder cover ────────────────────────────────────────────────────────
@@ -177,16 +178,17 @@ const WorkDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Cursor />
       <Nav />
 
       <main className="w-full max-w-4xl mx-auto px-4 py-14 sm:px-6 sm:py-20 md:py-28">
 
-        {/* ── Back link ── */}
+        {/* ── Header Cluster ── */}
         <motion.div
-          initial={{ opacity: 0, x: -12 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.4 }}
-          className="mb-8 sm:mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col gap-3"
         >
           <Link
             to="/#work"
@@ -194,39 +196,32 @@ const WorkDetail = () => {
             data-cursor-label="Back to Work"
             aria-label="Back to Work"
             title="Back to all work"
-            className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
           >
             <ChevronLeft className="h-4 w-4" />
             Back to Work
           </Link>
-        </motion.div>
 
-        {/* ── Hero ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* Status + ecosystem chips */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-            <StatusPill status={item.status} />
-            {item.pvnxtEcosystem && (
-              <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary">
-                pvNXT ecosystem
-              </span>
-            )}
-            {item.statusLabel && (
-              <span className="rounded-full border border-dashed border-border bg-background/40 px-3 py-1 text-[11px] font-medium text-muted-foreground">
-                {item.statusLabel}
-              </span>
-            )}
+          <div className="flex flex-wrap items-center gap-3">
+            <h1 className="font-display text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
+              {item.name}
+            </h1>
+            <div className="flex flex-wrap items-center gap-2">
+              <StatusPill status={item.status} />
+              {item.pvnxtEcosystem && (
+                <span className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-primary">
+                  pvNXT ecosystem
+                </span>
+              )}
+              {item.statusLabel && (
+                <span className="rounded-full border border-dashed border-border bg-background/40 px-3 py-1 text-[11px] font-medium text-muted-foreground">
+                  {item.statusLabel}
+                </span>
+              )}
+            </div>
           </div>
 
-          {/* Title */}
-          <h1 className="mt-5 font-display text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
-            {item.name}
-          </h1>
-          <p className="mt-3 text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
+          <p className="mt-2 text-base leading-relaxed text-muted-foreground sm:text-lg md:text-xl">
             {detailIntro}
           </p>
 
@@ -241,21 +236,6 @@ const WorkDetail = () => {
               {item.meta.impact && <MetaChip label="Impact" value={item.meta.impact} />}
             </div>
           )}
-
-          {/* Tags */}
-          <div className="mt-4 flex flex-wrap gap-2">
-            <span className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground">
-              {item.company}
-            </span>
-            {item.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
         </motion.div>
 
         {/* ── Main visual (zoomable) ── */}
@@ -287,9 +267,9 @@ const WorkDetail = () => {
             className="mt-16"
           >
             <div className="grid gap-6 sm:grid-cols-3">
-              {problem && <StoryCard index={0} label="Problem" text={problem} />}
-              {myMove && <StoryCard index={1} label="My Move" text={myMove} />}
-              {result && <StoryCard index={2} label="Result" text={result} />}
+{problem && <StoryCard index={0} label="Challenge" text={problem} />}
+               {myMove && <StoryCard index={1} label="My Role" text={myMove} />}
+               {result && <StoryCard index={2} label="Outcome" text={result} />}
             </div>
           </motion.div>
         )}
