@@ -22,7 +22,7 @@ export const Nav = () => {
         className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border px-4 py-2.5 transition-all duration-300 ${scrolled ? "bg-background/85 shadow-soft backdrop-blur-xl" : "bg-background/70 backdrop-blur-md"
           }`}
       >
-        <Link to="/" data-cursor="hover" data-cursor-label="Back to the top" className="font-display text-base font-bold tracking-tight">
+        <Link to="/" data-cursor="hover" data-cursor-label="Back to homepage" className="font-display text-base font-bold tracking-tight">
           <span className="text-primary">RM</span>
           <span className="text-foreground">COOL</span>
           <span className="text-muted-foreground">26</span>

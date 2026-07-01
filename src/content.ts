@@ -64,8 +64,8 @@ export const content = {
     eyebrow: "Pragmatic Product & UX Designer",
     title: "I make messy workflows work.",
     sub: "Ideas to apps. Audits to fixes. I ship products that simplify real work.",
-    primaryCta: { label: "View My Work", href: "#work" },
-    secondaryCta: { label: "Let's Talk", href: "#contact" },
+    primaryCta: { label: "View My Work", href: "/work" },
+    secondaryCta: { label: "Let's Talk", href: "/contact" },
     profileImage: profile,
     badges: [
       { label: "Figjam → Jira", value: "10+ Tools Mastered", emoji: "🛠️" },

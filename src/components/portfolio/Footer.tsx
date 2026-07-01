@@ -27,9 +27,14 @@ export const Footer = () => (
          >
            Email
          </a>
-         <a href="#top" data-cursor="hover" data-cursor-label="Back to the top" className="transition-colors hover:text-[hsl(var(--footer-fg))]">
-           Back to top ↑
-         </a>
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            data-cursor="hover" 
+            data-cursor-label="Back to the top" 
+            className="transition-colors hover:text-[hsl(var(--footer-fg))] bg-transparent border-none p-0 cursor-pointer text-left"
+          >
+            Back to top ↑
+          </button>
        </div>
 
     </div>

@@ -146,16 +146,16 @@ const WorkDetail = () => {
         <Nav />
         <main className="container flex flex-1 flex-col items-center justify-center gap-6 py-32">
           <p className="text-muted-foreground">Project not found.</p>
-          <Link
-            to="/#work"
-            data-cursor="hover"
-            data-cursor-label="Back to Work"
-            aria-label="Back to Work"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to Work
-          </Link>
+            <Link
+              to="/work"
+              data-cursor="hover"
+              data-cursor-label="Back to Work"
+              aria-label="Back to Work"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2 text-sm font-semibold text-primary-foreground"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back to Work
+            </Link>
         </main>
         <Footer />
       </div>
@@ -190,14 +190,14 @@ const WorkDetail = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col gap-3"
         >
-           <Link
-             to="/#work"
-             data-cursor="hover"
-             data-cursor-label="Back to the project grid"
-             aria-label="Back to Work"
-             title="Back to all work"
-             className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-           >
+            <Link
+              to="/work"
+              data-cursor="hover"
+              data-cursor-label="Back to the project grid"
+              aria-label="Back to Work"
+              title="Back to all work"
+              className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+            >
 
             <ChevronLeft className="h-4 w-4" />
             Back to Work
@@ -421,16 +421,16 @@ const WorkDetail = () => {
             </div>
 
             {/* All Work */}
-             <Link
-               to="/#work"
-               data-cursor="hover"
-               data-cursor-label="Return to all projects"
-               aria-label="Back to all work"
-               title="All work"
-               className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-4 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/50 hover:text-foreground"
-             >
-               All Work
-             </Link>
+              <Link
+                to="/work"
+                data-cursor="hover"
+                data-cursor-label="Return to all projects"
+                aria-label="Back to all work"
+                title="All work"
+                className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-4 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/50 hover:text-foreground"
+              >
+                All Work
+              </Link>
 
 
             {/* Next */}
