@@ -129,43 +129,35 @@ export const Hero = () => {
           </div>
 
           {/* RIGHT — profile + floating badges */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative mx-auto h-[280px] w-[280px] md:h-[360px] md:w-[360px]"
-          >
-            {/* Glow ring */}
-            <div className="absolute -inset-4 -z-10 animate-float rounded-full bg-gradient-to-br from-primary/40 via-primary-glow/30 to-transparent blur-2xl" />
-
-            {/* Decorative dotted ring */}
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30"
-            />
-
-            {/* Profile */}
-            <div className="absolute inset-3 overflow-hidden rounded-full bg-background shadow-elegant ring-4 ring-background">
-              <img
-                src={hero.profileImage}
-                alt={`${content.meta.name} portrait`}
-                className="h-full w-full object-cover"
-              />
-            </div>
-
-            {/* <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-2xl border border-border bg-background/90 px-4 py-2 text-center shadow-soft backdrop-blur-md md:bottom-12 md:left-auto md:right-[-10%] md:translate-x-0 md:text-left"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative mx-auto w-[280px] md:w-[360px] h-auto md:h-[360px]"
             >
-              <div className="font-display text-sm font-bold text-foreground">Hi, I’m {content.meta.name}</div>
-              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">UI/UX Design Lead · rmcool26</div>
-            </motion.div> */}
+              <div className="relative h-[280px] w-[280px] md:h-[360px] md:w-[360px]">
+                {/* Glow ring */}
+                <div className="absolute -inset-4 -z-10 animate-float rounded-full bg-gradient-to-br from-primary/40 via-primary-glow/30 to-transparent blur-2xl" />
 
-            <StatBadges />
-          </motion.div>
+                {/* Decorative dotted ring */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 rounded-full border-2 border-dashed border-primary/30"
+                />
+
+                {/* Profile */}
+                <div className="absolute inset-3 overflow-hidden rounded-full bg-background shadow-elegant ring-4 ring-background">
+                  <img
+                    src={hero.profileImage}
+                    alt={`${content.meta.name} portrait`}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+
+              <StatBadges />
+            </motion.div>
         </div>
       </div >
     </section >

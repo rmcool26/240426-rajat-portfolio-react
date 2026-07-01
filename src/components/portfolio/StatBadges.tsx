@@ -21,6 +21,8 @@ const iconMap: Record<string, any> = {
 
 export const StatBadges = () => {
   const badges = content.hero.badges;
+  const identityBadge = badges.find((b) => b.value.includes("Hi, I'm"));
+  const proofBadges = badges.filter((b) => !b.value.includes("Hi, I'm"));
 
   return (
     <>
@@ -59,21 +61,34 @@ export const StatBadges = () => {
         );
       })}
 
-      {/* Mobile fallback row */}
-      <div className="mt-6 flex flex-wrap justify-center gap-2 md:hidden">
-        {badges.map((b) => {
-          const Icon = iconMap[b.label] || Sparkles;
-          return (
-            <div
-              key={b.label}
-              className="flex items-center gap-1.5 rounded-full border border-border bg-background/90 px-3 py-1.5 text-xs shadow-soft"
-            >
-              <Icon className="h-3 w-3 text-primary" aria-hidden="true" />
-              <span className="font-display font-bold">{b.value}</span>
-              <span className="text-muted-foreground">{b.label}</span>
+      {/* Mobile fallback layout */}
+      <div className="-mt-4 flex flex-col items-center gap-4 z-50 md:hidden">
+        {identityBadge && (
+          <div className="flex items-center justify-center rounded-full border border-border bg-background/90 px-4 py-2 text-xs shadow-soft whitespace-nowrap">
+            <div className="text-center">
+              <div className="font-display font-bold text-foreground">{identityBadge.value}</div>
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{identityBadge.label}</div>
             </div>
-          );
-        })}
+          </div>
+        )}
+
+        <div className="grid-cols-2 gap-2 w-full max-w-[280px] justify-items-center hidden">
+          {proofBadges.map((b) => {
+            const Icon = iconMap[b.label] || Sparkles;
+            return (
+              <div
+                key={b.label}
+                className="flex items-center gap-1.5 rounded-full border border-border bg-background/90 px-3 py-1.5 text-xs shadow-soft w-full justify-center"
+              >
+                <Icon className="h-3 w-3 text-primary" aria-hidden="true" />
+                <div className="leading-tight text-center">
+                  <span className="font-display font-bold block">{b.value}</span>
+                  <span className="text-[8px] uppercase tracking-wider text-muted-foreground block">{b.label}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </>
   );
