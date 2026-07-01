@@ -16,7 +16,7 @@ const ExperiencePage = () => {
       <Experience />
        <CTA
          title="Need senior design thinking <br /><span className='text-primary'>without the drama?</span>"
-         subtext="I bring 15+ years of UI/UX, product and frontend-aware design thinking to teams that want clarity, momentum and cleaner execution."
+         subtext="I bring 10+ years of UI/UX, product and frontend-aware design thinking to teams that want clarity, momentum and cleaner execution."
          buttons={[
            {
              label: "Download Resume",

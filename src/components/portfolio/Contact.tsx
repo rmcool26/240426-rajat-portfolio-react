@@ -22,14 +22,16 @@ export const Contact = () => {
           className="mx-auto max-w-full text-center"
         >
           <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Contact</p>
-          <h2 className="font-display text-4xl font-bold tracking-tight text-balance md:text-6xl">
-            {contact.heading}{" "}
+          <h1 className="font-display text-4xl font-bold tracking-tight text-balance md:text-6xl">
+            Let’s build something{" "}
             <span className="relative inline-block text-primary">
-              {contact.headingAccent}
+              cool together.
               {/* <span className="absolute -bottom-1 left-0 right-0 h-3 rounded-full bg-primary/15" /> */}
             </span>
-          </h2>
-          <p className="mt-5 text-base text-muted-foreground md:text-lg">{contact.sub}</p>
+          </h1>
+          <p className="mt-5 text-base text-muted-foreground md:text-lg">
+            Got a messy workflow, product idea, website, or dashboard that needs clarity? Send it over — I’ll help make it clean, usable and shippable.
+          </p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
              <MagneticButton href={`mailto:${contact.email}`} variant="primary" data-cursor-label="Send the brief">

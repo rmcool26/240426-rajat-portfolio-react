@@ -72,10 +72,10 @@ export const Experience = () => {
             <span className="text-primary">{experience.headingAccent}</span>
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-muted-foreground md:text-xl max-w-2xl mx-auto">
-            15+ years across UI/UX, websites, dashboards and product workflows — with frontend-aware thinking that helps designs move from Figma to real use.
+            10+ years across UI/UX, websites, dashboards and product workflows — with frontend-aware thinking that helps designs move from Figma to real use.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {["15+ years in UI/UX", "Design Lead", "Websites + web apps", "Frontend-aware design"].map((item) => (
+            {["10+ years in UI/UX", "Design Lead", "Websites + web apps", "Frontend-aware design"].map((item) => (
               <span key={item} className="rounded-full border border-border bg-secondary/50 px-3 py-1 text-xs font-medium text-foreground/80">
                 {item}
               </span>
