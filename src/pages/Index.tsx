@@ -7,6 +7,7 @@ import { Hero } from "@/components/portfolio/Hero";
 import { CTA } from "@/components/portfolio/CTA";
 import { Footer } from "@/components/portfolio/Footer";
 import { content } from "@/content";
+import { Mail } from "lucide-react";
 
 const Index = () => {
   useEffect(() => {
@@ -30,17 +31,42 @@ const Index = () => {
     return () => lenis.destroy();
   }, []);
 
+  const emailHref = `mailto:${content.contact.email}`;
+
   return (
     <main className="relative min-h-screen overflow-x-clip">
       <Cursor />
       <ScrollProgress />
       <Nav />
       <Hero />
-      <CTA />
+      <CTA
+        title="Messy workflow? <br /><span className='text-primary'>Cool. Let’s make it work.</span>"
+        subtext="Start with the work, the story, or just say hi — I’ll help turn the rough idea into something clear and usable."
+        buttons={[
+          {
+            label: "View Work",
+            href: "/work",
+            variant: "primary",
+            cursorLabel: "See the proof",
+          },
+          {
+            label: "About Rajat",
+            href: "/about",
+            variant: "ghost",
+            cursorLabel: "Know the guy",
+          },
+          {
+            label: "Email Me",
+            href: emailHref,
+            variant: "ghost",
+            icon: <Mail className="h-4 w-4" />,
+            cursorLabel: "Say hi",
+          },
+        ]}
+      />
       <Footer />
     </main>
   );
 };
-
 
 export default Index;
