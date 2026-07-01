@@ -110,14 +110,15 @@ export const WorkGrid = () => {
           animate={{ opacity: 1 }}
           className="mt-10 flex justify-center"
         >
-          <button
-            onClick={() => setAllExpanded((prev) => !prev)}
-            data-cursor="hover"
-            data-cursor-label={allExpanded ? "Show less" : "View all work"}
-            aria-label={allExpanded ? "Show fewer projects" : `View all ${workItems.length} projects`}
-            title={allExpanded ? "Show fewer projects" : `View all ${workItems.length} projects`}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-5 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:text-foreground"
-          >
+           <button
+             onClick={() => setAllExpanded((prev) => !prev)}
+             data-cursor="hover"
+             data-cursor-label={allExpanded ? "Keep it curated" : "Open the full stack of work"}
+             aria-label={allExpanded ? "Show fewer projects" : `View all ${workItems.length} projects`}
+             title={allExpanded ? "Show fewer projects" : `View all ${workItems.length} projects`}
+             className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-5 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:text-foreground"
+           >
+
             {allExpanded ? (
               <>
                 <ChevronUp className="h-4 w-4" />

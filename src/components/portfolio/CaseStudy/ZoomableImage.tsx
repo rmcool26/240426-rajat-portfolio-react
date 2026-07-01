@@ -68,14 +68,15 @@ export function ZoomableImage({ src, alt = "", caption, className = "", children
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        data-cursor="hover"
-        data-cursor-label="Click to zoom"
-        className={`group relative block w-full overflow-hidden rounded-2xl border border-border bg-muted transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${className}`}
-        aria-label={alt || "Open image"}
-      >
+       <button
+         type="button"
+         onClick={() => setOpen(true)}
+         data-cursor="hover"
+         data-cursor-label="Click to inspect the pixels"
+         className={`group relative block w-full overflow-hidden rounded-2xl border border-border bg-muted transition focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${className}`}
+         aria-label={alt || "Open image"}
+       >
+
         {src ? (
           <img
             src={src}
@@ -124,9 +125,10 @@ export function ZoomableImage({ src, alt = "", caption, className = "", children
                     if (dragRef.current?.moved) return;
                     setZoomed((z) => !z);
                   }}
-                  data-cursor="hover"
-                  data-cursor-label={dragging ? "Drag" : zoomed ? "Drag / click out" : "Click to zoom in"}
-                  style={{
+                   data-cursor="hover"
+                   data-cursor-label={dragging ? "Drag" : zoomed ? "Drag / click out" : "Zoom into the details"}
+                   style={{
+
                     transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoomed ? ZOOM : 1})`,
                     transformOrigin: "center",
                     transition: dragging ? "none" : "transform 0.28s ease-out",

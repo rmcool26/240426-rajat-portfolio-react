@@ -32,15 +32,16 @@ export const Contact = () => {
           <p className="mt-5 text-base text-muted-foreground md:text-lg">{contact.sub}</p>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <MagneticButton href={`mailto:${contact.email}`} variant="primary">
-              <Mail className="h-4 w-4" /> Email Me
-            </MagneticButton>
-            <MagneticButton href={contact.linkedin} variant="secondary">
-              <Linkedin className="h-4 w-4" /> LinkedIn
-            </MagneticButton>
-            <MagneticButton href={contact.resume} variant="ghost">
-              <FileDown className="h-4 w-4" /> Resume
-            </MagneticButton>
+             <MagneticButton href={`mailto:${contact.email}`} variant="primary" data-cursor-label="Send the brief">
+               <Mail className="h-4 w-4" /> Email Me
+             </MagneticButton>
+             <MagneticButton href={contact.linkedin} variant="secondary" data-cursor-label="See the professional trail">
+               <Linkedin className="h-4 w-4" /> LinkedIn
+             </MagneticButton>
+             <MagneticButton href={contact.resume} variant="ghost" data-cursor-label="Download the proof">
+               <FileDown className="h-4 w-4" /> Resume
+             </MagneticButton>
+
           </div>
 
           <p className="mt-8 text-sm text-muted-foreground">

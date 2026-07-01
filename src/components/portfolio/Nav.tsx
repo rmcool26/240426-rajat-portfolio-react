@@ -44,7 +44,7 @@ export const Nav = () => {
         className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border px-4 py-2.5 transition-all duration-300 ${scrolled ? "bg-background/85 shadow-soft backdrop-blur-xl" : "bg-background/70 backdrop-blur-md"
           }`}
       >
-        <a href="#top" data-cursor="hover" className="font-display text-base font-bold tracking-tight">
+        <a href="#top" data-cursor="hover" data-cursor-label="Back to the top" className="font-display text-base font-bold tracking-tight">
           <span className="text-primary">RM</span>
           <span className="text-foreground">COOL</span>
           <span className="text-muted-foreground">26</span>
@@ -53,11 +53,18 @@ export const Nav = () => {
         <ul className="hidden items-center gap-1 md:flex">
           {content.nav.map((item) => {
             const isActive = active === item.href;
+            const labels: Record<string, string> = {
+              "About": "Know the guy behind the pixels",
+              "Work": "Jump to shipped work",
+              "Experience": "See where I’ve shipped",
+              "Contact": "Start something cool",
+            };
             return (
               <li key={item.label}>
                 <a
                   href={item.href}
                   data-cursor="hover"
+                  data-cursor-label={labels[item.label] || item.label}
                   className="relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {isActive && (
@@ -81,6 +88,7 @@ export const Nav = () => {
             target="_blank"
             rel="noreferrer"
             data-cursor="hover"
+            data-cursor-label="Grab the no-fluff resume"
             className="hidden h-10 items-center gap-2 rounded-full bg-foreground px-4 text-sm font-medium text-background transition-transform hover:scale-105 sm:inline-flex"
           >
             <Download className="h-4 w-4" />

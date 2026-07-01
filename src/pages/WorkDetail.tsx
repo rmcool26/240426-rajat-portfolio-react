@@ -190,14 +190,15 @@ const WorkDetail = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col gap-3"
         >
-          <Link
-            to="/#work"
-            data-cursor="hover"
-            data-cursor-label="Back to Work"
-            aria-label="Back to Work"
-            title="Back to all work"
-            className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
-          >
+           <Link
+             to="/#work"
+             data-cursor="hover"
+             data-cursor-label="Back to the project grid"
+             aria-label="Back to Work"
+             title="Back to all work"
+             className="inline-flex w-fit items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
+           >
+
             <ChevronLeft className="h-4 w-4" />
             Back to Work
           </Link>
@@ -338,42 +339,43 @@ const WorkDetail = () => {
         >
           {hasLinks ? (
             <div className="flex flex-wrap gap-3">
-              {item.liveLink && (
-                <ExtLink
-                  href={item.liveLink}
-                  icon={<Globe className="h-4 w-4 shrink-0" />}
-                  label="Live Site"
-                  cursorLabel="Open live site"
-                  ariaLabel={`Visit ${item.name} live site`}
-                />
-              )}
-              {item.figmaLink && (
-                <ExtLink
-                  href={item.figmaLink}
-                  icon={<Figma className="h-4 w-4 shrink-0" />}
-                  label="Figma"
-                  cursorLabel="Open in Figma"
-                  ariaLabel={`Open ${item.name} in Figma`}
-                />
-              )}
-              {item.appLink && (
-                <ExtLink
-                  href={item.appLink}
-                  icon={<Smartphone className="h-4 w-4 shrink-0" />}
-                  label="App Store"
-                  cursorLabel="Download app"
-                  ariaLabel={`Download ${item.name} from app store`}
-                />
-              )}
-              {item.caseNotesLink && (
-                <ExtLink
-                  href={item.caseNotesLink}
-                  icon={<FileText className="h-4 w-4 shrink-0" />}
-                  label="Case Notes"
-                  cursorLabel="Read case notes"
-                  ariaLabel={`Read ${item.name} case notes`}
-                />
-              )}
+               {item.liveLink && (
+                 <ExtLink
+                   href={item.liveLink}
+                   icon={<Globe className="h-4 w-4 shrink-0" />}
+                   label="Live Site"
+                   cursorLabel="Open the shipped product"
+                   ariaLabel={`Visit ${item.name} live site`}
+                 />
+               )}
+               {item.figmaLink && (
+                 <ExtLink
+                   href={item.figmaLink}
+                   icon={<Figma className="h-4 w-4 shrink-0" />}
+                   label="Figma"
+                   cursorLabel="View the design prototype"
+                   ariaLabel={`Open ${item.name} in Figma`}
+                 />
+               )}
+               {item.appLink && (
+                 <ExtLink
+                   href={item.appLink}
+                   icon={<Smartphone className="h-4 w-4 shrink-0" />}
+                   label="App Store"
+                   cursorLabel="Open the app"
+                   ariaLabel={`Download ${item.name} from app store`}
+                 />
+               )}
+               {item.caseNotesLink && (
+                 <ExtLink
+                   href={item.caseNotesLink}
+                   icon={<FileText className="h-4 w-4 shrink-0" />}
+                   label="Case Notes"
+                   cursorLabel="Read the messy thinking"
+                   ariaLabel={`Read ${item.name} case notes`}
+                 />
+               )}
+
             </div>
           ) : isPrivate ? (
             <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-border bg-background/40 px-4 py-2 text-sm text-muted-foreground">
@@ -396,14 +398,15 @@ const WorkDetail = () => {
             {/* Previous */}
             <div className="min-w-0 flex-1">
               {prevItem ? (
-                <Link
-                  to={`/work/${prevItem.slug}`}
-                  data-cursor="hover"
-                  data-cursor-label="Previous project"
-                  aria-label={`Previous: ${prevItem.name}`}
-                  title={prevItem.name}
-                  className="group inline-flex max-w-full items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
+                 <Link
+                   to={`/work/${prevItem.slug}`}
+                   data-cursor="hover"
+                   data-cursor-label="Previous shipped story"
+                   aria-label={`Previous: ${prevItem.name}`}
+                   title={prevItem.name}
+                   className="group inline-flex max-w-full items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                 >
+
                   <ArrowLeft className="h-4 w-4 shrink-0 transition-transform group-hover:-translate-x-1" />
                   <span className="truncate">
                     <span className="block text-[10px] uppercase tracking-widest text-muted-foreground/60">
@@ -418,28 +421,30 @@ const WorkDetail = () => {
             </div>
 
             {/* All Work */}
-            <Link
-              to="/#work"
-              data-cursor="hover"
-              data-cursor-label="All work"
-              aria-label="Back to all work"
-              title="All work"
-              className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-4 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/50 hover:text-foreground"
-            >
-              All Work
-            </Link>
+             <Link
+               to="/#work"
+               data-cursor="hover"
+               data-cursor-label="Return to all projects"
+               aria-label="Back to all work"
+               title="All work"
+               className="shrink-0 inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-4 py-1.5 text-xs font-medium text-muted-foreground transition-all hover:border-primary/50 hover:text-foreground"
+             >
+               All Work
+             </Link>
+
 
             {/* Next */}
             <div className="min-w-0 flex-1 text-right">
               {nextItem ? (
-                <Link
-                  to={`/work/${nextItem.slug}`}
-                  data-cursor="hover"
-                  data-cursor-label="Next project"
-                  aria-label={`Next: ${nextItem.name}`}
-                  title={nextItem.name}
-                  className="group inline-flex max-w-full items-center justify-end gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
+                 <Link
+                   to={`/work/${nextItem.slug}`}
+                   data-cursor="hover"
+                   data-cursor-label="Next shipped story"
+                   aria-label={`Next: ${nextItem.name}`}
+                   title={nextItem.name}
+                   className="group inline-flex max-w-full items-center justify-end gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                 >
+
                   <span className="truncate">
                     <span className="block text-[10px] uppercase tracking-widest text-muted-foreground/60">
                       Next

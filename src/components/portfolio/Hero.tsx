@@ -107,14 +107,15 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.45 }}
               className="mt-8 flex flex-wrap items-center gap-4"
             >
-              <MagneticButton href={hero.primaryCta.href} variant="primary">
-                {hero.primaryCta.label}
-                <ArrowRight className="h-4 w-4" />
-              </MagneticButton>
-              <MagneticButton href={hero.secondaryCta.href} variant="ghost">
-                <MessageCircle className="h-4 w-4" />
-                {hero.secondaryCta.label}
-              </MagneticButton>
+               <MagneticButton href={hero.primaryCta.href} variant="primary" data-cursor-label="Skip to the good stuff">
+                 {hero.primaryCta.label}
+                 <ArrowRight className="h-4 w-4" />
+               </MagneticButton>
+               <MagneticButton href={hero.secondaryCta.href} variant="ghost" data-cursor-label="Let’s build something useful">
+                 <MessageCircle className="h-4 w-4" />
+                 {hero.secondaryCta.label}
+               </MagneticButton>
+
             </motion.div>
           </div>
 

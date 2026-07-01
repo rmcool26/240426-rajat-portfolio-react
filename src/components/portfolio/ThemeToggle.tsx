@@ -23,12 +23,14 @@ export const ThemeToggle = () => {
   };
 
   return (
-    <button
-      onClick={toggle}
-      aria-label="Toggle theme"
-      data-cursor="hover"
-      className="grid h-10 w-10 place-items-center rounded-full border border-border bg-background/60 backdrop-blur transition-colors hover:bg-secondary"
-    >
+     <button
+       onClick={toggle}
+       aria-label="Toggle theme"
+       data-cursor="hover"
+       data-cursor-label="Switch the vibe"
+       className="grid h-10 w-10 place-items-center rounded-full border border-border bg-background/60 backdrop-blur transition-colors hover:bg-secondary"
+     >
+
       {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
     </button>
   );

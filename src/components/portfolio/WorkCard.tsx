@@ -110,7 +110,7 @@ export const WorkCard = ({ item, index }: WorkCardProps) => {
       to={projectHref}
       className="block group"
       data-cursor="hover"
-      data-cursor-label={`View ${item.name}`}
+      data-cursor-label="Open the project story"
     >
       <motion.article
         layout
