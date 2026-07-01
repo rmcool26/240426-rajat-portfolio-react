@@ -44,6 +44,9 @@ import srmDetail from "@/assets/projects/srm-website-detail-rajat-mishra.svg";
 import rettagioCard from "@/assets/projects/rettagio-website-card-rajat-mishra.svg";
 import rettagioDetail from "@/assets/projects/rettagio-website-detail-rajat-mishra.svg";
 
+import scadaCard from "@/assets/projects/scada-webapp-card-rajat-mishra.svg";
+import studioCard from "@/assets/projects/studio-webapp-card-rajat-mishra.svg";
+
 export const content = {
   meta: {
     name: "Rajat Mishra",
@@ -844,7 +847,7 @@ export const workItems: WorkItem[] = [
     name: "SCADA Monitoring",
     company: "Terranxt · In Progress",
     tagline: "Monitoring, alerts, and work orders in one view.",
-    cover: scadaAlert,
+    cover: scadaCard,
     detailVisual: null,          // full SCADA view vs alert-focused card crop
     tags: ["Web App", "Enterprise", "WIP"],
     filters: ["web-app"],
@@ -1328,7 +1331,7 @@ export const workItems: WorkItem[] = [
     name: "pvNXT Studio (Web)",
     company: "Terranxt · EPC Portal",
     tagline: "EPC portal for layouts, analysis, and proposals.",
-    cover: iideCard,
+    cover: studioCard,
     detailVisual: null,
     tags: ["Web App", "EPC", "Live"],
     filters: ["web-app"],
