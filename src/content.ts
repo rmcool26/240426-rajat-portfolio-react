@@ -54,11 +54,10 @@ export const content = {
   },
 
   nav: [
-    /* { label: "Home", href: "#top" }, */
-    { label: "About", href: "#about" },
-    { label: "Work", href: "#work" },
-    { label: "Experience", href: "#experience" },
-    { label: "Contact", href: "#contact" },
+    { label: "About", href: "/about" },
+    { label: "Work", href: "/work" },
+    { label: "Experience", href: "/experience" },
+    { label: "Contact", href: "/contact" },
   ],
 
   hero: {
