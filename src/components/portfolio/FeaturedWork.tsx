@@ -15,15 +15,15 @@ export const FeaturedWork = () => {
           transition={{ duration: 0.6 }}
           className="mx-auto max-w-2xl text-center"
         >
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">
-            Selected Work
-          </p>
-          <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-            {content.featured.heading}
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Websites, apps, and systems designed to be used — not just shown.
-          </p>
+            <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">
+              CASE STUDIES & PROOF
+            </p>
+            <h1 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+              Cool work. Real problems. Shipped interfaces.
+            </h1>
+            <p className="mt-4 text-muted-foreground">
+              Websites, dashboards, and apps designed to be used — not just shown.
+            </p>
         </motion.div>
 
         {/* ── Unified work grid with filters ── */}

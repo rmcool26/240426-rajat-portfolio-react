@@ -15,7 +15,7 @@ const FILTERS: { key: FilterKey; label: string }[] = [
   { key: "website",    label: "Website" },
   { key: "web-app",    label: "Web App" },
   { key: "mobile-app", label: "Mobile App" },
-  { key: "ppt-pdf",    label: "PPT/PDF" },
+  { key: "ppt-pdf",    label: "Decks & Docs" },
 ];
 
 export const WorkGrid = () => {
@@ -41,13 +41,18 @@ export const WorkGrid = () => {
 
   return (
     <div className="mt-12 md:mt-16">
+ 
+       {/* ── Filter bar ── */}
+       <div className="mb-8">
+         <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground/70">
+           Filter by type
+         </p>
+         <div
+           className="flex gap-2 overflow-x-auto pb-1 scrollbar-none md:flex-wrap md:overflow-visible"
+           role="tablist"
+           aria-label="Filter work by type"
+         >
 
-      {/* ── Filter bar ── */}
-      <div
-        className="mb-8 flex gap-2 overflow-x-auto pb-1 scrollbar-none md:flex-wrap md:overflow-visible"
-        role="tablist"
-        aria-label="Filter work by type"
-      >
         {FILTERS.map((f) => {
           const count = getFilterCount(f.key);
           const isActive = active === f.key;
@@ -82,10 +87,11 @@ export const WorkGrid = () => {
               </span>
             </button>
           );
-        })}
-      </div>
-
-      {/* ── Card grid ── */}
+         })}
+       </div>
+     </div>
+ 
+       {/* ── Card grid ── */}
       <motion.div
         layout
         className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3"
@@ -119,20 +125,20 @@ export const WorkGrid = () => {
              className="inline-flex items-center gap-2 rounded-full border border-border bg-background/60 px-5 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:text-foreground"
            >
 
-            {allExpanded ? (
-              <>
-                <ChevronUp className="h-4 w-4" />
-                Show less
-              </>
-            ) : (
-              <>
-                <ChevronDown className="h-4 w-4" />
-                View all work
-                <span className="rounded-full bg-secondary px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
-                  +{allExtra.length}
-                </span>
-              </>
-            )}
+                {allExpanded ? (
+                  <>
+                    <ChevronUp className="h-4 w-4" />
+                    Show fewer projects
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="h-4 w-4" />
+                    Show all {workItems.length} projects
+                    <span className="rounded-full bg-secondary px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
+                      +{allExtra.length}
+                    </span>
+                  </>
+                )}
           </button>
         </motion.div>
       )}
