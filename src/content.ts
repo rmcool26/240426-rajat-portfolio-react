@@ -61,11 +61,11 @@ export const content = {
   ],
 
   hero: {
-    eyebrow: "Pragmatic Product & UX Designer",
+    eyebrow: "UI/UX Design Lead · Programmatic Designer",
     title: "I make messy workflows work.",
-    sub: "Ideas to apps. Audits to fixes. I ship products that simplify real work.",
-    primaryCta: { label: "View My Work", href: "/work" },
-    secondaryCta: { label: "Let's Talk", href: "/contact" },
+    sub: "I design websites, dashboards and web apps that turn messy workflows into clean, usable products — and I stay close until they ship.",
+    primaryCta: { label: "View Work", href: "/work" },
+    secondaryCta: { label: "About Rajat", href: "/about" },
     profileImage: profile,
     badges: [
       { label: "Figjam → Jira", value: "10+ Tools Mastered", emoji: "🛠️" },

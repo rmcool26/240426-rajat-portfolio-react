@@ -101,10 +101,19 @@ export const Hero = () => {
               {hero.sub}
             </motion.p>
 
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="mt-4 text-xs font-medium text-primary/80 md:text-sm italic"
+            >
+              rmcool26 = calm under complexity, sharp with pixels, focused on shipping.
+            </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
+              transition={{ duration: 0.6, delay: 0.65 }}
               className="mt-8 flex flex-wrap items-center gap-4"
             >
                <MagneticButton href={hero.primaryCta.href} variant="primary" data-cursor-label="Skip to the good stuff">
@@ -144,6 +153,16 @@ export const Hero = () => {
                 className="h-full w-full object-cover"
               />
             </div>
+
+            {/* <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-2xl border border-border bg-background/90 px-4 py-2 text-center shadow-soft backdrop-blur-md md:bottom-12 md:left-auto md:right-[-10%] md:translate-x-0 md:text-left"
+            >
+              <div className="font-display text-sm font-bold text-foreground">Hi, I’m {content.meta.name}</div>
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">UI/UX Design Lead · rmcool26</div>
+            </motion.div> */}
 
             <StatBadges />
           </motion.div>
