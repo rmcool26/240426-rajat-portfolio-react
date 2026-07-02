@@ -12,8 +12,9 @@ const getFilterCount = (key: FilterKey): number => {
 
 const FILTERS: { key: FilterKey; label: string }[] = [
   { key: "all",        label: "All" },
-  { key: "website",    label: "Website" },
+  { key: "case-study", label: "Case Study" },
   { key: "web-app",    label: "Web App" },
+  { key: "website",    label: "Website" },
   { key: "mobile-app", label: "Mobile App" },
   { key: "ppt-pdf",    label: "Decks & Docs" },
 ];

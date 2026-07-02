@@ -1,7 +1,6 @@
 /**
  * CaseStudyPvNXT.tsx
- * 9 sections, alternating dark/light rhythm.
- * Replace 5 placeholder images (search TODO:image) with @/assets imports.
+ * Revamped pvNXT Master Case Study
  */
 import { motion, type Variants } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -19,18 +18,19 @@ import {
   Monitor,
   Smartphone,
   Sparkles,
+  ArrowRight,
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { KeyScreen } from "./KeyScreen";
 import epcAll from "@/assets/projects/rmcool26-pvNXT-epc-all.svg";
 import consumerAll from "@/assets/projects/rmcool26-pvNXT-consumer-all.svg";
 import installerAll from "@/assets/projects/rmcool26-pvNXT-installer-all.svg";
 import epcProposal from "@/assets/projects/rmcool26-pvNXT-epc-proposal.svg";
+import fieldApp from "@/assets/projects/rmcool26-pvNXT-epc-fieldapp.svg";
+import scada from "@/assets/projects/rmcool26-pvNXT-sacada.svg";
 import { ZoomableImage } from "./ZoomableImage";
 import { Cursor } from "../Cursor";
 import { Footer } from "../Footer";
 import { ScrollProgress } from "../ScrollProgress";
-import { Contact } from "../Contact";
 
 // ---------- motion presets ----------
 const fadeUp: Variants = {
@@ -45,10 +45,7 @@ const stagger: Variants = {
 // ---------- atoms ----------
 function Eyebrow({ children, tone = "accent" }: { children: React.ReactNode; tone?: "accent" | "muted" }) {
   return (
-    <p
-      className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${tone === "accent" ? "text-indigo-400" : "text-neutral-500"
-        }`}
-    >
+    <p className={`text-[11px] font-semibold uppercase tracking-[0.22em] ${tone === "accent" ? "text-indigo-400" : "text-neutral-500"}`}>
       {children}
     </p>
   );
@@ -83,50 +80,44 @@ function Section({
 // ---------- 01 HERO ----------
 function Hero() {
   return (
-    <Section id="hero" bg="darker" className="relative overflow-hidden">
-      {/* back link */}
-      <Link
-        to="/"
-        className="mb-12 inline-flex items-center gap-2 text-sm text-neutral-400 transition hover:text-white"
-      >
+    <Section id="overview" bg="darker" className="relative overflow-hidden">
+      <Link to="/" className="mb-12 inline-flex items-center gap-2 text-sm text-neutral-400 transition hover:text-white">
         <ArrowLeft className="h-4 w-4" /> Back to portfolio
       </Link>
 
       <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
         <motion.div variants={fadeUp}>
-          <Eyebrow>Case Study · UI/UX Design Lead · Terranxt · 2022 — Now</Eyebrow>
+          <Eyebrow>Case Study · pvNXT Solar Suite</Eyebrow>
         </motion.div>
 
-        <motion.h1
-          variants={fadeUp}
-          className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl"
-        >
-          pvNXT Solar Suite
+        <motion.h1 variants={fadeUp} className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
+          A solar workflow system built from messy handoffs.
         </motion.h1>
 
-        <motion.p
-          variants={fadeUp}
-          className="mt-8 max-w-3xl text-2xl font-medium leading-snug text-neutral-200 md:text-3xl"
-        >
-          Manual solar operations,{" "}
-          {/* <br className="hidden md:inline" />{" "} */}
-          turned into a live product ecosystem incubated at IIT Delhi.
+        <motion.p variants={fadeUp} className="mt-8 max-w-3xl text-2xl font-medium leading-snug text-neutral-200 md:text-3xl">
+          I helped turn WhatsApp, Excel, manual site visits and scattered solar operations into a connected product suite across EPCs, consumers and installers.
         </motion.p>
 
-        <motion.p variants={fadeUp} className="mt-6 text-base text-neutral-400 md:text-lg">
-          Enterprise SaaS · 3 web portals · 2 mobile apps · Live in production.
-        </motion.p>
-
-        {/* impact strip */}
-        <motion.div
-          variants={fadeUp}
-          className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-neutral-800 pt-12 md:grid-cols-4"
-        >
+        <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2">
           {[
-            { n: "5+", l: "EPCs onboarded" },
-            { n: "50+", l: "Users enrolled" },
-            { n: "2–3 wks", l: "Current project cycle" },
-            { n: "IIT Delhi", l: "FITT incubated" },
+            "UI/UX Design Lead",
+            "Terranxt · 2022 — Now",
+            "Web portals + mobile apps",
+            "Live product",
+            "FITT IIT Delhi incubated",
+          ].map((chip) => (
+            <span key={chip} className="rounded-full border border-neutral-800 bg-neutral-900/50 px-3 py-1 text-xs font-medium text-neutral-400">
+              {chip}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div variants={fadeUp} className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-neutral-800 pt-12 md:grid-cols-4">
+          {[
+            { n: "4+", l: "EPCs" },
+            { n: "6+", l: "Real users" },
+            { n: "50+", l: "Screens shipped" },
+            { n: "10–15 min", l: "Roof analysis" },
           ].map((s) => (
             <div key={s.l}>
               <div className="text-4xl font-bold text-indigo-400 md:text-5xl">{s.n}</div>
@@ -139,832 +130,582 @@ function Hero() {
   );
 }
 
-// ---------- 02 BEFORE ----------
-function Before() {
-  const points = [
-    "Proposals stitched across WhatsApp and Excel",
-    "Site analysis split between AutoCAD, PVsyst and spreadsheets",
-    "Installer updates came through calls, photos and voice notes",
-    "No single place to see status, owner or blocker for a project",
-    "There was no product. No team. No process. Just the problem.",
+// ---------- 02 SNAPSHOT ----------
+function Snapshot() {
+  const cards = [
+    {
+      title: "The mess",
+      body: "Solar work was split across calls, WhatsApp, Excel, manual analysis and repeated site visits.",
+    },
+    {
+      title: "My role",
+      body: "I led UX architecture, product flows, design system, handoff, QA and product demos.",
+    },
+    {
+      title: "What shipped",
+      body: "A connected suite across EPC, consumer, installer, proposal and field workflows.",
+    },
+    {
+      title: "Impact",
+      body: "4+ EPCs, 6+ real users, 50+ screens shipped, 10–15 min roof analysis, FITT IIT Delhi incubated.",
+    },
   ];
 
   return (
-    <Section id="before" bg="grey">
+    <Section id="snapshot" bg="grey">
       <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
-        <motion.div variants={fadeUp}>
-          <Eyebrow>The Problem</Eyebrow>
-        </motion.div>
+        <div className="grid gap-6 md:grid-cols-4">
+          {cards.map((c) => (
+            <motion.div
+              key={c.title}
+              variants={fadeUp}
+              className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition hover:border-indigo-300"
+            >
+              <h3 className="text-sm font-bold uppercase tracking-wider text-indigo-500">{c.title}</h3>
+              <p className="mt-3 text-base leading-relaxed text-neutral-700">{c.body}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </Section>
+  );
+}
 
-        <motion.h2
-          variants={fadeUp}
-          className="mt-5 max-w-3xl text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl"
-        >
-          Before pvNXT, running a solar EPC project looked like this.
-        </motion.h2>
+// ---------- 03 THE MESS ----------
+function Problem() {
+  return (
+    <Section id="problem" bg="white">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+        <div className="grid gap-16 lg:grid-cols-2">
+          <div>
+            <Eyebrow>The Mess Before pvNXT</Eyebrow>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+              Before pvNXT, one solar project moved through too many disconnected places.
+            </h2>
+            <ul className="mt-10 space-y-6">
+              {[
+                "Leads came from calls.",
+                "Site details came through WhatsApp.",
+                "Analysis happened in separate tools.",
+                "Proposals were built manually.",
+                "Installers updated progress through photos and phone calls.",
+                "No one had one clean view of the project.",
+              ].map((p, i) => (
+                <motion.li key={i} variants={fadeUp} className="flex items-center gap-4 text-lg text-neutral-600">
+                  <span className="flex h-6 w-6 items-center justify-center rounded-full bg-rose-100 text-rose-600 text-xs font-bold">
+                    {i + 1}
+                  </span>
+                  {p}
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+          <div className="relative flex items-center justify-center">
+            <motion.div variants={fadeUp} className="relative w-full max-w-md aspect-square bg-neutral-50 rounded-3xl border border-neutral-200 p-8 flex flex-col justify-center gap-6">
+              <div className="flex items-center gap-4 opacity-40">
+                <div className="h-10 w-10 rounded-lg bg-neutral-200" />
+                <div className="h-4 w-32 rounded bg-neutral-200" />
+              </div>
+              <div className="flex items-center gap-4 translate-x-8">
+                <div className="h-10 w-10 rounded-lg bg-rose-200" />
+                <div className="h-4 w-48 rounded bg-rose-100" />
+              </div>
+              <div className="flex items-center gap-4 translate-x-16 opacity-60">
+                <div className="h-10 w-10 rounded-lg bg-neutral-200" />
+                <div className="h-4 w-40 rounded bg-neutral-200" />
+              </div>
+              <div className="flex items-center gap-4 translate-x-4 opacity-40">
+                <div className="h-10 w-10 rounded-lg bg-neutral-200" />
+                <div className="h-4 w-36 rounded bg-neutral-200" />
+              </div>
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <span className="text-xs font-mono text-neutral-400 uppercase tracking-widest rotate-12 bg-white px-2 py-1 border border-neutral-200 rounded">
+                  Fragmented Flow
+                </span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+    </Section>
+  );
+}
 
-        <div className="mt-14 grid gap-12 md:grid-cols-[1.2fr_1fr] md:gap-16">
-          <motion.ul variants={fadeUp} className="space-y-5">
-            {points.map((p) => (
-              <li key={p} className="flex items-start gap-3 text-base text-neutral-700 md:text-lg">
-                <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-indigo-500" />
-                {p}
-              </li>
-            ))}
-          </motion.ul>
+// ---------- 04 THE CONNECTED SYSTEM ----------
+function System() {
+  const products = [
+    {
+      name: "pvNXT Studio",
+      desc: "For EPC teams to manage leads, roof analysis, proposals and projects.",
+      link: "/work/pvnxt-studio",
+    },
+    {
+      name: "pvNXT Connect",
+      desc: "For consumers to estimate, compare, request and track solar installation.",
+      link: "/work/pvnxt-connect-web",
+    },
+    {
+      name: "pvNXT Go",
+      desc: "For installers to receive tasks, upload proof and update progress.",
+      link: "/work/pvnxt-go-web",
+    },
+    {
+      name: "Proposal System",
+      desc: "For clean solar proposals generated from real project data.",
+      link: "/work/proposal-design",
+    },
+    {
+      name: "Field App",
+      desc: "For field teams to capture site details in one visit.",
+      link: "/work/pvnxt-field-app",
+    },
+    {
+      name: "SCADA Monitoring",
+      desc: "For solar plant monitoring, alerts and O&M workflows.",
+      link: "/work/scada-monitoring",
+    },
+  ];
 
-          <motion.div variants={fadeUp} className="border-l border-neutral-300 pl-8">
-            <div className="text-6xl font-bold leading-none tracking-tight text-neutral-900 md:text-7xl">
-              2–3 mo
-            </div>
-            <div className="mt-3 text-sm uppercase tracking-wider text-neutral-500">
-              Average project cycle
-            </div>
-          </motion.div>
+  return (
+    <Section id="system" bg="dark">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+        <div className="text-center">
+          <Eyebrow tone="muted">The Connected System</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            We built one connected suite where every role had its own workspace, but the project data stayed connected.
+          </h2>
         </div>
 
-        <motion.p
-          variants={fadeUp}
-          className="mt-16 max-w-3xl text-2xl font-semibold leading-snug text-neutral-900 md:text-3xl"
-        >
-          A 3-week job was taking 2–3 months. Manual. Invisible. Broken. Expensive.
-          <span className="mt-3 block text-neutral-500">
-            I joined as employee #2 to turn that chaos into a product.
-          </span>
-        </motion.p>
-      </motion.div>
-    </Section>
-  );
-}
-
-// ---------- 03 SYSTEM ----------
-function System() {
-  const portals = [
-    {
-      icon: Briefcase,
-      name: "EPC Portal",
-      tag: "Web",
-      bullets: ["Leads & proposals", "RFP bidding", "Installer assignment", "Project + O&M tracking"],
-    },
-    {
-      icon: Users,
-      name: "Consumer Portal",
-      tag: "Web + Mobile",
-      bullets: ["Solar feasibility", "ROI calculator", "Live install tracking", "Plant monitoring"],
-    },
-    {
-      icon: HardHat,
-      name: "Installer Portal",
-      tag: "Web + Mobile",
-      bullets: ["Site assignment", "Rooftop analysis", "Daily progress", "Work orders & status"],
-    },
-  ];
-
-  return (
-    <Section id="system" bg="white">
-      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
-        <motion.div variants={fadeUp} className="text-center">
-          <Eyebrow>The System</Eyebrow>
-          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-            3 portals. 2 apps. 1 connected reality.
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base text-neutral-600 md:text-lg">
-            Not one app. A full ecosystem where every role sees exactly what they need, and nothing they don’t.
-          </p>
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="mt-16 grid gap-6 md:grid-cols-3">
-          {portals.map((p) => {
-            const Icon = p.icon;
-            return (
-              <div
-                key={p.name}
-                className="group rounded-2xl border border-neutral-200 bg-white p-7 transition hover:-translate-y-1 hover:border-indigo-300 hover:shadow-lg"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <div className="mt-5 flex items-baseline gap-2">
-                  <h3 className="text-xl font-semibold text-neutral-900">{p.name}</h3>
-                  <span className="text-xs font-medium uppercase tracking-wider text-neutral-400">
-                    {p.tag}
-                  </span>
-                </div>
-                <ul className="mt-5 space-y-2.5">
-                  {p.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-neutral-600">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-indigo-500" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="mt-12 text-center">
-          <p className="inline-flex items-center gap-3 text-base font-semibold text-neutral-900 md:text-lg">
-            <Network className="h-5 w-5 text-indigo-500" />
-            Everything connected. Real-time. Role-based.
-          </p>
-          <p className="mt-3 text-sm italic text-neutral-500">
-            EPC mobile app is currently in design.
-          </p>
-        </motion.div>
-      </motion.div>
-    </Section>
-  );
-}
-
-// ---------- 04 MY ROLE ----------
-function MyRole() {
-  const chips = [
-    "Stakeholder research with real EPCs",
-    "Full UX architecture across 5 products",
-    "Design system from scratch, used by devs daily",
-    "Annotated dev handoffs, flow-by-flow",
-    "Hired and led a 5-person dev squad",
-    "Live booth demos at IIT Delhi FITT to investors",
-  ];
-
-  return (
-    <Section id="role" bg="dark">
-      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
-        <motion.div variants={fadeUp}>
-          <Eyebrow tone="muted">My Role</Eyebrow>
-        </motion.div>
-
-        <motion.h2
-          variants={fadeUp}
-          className="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight md:text-5xl"
-        >
-          I was employee #2.
-          <br />
-          <span className="text-neutral-500">No design team. No system. No process.</span>
-        </motion.h2>
-
-        <motion.p variants={fadeUp} className="mt-6 text-lg text-neutral-300">
-          I didn’t just design screens. I owned the path to shipping.
-        </motion.p>
-
-        <motion.div variants={fadeUp} className="mt-12 grid gap-3 md:grid-cols-2">
-          {chips.map((c) => (
-            <div
-              key={c}
-              className="flex items-start gap-3 rounded-xl border border-neutral-800 bg-neutral-900/40 px-5 py-4 transition hover:border-indigo-500/60"
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {products.map((p) => (
+            <motion.div
+              key={p.name}
+              variants={fadeUp}
+              className="group rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 transition hover:border-indigo-500/50 hover:bg-neutral-900"
             >
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-indigo-400" />
-              <span className="text-sm text-neutral-200 md:text-base">{c}</span>
-            </div>
+              <h3 className="text-xl font-semibold text-white">{p.name}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-400">{p.desc}</p>
+              <Link
+                to={p.link}
+                className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-400 transition hover:text-indigo-300"
+              >
+                Explore full breakdown <ArrowRight className="h-3 w-3" />
+              </Link>
+            </motion.div>
           ))}
-        </motion.div>
-
-        <motion.p variants={fadeUp} className="mt-12 text-xl font-semibold text-white md:text-2xl">
-          From first sketch to final ship — I owned it.
-        </motion.p>
+        </div>
       </motion.div>
     </Section>
   );
 }
 
-// ---------- 05 PROCESS ----------
+// ---------- 05 MY ROLE ----------
+function MyRole() {
+  const bullets = [
+    "Mapped EPC, consumer and installer workflows",
+    "Designed core web and mobile flows",
+    "Built reusable design system components",
+    "Created dev-ready Figma handoffs",
+    "Reviewed builds and logged UX issues",
+    "Presented product demos at IIT Delhi FITT",
+  ];
+
+  return (
+    <Section id="role" bg="white">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+        <div className="grid gap-16 lg:grid-cols-2">
+          <div>
+            <Eyebrow>My Role</Eyebrow>
+            <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+              I joined early, when there was no design system, no product structure and no clean workflow.
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-neutral-600">
+              My job was not just to make screens. I had to understand the solar process, shape the product, design the flows, support developers and keep improving the product after launch.
+            </p>
+            <ul className="mt-10 space-y-4">
+              {bullets.map((b) => (
+                <motion.li key={b} variants={fadeUp} className="flex items-start gap-3 text-base text-neutral-700">
+                  <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-indigo-500" />
+                  {b}
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            {[
+              { label: "Role", value: "UI/UX Design Lead" },
+              { label: "Team", value: "Product + frontend + backend + EPC stakeholders" },
+              { label: "Tools", value: "Figma, FigJam, Jira, HTML/CSS thinking" },
+              { label: "Duration", value: "2022 — Now" },
+            ].map((m) => (
+              <motion.div
+                key={m.label}
+                variants={fadeUp}
+                className="rounded-2xl border border-neutral-200 p-6"
+              >
+                <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">{m.label}</p>
+                <p className="mt-2 text-sm font-semibold text-neutral-900">{m.value}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 06 PROCESS ----------
 function Process() {
   const steps = [
     {
       n: "01",
-      title: "Decode",
-      body: "Sat with real EPCs. Walked through their actual work. Mapped every manual step on FigJam. Pain points became the product brief.",
+      title: "Decode the real workflow",
+      body: "Sat with teams, understood how projects actually moved, and mapped the messy process.",
     },
     {
       n: "02",
-      title: "Architect",
-      body: "Mid-fidelity first. Always. Mapped roles, permissions, data flow and edge cases before touching hi-fi. No pixel-pushing until the system made sense.",
+      title: "Structure the system",
+      body: "Defined roles, permissions, data flow, screens and edge cases before high-fidelity UI.",
     },
     {
       n: "03",
-      title: "Build with devs",
-      body: "Annotated Figma handoff — flows, edge states, dev-ready components. Sat with developers till every screen made sense to them.",
+      title: "Design the product",
+      body: "Created dashboards, forms, proposal flows, mobile screens and reusable components.",
     },
     {
       n: "04",
-      title: "Ship & scale",
-      body: "QA, iteration, edge cases. Then scaled it to SCADA monitoring with one suite, multiple roles.",
+      title: "Ship with the team",
+      body: "Worked with developers, reviewed builds, tested flows and improved the product after feedback.",
     },
   ];
 
   return (
-    <Section id="process" bg="white">
+    <Section id="process" bg="grey">
       <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
-        <motion.div variants={fadeUp}>
-          <Eyebrow>How I Work</Eyebrow>
-        </motion.div>
-        <motion.h2
-          variants={fadeUp}
-          className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
-        >
-          Whiteboard → Working product, in 4 steps.
-        </motion.h2>
+        <div className="text-center">
+          <Eyebrow>Process</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            Whiteboard → Working product.
+          </h2>
+        </div>
 
-        <motion.div variants={fadeUp} className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s) => (
-            <div
+            <motion.div
               key={s.n}
-              className="group relative overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 transition hover:-translate-y-1 hover:border-indigo-400 hover:shadow-lg"
+              variants={fadeUp}
+              className="group relative rounded-2xl border border-neutral-200 bg-white p-8 transition hover:border-indigo-400 hover:shadow-lg"
             >
-              <div className="pointer-events-none absolute right-3 top-2 select-none text-7xl font-bold text-neutral-100 transition group-hover:scale-110 group-hover:text-indigo-50">
+              <div className="mb-4 text-3xl font-bold text-neutral-100 group-hover:text-indigo-50 transition-colors">
                 {s.n}
               </div>
-              <div className="relative">
-                <div className="text-xs font-semibold uppercase tracking-widest text-indigo-500">
-                  Step {s.n}
-                </div>
-                <h3 className="mt-3 text-xl font-semibold text-neutral-900">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.body}</p>
-              </div>
-            </div>
+              <h3 className="text-lg font-bold text-neutral-900">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-neutral-600">{s.body}</p>
+            </motion.div>
           ))}
-        </motion.div>
-      </motion.div>
-    </Section>
-  );
-}
-
-// ---------- 06 KEY SCREENS (tabs + sticky header + 2-col grid) ----------
-type ScreenTab = {
-  id: string;
-  name: string;
-  platform: "Web" | "Web + App" | "Mobile" | "PDF";
-  headline: string;
-  body: string;
-  chips: string[];
-  replaced: string;
-  replacedNote: string;
-  shots: number; // number of placeholder mockups in 2-col grid
-  images?: string[];
-};
-
-function Screens() {
-  const tabs: ScreenTab[] = [
-    {
-      id: "epc",
-      name: "EPC Dashboard",
-      platform: "Web",
-      headline: "One screen replaces 4 tools.",
-      body:
-        "EPC teams manage their entire pipeline here — leads, proposals, RFP bidding, installer assignment, project tracking, and O&M. Before this, all of it lived across WhatsApp, Excel, and phone calls.",
-      chips: ["Lead-to-handover pipeline", "Installer assignment & tracking", "O&M dashboard + alerts", "Real-time project visibility"],
-      replaced: "WhatsApp + Excel + AutoCAD + Phone calls",
-      replacedNote: "Manual. Invisible. Broken.",
-      shots: 4,
-      images: [epcAll, epcAll, epcAll, epcAll],
-    },
-    {
-      id: "proposal",
-      name: "Proposal Report",
-      platform: "PDF",
-      headline: "A proposal Customer actually understand.",
-      body:
-        "EPCs generate this report from the portal after details site analysis. Customer didn't know what they were agreeing to so it explains the problem, roof potential, expected generation, cost, subsidy, savings and environmental impact in one clean PDF.",
-      chips: ["Consumer-ready proposal", "Cost + subsidy clarity", "Generation estimate", "PDF + portal sharing" ],
-      replaced: "Excel cost sheet + Manual site images + WhatsApp forwards + Follow-up calls + The consumer still had one question: “Kitna lagega, subsidy kitni milegi, aur fayda kya hoga?”" ,
-      replacedNote: "Manual. Confusing. Hard to trust.",
-      shots: 4,
-      images: [epcProposal, epcProposal, epcProposal, epcProposal],
-    },
-    {
-      id: "consumer",
-      name: "Consumer Portal",
-      platform: "Web + App",
-      headline: "The full solar journey, finally clear.",
-      body:
-        "From feasibility to live monitoring — built for homeowners who just want to know what's happening with their rooftop. No jargon, no spreadsheets, no calls to the EPC.",
-      chips: ["Solar feasibility check", "ROI calculator", "Live install tracking", "Plant monitoring"],
-      replaced: "Phone calls + PDF quotes + No visibility",
-      replacedNote: "Customers chasing updates.",
-      shots: 4,
-      images: [consumerAll, consumerAll, consumerAll, consumerAll],
-    },
-    {
-      id: "installer",
-      name: "Installer App",
-      platform: "Web + App",
-      headline: "Built for rooftops, not desks.",
-      body:
-        "Site assignment, rooftop analysis, daily progress capture. Designed for installers working in the sun with one hand on a ladder — large tap targets, offline-first, photo-led.",
-      chips: ["Site assignment", "Rooftop analysis", "Daily progress capture", "Work orders & status"],
-      replaced: "Paper checklists + WhatsApp photos",
-      replacedNote: "Lost in chat threads.",
-      shots: 4,
-      images: [installerAll, installerAll, installerAll, installerAll],
-    },
-    /* {
-      id: "scada",
-      name: "SCADA Monitoring",
-      platform: "Web",
-      headline: "Every inverter, one place.",
-      body:
-        "Real-time inverter data, alerts, work orders. O&M teams finally have one place to look instead of logging into 5 vendor dashboards every morning.",
-      chips: ["Live inverter data", "Alert routing", "Work-order generation", "Plant-level analytics"],
-      replaced: "5 vendor dashboards + Excel logs",
-      replacedNote: "Reactive, not proactive.",
-      shots: 4,
-      images: [epcAll],
-    }, */
-  ];
-
-  const [activeId, setActiveId] = useState(tabs[0].id);
-  const active = tabs.find((t) => t.id === activeId)!;
-
-  return (
-    <section id="screens" className="scroll-mt-20 bg-[#F8F8F8] text-neutral-900 py-24">
-      {/* Sticky tabs header */}
-      <div className="sticky top-0 z-30 border-b border-neutral-200/80 bg-[#F8F8F8]/85 backdrop-blur-md overflow-x-auto">
-        <div className="mx-auto max-w-[1200px] px-6">
-          <div className="flex items-center justify-between gap-6 py-4">
-            <div className="flex items-center gap-3">
-              <Eyebrow>The Work</Eyebrow>
-            </div>
-            <p className="hidden text-xs italic text-neutral-500 md:block">
-              <Sparkles className="mr-1.5 inline h-3.5 w-3.5 text-indigo-400" />
-              The cool guy behind the pixels.
-            </p>
-          </div>
-
-          {/* Tab strip — underline style, not buttons */}
-          <nav role="tablist" className="-mb-px flex gap-1">
-            {tabs.map((t) => {
-              const isActive = t.id === activeId;
-              return (
-                <button
-                  key={t.id}
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActiveId(t.id)}
-                  className={`group relative flex shrink-0 items-center gap-2.5 px-4 py-4 text-sm font-medium transition ${isActive ? "text-neutral-900" : "text-neutral-500 hover:text-neutral-800"
-                    }`}
-                >
-                  {t.platform === "Mobile" ? (
-                    <Smartphone className="h-4 w-4" />
-                  ) : (
-                    <Monitor className="h-4 w-4" />
-                  )}
-                  <span>{t.name}</span>
-                  <span
-                    className={`hidden rounded-full px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider transition md:inline-block ${isActive ? "bg-indigo-50 text-indigo-600" : "bg-neutral-100 text-neutral-500"
-                      }`}
-                  >
-                    {t.platform}
-                  </span>
-                  {/* underline indicator */}
-                  <span
-                    className={`absolute inset-x-3 -bottom-px h-[2px] rounded-full transition-all duration-300 ${isActive ? "scale-x-100 bg-neutral-900" : "scale-x-0 bg-neutral-300"
-                      }`}
-                  />
-                </button>
-              );
-            })}
-          </nav>
         </div>
-      </div>
-
-      {/* Body */}
-      <div className="mx-auto max-w-[1200px] px-6 py-16 md:py-20">
-        <motion.div
-          key={active.id}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* headline + body */}
-          <div className="grid gap-10 md:grid-cols-[1.6fr_1fr] md:gap-16">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-                {active.headline}
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-neutral-600 md:text-lg">
-                {active.body}
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {active.chips.map((c) => (
-                  <span
-                    key={c}
-                    className="inline-flex items-center gap-1.5 rounded-full border border-indigo-100 bg-indigo-50/60 px-3 py-1.5 text-xs font-medium text-indigo-700"
-                  >
-                    <CheckCircle2 className="h-3.5 w-3.5" />
-                    {c}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            <aside className="rounded-2xl border border-neutral-200 bg-white p-6">
-              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-400">
-                What this replaced
-              </div>
-              <p className="mt-3 text-base font-semibold text-neutral-900">{active.replaced}</p>
-              <div className="mt-4 inline-flex items-center gap-2 rounded-lg bg-rose-50 px-3 py-2 text-xs font-medium text-rose-700">
-                {active.replacedNote}
-              </div>
-            </aside>
-          </div>
-
-          <div className="mt-12">
-            {/* <img
-              src={active.images[0]}
-              className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-            /> */}
-
-            <ZoomableImage
-              src={active.images[0]}
-              alt={`${active.name} — Screen`}
-              caption={`${active.name} · Screen`}
-              className=""
-            ></ZoomableImage>
-
-            {/*  {Array.from({ length: active.shots }).map((_, i) => (
-              <ZoomableImage
-                key={i}
-                alt={`${active.name} — Screen ${String(i + 1).padStart(2, "0")}`}
-                caption={`${active.name} · Screen ${String(i + 1).padStart(2, "0")}`}
-                className="aspect-[4/3] bg-gradient-to-br from-neutral-100 to-neutral-200/60"
-              >
-                <div className="relative flex h-full w-full flex-col items-center justify-center gap-2 text-neutral-400">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-300 bg-white/70">
-                    {active.platform === "Mobile" ? (
-                      <Smartphone className="h-5 w-5" />
-                    ) : (
-                      <Monitor className="h-5 w-5" />
-                    )}
-                  </div>
-                  <p className="text-xs font-medium uppercase tracking-wider">
-                    {active.name} — Screen {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="text-[10px] text-neutral-400">Replace with mockup</p>
-                  <div
-                    className="pointer-events-none absolute inset-0 opacity-[0.04]"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
-                      backgroundSize: "24px 24px",
-                    }}
-                  />
-                </div>
-              </ZoomableImage>
-            ))} */}
-
-            {/* 2-col placeholder grid */}
-            {/* <div className="mt-12 grid gap-5 md:grid-cols-2">
-           {Array.from({ length: active.shots }).map((_, i) => (
-              <figure
-                key={i}
-                className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-100"
-              >
-                {active.images?.[i] ? (
-                  <img
-                    src={active.images[i]}
-                    alt={`${active.name} — Screen ${i + 1}`}
-                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-neutral-400">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-300 bg-white/70">
-                      {active.platform === "Mobile" ? (
-                        <Smartphone className="h-5 w-5" />
-                      ) : (
-                        <Monitor className="h-5 w-5" />
-                      )}
-                    </div>
-                    <p className="text-xs font-medium uppercase tracking-wider">
-                      {active.name} — Screen {String(i + 1).padStart(2, "0")}
-                    </p>
-                    <p className="text-[10px] text-neutral-400">Replace with mockup</p>
-                  </div>
-                )}
-              </figure>
-            ))} */}
-          </div>
-
-          {/* <div className="mt-12 grid gap-5 md:grid-cols-2">
-            {Array.from({ length: active.shots }).map((_, i) => (
-              <figure
-                key={i}
-                className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-neutral-200 bg-gradient-to-br from-neutral-100 to-neutral-200/60"
-              >
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-neutral-400">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-neutral-300 bg-white/70">
-                    {active.platform === "Mobile" ? (
-                      <Smartphone className="h-5 w-5" />
-                    ) : (
-                      <Monitor className="h-5 w-5" />
-                    )}
-                  </div>
-                  <p className="text-xs font-medium uppercase tracking-wider">
-                    {active.name} — Screen {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="text-[10px] text-neutral-400">Replace with mockup</p>
-                </div>
-
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-[0.04]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)",
-                    backgroundSize: "24px 24px",
-                  }}
-                />
-              </figure>
-            ))}
-          </div> */}
-
-          {/* footer stats strip */}
-          <div className="mt-12 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-neutral-200 pt-8 text-sm text-neutral-600">
-            <span><strong className="text-neutral-900">3</strong> Web portals</span>
-            <span><strong className="text-neutral-900">2</strong> Mobile apps</span>
-            <span><strong className="text-neutral-900">1</strong> Proposal flow</span>
-            <span><strong className="text-neutral-900">5</strong> Products shipped</span>
-            <span><strong className="text-neutral-900">1</strong> Connected system</span>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
-// ---------- 06 KEY SCREENS ----------
-{/* <KeyScreen /> */ }
-/* function Screens() {
-  const screens = [
-    {
-      img: epcShot,
-      name: "EPC Dashboard",
-      tag: "Web",
-      caption: "Complete pipeline view — leads to handover. One screen replaces 4 tools.",
-    },
-    {
-      img: Customerhot,
-      name: "Consumer Portal",
-      tag: "Web + Mobile",
-      caption: "Feasibility to monitoring — the full solar journey for a homeowner who just wants clarity.",
-    },
-    {
-      img: installerShot,
-      name: "Installer App",
-      tag: "Mobile",
-      caption: "Site assignment, rooftop analysis, daily progress. Built for people who work on rooftops, not desks.",
-    },
-    {
-      img: scadaShot,
-      name: "SCADA Monitoring",
-      tag: "Web",
-      caption: "Real-time inverter data, alerts, work orders. O&M teams finally have one place to look.",
-    },
-  ];
-
-  return (
-    <Section id="screens" bg="softgrey">
-      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
-        <motion.div variants={fadeUp}>
-          <Eyebrow>The Work</Eyebrow>
-        </motion.div>
-        <motion.h2
-          variants={fadeUp}
-          className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
-        >
-          What it actually looks like.
-        </motion.h2>
-
-        <motion.div variants={fadeUp} className="mt-14 grid gap-6 md:grid-cols-2">
-          {screens.map((s) => (
-            <figure
-              key={s.name}
-              className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white"
-            >
-              <div className="overflow-hidden bg-neutral-100">
-                <img
-                  src={s.img}
-                  alt={s.name}
-                  className="aspect-[16/10] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
-                  loading="lazy"
-                />
-              </div>
-              <figcaption className="p-6">
-                <div className="flex items-baseline gap-2">
-                  <h3 className="text-lg font-semibold text-neutral-900">{s.name}</h3>
-                  <span className="text-[11px] font-medium uppercase tracking-wider text-neutral-400">
-                    {s.tag}
-                  </span>
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600">{s.caption}</p>
-              </figcaption>
-            </figure>
-          ))}
-        </motion.div>
       </motion.div>
     </Section>
   );
-} */
+}
 
-// ---------- 07 KEY DECISIONS ----------
+// ---------- 07 PRODUCT STORIES ----------
+function ProductStories() {
+  return (
+    <Section id="stories" bg="white">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+        <div className="text-center mb-20">
+          <Eyebrow>Product Stories</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            Turning pain points into product logic.
+          </h2>
+        </div>
+
+        {/* Flagship Deep-Dive */}
+        <div className="mb-24 grid gap-12 lg:grid-cols-2 items-center">
+          <motion.div variants={fadeUp} className="order-2 lg:order-1">
+            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-3 py-1 text-xs font-bold text-indigo-600 uppercase tracking-wider">
+              Flagship Product
+            </div>
+            <h3 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">pvNXT Studio</h3>
+            <div className="mt-6 space-y-6">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-widest text-neutral-400">Problem</p>
+                <p className="mt-2 text-lg text-neutral-600">EPC teams were managing leads, site data, layouts and proposals across disconnected tools.</p>
+              </div>
+              <div>
+                <p className="text-sm font-bold uppercase tracking-widest text-neutral-400">What I designed</p>
+                <p className="mt-2 text-lg text-neutral-600">A web portal for project intake, rooftop analysis, proposal generation and project tracking.</p>
+              </div>
+              <div>
+                <p className="text-sm font-bold uppercase tracking-widest text-neutral-400">Why it helped</p>
+                <p className="mt-2 text-lg text-neutral-600">The team could move from site data to proposal inside one workflow.</p>
+              </div>
+            </div>
+            <Link to="/work/pvnxt-studio" className="mt-8 inline-flex items-center gap-2 font-bold text-indigo-600 hover:underline">
+              Explore full breakdown <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
+          <motion.div variants={fadeUp} className="order-1 lg:order-2">
+            <ZoomableImage src={epcAll} alt="pvNXT Studio" caption="pvNXT Studio · Core EPC Portal" className="rounded-3xl shadow-2xl" />
+          </motion.div>
+        </div>
+
+        {/* Compact Cards */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              name: "Proposal System",
+              problem: "Customers needed a proposal they could actually understand, not a rough cost sheet.",
+              designed: "A clean proposal format with system details, cost, subsidy, savings and solar impact.",
+              helped: "EPCs could send a more trustworthy proposal directly from real project data.",
+              link: "/work/proposal-design",
+              img: epcProposal,
+            },
+            {
+              name: "pvNXT Connect",
+              problem: "Consumers had too many doubts and very little visibility after showing interest in solar.",
+              designed: "A consumer portal for estimate, quote, installation tracking and solar journey clarity.",
+              helped: "Consumers could understand the process without chasing updates on calls.",
+              link: "/work/pvnxt-connect-web",
+              img: consumerAll,
+            },
+            {
+              name: "pvNXT Go",
+              problem: "Installer updates were scattered across calls, photos and WhatsApp messages.",
+              designed: "An installer portal for tasks, proof uploads, issue logging and live progress updates.",
+              helped: "EPC teams could see progress without chasing installers manually.",
+              link: "/work/pvnxt-go-web",
+              img: installerAll,
+            },
+            {
+              name: "Field App",
+              problem: "Site visits created incomplete handoffs. The design team still had to ask for missing details later.",
+              designed: "A field capture app for site data, rooftop details, keepouts, measurements and handoff notes.",
+              helped: "One site visit could create a cleaner design handoff.",
+              link: "/work/pvnxt-field-app",
+              img: fieldApp,
+            },
+            {
+              name: "SCADA Monitoring",
+              problem: "O&M teams needed a clearer way to monitor plant health, alerts and work orders.",
+              designed: "A monitoring workflow for plant visibility, alerts, issue tracking and field actions.",
+              helped: "Teams could move from reactive checking to a more visible operations flow.",
+              link: "/work/scada-monitoring",
+              img: scada,
+            },
+          ].map((story) => (
+            <motion.div
+              key={story.name}
+              variants={fadeUp}
+              className="group flex flex-col rounded-3xl border border-neutral-200 bg-white transition hover:border-indigo-300 hover:shadow-xl overflow-hidden"
+            >
+              <div className="aspect-video overflow-hidden bg-neutral-100">
+                <img src={story.img} alt={story.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              </div>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-xl font-bold text-neutral-900">{story.name}</h3>
+                <div className="mt-4 space-y-4">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Problem</p>
+                    <p className="text-sm text-neutral-600">{story.problem}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Solution</p>
+                    <p className="text-sm text-neutral-600">{story.designed}</p>
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">Impact</p>
+                    <p className="text-sm text-neutral-600">{story.helped}</p>
+                  </div>
+                </div>
+                <Link to={story.link} className="mt-6 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-indigo-600 hover:underline">
+                  Full Story <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 08 DESIGN DECISIONS ----------
 function Decisions() {
   const cards = [
     {
-      icon: Layers,
-      title: "Why role-based, not one-size-fits-all",
-      body: "EPC, Installer, and Consumer all touch the same project. But they should never see each other's data.",
-      result: "One login. Three realities. Fewer support calls. Zero access confusion.",
+      title: "Role-based views instead of one common dashboard",
+      body: "Because consumers, EPCs and installers need different information from the same project.",
     },
     {
-      icon: Wrench,
-      title: "Why mid-fidelity first, always",
-      body: "A polished UI in Week 1 looks great and gets the wrong feedback. \"This flow doesn't match how we work\" is easier to hear when you're looking at boxes — not beautiful screens.",
-      result: "Stakeholder validation before pixel-perfection. Every time.",
+      title: "Mid-fidelity before visual polish",
+      body: "Because the workflow was complex. Structure had to be right before UI became beautiful.",
+    },
+    {
+      title: "Reusable components from day one",
+      body: "Because one product quickly became a suite.",
+    },
+    {
+      title: "Proposal clarity over technical overload",
+      body: "Because consumers needed confidence, not a document full of jargon.",
     },
   ];
 
   return (
-    <Section id="decisions" bg="white">
+    <Section id="decisions" bg="grey">
       <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
-        <motion.div variants={fadeUp}>
+        <div className="text-center">
           <Eyebrow>Trade-offs</Eyebrow>
-        </motion.div>
-        <motion.h2
-          variants={fadeUp}
-          className="mt-5 max-w-3xl text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl"
-        >
-          {/* Two strategic decisions that shaped the product. */}
-          Two calls that changed the product.
-        </motion.h2>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            Design Decisions That Mattered.
+          </h2>
+        </div>
 
-        <motion.div variants={fadeUp} className="mt-14 grid gap-6 md:grid-cols-2">
-          {cards.map((c) => {
-            const Icon = c.icon;
-            return (
-              <div
-                key={c.title}
-                className="rounded-2xl border border-neutral-200 bg-white p-8 transition hover:border-indigo-300 hover:shadow-lg"
-              >
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600">
-                  <Icon className="h-5 w-5" />
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
+          {cards.map((c) => (
+            <motion.div
+              key={c.title}
+              variants={fadeUp}
+              className="rounded-2xl border border-neutral-200 bg-white p-8 transition hover:border-indigo-300 hover:shadow-lg"
+            >
+              <div className="flex items-start gap-4">
+                <div className="mt-1 h-2 w-2 rounded-full bg-indigo-500 shrink-0" />
+                <div>
+                  <h3 className="text-lg font-bold text-neutral-900">{c.title}</h3>
+                  <p className="mt-2 text-base leading-relaxed text-neutral-600">{c.body}</p>
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-neutral-900 md:text-2xl">{c.title}</h3>
-                <p className="mt-4 text-base leading-relaxed text-neutral-600">{c.body}</p>
-                <div className="my-6 h-px w-full bg-neutral-200" />
-                <p className="text-base font-semibold text-indigo-600">
-                  Result: <span className="text-neutral-900">{c.result}</span>
-                </p>
               </div>
-            );
-          })}
-        </motion.div>
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </Section>
   );
 }
 
-// ---------- 08 OUTCOME ----------
-function Outcome() {
-  const stats = [
-    { n: "5+", l: "EPCs onboarded" },
-    { n: "50+", l: "Users enrolled" },
-    { n: "2–3 wks", l: "Down from 2–3 mo" },
-    { n: "IIT Delhi", l: "FITT incubated", icon: GraduationCap },
+// ---------- 09 RESULTS ----------
+function Results() {
+  return (
+    <Section id="results" bg="deepest">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }} variants={stagger}>
+        <div className="text-center">
+          <Eyebrow tone="muted">Outcome</Eyebrow>
+          <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+            From messy solar workflows to a live product suite.
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-neutral-400">
+            The suite moved from early workflow mapping to a live product ecosystem used by real teams.
+          </p>
+        </div>
+
+        <div className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-y border-neutral-800 py-12 md:grid-cols-5">
+          {[
+            { n: "4+", l: "EPCs" },
+            { n: "6+", l: "Real users" },
+            { n: "50+", l: "Screens shipped" },
+            { n: "10–15 min", l: "Roof analysis" },
+            { n: "FITT IIT Delhi", l: "Incubated" },
+          ].map((s) => (
+            <div key={s.l} className="text-center">
+              <div className="text-3xl font-bold text-indigo-400 md:text-4xl">{s.n}</div>
+              <div className="mt-2 text-xs uppercase tracking-widest text-neutral-500">{s.l}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 grid gap-12 lg:grid-cols-2 items-center">
+          <motion.div variants={fadeUp} className="rounded-3xl border border-neutral-800 bg-neutral-900/50 p-8">
+            <h3 className="text-xl font-bold text-white mb-6">Key Learnings</h3>
+            <ul className="space-y-4">
+              {[
+                "Complex products become usable when roles are clear.",
+                "Mid-fidelity saves time when workflows are messy.",
+                "A design system is not decoration — it helps teams ship faster.",
+              ].map((l) => (
+                <li key={l} className="flex items-start gap-3 text-neutral-400">
+                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500 shrink-0" />
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+          <motion.div variants={fadeUp} className="text-center lg:text-right">
+            <p className="text-2xl font-bold text-white md:text-3xl leading-tight">
+              Messy solar workflows,<br />
+              made usable — and shipped.
+            </p>
+          </motion.div>
+        </div>
+      </motion.div>
+    </Section>
+  );
+}
+
+// ---------- 10 NEXT ----------
+function Next() {
+  const links = [
+    { name: "pvNXT Studio", href: "/work/pvnxt-studio" },
+    { name: "pvNXT Connect", href: "/work/pvnxt-connect-web" },
+    { name: "pvNXT Go", href: "/work/pvnxt-go-web" },
+    { name: "Proposal Design", href: "/work/proposal-design" },
+    { name: "Field App", href: "/work/pvnxt-field-app" },
+    { name: "SCADA Monitoring", href: "/work/scada-monitoring" },
   ];
 
   return (
-    <Section id="outcome" bg="deepest">
-      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }} variants={stagger}>
-        <motion.div variants={fadeUp}>
-          <Eyebrow tone="muted">Outcome</Eyebrow>
-        </motion.div>
-
-        <motion.h2
-          variants={fadeUp}
-          className="mt-6 max-w-4xl text-3xl font-bold leading-tight tracking-tight md:text-5xl"
-        >
-          From a FigJam board to a live product
-          <br className="hidden md:inline" /> used by real solar companies every day.
-        </motion.h2>
-
-        <motion.div
-          variants={fadeUp}
-          className="mt-16 grid grid-cols-2 gap-x-6 gap-y-10 border-y border-neutral-800 py-12 md:grid-cols-4"
-        >
-          {stats.map((s) => (
-            <div key={s.l}>
-              <div className="text-3xl font-bold text-indigo-400 md:text-5xl">{s.n}</div>
-              <div className="mt-2 text-sm text-neutral-400">{s.l}</div>
-            </div>
-          ))}
-        </motion.div>
-
-        <motion.div variants={fadeUp} className="mt-14 max-w-2xl">
-          <p className="text-base italic leading-relaxed text-neutral-400 md:text-lg">
-            We presented at IIT Delhi FITT with nothing but a Figma prototype and a real
-            problem worth solving.
-            <br />
-            <br />
-            Today, it's a live platform. Real companies. Real data. Real solar
-            installations tracked end-to-end. That’s the metric I care about.
-          </p>
-          {/* <p className="mt-8 text-2xl font-bold text-white md:text-3xl">
-            That’s the metric I care about.
-          </p> */}
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className="mt-8 text-xl font-bold text-white md:text-2xl"
-          >
-            The cool guy behind{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 text-primary">the pixels</span>
-              {/* <span className="absolute -bottom-1 left-0 right-0 -z-0 h-3 rounded-full bg-primary/20" /> */}
-            </span>{" "}
-            that actually shipped.
-          </motion.h1>
-          <div className="flex justify-start items-center gap-x-2 mt-6">
-            <span className="font-medium text-white">Visit:</span>
-            <div className="flex justify-between gap-x-6">
-              <a
-                href="https://consumer.pvnxt.com"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="hover"
-                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
-              >
-                Consumer <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-              <a
-                href="https://epc.pvnxt.com"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="hover"
-                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
-              >
-                EPC <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-              <a
-                href="https://installer.pvnxt.com"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor="hover"
-                className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary-glow hover:underline"
-              >
-                Installer <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-          </div>
-        </motion.div>
-      </motion.div>
-    </Section>
-  );
-}
-
-// ---------- 09 NEXT ----------
-function Next() {
-  return (
     <section className="border-t border-neutral-200 bg-white">
-      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-6 py-16 md:flex-row md:items-center md:justify-between">
-        <div>
+      <div className="mx-auto max-w-[1200px] px-6 py-24">
+        <div className="text-center">
           <p className="text-sm text-neutral-500">Next up →</p>
-          <div className="mt-2 flex flex-wrap items-center gap-3">
-            <h3 className="text-2xl font-semibold tracking-tight text-neutral-900">
-              SCADA Solar Monitoring
-            </h3>
-            <span className="rounded-full border border-neutral-300 px-3 py-1 text-xs font-medium uppercase tracking-wider text-neutral-600">
-              Redesign in progress
-            </span>
+          <h3 className="mt-2 text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
+            This was not one app. It became a product ecosystem.
+          </h3>
+          <div className="mt-10 flex flex-wrap justify-center gap-3">
+            {links.map((l) => (
+              <Link
+                key={l.name}
+                to={l.href}
+                className="rounded-full border border-neutral-200 bg-white px-5 py-2 text-sm font-medium text-neutral-700 transition hover:border-indigo-500 hover:text-indigo-600"
+              >
+                {l.name}
+              </Link>
+            ))}
           </div>
         </div>
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-5 py-3 text-sm font-medium text-neutral-700 transition hover:border-neutral-900 hover:text-neutral-900"
-        >
-          <ArrowLeft className="h-4 w-4" /> Back to all work
-        </Link>
+        <div className="mt-16 flex justify-center">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-6 py-3 text-sm font-medium text-neutral-700 transition hover:border-neutral-900 hover:text-neutral-900"
+          >
+            <ArrowLeft className="h-4 w-4" /> Back to all work
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
 
-// ---------- export ----------
-
-const TOC_ITEMS = [
-  { id: "hero", label: "Overview" },
-  { id: "before", label: "The Problem" },
-  { id: "system", label: "The System" },
-  { id: "role", label: "My Role" },
-  { id: "process", label: "How I Work" },
-  { id: "screens", label: "The Work" },
-  { id: "decisions", label: "Trade-offs" },
-  { id: "outcome", label: "Outcome" },
-];
+// ---------- TOC / NAVIGATION ----------
 function TableOfContents() {
-  const [active, setActive] = useState<string>("hero");
+  const TOC_ITEMS = [
+    { id: "overview", label: "01 Overview" },
+    { id: "snapshot", label: "02 Snapshot" },
+    { id: "problem", label: "03 Problem" },
+    { id: "system", label: "04 System" },
+    { id: "role", label: "05 Role" },
+    { id: "process", label: "06 Process" },
+    { id: "stories", label: "07 Product Stories" },
+    { id: "decisions", label: "08 Decisions" },
+    { id: "results", label: "09 Results" },
+  ];
+
+  const [active, setActive] = useState<string>("overview");
+
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
     const visible = new Map<string, number>();
+
     TOC_ITEMS.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (!el) return;
@@ -979,69 +720,83 @@ function TableOfContents() {
             setActive(top);
           }
         },
-        { rootMargin: "-30% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+        { rootMargin: "-20% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
       );
       obs.observe(el);
       observers.push(obs);
     });
     return () => observers.forEach((o) => o.disconnect());
   }, []);
+
   const handleClick = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
-  return (
-    <nav
-      aria-label="Case study sections"
-      className="group/toc fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block"
-    >
-      <ul className="flex flex-col gap-1.5">
-        {TOC_ITEMS.map((item, i) => {
-          const isActive = active === item.id;
-          const num = String(i + 1).padStart(2, "0");
 
-          return (
-            <li key={item.id}>
-              <a
-                href={`#${item.id}`}
-                onClick={(e) => handleClick(e, item.id)}
-                className="flex items-center justify-end gap-3"
-              >
-                <span
-                  className={`order-2 inline-block w-7 text-right font-mono text-xs tabular-nums transition-all duration-300 ${isActive ? "font-semibold text-primary-glow" : "text-neutral-400 group-hover/toc:text-neutral-600"
-                    }`}
+  return (
+    <>
+      {/* Desktop Rail */}
+      <nav className="group/toc fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
+        <ul className="flex flex-col gap-2">
+          {TOC_ITEMS.map((item) => {
+            const isActive = active === item.id;
+            return (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  onClick={(e) => handleClick(e, item.id)}
+                  className={`flex items-center justify-end gap-3 transition-all duration-300 ${
+                    isActive ? "translate-x-[-8px]" : "hover:translate-x-[-4px]"
+                  }`}
                 >
-                  {num}
-                </span>
-                <span
-                  className={`order-1 max-w-0 overflow-hidden whitespace-nowrap text-right text-[11px] font-medium uppercase tracking-[0.14em] opacity-0 transition-all duration-500 ease-out group-hover/toc:max-w-[180px] group-hover/toc:opacity-100 ${isActive
-                    ? "text-primary-glow max-w-[180px] opacity-100"
-                    : "text-neutral-500"
+                  <span
+                    className={`text-[11px] font-medium uppercase tracking-widest transition-all duration-300 ${
+                      isActive ? "text-indigo-500 font-bold" : "text-neutral-500"
                     }`}
-                >
-                  {item.label}
-                </span>
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+                  >
+                    {item.label}
+                  </span>
+                  <span
+                    className={`h-1 w-1 rounded-full transition-all duration-300 ${
+                      isActive ? "bg-indigo-500 scale-150" : "bg-neutral-300"
+                    }`}
+                  />
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      {/* Mobile Pills */}
+      <div className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-neutral-100 overflow-x-auto scrollbar-none py-4 lg:hidden">
+        <div className="flex gap-2 px-6">
+          {TOC_ITEMS.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => handleClick(e, item.id)}
+              className={`whitespace-nowrap rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider transition ${
+                active === item.id ? "bg-indigo-500 text-white" : "bg-neutral-100 text-neutral-500"
+              }`}
+            >
+              {item.label.split(" ")[1]}
+            </a>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 
 export default function CaseStudyPvNXT() {
-
   useEffect(() => {
-    // Force scroll-to-top on mount so navigation always lands on Overview,
-    // not on whatever section the previous IntersectionObserver activated.
     if (typeof window !== "undefined") {
       window.history.scrollRestoration = "manual";
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     }
   }, []);
-
 
   return (
     <main className="relative bg-white min-h-screen overflow-x-clip">
@@ -1049,16 +804,15 @@ export default function CaseStudyPvNXT() {
       <ScrollProgress />
       <TableOfContents />
       <Hero />
-      <Before />
+      <Snapshot />
+      <Problem />
       <System />
       <MyRole />
       <Process />
-      <Screens />
-      {/* <KeyScreen /> */}
+      <ProductStories />
       <Decisions />
-      <Outcome />
+      <Results />
       <Next />
-      {/* <Contact /> */}
       <Footer />
     </main>
   );

@@ -741,7 +741,7 @@ export type CaseStudyItem = (typeof content.caseStudies)[number];
 // archiveItems: text-only Earlier Work block
 // ============================================================
 
-export type FilterKey = "all" | "website" | "web-app" | "mobile-app" | "ppt-pdf";
+export type FilterKey = "all" | "case-study" | "web-app" | "website" | "mobile-app" | "ppt-pdf";
 
 export type WorkAction = {
   label: string;
@@ -830,7 +830,7 @@ export const workItems: WorkItem[] = [
     cover: pvnxtSuite,
     detailVisual: null,
     tags: ["Web App", "Case Study", "Live"],
-    filters: ["web-app"],
+    filters: ["case-study", "web-app"],
     showInAll: true,
     status: "live",
     pvnxtEcosystem: true,
@@ -850,7 +850,7 @@ export const workItems: WorkItem[] = [
     cover: scadaCard,
     detailVisual: null,          // full SCADA view vs alert-focused card crop
     tags: ["Web App", "Enterprise", "WIP"],
-    filters: ["web-app"],
+    filters: ["case-study", "web-app"],
     showInAll: true,
     status: "wip",
     pvnxtEcosystem: true,
@@ -890,7 +890,7 @@ export const workItems: WorkItem[] = [
     cover: sarCart,
     detailVisual: null,
     tags: ["Web App", "GIS", "Live"],
-    filters: ["web-app"],
+    filters: ["case-study", "web-app"],
     showInAll: true,
     status: "live",
     projectPageHref: "/work/spade",
@@ -921,14 +921,14 @@ export const workItems: WorkItem[] = [
   },
 
     {
-      slug: "iide",
-      name: "IIDE",
-      company: "IIDE · 2021",
-      tagline: "Lead-page redesigns that improved yearly conversions.",
-      cover: iideCard,
-      detailVisual: iideDetail,
-      tags: ["Website", "CRO", "Live"],
-      filters: ["website"],
+    slug: "iide",
+    name: "IIDE",
+    company: "IIDE · 2021",
+    tagline: "Lead-page redesigns that improved yearly conversions.",
+    cover: iideCard,
+    detailVisual: iideDetail,
+    tags: ["Website", "CRO", "Live"],
+    filters: ["case-study", "website"],
       showInAll: true,
       status: "live",
       projectPageHref: "/work/iide",
@@ -963,14 +963,14 @@ export const workItems: WorkItem[] = [
     },
 
     {
-      slug: "operation-comfort",
-      name: "Operation Comfort",
-      company: "Independent · Redesign",
-      tagline: "Assessment redesign with cleaner UX and sharper decisions.",
-      cover: comfortCard,
-      detailVisual: comfortDetail,
-      tags: ["Website", "Redesign", "Assessment"],
-      filters: ["website"],
+    slug: "operation-comfort",
+    name: "Operation Comfort",
+    company: "Independent · Redesign",
+    tagline: "Assessment redesign with cleaner UX and sharper decisions.",
+    cover: comfortCard,
+    detailVisual: comfortDetail,
+    tags: ["Website", "Redesign", "Assessment"],
+    filters: ["case-study", "website"],
       showInAll: true,
       status: "live",
       projectPageHref: "/work/operation-comfort",
