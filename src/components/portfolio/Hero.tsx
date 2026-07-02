@@ -114,7 +114,7 @@ export const Hero = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.65 }}
-              className="mt-8 flex flex-wrap items-center gap-4"
+              className="mt-8 flex flex-wrap items-center gap-2"
             >
                <MagneticButton href={hero.primaryCta.href} variant="primary" data-cursor-label="Skip to the good stuff">
                  {hero.primaryCta.label}
