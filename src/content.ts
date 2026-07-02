@@ -54,6 +54,8 @@ import fieldMobileCard from "@/assets/projects/field-mobile-card-rajat-mishra.sv
 import connectMobileCard from "@/assets/projects/connect-mobile-card-rajat-mishra.svg";
 import goMobileCard from "@/assets/projects/go-mobile-card-rajat-mishra.svg";
 
+import proposalPDFCard from "@/assets/projects/proposal-pdf-card-rajat-mishra.svg";
+
 export const content = {
   meta: {
     name: "Rajat Mishra",
@@ -1475,7 +1477,7 @@ export const workItems: WorkItem[] = [
     name: "Proposal Design",
     company: "Terranxt · Sales",
     tagline: "Solar proposal document built from real project data.",
-    cover: epcProposal,
+    cover: proposalPDFCard,
     detailVisual: epcProposalFull,   // full proposal SVG vs PNG cover card
     tags: ["Decks & Docs", "Proposal System", "Customer Clarity"],
     filters: ["ppt-pdf"],
