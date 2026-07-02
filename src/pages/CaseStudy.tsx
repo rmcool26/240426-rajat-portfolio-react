@@ -23,7 +23,7 @@ const CaseStudy = () => {
       <div className="bg-hero pt-12 pb-20 md:pt-20 md:pb-28">
         <div className="container">
           <Link
-            to="/"
+            to="/work"
             data-cursor="hover"
             className="inline-flex items-center gap-2 rounded-full border border-border bg-background/70 px-4 py-2 text-sm font-medium backdrop-blur transition-colors hover:bg-background"
           >
@@ -274,7 +274,7 @@ const CaseStudy = () => {
 
         <div className="mt-20 border-t border-border pt-10 text-center">
           <Link
-            to="/"
+            to="/work"
             data-cursor="hover"
             className="inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition-transform hover:scale-105"
           >

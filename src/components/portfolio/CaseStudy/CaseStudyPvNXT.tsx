@@ -81,7 +81,7 @@ function Section({
 function Hero() {
   return (
     <Section id="overview" bg="darker" className="relative overflow-hidden">
-      <Link to="/" className="mb-12 inline-flex items-center gap-2 text-sm text-neutral-400 transition hover:text-white">
+      <Link to="/work" className="mb-12 inline-flex items-center gap-2 text-sm text-neutral-400 transition hover:text-white">
         <ArrowLeft className="h-4 w-4" /> Back to portfolio
       </Link>
 
@@ -91,11 +91,11 @@ function Hero() {
         </motion.div>
 
         <motion.h1 variants={fadeUp} className="mt-6 text-5xl font-bold leading-[1.05] tracking-tight md:text-6xl lg:text-7xl">
-          A solar workflow system built from messy handoffs.
+          A solar workflow system built from idea.
         </motion.h1>
 
         <motion.p variants={fadeUp} className="mt-8 max-w-3xl text-2xl font-medium leading-snug text-neutral-200 md:text-3xl">
-          I helped turn WhatsApp, Excel, manual site visits and scattered solar operations into a connected product suite across EPCs, consumers and installers.
+          I helped turn WhatsApp, Excel, manual site visits and scattered solar operations into a connected product suite built from scratch for EPC teams, consumers and installers.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-2">
@@ -139,7 +139,7 @@ function Snapshot() {
     },
     {
       title: "My role",
-      body: "I led UX architecture, product flows, design system, handoff, QA and product demos.",
+      body: "From workflow mapping and product naming to UI design, dev handoff, testing and demos — I stayed close from problem to shipped product.",
     },
     {
       title: "What shipped",
@@ -171,6 +171,37 @@ function Snapshot() {
   );
 }
 
+function Glossary() {
+  const terms = [
+    { term: "EPC", def: "The solar company/team that sells, designs and manages installation projects." },
+    { term: "Consumer", def: "The home or business owner exploring solar." },
+    { term: "Installer", def: "The on-ground team that visits the site and completes installation." },
+    { term: "O&M", def: "The team that monitors and maintains solar plants after installation." },
+    { term: "SCADA", def: "A monitoring system used to track plant health, alerts and performance." },
+  ];
+  return (
+    <Section id="glossary" bg="white" className="py-12 md:py-16">
+      <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+        <div className="flex flex-col md:flex-row gap-8 items-start justify-between">
+          <div className="max-w-xs">
+            <Eyebrow>Quick decode</Eyebrow>
+            <h3 className="mt-2 text-xl font-bold text-neutral-900">Solar terms for non-experts.</h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6 flex-1">
+            {terms.map((t) => (
+              <motion.div key={t.term} variants={fadeUp} className="flex gap-3">
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-500 shrink-0">{t.term}</span>
+                <span className="text-sm text-neutral-600">{t.def}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </Section>
+  );
+}
+
+
 // ---------- 03 THE MESS ----------
 function Problem() {
   return (
@@ -187,9 +218,9 @@ function Problem() {
                 "Leads came from calls.",
                 "Site details came through WhatsApp.",
                 "Analysis happened in separate tools.",
-                "Proposals were built manually.",
-                "Installers updated progress through photos and phone calls.",
-                "No one had one clean view of the project.",
+                 "Proposals were built manually.",
+                 "Installers updated progress through phone calls.",
+                 "No one had one clean view of the project.",
               ].map((p, i) => (
                 <motion.li key={i} variants={fadeUp} className="flex items-center gap-4 text-lg text-neutral-600">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-rose-100 text-rose-600 text-xs font-bold">
@@ -302,12 +333,12 @@ function System() {
 // ---------- 05 MY ROLE ----------
 function MyRole() {
   const bullets = [
-    "Mapped EPC, consumer and installer workflows",
-    "Designed core web and mobile flows",
-    "Built reusable design system components",
-    "Created dev-ready Figma handoffs",
-    "Reviewed builds and logged UX issues",
-    "Presented product demos at IIT Delhi FITT",
+    "Worked with real EPC teams to understand manual workflows",
+    "Mapped workflows, inputs and data flow in FigJam",
+    "Designed mid-fi, hi-fi and dev-ready Figma files",
+    "Named and structured the pvNXT product ecosystem",
+    "Built early frontend UI with HTML, CSS and Bootstrap",
+    "Led developer handoff, QA and product demos",
   ];
 
   return (
@@ -315,13 +346,16 @@ function MyRole() {
       <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
         <div className="grid gap-16 lg:grid-cols-2">
           <div>
-            <Eyebrow>My Role</Eyebrow>
+            <Eyebrow>MY ROLE</Eyebrow>
             <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
-              I joined early, when there was no design system, no product structure and no clean workflow.
+              I connected users, design and build.
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-neutral-600">
-              My job was not just to make screens. I had to understand the solar process, shape the product, design the flows, support developers and keep improving the product after launch.
-            </p>
+            <div className="mt-6 space-y-6 text-lg leading-relaxed text-neutral-600">
+              <p>I joined when there was no application, no design system and no fixed workflow — just a real solar operations problem.</p>
+              <p>
+                I worked with EPC teams to understand the manual process, mapped workflows and data flow in FigJam, designed the screens in Figma, explained the logic to developers, tested builds and helped the product move from scratch to live use.
+              </p>
+            </div>
             <ul className="mt-10 space-y-4">
               {bullets.map((b) => (
                 <motion.li key={b} variants={fadeUp} className="flex items-start gap-3 text-base text-neutral-700">
@@ -333,18 +367,30 @@ function MyRole() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             {[
-              { label: "Role", value: "UI/UX Design Lead" },
-              { label: "Team", value: "Product + frontend + backend + EPC stakeholders" },
-              { label: "Tools", value: "Figma, FigJam, Jira, HTML/CSS thinking" },
-              { label: "Duration", value: "2022 — Now" },
+              {
+                title: "Discovery + workflow",
+                text: "Met real EPC teams, understood how solar work happened manually, then mapped the flow in FigJam.",
+              },
+              {
+                title: "Product architecture",
+                text: "Defined inputs, data flow, roles and permissions. Also named and structured the product family — Studio, Connect, Go and supporting tools.",
+              },
+              {
+                title: "Design + frontend",
+                text: "Designed mid-fi and hi-fi screens. In the early phase, also converted UI into HTML/CSS/Bootstrap.",
+              },
+              {
+                title: "Build + launch support",
+                text: "Led developer handoff, coordinated API flow, tested builds, managed fixes and supported demos at IIT Delhi FITT.",
+              },
             ].map((m) => (
               <motion.div
-                key={m.label}
+                key={m.title}
                 variants={fadeUp}
                 className="rounded-2xl border border-neutral-200 p-6"
               >
-                <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">{m.label}</p>
-                <p className="mt-2 text-sm font-semibold text-neutral-900">{m.value}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">{m.title}</p>
+                <p className="mt-2 text-sm leading-relaxed text-neutral-900">{m.text}</p>
               </motion.div>
             ))}
           </div>
@@ -360,22 +406,22 @@ function Process() {
     {
       n: "01",
       title: "Decode the real workflow",
-      body: "Sat with teams, understood how projects actually moved, and mapped the messy process.",
+      body: "Met EPC teams and converted manual work into a clear FigJam workflow.",
     },
     {
       n: "02",
       title: "Structure the system",
-      body: "Defined roles, permissions, data flow, screens and edge cases before high-fidelity UI.",
+      body: "Mapped inputs, data flow, permissions and edge cases before UI.",
     },
     {
       n: "03",
       title: "Design the product",
-      body: "Created dashboards, forms, proposal flows, mobile screens and reusable components.",
+      body: "Created mid-fidelity for review, then high-fidelity Figma for build.",
     },
     {
       n: "04",
       title: "Ship with the team",
-      body: "Worked with developers, reviewed builds, tested flows and improved the product after feedback.",
+      body: "Explained flows to developers, coordinated API needs, tested builds and improved after feedback.",
     },
   ];
 
@@ -470,14 +516,14 @@ function ProductStories() {
               link: "/work/pvnxt-connect-web",
               img: consumerAll,
             },
-            {
-              name: "pvNXT Go",
-              problem: "Installer updates were scattered across calls, photos and WhatsApp messages.",
-              designed: "An installer portal for tasks, proof uploads, issue logging and live progress updates.",
-              helped: "EPC teams could see progress without chasing installers manually.",
-              link: "/work/pvnxt-go-web",
-              img: installerAll,
-            },
+             {
+               name: "pvNXT Go",
+               problem: "Before pvNXT Go, installers updated progress through WhatsApp or calls. EPC teams had to manually chase every site for updates.",
+               designed: "An installer portal with daily photo and status inputs so progress could be tracked without manual chasing.",
+               helped: "EPC teams could track on-ground progress in real-time via status and photo updates.",
+               link: "/work/pvnxt-go-web",
+               img: installerAll,
+             },
             {
               name: "Field App",
               problem: "Site visits created incomplete handoffs. The design team still had to ask for missing details later.",
@@ -605,7 +651,7 @@ function Results() {
             { n: "6+", l: "Real users" },
             { n: "50+", l: "Screens shipped" },
             { n: "10–15 min", l: "Roof analysis" },
-            { n: "FITT IIT Delhi", l: "Incubated" },
+            { n: "IIT Delhi", l: "Incubated at" },
           ].map((s) => (
             <div key={s.l} className="text-center">
               <div className="text-3xl font-bold text-indigo-400 md:text-4xl">{s.n}</div>
@@ -621,7 +667,7 @@ function Results() {
               {[
                 "Complex products become usable when roles are clear.",
                 "Mid-fidelity saves time when workflows are messy.",
-                "A design system is not decoration — it helps teams ship faster.",
+                "A design system is not decoration, it helps teams ship faster.",
               ].map((l) => (
                 <li key={l} className="flex items-start gap-3 text-neutral-400">
                   <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-500 shrink-0" />
@@ -633,7 +679,7 @@ function Results() {
           <motion.div variants={fadeUp} className="text-center lg:text-right">
             <p className="text-2xl font-bold text-white md:text-3xl leading-tight">
               Messy solar workflows,<br />
-              made usable — and shipped.
+              made usable and shipped.
             </p>
           </motion.div>
         </div>
@@ -675,7 +721,7 @@ function Next() {
         </div>
         <div className="mt-16 flex justify-center">
           <Link
-            to="/"
+            to="/work"
             className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-6 py-3 text-sm font-medium text-neutral-700 transition hover:border-neutral-900 hover:text-neutral-900"
           >
             <ArrowLeft className="h-4 w-4" /> Back to all work
@@ -691,13 +737,14 @@ function TableOfContents() {
   const TOC_ITEMS = [
     { id: "overview", label: "01 Overview" },
     { id: "snapshot", label: "02 Snapshot" },
-    { id: "problem", label: "03 Problem" },
-    { id: "system", label: "04 System" },
-    { id: "role", label: "05 Role" },
-    { id: "process", label: "06 Process" },
-    { id: "stories", label: "07 Product Stories" },
-    { id: "decisions", label: "08 Decisions" },
-    { id: "results", label: "09 Results" },
+    { id: "glossary", label: "03 Glossary" },
+    { id: "problem", label: "04 Problem" },
+    { id: "system", label: "05 System" },
+    { id: "role", label: "06 Role" },
+    { id: "process", label: "07 Process" },
+    { id: "stories", label: "08 Product Stories" },
+    { id: "decisions", label: "09 Decisions" },
+    { id: "results", label: "10 Results" },
   ];
 
   const [active, setActive] = useState<string>("overview");
@@ -805,6 +852,7 @@ export default function CaseStudyPvNXT() {
       <TableOfContents />
       <Hero />
       <Snapshot />
+      <Glossary />
       <Problem />
       <System />
       <MyRole />
