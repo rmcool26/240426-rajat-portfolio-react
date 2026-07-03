@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajat Mishra - Resume</title>
+<style>
+  /* RAJAT MISHRA - ATS RESUME v4.1
+     Content: Fortune 500 v3 – unchanged
+     Look: Gemma-style typography + Gemma-style Work Experience layout
+     2-Page A4, 100% ATS parseable
+  */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, Helvetica, Calibri, sans-serif;
+    font-size: 10pt;
+    line-height: 1.4;
+    color: #000;
+    background: #e8e8e8;
+  }
+
+  /* --- Screen paged preview --- */
+  .sheet {
+    background: #fff;
+    width: 210mm;
+    min-height: 297mm;
+    margin: 18px auto;
+    padding: 15mm 16mm;
+    box-shadow: 0 1px 8px rgba(0,0,0,.12);
+    position: relative;
+    overflow: hidden;
+  }
+  .page-number {
+    position: absolute;
+    bottom: 9mm;
+    right: 16mm;
+    font-size: 8pt;
+    color: #999;
+  }
+
+  /* Header – Gemma style, centered */
+  .header { text-align: center; margin-bottom: 14px; }
+  h1 { font-size: 16pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+  .headline { font-size: 10.5pt; font-weight: 600; color: #222; margin-bottom: 4px; }
+  .contact { font-size: 10pt; color: #333; }
+  .contact span { white-space: nowrap; }
+  .contact span + span::before { content: " | "; color: #999; }
+  a { color: #111; text-decoration: none; }
+
+  /* Sections */
+  h2 {
+    font-size: 11pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 3px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+  }
+  h2:first-of-type { margin-top: 0; }
+  p { margin-bottom: 5px; }
+  ul { padding-left: 16px; margin: 3px 0 8px 0; }
+  li { margin-bottom: 2px; }
+
+  /* --- Work Experience – Gemma layout --- */
+  .job-block { margin-bottom: 10px; break-inside: avoid; page-break-inside: avoid; }
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-weight: 700;
+    font-size: 10pt;
+    gap: 12px;
+  }
+  .experience-header .role { text-align: left; }
+  .experience-header .date { text-align: right; white-space: nowrap; font-weight: 700; }
+  .experience-subhead {
+    display: flex;
+    justify-content: space-between;
+    font-style: italic;
+    font-size: 10pt;
+    color: #333;
+    margin-bottom: 3px;
+    gap: 12px;
+  }
+  .experience-subhead .loc { text-align: left; }
+  .experience-subhead .domain { text-align: right; }
+
+  /* Skills */
+  .skills-block { font-size: 10pt; line-height: 1.45; margin-bottom: 3px; }
+  .skills-category { font-weight: 700; }
+
+  /* Print */
+  @page { size: A4; margin: 0; }
+  @media print {
+    body { background: #fff; font-size: 10pt; line-height: 1.4; }
+    .sheet {
+      width: auto; min-height: 0; height: auto;
+      margin: 0; padding: 15mm 15mm;
+      box-shadow: none; overflow: visible;
+      page-break-after: always;
+    }
+    .sheet:last-child { page-break-after: avoid; }
+    .page-number { display: none; }
+    h2, .job-block, ul, li { break-inside: avoid; page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="sheet">
+  <div class="header">
+    <h1>Rajat Mishra</h1>
+    <div class="headline">Senior Product Designer | UI/UX Lead – Enterprise SaaS</div>
+    <div class="contact">
+      <span>Mumbai, Maharashtra, India</span>
+      <span>rmcool26@gmail.com</span>
+      <span>+91 9719499553</span>
+      <span>linkedin.com/in/rmcool26</span>
+      <span>rmcool26.netlify.app</span>
+    </div>
+  </div>
+
+  <h2>Professional Summary</h2>
+  <p>
+    Product Designer and UI/UX Lead with 10+ years shipping Enterprise SaaS, dashboards, web and mobile apps for Fintech, Energy, EdTech, GIS and B2B procurement. Led design at Terranxt – joined as designer #2, scaled team 2 → 12. Designed pvNXT Solar Suite end-to-end, 3 interconnected portals + mobile apps, incubated at FITT IIT Delhi. 20+ live products, 50+ projects delivered. Frontend-aware – HTML, CSS, Tailwind. Strong in UX research, design systems, workflow automation, developer handoff and design QA. Open to Senior / Lead Product Design roles at product-led Fortune companies.
+  </p>
+
+  <h2>Core Skills</h2>
+  <p class="skills-block"><span class="skills-category">Product &amp; UX:</span> Product Design, UX Research, Information Architecture, User Flows, User Journey Mapping, Wireframing, Prototyping, Usability Testing, A/B Testing, Design Ops, Stakeholder Workshops</p>
+  <p class="skills-block"><span class="skills-category">UI &amp; Systems:</span> Design Systems, Design Tokens, Responsive Web Design, Mobile App Design, Dashboard Design, Data Visualization, Web Accessibility – WCAG 2.1 AA, Design QA, Developer Handoff – Figma Dev Mode</p>
+  <p class="skills-block"><span class="skills-category">Tools &amp; Tech:</span> Figma, FigJam, Miro, Notion, Jira, Framer, Webflow, HTML, CSS, Tailwind CSS, Bootstrap, WordPress, Google Analytics – GA4, Mixpanel, QGIS</p>
+  <p class="skills-block"><span class="skills-category">Ways of Working:</span> Agile / Scrum, Cross-functional Collaboration, Stakeholder Management, Team Leadership, Mentoring, UAT – Enterprise SaaS, Fintech, Energy / Solar Tech, EdTech, GIS, B2B Procurement</p>
+
+  <h2>Work Experience</h2>
+
+  <div class="job-block">
+    <div class="experience-header">
+      <span class="role">UI/UX Design Lead — Terranxt Pvt Ltd (pvNXT)</span>
+      <span class="date">Mar 2022 – Present</span>
+    </div>
+    <div class="experience-subhead">
+      <span class="loc">Gurugram, India</span>
+      <span class="domain">Enterprise SaaS, Solar Tech | FITT IIT Delhi</span>
+    </div>
+    <ul>
+      <li>Owned end-to-end Product Design for pvNXT Solar Suite – 3 interconnected SaaS portals: Consumer, EPC, Installer – plus Field / Connect / Go mobile apps.</li>
+      <li>Built pvNXT Design System and component library with design tokens from scratch, powering 3+ live products across web and mobile. 50+ screens shipped.</li>
+      <li>Scaled product design team 2 → 12 through hiring, mentoring and design ops. Led UX research with EPC stakeholders and field teams.</li>
+      <li>Reduced project execution timeline from 2–3 months to 2–3 weeks through connected workflow automation. 4+ EPC organizations onboarded, 6+ real users. Owned Figma Dev Mode handoff, design QA and post-launch iteration.</li>
+    </ul>
+  </div>
+
+  <div class="job-block">
+    <div class="experience-header">
+      <span class="role">Executive Web Designer — IIDE</span>
+      <span class="date">Apr 2021 – Feb 2022</span>
+    </div>
+    <div class="experience-subhead">
+      <span class="loc">Mumbai, India</span>
+      <span class="domain">EdTech, Growth / CRO</span>
+    </div>
+    <ul>
+      <li>Redesigned responsive course and marketing pages with improved IA and A/B tested CTAs, increasing lead conversion by 16% YoY.</li>
+      <li>Mentored 3 junior designers and established the team's first design QA ritual. Collaborated with marketing and engineering on business-aligned solutions.</li>
+    </ul>
+  </div>
+
+  <div class="page-number">Page 1 / 2</div>
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="sheet">
+  <h2 style="margin-top:0">Work Experience — Continued</h2>
+
+  <div class="job-block">
+    <div class="experience-header">
+      <span class="role">Software Engineer (UI-Oriented) — Skymap Global</span>
+      <span class="date">Jul 2019 – Mar 2021</span>
+    </div>
+    <div class="experience-subhead">
+      <span class="loc">Noida, India</span>
+      <span class="domain">GIS / Government Enterprise</span>
+    </div>
+    <ul>
+      <li>Designed government-grade web applications for satellite imagery and land monitoring used by government and enterprise customers.</li>
+      <li>Translated dense GIS workflows into clean dashboards in collaboration with QGIS / ERDAS engineering teams. Built UI components for B2B procurement and e-commerce satellite imagery platforms.</li>
+    </ul>
+  </div>
+
+  <div class="job-block">
+    <div class="experience-header">
+      <span class="role">Junior Web Designer &amp; Developer — Dreamz Merchandising Solutions</span>
+      <span class="date">Jun 2016 – Jun 2019</span>
+    </div>
+    <div class="experience-subhead">
+      <span class="loc">Mumbai, India</span>
+      <span class="domain">B2B / Agency</span>
+    </div>
+    <ul>
+      <li>Shipped 20+ responsive client websites across 10+ industries – real estate, education, F&B, media. Managed projects end-to-end from brief to delivery.</li>
+      <li>Built strong foundation in HTML, CSS, responsive design and client communication. Established UI-oriented engineering practices.</li>
+    </ul>
+  </div>
+
+  <h2>Featured Project</h2>
+  <p><strong>pvNXT Solar Suite – Terranxt</strong> | Product Design Lead – Enterprise SaaS, Web + Mobile</p>
+  <ul>
+    <li>Unified 3 disconnected portals + WhatsApp / spreadsheet handoffs into one connected Solar EPC workflow suite.</li>
+    <li>3 portals: Consumer (Connect), EPC (Studio), Installer (Go) + 3 mobile apps: Field App, Connect Mobile, Go Mobile.</li>
+    <li>Outcome: 4+ EPCs onboarded, 6+ real users, 50+ screens shipped, timeline 2–3 months → 2–3 weeks. Incubated at FITT IIT Delhi.</li>
+  </ul>
+
+  <h2>Education &amp; Certification</h2>
+
+  <div class="job-block" style="margin-bottom:6px">
+    <div class="experience-header">
+      <span class="role">Advanced UI UX Design &amp; Research — Tutedude</span>
+      <span class="date">2025 – Ongoing</span>
+    </div>
+  </div>
+
+  <div class="job-block" style="margin-bottom:6px">
+    <div class="experience-header">
+      <span class="role">Bachelor of Computer Applications (BCA) — Mangalayatan University</span>
+      <span class="date">2019</span>
+    </div>
+  </div>
+
+  <div class="job-block" style="margin-bottom:2px">
+    <div class="experience-header">
+      <span class="role">Diploma in IT — Tata Consultancy Services (TCS)</span>
+      <span class="date">Certified</span>
+    </div>
+    <div style="font-size:9.5pt; color:#333; font-style:italic; margin-top:1px;">Specialization in Web Programming, Application Design, and Advanced Programming.</div>
+  </div>
+
+  <h2>Languages</h2>
+  <p>English (Professional) · Hindi (Native)</p>
+
+  <div class="page-number">Page 2 / 2</div>
+</div>
+
+</body>
+</html>
