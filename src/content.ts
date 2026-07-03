@@ -90,7 +90,7 @@ export const content = {
   },
 
   marquee: [
-    "9+ years shipping",
+    "10+ years shipping",
     "60+ projects",
     "4 mobile apps",
     "Scaled design 2 → 12",
@@ -658,7 +658,7 @@ export const content = {
       "A decade of building real products has taught me one thing: reduce manual chaos, speed up dev, solve real problems. Everything else is decoration.",
     ],
     stats: [
-      { value: "9+", label: "Years shipping" },
+      { value: "10+", label: "Years shipping" },
       { value: "20+", label: "Live products" },
       { value: "4", label: "Designers Mentored" },
       { value: "6", label: "Developers Led" },
