@@ -7,7 +7,7 @@ export const Experience = () => {
 
   const timelineData = [
     {
-      year: "2022 — Now",
+      year: "Jan 2022 — Now",
       company: "Terranxt / pvNXT",
       role: "UI/UX Design Lead",
       desc: (
@@ -19,7 +19,7 @@ export const Experience = () => {
       ),
     },
     {
-      year: "2021 — 2022",
+      year: "Jan 2021 — Dec 2021",
       company: "IIDE",
       role: "Executive Web Designer",
       desc: (
@@ -30,7 +30,7 @@ export const Experience = () => {
       ),
     },
     {
-      year: "2019 — 2021",
+      year: "Jan 2020 — Dec 2020",
       company: "Skymap Global",
       role: "Software Engineer — UI-Oriented",
       desc: (
@@ -41,7 +41,7 @@ export const Experience = () => {
       ),
     },
     {
-      year: "2016 — 2019",
+      year: "Jan 2016 — Dec 2019",
       company: "Dreamz Merchandising Solutions",
       role: "Junior Web Designer & Developer",
       desc: (
