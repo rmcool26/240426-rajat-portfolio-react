@@ -55,7 +55,7 @@ const AboutPage = () => {
             </h1>
             <div className="mt-8 space-y-6 text-lg text-muted-foreground md:text-xl">
               <p>
-                I’m Rajat Mishra — a UI/UX Designer, and programmatic designer who turns messy workflows into clean, shipped digital products.
+                I’m Rajat Mishra, a Pragmatic  Product and UI/UX Designer who turns messy workflows into clean, shipped digital products.
               </p>
               <p>
                 I design websites, dashboards and web apps with business clarity, usable flows and frontend-ready thinking.
