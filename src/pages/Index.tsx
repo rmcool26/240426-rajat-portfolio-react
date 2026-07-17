@@ -20,7 +20,7 @@ const Index = () => {
     requestAnimationFrame(raf);
 
     document.title = `${content.meta.name} — ${content.meta.role}`;
-    const desc = `${content.meta.name}: UI/UX Lead with 9+ years. I solve complex problems through design & systems thinking. Currently leading design at Terranxt.`;
+    const desc = `${content.meta.name}: UI/UX Lead with 10+ years. I solve complex problems through design & systems thinking. Currently leading design at Terranxt.`;
     let m = document.querySelector('meta[name="description"]');
     if (!m) {
       m = document.createElement("meta");

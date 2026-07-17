@@ -1,0 +1,826 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rajat Mishra Resume — Section Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Freehand&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   GLOBAL BASE — sirf reset + root variables
+   Har section ke apne <style> mein ye zyada tar
+   variables reuse karta hai. Agar standalone use karna
+   ho toh sirf apne section ka <style> + HTML copy karo.
+   ═══════════════════════════════════════════════════ */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#eef0f5; color:#0f172a;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  padding:24px;
+}
+a{color:#4f46e5;text-decoration:none}
+a:hover{text-decoration:underline}
+.section-demo{
+  background:#fff; max-width:800px; margin:0 auto 32px;
+  padding:32px 40px; border-radius:16px;
+  box-shadow:0 8px 32px rgba(15,23,42,.06);
+}
+.section-label{
+  font-size:11px; font-weight:800; letter-spacing:.15em;
+  text-transform:uppercase; color:#94a3b8;
+  margin-bottom:16px; padding-bottom:10px;
+  border-bottom:2px solid #f1f0f7;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 1: HERO
+     Copy from <style> to </div><!-- end hero -->
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 1 — Hero (photo + name + tagline)</div>
+
+  <!-- ═══ COPY START: Hero CSS ═══ -->
+  <style>
+  .hero-root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b;
+    --violet-700:#4f46e5;
+    display:grid; grid-template-columns:1fr 148px; gap:32px;
+    align-items:center; padding-bottom:20px;
+  }
+  .hero-root .hero-text h1{
+    font-size:32px; line-height:1.1; font-weight:800;
+    letter-spacing:-.7px; color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+  }
+  .hero-root .hero-text .tagline{
+    font-size:12.5px; font-weight:600; color:var(--violet-700);
+    margin-top:6px; letter-spacing:.02em;
+  }
+  .hero-root .hero-text .sub{
+    margin-top:14px; font-size:13px; line-height:1.65;
+    color:var(--ink2); max-width:480px;
+  }
+  .hero-root .photo-col{
+    display:flex; flex-direction:column; align-items:center; justify-self:end;
+  }
+  .hero-root .photo-wrap{
+    position:relative; width:140px; height:140px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero-root .photo-ring{
+    position:absolute; inset:-8px;
+    border:1.5px dashed #c7bfff; border-radius:50%; opacity:.85;
+  }
+  .hero-root .photo{
+    position:relative; z-index:2;
+    width:128px; height:128px; border-radius:50%; object-fit:cover;
+    border:3px solid #fff; box-shadow:0 8px 24px rgba(108,92,231,.12);
+    background:#f3f3f8; display:block;
+  }
+  </style>
+  <!-- ═══ COPY END: Hero CSS ═══ -->
+
+  <!-- ═══ COPY START: Hero HTML ═══ -->
+  <div class="hero-root">
+    <div class="hero-text">
+      <h1>Hi, I'm Rajat Mishra</h1>
+      <div class="tagline">Pragmatic Designer</div>
+      <p class="sub">Turning messy workflows into calm, shipped products — websites, dashboards and web apps that simplify real work and stay close until they launch.</p>
+    </div>
+    <div class="photo-col">
+      <div class="photo-wrap">
+        <div class="photo-ring"></div>
+        <img class="photo" src="https://rmcool26.netlify.app/assets/rmcool26-profile-LDtQDfcT.svg" alt="Rajat Mishra">
+      </div>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Hero HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 2: Stats Cards (4 cards)
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 2 — Stats Cards (10+ tools, etc.)</div>
+
+  <!-- ═══ COPY START: Stats CSS ═══ -->
+  <style>
+  .stats-root{
+    --ink:#0f172a; --muted:#64748b; --muted2:#94a3b8;
+    --violet-700:#4f46e5; --line:#e6e6ef;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
+  }
+  .stats-root .scard{
+    border:1px solid var(--line); border-radius:12px;
+    padding:12px 13px; background:#fff;
+  }
+  .stats-root .scard .v{
+    font-size:19px; font-weight:700; letter-spacing:-.3px; color:var(--ink);
+  }
+  .stats-root .scard .v b{color:var(--violet-700); font-weight:800}
+  .stats-root .scard .k{
+    font-size:9.5px; text-transform:uppercase; letter-spacing:.1em;
+    color:var(--muted); font-weight:700; margin-top:3px;
+  }
+  .stats-root .scard .s{
+    font-size:10px; color:var(--muted2); margin-top:2px;
+  }
+  </style>
+  <!-- ═══ COPY END: Stats CSS ═══ -->
+
+  <!-- ═══ COPY START: Stats HTML ═══ -->
+  <div class="stats-root">
+    <div class="scard"><div class="v"><b>10+</b></div><div class="k">Tools Mastered</div><div class="s">FigJam → Jira</div></div>
+    <div class="scard"><div class="v"><b>20+</b></div><div class="k">Live Products</div><div class="s">Real users &amp; results</div></div>
+    <div class="scard"><div class="v"><b>50+</b></div><div class="k">Projects</div><div class="s">Delivered · Audited</div></div>
+    <div class="scard"><div class="v"><b>2→12</b></div><div class="k">Team Scaled</div><div class="s">Shipping since 2016</div></div>
+  </div>
+  <!-- ═══ COPY END: Stats HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 3: Contact Band (email, phone, linkedin, web)
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 3 — Contact Band (email, phone, linkedin, portfolio)</div>
+
+  <!-- ═══ COPY START: Contact CSS ═══ -->
+  <style>
+  .contact-root{
+    --ink:#0f172a; --violet-700:#4f46e5; --line:#e6e6ef;
+    background:#f9f8ff;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:11px 0;
+  }
+  .contact-root .contact-grid{
+    display:flex; flex-wrap:nowrap; justify-content:space-between;
+    align-items:center; gap:14px;
+    font-size:12.8px; font-weight:500; color:var(--ink);
+    max-width:100%; overflow:hidden;
+  }
+  .contact-root .contact-grid a{
+    color:var(--ink); text-decoration:none; border-bottom:1px solid #ddd6ff;
+  }
+  .contact-root .contact-grid a:hover{color:var(--violet-700)}
+  .contact-root .ci{
+    display:inline-flex; align-items:center; gap:6px; white-space:nowrap;
+  }
+  .contact-root .ci svg{
+    width:14px;height:14px;flex:0 0 14px;color:#5b4bff;opacity:.95;
+  }
+  </style>
+  <!-- ═══ COPY END: Contact CSS ═══ -->
+
+  <!-- ═══ COPY START: Contact HTML ═══ -->
+  <div class="contact-root">
+    <div class="contact-grid">
+      <span class="ci">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <a href="mailto:rmcool26@gmail.com">rmcool26@gmail.com</a>
+      </span>
+      <span class="ci">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+919719499553">+91 97194 99553</a>
+      </span>
+      <span class="ci">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://linkedin.com/in/rmcool26" target="_blank" rel="noopener">linkedin.com/in/rmcool26</a>
+      </span>
+      <span class="ci">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <a href="https://rmcool26.netlify.app" target="_blank" rel="noopener">rmcool26.netlify.app</a>
+      </span>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Contact HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 4: About (bio + FITT IIT badge)
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 4 — About (bio + FITT IIT badge)</div>
+
+  <!-- ═══ COPY START: About CSS ═══ -->
+  <style>
+  .about-root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b;
+    --violet-700:#4f46e5;
+    display:grid; grid-template-columns:78px 1fr; gap:20px;
+  }
+  .about-root .sec-lbl{
+    font-size:9.5px; font-weight:750; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); padding-top:4px;
+  }
+  .about-root p{
+    font-size:12.4px; line-height:1.68; color:var(--ink2); max-width:590px;
+  }
+  .about-root p+p{margin-top:8px}
+  .about-root .highlight-badge{
+    display:inline-flex; align-items:center; gap:6px;
+    background:#fef9e7; border:1px solid #f0d87c; border-radius:8px;
+    padding:8px 14px; margin-top:10px;
+    font-size:12px; color:#5c4a0a; font-weight:600;
+  }
+  .about-root .highlight-badge svg{width:14px;height:14px;color:#c7940a;flex-shrink:0}
+  </style>
+  <!-- ═══ COPY END: About CSS ═══ -->
+
+  <!-- ═══ COPY START: About HTML ═══ -->
+  <div class="about-root">
+    <div class="sec-lbl">About</div>
+    <div>
+      <p>I'm a hands-on product designer with 10 years across SaaS, mobile apps, GIS, EdTech and enterprise tools. I started in frontend, so I write enough HTML/CSS to keep designs honest, and enough QA notes to keep devs smiling. I like staying with a problem until it's simple, useful, and shipped.</p>
+      <p>Joined a 2-person startup with zero product and manual ops — helped shape it into a full product suite used daily by real solar EPC teams. The work was selected and showcased at <strong>FITT, IIT Delhi</strong> for incubation.</p>
+      <div class="highlight-badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        FITT IIT Delhi Incubated — product selected &amp; showcased at India's premier tech institute
+      </div>
+    </div>
+  </div>
+  <!-- ═══ COPY END: About HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 5: Experience (all 4 entries)
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 5 — Experience (4 entries)</div>
+
+  <!-- ═══ COPY START: Experience CSS ═══ -->
+  <style>
+  .xp-root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b;
+    --violet-700:#4f46e5; --line2:#f1f0f7;
+    display:grid; grid-template-columns:78px 1fr; gap:20px;
+  }
+  .xp-root .sec-lbl{
+    font-size:9.5px; font-weight:750; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); padding-top:4px;
+  }
+  .xp-root .xplist{position:relative; padding-left:16px}
+  .xp-root .xplist::before{
+    content:''; position:absolute; left:0; top:4px; bottom:4px;
+    width:2px; background:linear-gradient(#e9e5ff,#f1f0f7); border-radius:2px;
+  }
+  .xp-root .xp{
+    padding:13px 0; border-top:1px solid var(--line2);
+    position:relative;
+  }
+  .xp-root .xp:first-child{border-top:0; padding-top:2px}
+  .xp-root .xp-h{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:12px; flex-wrap:wrap;
+  }
+  .xp-root .xp-h h3{font-size:14px; font-weight:750; letter-spacing:-.15px}
+  .xp-root .xp-h .when{
+    font-size:10.5px; color:var(--muted); background:#f8fafc;
+    border:1px solid #eef2f7; padding:3px 8px; border-radius:6px;
+    white-space:nowrap; font-weight:600;
+  }
+  .xp-root .xp-role{
+    font-size:11.5px; color:var(--violet-700); font-weight:600; margin-top:1px;
+  }
+  .xp-root .xp-desc{
+    font-size:11.9px; line-height:1.58; color:var(--ink2); margin-top:5px;
+  }
+  .xp-root .xp ul{margin:6px 0 0 16px; padding:0}
+  .xp-root .xp li{
+    font-size:11.9px; line-height:1.55; color:var(--ink2); margin-bottom:2px;
+  }
+  .xp-root .xp li::marker{color:#b8afff}
+  </style>
+  <!-- ═══ COPY END: Experience CSS ═══ -->
+
+  <!-- ═══ COPY START: Experience HTML ═══ -->
+  <div class="xp-root">
+    <div class="sec-lbl">Experience</div>
+    <div class="xplist">
+
+      <div class="xp">
+        <div class="xp-h">
+          <h3>Product Design Lead — Terranxt Pvt Ltd</h3>
+          <span class="when">Jan 2022 – Present</span>
+        </div>
+        <div class="xp-role">Enterprise SaaS · Solar Tech · Design System Owner</div>
+        <p class="xp-desc">Joined as employee #2 with zero product. Led end-to-end design across websites, SaaS portals and mobile apps. Built the pvNXT Design System from scratch. Scaled the design+dev team from 2 to 12.</p>
+        <ul>
+          <li>Cut solar project delivery from <strong>2–3 months → 2–3 weeks</strong> by designing connected workflows across EPC, consumer and installer portals.</li>
+          <li>Product selected &amp; showcased at <strong>FITT, IIT Delhi</strong> for incubation.</li>
+        </ul>
+      </div>
+
+      <div class="xp">
+        <div class="xp-h">
+          <h3>Executive Web Designer — IIDE</h3>
+          <span class="when">Jan 2021 – Dec 2021</span>
+        </div>
+        <div class="xp-role">EdTech · Conversion Rate Optimisation · Design Mentorship</div>
+        <p class="xp-desc">Redesigned lead-generation pages for India's leading digital education brand. Mentored 3 junior designers and introduced the company's first Design QA process.</p>
+        <ul>
+          <li>Achieved <strong>+16% YoY course conversions</strong> through IA restructuring, A/B tested CTAs and reusable page blocks.</li>
+        </ul>
+      </div>
+
+      <div class="xp">
+        <div class="xp-h">
+          <h3>Software Engineer (UI-Oriented) — Skymap Global</h3>
+          <span class="when">Jan 2020 – Dec 2020</span>
+        </div>
+        <div class="xp-role">GIS · Government Enterprise · Satellite Imagery</div>
+        <p class="xp-desc">Designed and built UI for gov-grade satellite imagery and land monitoring web apps used by Survey of India teams.</p>
+        <ul>
+          <li>Built the B2B satellite imagery marketplace UI — cut the procurement cycle from <strong>2–3 weeks → 2–3 days</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="xp">
+        <div class="xp-h">
+          <h3>Junior Web Designer &amp; Developer — DMS Group</h3>
+          <span class="when">Jan 2016 – Dec 2019</span>
+        </div>
+        <div class="xp-role">Agency · Multi-industry · Full-cycle Delivery</div>
+        <p class="xp-desc">Shipped <strong>20+ responsive websites</strong> across 10+ industries — Real Estate, Education, F&amp;B, Media — handling everything from client discovery through design, development and launch.</p>
+      </div>
+
+    </div>
+  </div>
+  <!-- ═══ COPY END: Experience HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 6: Case Study (Before/After + mini cards)
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 6 — Case Study (Before/After + Spade & IIDE)</div>
+
+  <!-- ═══ COPY START: Case Study CSS ═══ -->
+  <style>
+  .case-root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b; --muted2:#94a3b8;
+    --violet-700:#4f46e5; --violet-soft:#f5f3ff;
+    --line:#e6e6ef; --line2:#f1f0f7;
+    display:grid; grid-template-columns:78px 1fr; gap:20px;
+  }
+  .case-root .sec-lbl{
+    font-size:9.5px; font-weight:750; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); padding-top:4px;
+  }
+  .case-root .case-wrap{padding:0}
+  .case-root .case-top-row{
+    display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;
+  }
+  .case-root .case-eyebrow{
+    font-size:9.5px; font-weight:800; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--violet-700);
+  }
+  .case-root .case-top-row .case-link{font-size:10.5px; color:var(--muted)}
+  .case-root .case-top-row .case-link a{font-weight:600; color:var(--violet-700)}
+  .case-root .case-wrap h2{
+    font-size:17.5px; font-weight:750; letter-spacing:-.25px; line-height:1.22;
+    color:var(--ink); margin-bottom:18px;
+  }
+  .case-root .before-after{
+    display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:16px;
+  }
+  .case-root .ba-card{
+    border:1px solid var(--line2); border-radius:12px;
+    padding:16px 18px; background:#fff;
+  }
+  .case-root .ba-card .ba-label{
+    font-size:8.5px; font-weight:800; letter-spacing:.15em;
+    text-transform:uppercase; margin-bottom:8px;
+  }
+  .case-root .before-card{border-left:3px solid #f59e0b}
+  .case-root .before-card .ba-label{color:#b45309}
+  .case-root .after-card{border-left:3px solid #10b981}
+  .case-root .after-card .ba-label{color:#047857}
+  .case-root .ba-card h4{
+    font-size:11.5px; font-weight:750; color:var(--ink);
+    margin-bottom:8px; line-height:1.35;
+  }
+  .case-root .ba-card ul{margin:0; padding:0; list-style-position:inside}
+  .case-root .ba-card li{
+    font-size:11.2px; line-height:1.55; color:var(--ink2);
+    margin-bottom:5px; list-style-type:disc;
+  }
+  .case-root .ba-card li::marker{color:var(--muted2); font-size:9px}
+  .case-root .case-metrics{
+    display:flex; align-items:center; gap:0;
+    padding-top:14px; border-top:1px solid var(--line);
+  }
+  .case-root .case-metrics .met{
+    display:flex; align-items:baseline; gap:4px;
+    padding:0 14px; font-size:10.5px; color:var(--ink2);
+    white-space:nowrap;
+  }
+  .case-root .case-metrics .met:first-child{padding-left:0}
+  .case-root .case-metrics .met strong{
+    font-size:15px; font-weight:750; color:var(--violet-700); letter-spacing:-.3px;
+  }
+  .case-root .case-metrics .met span{color:var(--muted)}
+  .case-root .case-metrics .met-div{
+    width:1px; height:24px; background:#e2deff; flex-shrink:0;
+  }
+  /* mini cards */
+  .case-root .mini-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;
+  }
+  .case-root .mini{
+    border:1px solid var(--line); border-radius:12px;
+    padding:16px; background:#fff;
+  }
+  .case-root .mini h4{font-size:13.5px; font-weight:750; margin-bottom:6px}
+  .case-root .mini h4 a{color:inherit; text-decoration:none}
+  .case-root .mini h4 a:hover{color:var(--violet-700)}
+  .case-root .mini p{
+    font-size:11.5px; line-height:1.6; color:var(--ink2); margin-bottom:8px;
+  }
+  .case-root .mini .mini-impact{
+    font-size:11px; color:var(--violet-700); font-weight:650;
+    padding:6px 10px; background:var(--violet-soft); border-radius:6px;
+    display:inline-block;
+  }
+  </style>
+  <!-- ═══ COPY END: Case Study CSS ═══ -->
+
+  <!-- ═══ COPY START: Case Study HTML ═══ -->
+  <div class="case-root">
+    <div class="sec-lbl">Case<br>study</div>
+    <div>
+      <div class="case-wrap">
+
+        <div class="case-top-row">
+          <div class="case-eyebrow">Featured Work</div>
+          <div class="case-link">
+            <a href="https://rmcool26.netlify.app/case/terranxt" target="_blank" rel="noopener">Full case study ↗</a>
+          </div>
+        </div>
+
+        <h2>pvNXT Solar Suite — From WhatsApp chaos to FITT IIT Delhi</h2>
+
+        <div class="before-after">
+          <div class="ba-card before-card">
+            <div class="ba-label">⬅ Before — The Mess</div>
+            <h4>Projects ran on calls, WhatsApp &amp; Excel</h4>
+            <ul>
+              <li>Leads came through calls — no tracking system</li>
+              <li>Site photos scattered across WhatsApp chats</li>
+              <li>Rooftop analysis in separate, disconnected tools</li>
+              <li>Proposals built manually — zero data trust</li>
+            </ul>
+          </div>
+          <div class="ba-card after-card">
+            <div class="ba-label">After ➡ — What Shipped</div>
+            <h4>One connected suite across 3 portals + mobile</h4>
+            <ul>
+              <li>pvNXT Studio — EPC project &amp; proposal management</li>
+              <li>pvNXT Connect — consumer solar journey tracking</li>
+              <li>pvNXT Go — installer task &amp; progress updates</li>
+              <li>Field App, Proposals &amp; SCADA — all connected</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-metrics">
+          <div class="met"><strong>5+</strong> <span>EPCs onboarded</span></div>
+          <div class="met-div"></div>
+          <div class="met"><strong>50+</strong> <span>screens shipped</span></div>
+          <div class="met-div"></div>
+          <div class="met"><strong>2–3 wks</strong> <span>delivery time</span></div>
+          <div class="met-div"></div>
+          <div class="met"><strong>2→12</strong> <span>team scaled</span></div>
+        </div>
+
+      </div>
+
+      <div class="mini-grid">
+        <div class="mini">
+          <h4><a href="https://rmcool26.netlify.app/work/spade" target="_blank" rel="noopener">Spade — GIS Imagery Marketplace ↗</a></h4>
+          <p>India-first satellite imagery buying platform. Designed archive vs fresh-imagery flows, self-serve checkout for GIS procurement teams.</p>
+          <span class="mini-impact">2–3 weeks → 2–3 days procurement cycle</span>
+        </div>
+        <div class="mini">
+          <h4><a href="https://rmcool26.netlify.app/work/iide" target="_blank" rel="noopener">IIDE — Lead Page Redesign ↗</a></h4>
+          <p>Lead-page system redesign on live WordPress. Reusable blocks, CRM automation, CTA A/B testing framework — shipped with marketing and engineering.</p>
+          <span class="mini-impact">+16% YoY course conversions</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ═══ COPY END: Case Study HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 7: Skills (AI card + 4 skill cards)
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 7 — Skills (AI + UX + UI + Tools + Industry)</div>
+
+  <!-- ═══ COPY START: Skills CSS ═══ -->
+  <style>
+  .skills-root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b;
+    --violet-700:#4f46e5; --violet-soft:#f5f3ff; --violet-ring:#e0d8fb;
+    --line:#e6e6ef;
+    display:grid; grid-template-columns:78px 1fr; gap:20px;
+  }
+  .skills-root .sec-lbl{
+    font-size:9.5px; font-weight:750; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); padding-top:4px;
+  }
+  .skills-root .skills-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px;
+  }
+  .skills-root .skill-card{
+    border:1px solid var(--line); border-radius:14px;
+    padding:18px; background:#fff;
+  }
+  .skills-root .skill-card.full{grid-column:1/-1}
+  .skills-root .skill-card h4{
+    font-size:12.5px; font-weight:750; margin-bottom:10px;
+    display:flex; align-items:center; gap:7px;
+  }
+  .skills-root .skill-card h4 .dot{
+    width:8px; height:8px; border-radius:50%; flex-shrink:0;
+  }
+  .skills-root .dot.ux{background:#6C5CE7}
+  .skills-root .dot.ui{background:#e77c5c}
+  .skills-root .dot.tools{background:#5cb0e7}
+  .skills-root .dot.ai{background:#10b981}
+  .skills-root .dot.ind{background:#c084fc}
+  .skills-root .skill-tags{display:flex; flex-wrap:wrap; gap:5px}
+  .skills-root .skill-tag{
+    font-size:10.2px; font-weight:600; padding:5px 10px; border-radius:999px;
+    background:var(--violet-soft); border:1px solid var(--violet-ring);
+    color:#4338ca;
+  }
+  /* AI Card specific */
+  .skills-root .ai-card{padding:20px}
+  .skills-root .ai-card .ai-body{
+    font-size:11.5px; line-height:1.62; color:var(--ink2); margin-bottom:14px;
+  }
+  .skills-root .ai-card .ai-body strong{color:var(--ink)}
+  .skills-root .ai-tools{
+    display:flex; flex-direction:column; gap:5px; margin-bottom:12px;
+  }
+  .skills-root .ai-row{
+    display:flex; align-items:baseline; gap:6px;
+    font-size:11px; line-height:1.5; color:var(--ink2);
+    padding:6px 10px; background:#f9fefb; border-radius:6px;
+  }
+  .skills-root .ai-row .ai-tool-names{
+    font-weight:700; color:#0d6b3c; white-space:nowrap; min-width:165px;
+  }
+  .skills-root .ai-row .ai-use{color:var(--ink2)}
+  .skills-root .ai-card .ai-result{
+    font-size:11px; color:var(--violet-700); font-weight:600;
+    padding:8px 12px; background:var(--violet-soft); border-radius:8px;
+    line-height:1.45;
+  }
+  </style>
+  <!-- ═══ COPY END: Skills CSS ═══ -->
+
+  <!-- ═══ COPY START: Skills HTML ═══ -->
+  <div class="skills-root">
+    <div class="sec-lbl">Skills</div>
+    <div class="skills-grid">
+
+      <div class="skill-card full ai-card">
+        <h4><span class="dot ai"></span>AI-Augmented Design Workflow</h4>
+        <p class="ai-body">
+          <strong>I steer it, AI accelerates it.</strong> I use AI tools to cut research → prototype → test cycles from weeks to hours — but human product judgment always stays in the loop.
+        </p>
+        <div class="ai-tools">
+          <div class="ai-row">
+            <span class="ai-tool-names">ChatGPT · Claude · Perplexity</span>
+            <span class="ai-use">— research &amp; synthesis</span>
+          </div>
+          <div class="ai-row">
+            <span class="ai-tool-names">Uizard · Galileo AI · Firefly</span>
+            <span class="ai-use">— prototyping &amp; visual exploration</span>
+          </div>
+          <div class="ai-row">
+            <span class="ai-tool-names">Maze AI · Dovetail</span>
+            <span class="ai-use">— testing &amp; insights</span>
+          </div>
+        </div>
+        <div class="ai-result">
+          ⚡ Research → prototype → test in hours, not weeks. Curious how? Let's talk.
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4><span class="dot ux"></span>UX &amp; Product Design</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Design Systems</span>
+          <span class="skill-tag">UX Research</span>
+          <span class="skill-tag">IA</span>
+          <span class="skill-tag">Prototyping</span>
+          <span class="skill-tag">Design Ops</span>
+          <span class="skill-tag">Mentoring</span>
+          <span class="skill-tag">Stakeholder Mgmt</span>
+          <span class="skill-tag">Workflow Design</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4><span class="dot ui"></span>UI &amp; Visual Craft</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">UI Design</span>
+          <span class="skill-tag">Hi-fi Prototyping</span>
+          <span class="skill-tag">Interaction Design</span>
+          <span class="skill-tag">Motion Specs</span>
+          <span class="skill-tag">WCAG Accessibility</span>
+          <span class="skill-tag">Dev Handoff</span>
+          <span class="skill-tag">QA Partnership</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4><span class="dot tools"></span>Tools &amp; Tech</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Figma</span>
+          <span class="skill-tag">FigJam</span>
+          <span class="skill-tag">Framer</span>
+          <span class="skill-tag">Webflow</span>
+          <span class="skill-tag">Notion</span>
+          <span class="skill-tag">Jira</span>
+          <span class="skill-tag">Miro</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">Tailwind</span>
+          <span class="skill-tag">QGIS</span>
+          <span class="skill-tag">ERDAS</span>
+          <span class="skill-tag">Dev Mode</span>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <h4><span class="dot ind"></span>Industry Experience</h4>
+        <div class="skill-tags">
+          <span class="skill-tag">Enterprise SaaS</span>
+          <span class="skill-tag">Solar / CleanTech</span>
+          <span class="skill-tag">GIS &amp; Gov</span>
+          <span class="skill-tag">EdTech</span>
+          <span class="skill-tag">B2B Procurement</span>
+          <span class="skill-tag">CRO</span>
+          <span class="skill-tag">Real Estate</span>
+          <span class="skill-tag">F&amp;B</span>
+          <span class="skill-tag">Media</span>
+          <span class="skill-tag">+3 more</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ═══ COPY END: Skills HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 8: Education
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 8 — Education</div>
+
+  <!-- ═══ COPY START: Education CSS ═══ -->
+  <style>
+  .edu-root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b;
+    --line2:#f1f0f7;
+    display:grid; grid-template-columns:78px 1fr; gap:20px;
+  }
+  .edu-root .sec-lbl{
+    font-size:9.5px; font-weight:750; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--muted); padding-top:4px;
+  }
+  .edu-root .edu-row{
+    display:flex; justify-content:space-between; gap:14px;
+    padding:10px 0; border-top:1px solid var(--line2);
+  }
+  .edu-root .edu-row:first-child{border-top:0}
+  .edu-root .edu-row h4{font-size:13px; font-weight:700}
+  .edu-root .edu-row .deg{font-size:11.3px; color:var(--ink2); margin-top:2px}
+  .edu-root .edu-row .edate{
+    font-size:10.5px; color:var(--muted);
+    white-space:nowrap; text-align:right; font-weight:500;
+  }
+  </style>
+  <!-- ═══ COPY END: Education CSS ═══ -->
+
+  <!-- ═══ COPY START: Education HTML ═══ -->
+  <div class="edu-root">
+    <div class="sec-lbl">Education</div>
+    <div>
+      <div class="edu-row">
+        <div><h4>Tutedude</h4><div class="deg">Advanced UI UX Designing, Advanced UX research</div></div>
+        <div class="edate">2025 – Ongoing</div>
+      </div>
+      <div class="edu-row">
+        <div><h4>KVCH (IBM)</h4><div class="deg">Industrial Training</div></div>
+        <div class="edate">Jan 2019 – Jun 2019</div>
+      </div>
+      <div class="edu-row">
+        <div><h4>Mangalayatan University</h4><div class="deg">Bachelor of Computer Applications (BCA)</div></div>
+        <div class="edate">2016 – 2019</div>
+      </div>
+      <div class="edu-row">
+        <div><h4>Tata Consultancy Services</h4><div class="deg">Diploma in IT, Designing, Web Programming, Application &amp; Advanced Programming</div></div>
+        <div class="edate">2014 – 2016</div>
+      </div>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Education HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 9: Closing Note + CTA
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 9 — Closing Note (CTA + punch line)</div>
+
+  <!-- ═══ COPY START: Closing CSS ═══ -->
+  <style>
+  .closing-root{
+    --ink:#0f172a; --ink2:#334155; --muted:#64748b;
+    --violet-700:#4f46e5;
+  }
+  .closing-root .closing-note{
+    padding:16px 20px;
+    border:1px dashed #d5c9fa; border-radius:14px;
+    font-size:12.3px; line-height:1.7; color:var(--ink2);
+    background:#fdfcff; text-align:center;
+  }
+  .closing-root .closing-note strong{color:var(--violet-700)}
+  .closing-root .closing-note .cta-line{
+    display:block; margin-top:8px; font-size:12px; font-weight:700; color:var(--ink);
+  }
+  .closing-root .closing-note .cta-line a{
+    color:var(--violet-700); text-decoration:underline; text-underline-offset:2px;
+  }
+  .closing-root .closing-note .punch-final{
+    display:block; margin-top:8px; font-size:11.2px; color:var(--muted); font-style:italic;
+  }
+  </style>
+  <!-- ═══ COPY END: Closing CSS ═══ -->
+
+  <!-- ═══ COPY START: Closing HTML ═══ -->
+  <div class="closing-root">
+    <div class="closing-note">
+      Currently leading design at Terranxt — <strong>open to Product Design Lead roles</strong> in complex SaaS / enterprise tools where design has to fight for clarity.<br>
+      <span class="cta-line">
+        Got a messy workflow that needs clarity? <a href="mailto:rmcool26@gmail.com">Let's talk</a> — <a href="https://linkedin.com/in/rmcool26" target="_blank" rel="noopener">linkedin.com/in/rmcool26</a>
+      </span>
+      <span class="punch-final">rmcool26 — calm under complexity, sharp with pixels, focused on shipping.</span>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Closing HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     SECTION 10: Footer (Page number + Rajat Mishra signature)
+     ═══════════════════════════════════════════════════ -->
+<div class="section-demo">
+  <div class="section-label">📦 Section 10 — Footer (page number + signature)</div>
+
+  <!-- ═══ COPY START: Footer CSS ═══ -->
+  <style>
+  .footer-root{
+    --ink:#0f172a; --muted2:#94a3b8; --violet-700:#4f46e5;
+    display:flex; justify-content:space-between; align-items:flex-end;
+  }
+  .footer-root .pg{
+    font-size:9.5px; color:var(--muted2);
+    letter-spacing:.08em; font-weight:600;
+  }
+  .footer-root .sig{
+    font-family:'Freehand',cursive; font-size:26px;
+    color:var(--violet-700); line-height:1;
+  }
+  </style>
+  <!-- ═══ COPY END: Footer CSS ═══ -->
+
+  <!-- ═══ COPY START: Footer HTML ═══ -->
+  <div class="footer-root">
+    <div class="pg">Page 1 / 2</div>
+    <div class="sig">Rajat Mishra</div>
+  </div>
+  <!-- ═══ COPY END: Footer HTML ═══ -->
+</div>
+
+</body>
+</html>

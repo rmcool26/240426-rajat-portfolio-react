@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rajat Mishra Resume — Section Reference (Revamp)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Freehand&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   GLOBAL RESET + DEMO WRAPPER (ONLY FOR THIS REFERENCE FILE)
+   Yeh sirf is file mein sections dikhane ke liye hai.
+   Apne project mein yeh copy nahi karna.
+   ═══════════════════════════════════════════════════════════ */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:#F2F1F7; color:#0F0F1A;
+  font-family:'Inter',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  padding:24px;
+}
+a{color:#6C5CE7;text-decoration:none}
+a:hover{text-decoration:underline}
+.demo-box{
+  background:#fff; max-width:800px; margin:0 auto 28px;
+  padding:28px 36px; border-radius:14px;
+  box-shadow:0 6px 28px rgba(20,20,40,.06);
+}
+.demo-label{
+  font-size:10.5px; font-weight:800; letter-spacing:.15em;
+  text-transform:uppercase; color:#7A7A8C;
+  margin-bottom:14px; padding-bottom:8px;
+  border-bottom:2px solid #ECEAF4;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ┌─────────────────────────────────────────────────────────┐
+   │   PAGE / PRINT CLASSES — ALAG SECTION                    │
+   │   Ye classes page wrapper aur print ke liye hain.        │
+   │   Tumhare resume mein ek baar hona chahiye,              │
+   │   baki sections ke saath nahi chipkana.                  │
+   └─────────────────────────────────────────────────────────┘
+   ═══════════════════════════════════════════════════════════ */
+.page{
+  width:8.5in; height:11in;
+  margin:0 auto 20px;
+  background:#fff;
+  padding:0.5in 0.55in;
+  box-shadow:0 8px 40px rgba(20,20,40,.08);
+  page-break-after:always;
+  overflow:hidden;
+}
+.page:last-child{page-break-after:auto}
+
+@page{size:Letter; margin:0}
+
+@media print{
+  body{background:#fff; padding:0}
+  .page{box-shadow:none; width:100%; min-height:auto; margin:0}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 0: Class Reference — Kaun si class kahan use hoti hai
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box" style="background:#fdfcff; border:1px dashed #d5c9fa;">
+  <div class="demo-label" style="border-bottom-color:#d5c9fa; color:#6C5CE7;">
+    📋 CLASS REFERENCE — Kaun si class kahan use hoti hai
+  </div>
+  <table style="width:100%; font-size:11.5px; line-height:1.8; color:#3A3A4A; border-collapse:collapse;">
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700; width:160px;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.page</code></td>
+      <td style="padding:6px 10px;">Page wrapper — Letter size (8.5×11in), screen + print CSS</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.hero</code></td>
+      <td style="padding:6px 10px;">Hero section grid (text + photo)</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.pill, .dot</code></td>
+      <td style="padding:6px 10px;">Green status pill "Hi, I'm Rajat"</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.name, .name em</code></td>
+      <td style="padding:6px 10px;">Bada heading — em tag highlight ke liye</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.tagline</code></td>
+      <td style="padding:6px 10px;">Hero ke niche ki subtitle line</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.role-row, .meta, .sep</code></td>
+      <td style="padding:6px 10px;">Tool list (FigJam · Figma · Dev Handoff…)</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.photo-wrap, .photo, .photo-ring</code></td>
+      <td style="padding:6px 10px;">Circular photo with dashed ring</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.badges, .badge, .v, .l</code></td>
+      <td style="padding:6px 10px;">4 stat cards (9+ Years, 50+ Projects, etc.)</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.contact, .ic</code></td>
+      <td style="padding:6px 10px;">Contact bar (email, phone, linkedin, portfolio)</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">section, .sec-grid, .sec-label</code></td>
+      <td style="padding:6px 10px;">Har section ka base layout (label + content)</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.about</code></td>
+      <td style="padding:6px 10px;">About section ke paragraphs</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.xp-row, .xp-head, .xp-role, .xp-desc, .features, .feat</code></td>
+      <td style="padding:6px 10px;">Experience cards with chips</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.case, .case-head, .case-grid, .case-stats, .s, .v, .l</code></td>
+      <td style="padding:6px 10px;">Case study card</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.skills-grid, .sk</code></td>
+      <td style="padding:6px 10px;">Skills — 3-column grid</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.edu-row, .degree, .when</code></td>
+      <td style="padding:6px 10px;">Education rows</td>
+    </tr>
+    <tr style="border-bottom:1px solid #ECEAF4;">
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.closing</code></td>
+      <td style="padding:6px 10px;">Closing CTA note</td>
+    </tr>
+    <tr>
+      <td style="padding:6px 10px; font-weight:700;"><code style="background:#EFEAFE; padding:2px 5px; border-radius:3px;">.signature</code></td>
+      <td style="padding:6px 10px;">Rajat Mishra SVG signature</td>
+    </tr>
+  </table>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 1: Hero (pill + name + tagline + tools + photo)
+     COPY: <style> + HTML dono
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 1 — Hero (pill + name + tagline + role-row + photo)</div>
+
+  <!-- ═══ COPY START: Hero CSS ═══ -->
+  <style>
+  .hero-root{
+    --ink:#0F0F1A; --ink-2:#3A3A4A; --muted:#7A7A8C;
+    --primary:#6C5CE7; --line:#ECEAF4;
+    display:grid; grid-template-columns:1fr auto; gap:28px;
+    align-items:center; padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-root .pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:6px 12px; border:1px solid var(--line);
+    border-radius:999px; font-size:11px; font-weight:500;
+    color:var(--ink-2); background:#fff;
+  }
+  .hero-root .pill .dot{
+    width:6px; height:6px; border-radius:50%;
+    background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.18);
+  }
+  .hero-root .name{
+    font-size:32px; line-height:1.05; font-weight:800;
+    letter-spacing:-1.1px; margin-top:12px;
+  }
+  .hero-root .name em{font-style:normal; color:var(--primary)}
+  .hero-root .tagline{
+    font-size:13px; color:var(--ink-2); margin-top:10px;
+    max-width:520px; line-height:1.55;
+  }
+  .hero-root .role-row{
+    display:flex; align-items:center; gap:10px;
+    margin-top:14px; flex-wrap:wrap;
+  }
+  .hero-root .role-row .meta{
+    font-size:11px; color:var(--muted); letter-spacing:.06em;
+    text-transform:uppercase; font-weight:500;
+  }
+  .hero-root .role-row .sep{
+    width:3px; height:3px; border-radius:50%; background:var(--muted);
+  }
+  .hero-root .photo-wrap{
+    position:relative; width:156px; height:156px;
+    display:flex; justify-content:center; align-items:center;
+  }
+  .hero-root .photo{
+    width:156px; height:156px; border-radius:50%; object-fit:cover;
+    border:3px solid #fff; box-shadow:0 6px 20px rgba(108,92,231,.18);
+  }
+  .hero-root .photo-ring{
+    position:absolute; inset:-6px;
+    border:1px dashed var(--primary); border-radius:50%; opacity:.35;
+  }
+  </style>
+  <!-- ═══ COPY END: Hero CSS ═══ -->
+
+  <!-- ═══ COPY START: Hero HTML ═══ -->
+  <div class="hero-root">
+    <div>
+      <span class="pill"><span class="dot"></span>Hi, I'm Rajat</span>
+      <h1 class="name">I solve complex problems<br>through <em>design &amp; systems</em> thinking</h1>
+      <p class="tagline">UI/UX Lead with 9+ years turning manual chaos into automated clarity. Currently leading design at Terranxt, joined as #2, scaled the team to 12</p>
+      <div class="role-row">
+        <span class="meta">FigJam</span><span class="sep"></span>
+        <span class="meta">Figma</span><span class="sep"></span>
+        <span class="meta">Developer Handoff</span><span class="sep"></span>
+        <span class="meta">QA partnership</span><span class="sep"></span>
+        <span class="meta">Iteration</span>
+      </div>
+    </div>
+    <div class="photo-wrap">
+      <div class="photo-ring"></div>
+      <img class="photo" src="https://rmcool26.netlify.app/assets/rmcool26-profile-LDtQDfcT.svg" alt="Rajat Mishra">
+    </div>
+  </div>
+  <!-- ═══ COPY END: Hero HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 2: Badges (4 stat cards)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 2 — Badges (9+ Years, 50+ Projects, etc.)</div>
+
+  <!-- ═══ COPY START: Badges CSS ═══ -->
+  <style>
+  .badges-root{
+    --muted:#7A7A8C; --primary:#6C5CE7; --line:#ECEAF4;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:9px;
+  }
+  .badges-root .badge{
+    border:1px solid var(--line); border-radius:12px;
+    padding:10px 12px; background:#fff;
+  }
+  .badges-root .badge .v{
+    font-size:16px; font-weight:700; letter-spacing:-.3px;
+  }
+  .badges-root .badge .v span{color:var(--primary)}
+  .badges-root .badge .l{
+    font-size:9.5px; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.08em; margin-top:2px; font-weight:500;
+  }
+  </style>
+  <!-- ═══ COPY END: Badges CSS ═══ -->
+
+  <!-- ═══ COPY START: Badges HTML ═══ -->
+  <div class="badges-root">
+    <div class="badge"><div class="v">9<span>+</span></div><div class="l">Years</div></div>
+    <div class="badge"><div class="v">50<span>+</span></div><div class="l">Projects</div></div>
+    <div class="badge"><div class="v">5<span>+</span></div><div class="l">Live Products</div></div>
+    <div class="badge"><div class="v">2<span>→</span>12</div><div class="l">Team Scaled</div></div>
+  </div>
+  <!-- ═══ COPY END: Badges HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 3: Contact (email + phone + linkedin + portfolio)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 3 — Contact (email, phone, linkedin, portfolio)</div>
+
+  <!-- ═══ COPY START: Contact CSS ═══ -->
+  <style>
+  .contact-root{
+    --ink-2:#3A3A4A; --muted:#7A7A8C; --line:#ECEAF4;
+    display:flex; flex-wrap:wrap; gap:18px;
+    padding-top:14px; border-top:1px solid var(--line);
+    font-size:11.5px; color:var(--ink-2);
+  }
+  .contact-root a{color:var(--ink-2); text-decoration:none; border-bottom:1px solid transparent}
+  .contact-root .ic{color:var(--muted); margin-right:6px}
+  </style>
+  <!-- ═══ COPY END: Contact CSS ═══ -->
+
+  <!-- ═══ COPY START: Contact HTML ═══ -->
+  <div class="contact-root">
+    <span><span class="ic">✉</span><a href="mailto:rmcool26@gmail.com">rmcool26@gmail.com</a></span>
+    <span><span class="ic">☎</span><a href="tel:+919719499553">+91 9719499553</a></span>
+    <span><span class="ic">in</span><a href="https://linkedin.com/in/rmcool26" target="_blank" rel="noopener">linkedin.com/in/rmcool26</a></span>
+    <span><span class="ic">↗</span><a href="https://rmcool26.netlify.app" target="_blank" rel="noopener">View portfolio</a></span>
+  </div>
+  <!-- ═══ COPY END: Contact HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 4: About
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 4 — About</div>
+
+  <!-- ═══ COPY START: About CSS ═══ -->
+  <style>
+  .about-root{
+    --ink-2:#3A3A4A; --muted:#7A7A8C;
+    display:grid; grid-template-columns:88px 1fr; gap:22px;
+  }
+  .about-root .sec-label{
+    font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; padding-top:3px;
+  }
+  .about-root p{
+    font-size:11.5px; line-height:1.6; color:var(--ink-2); max-width:640px;
+  }
+  .about-root p+p{margin-top:7px}
+  </style>
+  <!-- ═══ COPY END: About CSS ═══ -->
+
+  <!-- ═══ COPY START: About HTML ═══ -->
+  <div class="about-root">
+    <div class="sec-label">About</div>
+    <div>
+      <p>I'm a UI/UX Lead with 9+ years across SaaS, mobile apps, GIS, EdTech, and enterprise tools. Most of my work lives where things are messy by default. Starting my career in frontend means I write enough HTML/CSS to keep designs practical, and enough QA tickets to keep my devs happy.</p>
+      <p>At Terranxt, I joined when there was no product, just ideas and manual processes, helped turn that into the pvNXT Solar Suite that real EPC team uses every day.</p>
+    </div>
+  </div>
+  <!-- ═══ COPY END: About HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 5: Experience (4 entries with feature chips)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 5 — Experience (4 entries)</div>
+
+  <!-- ═══ COPY START: Experience CSS ═══ -->
+  <style>
+  .xp-root{
+    --ink-2:#3A3A4A; --muted:#7A7A8C; --primary:#6C5CE7;
+    --primary-soft:#EFEAFE; --line:#ECEAF4;
+    display:grid; grid-template-columns:88px 1fr; gap:22px;
+  }
+  .xp-root .sec-label{
+    font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; padding-top:3px;
+  }
+  .xp-root .xp-row{
+    padding:10px 0; border-top:1px solid var(--line);
+  }
+  .xp-root .xp-row:first-child{border-top:0; padding-top:0}
+  .xp-root .xp-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+  }
+  .xp-root .xp-head h3{
+    font-size:13px; font-weight:700; letter-spacing:-.2px;
+  }
+  .xp-root .xp-head .when{
+    font-size:10px; color:var(--muted); font-weight:500; white-space:nowrap;
+  }
+  .xp-root .xp-role{
+    font-size:11px; color:var(--primary); font-weight:600; margin-top:2px;
+  }
+  .xp-root .xp-desc{
+    font-size:11px; color:var(--ink-2); line-height:1.5;
+    margin-top:6px; max-width:640px;
+  }
+  .xp-root .features{display:flex; flex-wrap:wrap; gap:5px; margin-top:7px}
+  .xp-root .feat{
+    font-size:10px; color:var(--ink-2); background:var(--primary-soft);
+    border:1px solid #E0D8FB; padding:3px 9px; border-radius:999px;
+    font-weight:500;
+  }
+  </style>
+  <!-- ═══ COPY END: Experience CSS ═══ -->
+
+  <!-- ═══ COPY START: Experience HTML ═══ -->
+  <div class="xp-root">
+    <div class="sec-label">Work Ex.</div>
+    <div>
+
+      <div class="xp-row">
+        <div class="xp-head">
+          <h3>Terranxt PVT LTD</h3>
+          <div class="when">2022 — Present</div>
+        </div>
+        <div class="xp-role">UI/UX Design Lead</div>
+        <div class="xp-desc">Joined as core team member and scaled the team(2 → 12). Owned the pvNXT Solar Suite end-to-end.</div>
+        <div class="features">
+          <span class="feat">Design System</span>
+          <span class="feat">Enterprise SaaS</span>
+          <span class="feat">Product Strategy</span>
+          <span class="feat">Workflow Automation</span>
+          <span class="feat">Web + Mobile</span>
+        </div>
+      </div>
+
+      <div class="xp-row">
+        <div class="xp-head">
+          <h3>IIDE</h3>
+          <div class="when">2021 — 2022</div>
+        </div>
+        <div class="xp-role">Executive Web Designer</div>
+        <div class="xp-desc">Redesigned core marketing site and course pages with growth, site looked good but didn't convert. Rewrote IA, A/B tested CTAs, partnered on every section.</div>
+        <div class="features">
+          <span class="feat">EdTech</span>
+          <span class="feat">CRO</span>
+          <span class="feat">+16% engagement</span>
+          <span class="feat">Mentored 3 designers</span>
+          <span class="feat">Design QA rituals</span>
+        </div>
+      </div>
+
+      <div class="xp-row">
+        <div class="xp-head">
+          <h3>Skymap Global</h3>
+          <div class="when">2019 — 2021</div>
+        </div>
+        <div class="xp-role">Software Engineer (UI-Oriented)</div>
+        <div class="xp-desc">Designed satellite imagery + raster data tools used by government and enterprise teams. Translated dense GIS workflows into clean dashboards built alongside QGIS / ERDAS engineers.</div>
+        <div class="features">
+          <span class="feat">GIS</span>
+          <span class="feat">Enterprise</span>
+          <span class="feat">B2B Procurement</span>
+          <span class="feat">Gov + Ent customers</span>
+          <span class="feat">E-comm Satellite Imagery</span>
+        </div>
+      </div>
+
+      <div class="xp-row">
+        <div class="xp-head">
+          <h3>Dreamz Merchandising Solutions</h3>
+          <div class="when">2016 — 2019</div>
+        </div>
+        <div class="xp-role">Junior Web Designer & Developer</div>
+        <div class="xp-desc">Shipped & Managed ₹10L+ worth of projects with consistent quality and timelines for 25+ client and a diverse client portfolio. Where I learned "pixel-perfect" is a design choice, not a personality.</div>
+        <div class="features">
+          <span class="feat">25+ websites</span>
+          <span class="feat">Mobile apps</span>
+          <span class="feat">Branding</span>
+          <span class="feat">10+ industries</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- ═══ COPY END: Experience HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 6: Case Study (pvNXT — Problem/Role/Outcome + stats)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 6 — Case Study</div>
+
+  <!-- ═══ COPY START: Case Study CSS ═══ -->
+  <style>
+  .case-root{
+    --ink-2:#3A3A4A; --muted:#7A7A8C; --primary:#6C5CE7;
+    --primary-soft:#EFEAFE; --line:#ECEAF4;
+    display:grid; grid-template-columns:88px 1fr; gap:22px;
+  }
+  .case-root .sec-label{
+    font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; padding-top:3px;
+  }
+  .case-root .case{
+    border:1px solid var(--line); border-radius:14px;
+    padding:18px; background:#FBFAFF;
+  }
+  .case-root .case-head{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:12px; margin-bottom:10px;
+  }
+  .case-root .case-head h3{font-size:14px; font-weight:700}
+  .case-root .case-head .tag{
+    font-size:10px; color:var(--primary); font-weight:600;
+    text-transform:uppercase; letter-spacing:.1em;
+  }
+  .case-root .case-grid{
+    display:grid; gap:14px; margin-top:12px;
+  }
+  .case-root .case-grid h5{
+    font-size:10px; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.1em; font-weight:600; margin-bottom:5px;
+  }
+  .case-root .case-grid p{
+    font-size:11.5px; color:var(--ink-2); line-height:1.55;
+  }
+  .case-root .case-stats{
+    display:flex; gap:18px; margin-top:14px;
+    padding-top:12px; border-top:1px dashed var(--line);
+  }
+  .case-root .case-stats .s .v{
+    font-size:16px; font-weight:700; color:var(--primary); letter-spacing:-.3px;
+  }
+  .case-root .case-stats .s .l{
+    font-size:10px; color:var(--muted); text-transform:uppercase;
+    letter-spacing:.08em; margin-top:1px;
+  }
+  .case-root .features{display:flex; flex-wrap:wrap; gap:5px; margin-top:7px}
+  .case-root .feat{
+    font-size:10px; color:var(--ink-2); background:var(--primary-soft);
+    border:1px solid #E0D8FB; padding:3px 9px; border-radius:999px;
+    font-weight:500;
+  }
+  </style>
+  <!-- ═══ COPY END: Case Study CSS ═══ -->
+
+  <!-- ═══ COPY START: Case Study HTML ═══ -->
+  <div class="case-root">
+    <div class="sec-label">Case Study</div>
+    <div>
+      <div class="case">
+        <div class="case-head">
+          <h3>pvNXT Solar Suite | Manual process to connected execution</h3>
+          <span class="tag">Featured</span>
+        </div>
+        <div class="features" style="margin-top:0">
+          <span class="feat">Enterprise SaaS</span>
+          <span class="feat">Design System</span>
+          <span class="feat">Web + Mobile</span>
+          <span class="feat">Lead Designer</span>
+        </div>
+        <div class="case-grid">
+          <div>
+            <h5>Problem</h5>
+            <p>Solar consumers, EPC partners, and installers were juggling three disconnected portals plus spreadsheets and WhatsApp, handoffs broke daily and no one trusted the data.</p>
+          </div>
+          <div>
+            <h5>Role</h5>
+            <p>Led end-to-end design, research with engineers and field teams, IA and flows, design system from scratch, hi-fi UI, motion specs, dev handoff and post-launch QA.</p>
+          </div>
+          <div>
+            <h5>Outcome</h5>
+            <p>One unified Solar Suite across web and mobile. Tasks complete ~30% faster. Design system now powers 3+ live products and a team that grew from 2 to 12. Incubated at FITT IIT Delhi.</p>
+          </div>
+        </div>
+        <div class="case-stats">
+          <div class="s"><div class="v">5+</div><div class="l">EPCs onboarded</div></div>
+          <div class="s"><div class="v">50+</div><div class="l">Users enrolled</div></div>
+          <div class="s"><div class="v">2–3 wks</div><div class="l">Down from 2–3 mo</div></div>
+          <div class="s"><div class="v">3 live portals</div><div class="l">Consumer · EPC · Installer</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Case Study HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 7: Skills (3-column grid)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 7 — Skills (UX + UI + Tools)</div>
+
+  <!-- ═══ COPY START: Skills CSS ═══ -->
+  <style>
+  .skills-root{
+    --ink-2:#3A3A4A; --muted:#7A7A8C;
+    display:grid; grid-template-columns:88px 1fr; gap:22px;
+  }
+  .skills-root .sec-label{
+    font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; padding-top:3px;
+  }
+  .skills-root .skills-grid{
+    display:grid; grid-template-columns:1fr 1fr 1fr; gap:22px;
+  }
+  .skills-root .sk h4{font-size:12px; font-weight:700; margin-bottom:8px}
+  .skills-root .sk p{
+    font-size:11.5px; line-height:1.65; color:var(--ink-2);
+  }
+  </style>
+  <!-- ═══ COPY END: Skills CSS ═══ -->
+
+  <!-- ═══ COPY START: Skills HTML ═══ -->
+  <div class="skills-root">
+    <div class="sec-label">Skills</div>
+    <div>
+      <div class="skills-grid">
+        <div class="sk">
+          <h4>UX &amp; Product</h4>
+          <p>Design Systems · UX Research · Information Architecture · Prototyping · Mentoring · Design Ops · Stakeholder Management</p>
+        </div>
+        <div class="sk">
+          <h4>UI &amp; Visual</h4>
+          <p>UI Design · Hi-fi Prototyping · Interaction Design · Motion Specs · Accessibility · Dev Handoff · QA Partnership</p>
+        </div>
+        <div class="sk">
+          <h4>Tools &amp; Tech</h4>
+          <p>Figma · FigJam · Framer · Webflow · Notion · Jira · Miro · Zeplin · HTML · CSS · Tailwind · QGIS · ERDAS</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Skills HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 8: Education
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 8 — Education</div>
+
+  <!-- ═══ COPY START: Education CSS ═══ -->
+  <style>
+  .edu-root{
+    --ink-2:#3A3A4A; --muted:#7A7A8C;
+    display:grid; grid-template-columns:88px 1fr; gap:22px;
+  }
+  .edu-root .sec-label{
+    font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; padding-top:3px;
+  }
+  .edu-root .edu-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    gap:16px; padding:10px 0;
+  }
+  .edu-root .edu-row h4{font-size:13px; font-weight:700}
+  .edu-root .edu-row .degree{font-size:11.5px; color:var(--ink-2); margin-top:2px}
+  .edu-root .edu-row .when{
+    font-size:10.5px; color:var(--muted); font-weight:500; white-space:nowrap;
+  }
+  </style>
+  <!-- ═══ COPY END: Education CSS ═══ -->
+
+  <!-- ═══ COPY START: Education HTML ═══ -->
+  <div class="edu-root">
+    <div class="sec-label">Education</div>
+    <div>
+      <div class="edu-row">
+        <div><h4>Tutedude</h4><div class="degree">Advanced UI UX Designing, Advanced UX research</div></div>
+        <div class="when">2025 – Ongoing</div>
+      </div>
+      <div class="edu-row">
+        <div><h4>KVCH (IBM)</h4><div class="degree">Industrial Training</div></div>
+        <div class="when">Jan 2019 – Jun 2019</div>
+      </div>
+      <div class="edu-row">
+        <div><h4>Mangalayatan University</h4><div class="degree">Bachelor of Computer Applications (BCA)</div></div>
+        <div class="when">2016 — 2019</div>
+      </div>
+      <div class="edu-row">
+        <div><h4>Tata Consultancy Services</h4><div class="degree">Diploma in IT, Designing, Web Programming, Application & Advanced Programming</div></div>
+        <div class="when">2014 — 2016</div>
+      </div>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Education HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 9: Closing (CTA note)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 9 — Closing (CTA + note)</div>
+
+  <!-- ═══ COPY START: Closing CSS ═══ -->
+  <style>
+  .closing-root{
+    --ink-2:#3A3A4A; --muted:#7A7A8C; --primary:#6C5CE7;
+    display:grid; grid-template-columns:88px 1fr; gap:22px;
+  }
+  .closing-root .sec-label{
+    font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--muted); font-weight:600; padding-top:3px;
+  }
+  .closing-root .closing{
+    padding:16px 18px;
+    border:1px dashed #D9D2F5; border-radius:14px;
+    font-size:12px; color:var(--ink-2); line-height:1.55;
+  }
+  .closing-root .closing strong{color:var(--primary); font-weight:600}
+  .closing-root a{color:var(--primary)}
+  </style>
+  <!-- ═══ COPY END: Closing CSS ═══ -->
+
+  <!-- ═══ COPY START: Closing HTML ═══ -->
+  <div class="closing-root">
+    <div class="sec-label">Now</div>
+    <div>
+      <div class="closing">
+        Currently leading design at Terranxt and <strong>open to work</strong> at product-led companies, especially complex SaaS, enterprise tools, or anything where design has to fight for clarity. Best way to reach me is <a href="mailto:rmcool26@gmail.com">email</a> or <a href="https://linkedin.com/in/rmcool26" target="_blank" rel="noopener">linkedin</a>.
+      </div>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Closing HTML ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SECTION 10: Signature (Rajat Mishra SVG)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box">
+  <div class="demo-label">📦 Section 10 — Signature (SVG)</div>
+
+  <!-- ═══ COPY START: Signature CSS ═══ -->
+  <style>
+  .sig-root{--primary:#6C5CE7}
+  .sig-root .signature{
+    width:100%; display:flex; align-items:center;
+    justify-content:right; padding:12px 12px;
+    font-size:20px; color:var(--primary);
+    font-family:"Freehand",cursive; font-weight:400; font-style:normal;
+  }
+  /* Agar SVG nahi, plain text chahiye toh: */
+  .sig-root .signature-text{
+    font-family:"Freehand",cursive; font-size:24px;
+    color:var(--primary); text-align:right;
+  }
+  </style>
+  <!-- ═══ COPY END: Signature CSS ═══ -->
+
+  <!-- ═══ COPY START: Signature HTML — Option A: SVG -->
+  <div class="sig-root">
+    <div class="signature">
+      <!-- SVG signature "Rajat Mishra" -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="96" height="40" viewBox="0 0 72 30" preserveAspectRatio="xMidYMid meet">
+        <text x="0" y="22" font-family="Freehand, cursive" font-size="22" fill="#6C5CE7" font-style="italic">Rajat Mishra</text>
+      </svg>
+    </div>
+  </div>
+  <!-- ═══ COPY END: Signature HTML ═══ -->
+
+  <!-- ═══ COPY START: Signature HTML — Option B: Plain text (simpler) ═══ -->
+  <div class="sig-root" style="margin-top:8px;">
+    <div class="signature">Rajat Mishra</div>
+  </div>
+  <!-- ═══ COPY END: Signature HTML - Option B ═══ -->
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FINAL: PAGE/PRINT CLASSES — SEPARATE, DO NOT COPY WITH SECTIONS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="demo-box" style="background:#fdfcff; border:2px dashed #6C5CE7;">
+  <div class="demo-label" style="color:#6C5CE7; border-bottom-color:#d5c9fa;">
+    🔧 PAGE + PRINT CLASSES — Sirf ek baar lagani hain, sections ke saath nahi
+  </div>
+  <pre style="font-size:11px; line-height:1.7; color:#3A3A4A; background:#FAFAFC; padding:14px; border-radius:8px; overflow-x:auto;">/* ── PAGE WRAPPER (SCREEN) ── */
+.page {
+  width: 8.5in;
+  height: 11in;
+  margin: 0 auto 20px;
+  background: #FFFFFF;
+  padding: 0.5in 0.55in;
+  box-shadow: 0 8px 40px rgba(20, 20, 40, .08);
+  page-break-after: always;
+  overflow: hidden;
+}
+.page:last-child { page-break-after: auto }
+
+/* ── PRINT ── */
+@page { size: Letter; margin: 0 }
+
+@media print {
+  body { background: #fff; padding: 0 }
+  .page { box-shadow: none; width: 100%; min-height: auto; margin: 0 }
+}</pre>
+  <p style="font-size:11.5px; color:#3A3A4A; margin-top:10px; line-height:1.6;">
+    <strong>How to use:</strong> Ye CSS apni resume file ke <code>&lt;style&gt;</code> mein ek baar daalo. Sections ke HTML <code>&lt;div class="page"&gt;...&lt;/div&gt;</code> ke andar aayenge. Print ke liye <code>@page</code> aur <code>@media print</code> block zaroori hai — inke bina Ctrl+P pe 2 pages nahi aayenge.
+  </p>
+</div>
+
+</body>
+</html>
