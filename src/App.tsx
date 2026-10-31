@@ -15,6 +15,8 @@ import CaseStudy from "./pages/CaseStudy.tsx";
 import WorkDetail from "./pages/WorkDetail.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CaseStudyPvNXT from "./components/portfolio/CaseStudy/CaseStudyPvNXT.tsx";
+import CaseStudyPvNXTv2 from "./components/portfolio/CaseStudy/CaseStudyPvNXTv2.tsx";
+import CaseStudyPvNXTHelp from "./components/portfolio/CaseStudy/CaseStudyPvNXTHelp.tsx";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,8 @@ const App = () => (
               <Route path="/experience" element={<Experience />} />
               <Route path="/contact" element={<ContactPage />} />
               <Route path="/case/terranxt" element={<CaseStudyPvNXT />} />
+              <Route path="/case/terranxt-v2" element={<CaseStudyPvNXTv2 />} />
+              <Route path="/case/pvnxt-help" element={<CaseStudyPvNXTHelp />} />
               <Route path="/work/:slug" element={<WorkDetail />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

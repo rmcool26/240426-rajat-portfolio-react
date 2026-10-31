@@ -24,6 +24,7 @@ import scadaAlert from "@/assets/projects/rmcool26-pvNXT-sacada-alert.svg";     
 import sarCart from "@/assets/projects/rmcool26-spade.svg";                            // card — SVG
 import sarCartDetail from "@/assets/projects/rmcool26-sar-cart.png";                   // detail — PNG render
 import fieldApp from "@/assets/projects/rmcool26-pvNXT-epc-fieldapp.svg";
+import pvnxtHelpCover from "@/assets/projects/pvnxt-help/after-home.jpg";
 
 import arthaCard from "@/assets/projects/arthanxt-website-card-rajat-mishra.svg";
 import arthaDetail from "@/assets/projects/arthanxt-website-detail-rajat-mishra.svg";
@@ -850,6 +851,26 @@ export const workItems: WorkItem[] = [
     whatItIs: "The umbrella pvNXT ecosystem connecting EPC teams, consumers, installers, field capture, proposals and monitoring into one solar product suite.",
     whatIDid: "Mapped workflows, named and structured the product family, designed key flows and screens, built the design system foundation, and supported handoff, QA and demos.",
     whyItMatters: "It turned scattered solar operations into a connected product suite built from scratch — now with 4+ EPC organisations, 6+ real users, 50+ screens shipped, 10–15 min roof analysis, and FITT IIT Delhi incubation.",
+  },
+
+  {
+    slug: "pvnxt-help",
+    name: "pvNXT Help",
+    company: "Terranxt · 2026",
+    tagline: "Case study: one calm help centre for six solar portals, designed before the beta.",
+    cover: pvnxtHelpCover,
+    detailVisual: null,
+    tags: ["Website", "Case Study", "Help centre"],
+    filters: ["case-study", "website"],
+    showInAll: true,
+    status: "review",
+    pvnxtEcosystem: true,
+    projectPageHref: "/case/pvnxt-help",
+    primaryAction: { label: "View Project", href: "/case/pvnxt-help", isRoute: true },
+    statusLabel: "Ready for beta",
+    whatItIs: "A search-first help centre (help.pvnxt.com) for Studio, Go, Connect, SCADA, Atlas and Artha.",
+    whatIDid: "Turned three long PDF guides into 58 short web guides, designed every page, and built and tested it with AI.",
+    whyItMatters: "Users can find answers themselves in a minute, on any device, and still reach a person on every page.",
   },
 
   {

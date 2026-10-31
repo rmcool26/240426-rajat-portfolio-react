@@ -31,6 +31,8 @@ import { ZoomableImage } from "./ZoomableImage";
 import { Cursor } from "../Cursor";
 import { Footer } from "../Footer";
 import { ScrollProgress } from "../ScrollProgress";
+import { RelatedCase } from "./calm/CaseLayout";
+import helpHome from "@/assets/projects/pvnxt-help/after-home.jpg";
 
 // ---------- motion presets ----------
 const fadeUp: Variants = {
@@ -860,6 +862,13 @@ export default function CaseStudyPvNXT() {
       <ProductStories />
       <Decisions />
       <Results />
+      <RelatedCase
+        eyebrow="pvNXT Help · 2026"
+        title="One calm help centre for all six portals."
+        body="How I turned three long PDF guides into 58 short web guides, so users could get unstuck without messaging the team."
+        href="/case/pvnxt-help"
+        cover={helpHome}
+      />
       <Next />
       <Footer />
     </main>

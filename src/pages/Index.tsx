@@ -4,6 +4,7 @@ import { Cursor } from "@/components/portfolio/Cursor";
 import { ScrollProgress } from "@/components/portfolio/ScrollProgress";
 import { Nav } from "@/components/portfolio/Nav";
 import { Hero } from "@/components/portfolio/Hero";
+import { HomeCaseStudies } from "@/components/portfolio/HomeCaseStudies";
 import { Footer } from "@/components/portfolio/Footer";
 import { content } from "@/content";
 import { Mail, BriefcaseBusiness, UserRound, Send } from "lucide-react";
@@ -38,6 +39,7 @@ const Index = () => {
       <ScrollProgress />
       <Nav />
       <Hero />
+      <HomeCaseStudies />
 
       {/* Start Here Hub */}
       <section className="relative isolate overflow-hidden bg-background py-20 md:py-32">
