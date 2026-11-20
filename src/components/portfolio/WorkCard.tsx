@@ -44,14 +44,14 @@ export const WorkCard = ({ item, index }: WorkCardProps) => {
         to={href}
         className="block focus-visible:outline-none"
         data-cursor="hover"
-        data-cursor-label={\`Open \${item.name}\`}
-        aria-label={\`View project: \${item.name}\`}
+        data-cursor-label={`Open ${item.name}`}
+        aria-label={`View project: ${item.name}`}
       >
         <div className="relative aspect-[4/3] overflow-hidden border border-border bg-secondary">
           {item.cover ? (
             <motion.img
               src={item.cover}
-              alt={\`\${item.name} project preview\`}
+              alt={`${item.name} project preview`}
               loading="lazy"
               whileHover={reduceMotion ? undefined : { scale: 1.035 }}
               transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
@@ -64,7 +64,7 @@ export const WorkCard = ({ item, index }: WorkCardProps) => {
             <span className="bg-background/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.14em] text-foreground">
               {descriptor}
             </span>
-            <span className={\`px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.14em] \${status.className}\`}>
+            <span className={`px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.14em] ${status.className}`}>
               {status.label}
             </span>
           </div>
