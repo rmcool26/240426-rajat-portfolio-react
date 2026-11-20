@@ -52,6 +52,33 @@
       text-decoration: underline
     }
 
+    .screen-toolbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px 0;
+      font-family: "Manrope", Arial, sans-serif;
+    }
+
+    .screen-toolbar a,
+    .screen-toolbar button {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      color: var(--ink);
+      padding: 10px 15px;
+      font: 700 10px "Manrope", Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    .screen-toolbar button {
+      background: var(--violet-700);
+      border-color: var(--violet-700);
+      color: #fff;
+    }
+
     /* PAGE */
     .page {
       width: 8.27in;
@@ -900,6 +927,8 @@
     }
 
     @media print {
+      .screen-toolbar { display: none; }
+
       body {
         background: #fff;
         padding: 0
@@ -923,6 +952,10 @@
 </head>
 
 <body>
+  <div class="screen-toolbar">
+    <a href="/RajatMishra_Resume.html">View ATS version</a>
+    <button type="button" onclick="window.print()">Print / Save as PDF</button>
+  </div>
 
   <!-- ═══════════ PAGE 1 ═══════════ -->
   <div class="page">
