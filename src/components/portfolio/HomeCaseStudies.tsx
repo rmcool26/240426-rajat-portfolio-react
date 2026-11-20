@@ -65,9 +65,9 @@ export const HomeCaseStudies = () => {
                 data-cursor-label="Read the case study"
                 className="group block h-full"
               >
-                <div className={\`relative overflow-hidden border border-border bg-card \${
+                <div className={`relative overflow-hidden border border-border bg-card ${
                   index === 0 ? "aspect-[16/10]" : "aspect-[16/10] lg:aspect-[16/11]"
-                }\`}>
+                }`}>
                   <img
                     src={item.cover}
                     alt={index === 0 ? "pvNXT solar product suite interface" : "pvNXT Help Portal home page"}
