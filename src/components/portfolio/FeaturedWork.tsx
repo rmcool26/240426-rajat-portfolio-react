@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { content } from "@/content";
 import { WorkGrid } from "./WorkGrid";
 import { EarlierWork } from "./EarlierWork";
 
