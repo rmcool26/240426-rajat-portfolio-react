@@ -47,9 +47,7 @@ try {
   await page.locator("#mobile-navigation").waitFor({ state: "visible" });
   await page.getByRole("link", { name: "Design process" }).click();
   await page.waitForURL("**/process");
-  if (await page.locator("#mobile-navigation").count()) {
-    throw new Error("Mobile navigation did not close after route navigation.");
-  }
+  await page.locator("#mobile-navigation").waitFor({ state: "detached", timeout: 3000 });
   console.log("PASS mobile navigation opens, navigates and closes");
 
   await page.goto(new URL("/work", baseUrl).toString(), { waitUntil: "domcontentloaded" });
