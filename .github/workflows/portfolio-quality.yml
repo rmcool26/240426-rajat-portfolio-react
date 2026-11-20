@@ -37,3 +37,25 @@ jobs:
 
       - name: Unit tests
         run: npm run test
+
+      - name: Install Chromium for browser QA
+        run: npx playwright install --with-deps chromium
+
+      - name: Start preview server
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/portfolio-preview.log 2>&1 &
+          echo $! > /tmp/portfolio-preview.pid
+          node -e 'const wait = async () => { for (let i = 0; i < 40; i++) { try { const r = await fetch("http://127.0.0.1:4173"); if (r.ok) return; } catch {} await new Promise((resolve) => setTimeout(resolve, 500)); } throw new Error("Vite preview did not start"); }; wait().catch((e) => { console.error(e); process.exit(1); });'
+
+      - name: Browser smoke test
+        run: node scripts/portfolio-smoke.mjs
+
+      - name: Upload browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-browser-smoke
+          path: |
+            /tmp/portfolio-smoke-home.png
+            /tmp/portfolio-smoke-help.png
+          if-no-files-found: ignore
