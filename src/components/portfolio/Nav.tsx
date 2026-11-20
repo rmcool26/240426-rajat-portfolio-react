@@ -25,11 +25,11 @@ export const Nav = () => {
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
       <nav
         aria-label="Main navigation"
-        className={\`mx-auto flex max-w-7xl items-center justify-between border px-3 py-2.5 transition-all duration-300 sm:px-5 \${
+        className={`mx-auto flex max-w-7xl items-center justify-between border px-3 py-2.5 transition-all duration-300 sm:px-5 ${
           scrolled
             ? "rounded-xl border-border bg-background shadow-soft"
             : "rounded-xl border-border/70 bg-background/95"
-        }\`}
+        }`}
       >
         <Link
           to="/"
@@ -57,9 +57,9 @@ export const Nav = () => {
                   to={item.href}
                   aria-current={active ? "page" : undefined}
                   data-cursor="hover"
-                  className={\`relative inline-flex items-center px-3 py-2 text-[13px] font-semibold transition-colors \${
+                  className={`relative inline-flex items-center px-3 py-2 text-[13px] font-semibold transition-colors ${
                     active ? "text-primary" : "text-muted-foreground hover:text-foreground"
-                  }\`}
+                  }`}
                 >
                   {item.label}
                   {active && <motion.span layoutId="nav-active" className="absolute inset-x-3 -bottom-0.5 h-px bg-primary" />}
