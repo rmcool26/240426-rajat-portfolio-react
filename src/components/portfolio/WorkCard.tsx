@@ -1,202 +1,100 @@
-import { motion } from "framer-motion";
-import { ArrowUpRight, ExternalLink, Figma } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import type { WorkItem, WorkAction } from "@/content";
+import type { WorkItem } from "@/content";
 
-// ─── Neutral placeholder ─────────────────────────────────────────────────────
+const STATUS: Record<WorkItem["status"], { label: string; className: string }> = {
+  live: { label: "Live", className: "bg-background text-foreground" },
+  wip: { label: "In progress", className: "bg-background text-foreground" },
+  internal: { label: "Internal", className: "bg-background text-foreground" },
+  review: { label: "In review", className: "bg-background text-foreground" },
+};
+
 const CoverPlaceholder = ({ name }: { name: string }) => {
-  const initials = name
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
+  const initials = name.split(/\s+/).slice(0, 2).map((word) => word[0]).join("").toUpperCase();
   return (
-    <div className="flex h-full w-full items-center justify-center bg-muted">
-      <span className="select-none font-display text-4xl font-bold tracking-tight text-muted-foreground/30">
-        {initials}
-      </span>
+    <div className="grid h-full w-full place-items-center bg-secondary">
+      <span className="font-editorial text-7xl text-primary/45">{initials}</span>
     </div>
   );
 };
 
-// ─── Status pill ─────────────────────────────────────────────────────────────
-const StatusPill = ({ status }: { status: WorkItem["status"] }) => {
-  const config = {
-    live:     { dot: "bg-green-500", label: "Live" },
-    wip:      { dot: "bg-amber-400", label: "In Progress" },
-    internal: { dot: "bg-blue-400",  label: "Internal" },
-    review:   { dot: "bg-purple-400",label: "In Review" },
-  }[status];
-  return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-background/90 px-2.5 py-1 text-[11px] font-medium shadow-soft backdrop-blur-sm">
-      <span className={`h-1.5 w-1.5 rounded-full ${config.dot}`} />
-      {config.label}
-    </span>
-  );
-};
-
-// ─── CTA button — always renders as internal route (View Project) or Figma ──
-const ActionButton = ({
-  action,
-  variant,
-}: {
-  action: WorkAction;
-  variant: "primary" | "secondary";
-}) => {
-  const isFigma = action.label.toLowerCase() === "figma";
-
-  const icon = action.isRoute ? (
-    <ArrowUpRight className="h-3 w-3 transition-transform group-hover:rotate-45" />
-  ) : isFigma ? (
-    <Figma className="h-3 w-3" />
-  ) : (
-    <ExternalLink className="h-3 w-3" />
-  );
-
-  const tooltipLabel = isFigma ? "Open in Figma" : action.isRoute ? "View project details" : "Open link";
-
-  const cls =
-    variant === "primary"
-      ? "group inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-semibold text-background transition-colors hover:bg-primary"
-      : "group inline-flex items-center gap-1.5 rounded-full border border-border bg-background/60 px-3 py-1.5 text-[11px] font-semibold text-muted-foreground transition-colors hover:border-primary/50 hover:text-foreground";
-
-  if (action.isRoute) {
-    return (
-      <Link
-        to={action.href}
-        data-cursor="hover"
-        data-cursor-label={tooltipLabel}
-        aria-label={`${action.label} — ${tooltipLabel}`}
-        title={tooltipLabel}
-        className={cls}
-      >
-        {action.label}
-        {icon}
-      </Link>
-    );
-  }
-  return (
-    <a
-      href={action.href}
-      target="_blank"
-      rel="noreferrer"
-      data-cursor="hover"
-      data-cursor-label={tooltipLabel}
-      aria-label={`${action.label} — ${tooltipLabel}`}
-      title={tooltipLabel}
-      className={cls}
-    >
-      {action.label}
-      {icon}
-    </a>
-  );
-};
-
-// ─── Main card ───────────────────────────────────────────────────────────────
 interface WorkCardProps {
   item: WorkItem;
   index: number;
 }
 
 export const WorkCard = ({ item, index }: WorkCardProps) => {
-  // Build homepage CTAs from data:
-  // Primary = "View Project" → internal projectPageHref
-  const primaryActionLabel = "View Project";
-  const projectHref = item.projectPageHref || "/";
+  const reduceMotion = useReducedMotion();
+  const href = item.projectPageHref || "/";
+  const status = STATUS[item.status];
+  const descriptor = item.meta?.platform || item.tags[0] || "Selected work";
+  const details = item.meta?.scope || item.meta?.industry || item.tags[1] || item.company;
 
   return (
-    <Link
-      to={projectHref}
-      className="block group"
-      data-cursor="hover"
-      data-cursor-label="Open the project story"
+    <motion.article
+      layout
+      initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 12 }}
+      transition={{ duration: 0.4, delay: Math.min(index * 0.035, 0.2) }}
+      className="group min-w-0"
     >
-      <motion.article
-        layout
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 12, scale: 0.97 }}
-        transition={{
-          duration: 0.45,
-          delay: index * 0.07,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant"
+      <Link
+        to={href}
+        className="block focus-visible:outline-none"
+        data-cursor="hover"
+        data-cursor-label={\`Open \${item.name}\`}
+        aria-label={\`View project: \${item.name}\`}
       >
-        {/* Cover */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+        <div className="relative aspect-[4/3] overflow-hidden border border-border bg-secondary">
           {item.cover ? (
             <motion.img
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
               src={item.cover}
-              alt={item.name}
-              className="h-full w-full object-cover"
+              alt={\`\${item.name} project preview\`}
               loading="lazy"
+              whileHover={reduceMotion ? undefined : { scale: 1.035 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="h-full w-full object-cover object-top"
             />
           ) : (
             <CoverPlaceholder name={item.name} />
           )}
-
-          {/* Status pill — top left */}
-          <div className="absolute left-3 top-3">
-            <StatusPill status={item.status} />
+          <div className="absolute inset-x-0 top-0 flex items-start justify-between gap-3 p-3 sm:p-4">
+            <span className="bg-background/95 px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.14em] text-foreground">
+              {descriptor}
+            </span>
+            <span className={\`px-2.5 py-1.5 text-[9px] font-extrabold uppercase tracking-[0.14em] \${status.className}\`}>
+              {status.label}
+            </span>
           </div>
-
-          {/* pvNXT ecosystem chip — top right */}
           {item.pvnxtEcosystem && (
-            <div className="absolute right-3 top-3">
-              <span className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary backdrop-blur-sm">
-                pvNXT ecosystem
-              </span>
-            </div>
+            <span className="absolute bottom-3 left-3 bg-foreground/90 px-2.5 py-1.5 text-[9px] font-bold uppercase tracking-[0.12em] text-background sm:bottom-4 sm:left-4">
+              pvNXT ecosystem
+            </span>
           )}
+          <span className="absolute bottom-3 right-3 grid h-9 w-9 place-items-center bg-primary text-primary-foreground transition-transform duration-300 group-hover:rotate-45 sm:bottom-4 sm:right-4">
+            <ArrowUpRight className="h-4 w-4" />
+          </span>
         </div>
 
-        {/* Info */}
-        <div className="flex flex-1 flex-col p-5">
-          <h3 className="font-display text-lg font-bold leading-snug tracking-tight text-foreground md:text-xl">
-            {item.name}
-          </h3>
-          <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-            {item.tagline}
-          </p>
-
-          <div className="flex-1" />
-
-          {/* Tags / Meta Chips */}
-          <div className="mt-4 flex flex-wrap gap-1.5 border-t border-border pt-4">
-            {(item.meta 
-              ? [item.meta.platform, item.meta.scope, item.meta.impact].filter(Boolean)
-              : item.tags
-            ).slice(0, 3).map((chip) => (
-              <span
-                key={chip}
-                className="rounded-full bg-secondary px-2.5 py-0.5 text-[11px] font-medium text-muted-foreground"
-              >
-                {chip}
-              </span>
-            ))}
-          </div>
-
-          {/* CTA row — View Project only */}
-          <div className="mt-3 flex flex-wrap items-center gap-2">
-            <div className="group inline-flex items-center gap-1.5 rounded-full bg-foreground px-3 py-1.5 text-[11px] font-semibold text-background transition-colors group-hover:bg-primary">
-              {primaryActionLabel}
-              <ArrowUpRight className="h-3 w-3 transition-transform group-hover:rotate-45" />
+        <div className="border-b border-border py-5">
+          <div className="flex items-start justify-between gap-4">
+            <div className="min-w-0">
+              <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground">{item.company}</p>
+              <h3 className="mt-2 font-display text-xl font-extrabold leading-tight tracking-[-0.035em] text-foreground sm:text-2xl">
+                {item.name}
+              </h3>
             </div>
-            {/* Status label: alongside primary, or solo if no primary */}
-            {item.statusLabel && (
-              <span
-                className="inline-flex items-center gap-1.5 rounded-full border border-dashed border-border bg-background/40 px-3 py-1 text-[10px] font-medium text-muted-foreground ml-auto"
-              >
-                {item.statusLabel}
-              </span>
-            )}
+            <span className="shrink-0 font-editorial text-2xl text-primary/80">{String(index + 1).padStart(2, "0")}</span>
+          </div>
+          <p className="mt-3 line-clamp-3 max-w-xl text-sm leading-[1.7] text-muted-foreground">{item.tagline}</p>
+          <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground/75">
+            <span>{details}</span>
+            {item.statusLabel && <><span className="h-1 w-1 rounded-full bg-primary" /><span className="text-primary">{item.statusLabel}</span></>}
           </div>
         </div>
-      </motion.article>
-    </Link>
+      </Link>
+    </motion.article>
   );
 };
