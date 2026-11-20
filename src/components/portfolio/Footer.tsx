@@ -32,7 +32,7 @@ export const Footer = () => (
       <div className="flex flex-col gap-3 pt-5 text-[11px] text-[hsl(var(--footer-fg)/0.5)] sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} Rajat Mishra</p>
         <p>Product design · Systems thinking · Delivery</p>
-        <a href={\`mailto:\${content.contact.email}\`} className="transition-colors hover:text-[hsl(var(--footer-fg))]">{content.contact.email}</a>
+        <a href={`mailto:${content.contact.email}`} className="transition-colors hover:text-[hsl(var(--footer-fg))]">{content.contact.email}</a>
       </div>
     </div>
   </footer>
