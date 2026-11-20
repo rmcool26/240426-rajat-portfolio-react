@@ -15,7 +15,7 @@ const WorkPage = () => {
       <Nav />
       <FeaturedWork />
       <CTA
-        title="Seen enough proof? <br /><span className='text-primary'>Let’s talk about yours.</span>"
+        title="Seen enough proof? Let’s talk about yours."
         subtext="Bring the messy brief — I’ll help shape it into a clean, usable product story."
         buttons={[
           {
