@@ -49,7 +49,7 @@ export const Contact = () => {
                 <ArrowUpRight className="h-4 w-4" />
               </a>
               <a href={contact.resume} target="_blank" rel="noreferrer" className="flex items-center justify-between gap-4 py-5 text-sm font-semibold text-background/80 transition-colors hover:text-primary-glow">
-                <span className="inline-flex items-center gap-3"><Download className="h-4 w-4 text-primary-glow" /> Download resume</span>
+                <span className="inline-flex items-center gap-3"><Download className="h-4 w-4 text-primary-glow" /> View resume</span>
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             </div>
