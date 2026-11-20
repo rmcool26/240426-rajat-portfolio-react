@@ -27,12 +27,12 @@ try {
     });
 
     if (!response || response.status() !== 200) {
-      throw new Error(\`\${route}: expected HTTP 200, received \${response?.status() ?? "no response"}\`);
+      throw new Error(route + ": expected HTTP 200, received " + (response?.status() ?? "no response"));
     }
 
     await page.locator("main").first().waitFor({ state: "visible", timeout: 15000 });
     const heading = await page.locator("main h1").first().textContent().catch(() => "");
-    console.log(\`PASS route \${route} — \${(heading || "main content").trim().slice(0, 90)}\`);
+    console.log("PASS route " + route + " — " + (heading || "main content").trim().slice(0, 90));
   }
 
   await page.goto(new URL("/", baseUrl).toString(), { waitUntil: "domcontentloaded" });
@@ -58,7 +58,7 @@ try {
   if (projectCount < 1) throw new Error("Work archive Case studies filter returned no projects.");
   const helpCard = page.locator('a[aria-label="View project: pvNXT Help Portal"]');
   if (!(await helpCard.count())) throw new Error("Work archive is missing the pvNXT Help Portal card.");
-  console.log(\`PASS work archive filters — \${projectCount} case studies visible, including pvNXT Help Portal\`);
+  console.log("PASS work archive filters — " + projectCount + " case studies visible, including pvNXT Help Portal");
 
   await page.goto(new URL("/case/pvnxt-help", baseUrl).toString(), { waitUntil: "domcontentloaded" });
   await page.screenshot({ path: "/tmp/portfolio-smoke-help.png", fullPage: true });
