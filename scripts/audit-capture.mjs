@@ -66,21 +66,8 @@ try {
         title = await page.title();
         heading = (await page.locator("main h1, main h2").first().textContent().catch(() => ""))?.trim() || "";
 
-        // Trigger lazy-loaded imagery before a full-page evidence capture.
-        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-        await page.waitForTimeout(500);
-        await page.evaluate(() => window.scrollTo(0, 0));
-        await page.waitForTimeout(250);
-
-        await page.screenshot({
-          path: join(folder, routeKey + "-full.jpg"),
-          type: "jpeg",
-          quality: 84,
-          fullPage: true,
-          animations: "disabled"
-        });
-
         if (route === "/") {
+          // Capture the true first viewport before any scroll-based lazy-load pass.
           await page.screenshot({
             path: join(folder, "home-first-fold.jpg"),
             type: "jpeg",
@@ -88,7 +75,7 @@ try {
             animations: "disabled"
           });
           if (viewport.name === "mobile") {
-            const menu = page.locator('button[aria-label="Menu"], button[aria-label*="menu" i]').first();
+            const menu = page.locator('button[aria-label="Open navigation"], button[aria-label="Menu"], button[aria-label*="menu" i]').first();
             if (await menu.count()) {
               await menu.click();
               await page.waitForTimeout(250);
@@ -98,9 +85,21 @@ try {
                 quality: 88,
                 animations: "disabled"
               });
+              await page.keyboard.press("Escape");
             }
           }
         }
+
+        // Trigger lazy-loaded imagery before the full-page evidence capture.
+        await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+        await page.waitForTimeout(700);
+        await page.screenshot({
+          path: join(folder, routeKey + "-full.jpg"),
+          type: "jpeg",
+          quality: 84,
+          fullPage: true,
+          animations: "disabled"
+        });
         manifest.routes.push({ viewport: viewport.name, route, status, title, heading });
         console.log("CAPTURED " + label + " " + viewport.name + " " + route + " (" + status + ")");
       } catch (error) {
