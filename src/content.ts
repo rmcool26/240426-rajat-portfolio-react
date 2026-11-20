@@ -122,11 +122,11 @@ export const content = {
       role: "UI/UX Design Lead",
       tags: ["Enterprise SaaS", "Product Strategy", "Design System", "SolarTech", "Workflow Automation", "Figma · HTML/CSS · Tailwind", "Dev Handoff"],
       description: [
-        `Before pvNXT Solar Suite existed, running a solar EPC business in India looked something like this: PVsyst open in one tab, AutoCAD on a second monitor, WhatsApp buzzing with updates from an installer 400km away, and a spreadsheet trying to hold it all together. A single project — from site visit to final handover — could take 2–3 months.`,
+        `Before pvNXT Solar Suite existed, running a solar EPC business in India meant switching between PVsyst, AutoCAD, WhatsApp and spreadsheets. A project that once took 2–3 months could move through the connected workflow in 2–3 weeks.`,
 
-        `I joined Terranxt when there was no product, no team, and no design system. Just a problem worth solving. Over the next three years, I designed — from scratch — three interconnected portals: a Consumer portal for homeowners to self-assess and submit leads, an EPC portal for engineers to analyse, propose, and manage projects, and an Installer portal to track on-ground execution in real time.`,
+        `I joined Terranxt as employee #2 and helped build the product and design practice as the organisation grew. My work spans interconnected experiences for homeowners, EPC teams and installers, from self-assessment and solar design to proposal management and on-site execution. I now manage four designers within a 12-person cross-functional team.`,
 
-        `When we took this to IIT Delhi's FITT programme — first as a Figma prototype, later as a live product — it got accepted for incubation. We've run multiple booths there since 2022. I managed the booth, ran the demos, explained the product to investors live — with nothing but a prototype and the actual problem it was solving.`
+        `The pvNXT product was accepted for incubation through FITT, IIT Delhi. I have also represented the product in demos and conversations with potential partners.`
       ],
       cover: pvnxtSuite,
       stats: [
@@ -135,7 +135,7 @@ export const content = {
         { value: "50+", label: "Screens shipped" },
         { value: "10–15 min", label: "Roof analysis" },
         /* { value: "3 live portals", label: "Consumer · EPC · Installer" }, */
-        /* { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" }, */
+        /* { value: "2–3 months → 2–3 weeks", label: "Solar product delivery" }, */
       ],
       challenge: [
         {
@@ -205,11 +205,11 @@ export const content = {
       role: "UI/UX Design Lead",
       tags: ["Enterprise SaaS", "Product Strategy", "Design System", "SolarTech", "Workflow Automation", "Figma · HTML/CSS · Tailwind", "Dev Handoff"],
       description: [
-        `Before pvNXT Solar Suite existed, running a solar EPC business in India looked something like this: PVsyst open in one tab, AutoCAD on a second monitor, WhatsApp buzzing with updates from an installer 400km away, and a spreadsheet trying to hold it all together. A single project — from site visit to final handover — could take 2–3 months.`,
+        `Before pvNXT Solar Suite existed, running a solar EPC business in India meant switching between PVsyst, AutoCAD, WhatsApp and spreadsheets. A project that once took 2–3 months could move through the connected workflow in 2–3 weeks.`,
 
-        `I joined Terranxt when there was no product, no team, and no design system. Just a problem worth solving. Over the next three years, I designed — from scratch — three interconnected portals: a Consumer portal for homeowners to self-assess and submit leads, an EPC portal for engineers to analyse, propose, and manage projects, and an Installer portal to track on-ground execution in real time.`,
+        `I joined Terranxt as employee #2 and helped build the product and design practice as the organisation grew. My work spans interconnected experiences for homeowners, EPC teams and installers, from self-assessment and solar design to proposal management and on-site execution. I now manage four designers within a 12-person cross-functional team.`,
 
-        `When we took this to IIT Delhi's FITT programme — first as a Figma prototype, later as a live product — it got accepted for incubation. We've run multiple booths there since 2022. I managed the booth, ran the demos, explained the product to investors live — with nothing but a prototype and the actual problem it was solving.`
+        `The pvNXT product was accepted for incubation through FITT, IIT Delhi. I have also represented the product in demos and conversations with potential partners.`
       ],
       cover: pvnxtSuite,
       stats: [
@@ -218,7 +218,7 @@ export const content = {
         { value: "50+", label: "Screens shipped" },
         { value: "10–15 min", label: "Roof analysis" },
         /* { value: "3 live portals", label: "Consumer · EPC · Installer" }, */
-        /* { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" }, */
+        /* { value: "2–3 months → 2–3 weeks", label: "Solar product delivery" }, */
       ],
       challenge: [
         {
