@@ -32,7 +32,7 @@ const ProcessPage = () => {
             cursorLabel: "Let's untangle it",
           },
           {
-            label: "Download Resume",
+            label: "View Resume",
             href: content.contact.resume,
             variant: "ghost",
             icon: <FileText className="h-4 w-4" />,
