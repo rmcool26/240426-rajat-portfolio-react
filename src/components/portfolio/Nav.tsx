@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Download } from "lucide-react";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Download, Menu, X, ArrowUpRight } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import { content } from "@/content";
 import { ThemeToggle } from "./ThemeToggle";
-import { Link, useLocation } from "react-router-dom";
 
 export const Nav = () => {
   const [open, setOpen] = useState(false);
@@ -11,48 +11,55 @@ export const Nav = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 16);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => setOpen(false), [pathname]);
+
+  const navLinks = content.nav;
+  const isActive = (href: string) => pathname === href || (href === "/work" && pathname.startsWith("/case/"));
+
   return (
-    <header className="fixed left-0 right-0 top-4 z-40 px-4">
+    <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
       <nav
-        className={`mx-auto flex max-w-6xl items-center justify-between rounded-full border border-border px-4 py-2.5 transition-all duration-300 ${scrolled ? "bg-background/85 shadow-soft backdrop-blur-xl" : "bg-background/70 backdrop-blur-md"
-          }`}
+        aria-label="Main navigation"
+        className={\`mx-auto flex max-w-7xl items-center justify-between border px-3 py-2.5 transition-all duration-300 sm:px-5 \${
+          scrolled
+            ? "rounded-xl border-border bg-background shadow-soft"
+            : "rounded-xl border-border/70 bg-background/95"
+        }\`}
       >
-        <Link to="/" data-cursor="hover" data-cursor-label="Back to homepage" className="font-display text-base font-bold tracking-tight">
-          <span className="text-primary">RM</span>
-          <span className="text-foreground">COOL</span>
-          <span className="text-muted-foreground">26</span>
+        <Link
+          to="/"
+          aria-label="Rajat Mishra — home"
+          className="group inline-flex min-w-0 items-center gap-3"
+          data-cursor="hover"
+        >
+          <span className="grid h-9 w-9 shrink-0 place-items-center border border-primary/40 bg-primary text-[13px] font-extrabold tracking-[-0.08em] text-primary-foreground transition-transform group-hover:-rotate-3">
+            RM
+          </span>
+          <span className="hidden font-display text-sm font-extrabold tracking-[-0.04em] text-foreground sm:inline">
+            Rajat Mishra
+          </span>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">
-          {content.nav.map((item) => {
-            const isActive = pathname === item.href;
-            const labels: Record<string, string> = {
-              "About": "Know the guy behind the pixels",
-              "Work": "Jump to shipped work",
-              "Experience": "See where I’ve shipped",
-              "Contact": "Start something cool",
-            };
+          {navLinks.map((item) => {
+            const active = isActive(item.href);
             return (
-              <li key={item.label}>
+              <li key={item.href}>
                 <Link
                   to={item.href}
+                  aria-current={active ? "page" : undefined}
                   data-cursor="hover"
-                  data-cursor-label={labels[item.label] || item.label}
-                  className="relative inline-flex items-center rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  className={\`relative inline-flex items-center px-3 py-2 text-[13px] font-semibold transition-colors \${
+                    active ? "text-primary" : "text-muted-foreground hover:text-foreground"
+                  }\`}
                 >
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute inset-0 rounded-full bg-secondary"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className={`relative ${isActive ? "text-foreground" : ""}`}>{item.label}</span>
+                  {item.label}
+                  {active && <motion.span layoutId="nav-active" className="absolute inset-x-3 -bottom-0.5 h-px bg-primary" />}
                 </Link>
               </li>
             );
@@ -66,16 +73,19 @@ export const Nav = () => {
             target="_blank"
             rel="noreferrer"
             data-cursor="hover"
-            data-cursor-label="Grab the no-fluff resume"
-            className="hidden h-10 items-center gap-2 rounded-full bg-foreground px-4 text-sm font-medium text-background transition-transform hover:scale-105 sm:inline-flex"
+            className="hidden h-10 items-center gap-2 bg-primary px-4 text-[13px] font-bold text-primary-foreground transition-colors hover:bg-foreground sm:inline-flex"
           >
             <Download className="h-4 w-4" />
-            Download Resume
+            Resume
+            <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
           <button
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-            className="grid h-10 w-10 place-items-center rounded-full border border-border md:hidden"
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            className="grid h-10 w-10 place-items-center border border-border bg-card md:hidden"
           >
             {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
@@ -85,31 +95,36 @@ export const Nav = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            id="mobile-navigation"
+            initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="glass mx-auto mt-2 max-w-6xl rounded-3xl p-6 md:hidden"
+            exit={{ opacity: 0, y: -8 }}
+            className="mx-auto mt-2 max-w-7xl border border-border bg-card p-4 shadow-elegant md:hidden"
           >
-            <ul className="flex flex-col gap-2">
-              {content.nav.map((item) => (
-                <li key={item.label}>
+            <ul className="flex flex-col">
+              {navLinks.map((item) => (
+                <li key={item.href} className="border-b border-border last:border-0">
                   <Link
                     to={item.href}
-                    onClick={() => setOpen(false)}
-                    className="block rounded-2xl px-4 py-3 font-display text-2xl hover:bg-secondary"
+                    aria-current={isActive(item.href) ? "page" : undefined}
+                    className="flex items-center justify-between py-3 font-display text-lg font-bold"
                   >
                     {item.label}
+                    <ArrowUpRight className="h-4 w-4 text-primary" />
                   </Link>
                 </li>
               ))}
-              <li className="mt-2">
+              <li className="border-b border-border py-3">
+                <Link to="/process" className="text-sm font-semibold text-muted-foreground">Design process</Link>
+              </li>
+              <li className="pt-4">
                 <a
                   href={content.contact.resume}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-full bg-foreground px-4 py-3 text-sm font-medium text-background"
+                  className="flex items-center justify-center gap-2 bg-primary px-4 py-3 text-sm font-bold text-primary-foreground"
                 >
-                  <Download className="h-4 w-4" /> Download Resume
+                  <Download className="h-4 w-4" /> Download resume
                 </a>
               </li>
             </ul>
