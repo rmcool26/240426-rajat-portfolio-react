@@ -61,7 +61,11 @@ export function ZoomableImage({ src, alt = "", caption, className = "", children
   };
   const onPointerUp = (e: React.PointerEvent<HTMLImageElement>) => {
     e.stopPropagation();
-    try { (e.target as HTMLImageElement).releasePointerCapture(e.pointerId); } catch {}
+    try {
+      (e.target as HTMLImageElement).releasePointerCapture(e.pointerId);
+    } catch {
+      // The pointer may already have been released by the browser.
+    }
     setDragging(false);
     setTimeout(() => { dragRef.current = null; }, 0);
   };
