@@ -15,7 +15,7 @@ const ProcessPage = () => {
       <Nav />
       <DesignProcess />
       <CTA
-        title="Have a messy flow that <br /><span className='text-primary'>needs a clear path?</span>"
+        title="Have a messy flow that needs a clear path?"
         subtext="I can help decode the problem, craft the experience, and prepare the design for real execution."
         buttons={[
           {
