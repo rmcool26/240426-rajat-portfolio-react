@@ -35,7 +35,7 @@ try {
     page.on("pageerror", error => manifest.browserErrors.push({ viewport: viewport.name, message: error.message }));
 
     for (const route of routes) {
-      const routeKey = route === "/" ? "home" : route.replace(/^\\//, "").replaceAll("/", "__");
+      const routeKey = route === "/" ? "home" : route.slice(1).replaceAll("/", "__");
       const folder = join(out, viewport.name);
       await mkdir(folder, { recursive: true });
       let status = null;
