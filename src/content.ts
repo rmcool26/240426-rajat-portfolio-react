@@ -253,9 +253,9 @@ export const content = {
       cover: scada,
       gallery: [scada, scada, scada],
       stats: [
-        { value: "10+", label: "Users onboarded" },
-        { value: "~60%", label: "Fewer manual check-ins" },
-        { value: "20+", label: "Formats supported" },
+        { value: "In progress", label: "Design status" },
+        { value: "5", label: "Roles covered" },
+        { value: "Web + mobile", label: "Platforms covered" },
       ],
       highlights: [
         {
@@ -379,7 +379,7 @@ export const content = {
       stats: [
         { value: "+16%", label: "Course-page conversion" },
         { value: "3", label: "Designers mentored" },
-        { value: "16%", label: "Course-page conversion" },
+        { value: "CMS", label: "Reusable page systems" },
       ],
       highlights: [
         {
@@ -441,7 +441,7 @@ export const content = {
       cover: sarCart,
       gallery: [],
       stats: [
-        { value: "20+", label: "EPC partners" },
+        { value: "4+", label: "EPC partners" },
       ],
       highlights: [
         {
@@ -469,7 +469,7 @@ export const content = {
       cover: sarCart,
       gallery: [],
       stats: [
-        { value: "20+", label: "EPC partners" },
+        { value: "4+", label: "EPC partners" },
       ],
       highlights: [
         {
@@ -497,7 +497,7 @@ export const content = {
       cover: sarCart,
       gallery: [],
       stats: [
-        { value: "20+", label: "EPC partners" },
+        { value: "4+", label: "EPC partners" },
       ],
       highlights: [
         {
@@ -529,7 +529,7 @@ export const content = {
       cover: sarCart,
       gallery: [],
       stats: [
-        { value: "20+", label: "EPC partners" },
+        { value: "4+", label: "EPC partners" },
       ],
       highlights: [
         {
@@ -557,7 +557,7 @@ export const content = {
       cover: sarCart,
       gallery: [],
       stats: [
-        { value: "20+", label: "EPC partners" },
+        { value: "4+", label: "EPC partners" },
       ],
       highlights: [
         {
@@ -585,7 +585,7 @@ export const content = {
       cover: sarCart,
       gallery: [],
       stats: [
-        { value: "20+", label: "EPC partners" },
+        { value: "4+", label: "EPC partners" },
       ],
       highlights: [
         {
@@ -609,7 +609,7 @@ export const content = {
       cover: sarCart,
       gallery: [],
       stats: [
-        { value: "20+", label: "EPC partners" },
+        { value: "4+", label: "EPC partners" },
       ],
       highlights: [
         {
@@ -637,7 +637,7 @@ export const content = {
       cover: sarCart,
       gallery: [],
       stats: [
-        { value: "20+", label: "EPC partners" },
+        { value: "4+", label: "EPC partners" },
       ],
       highlights: [
         {
@@ -655,7 +655,7 @@ export const content = {
     headingAccent: "A finisher.",
     paragraphs: [
       "I work across the full product path: understanding the workflow, shaping the experience, building the design system and working with engineering through implementation.",
-      "There are 10,000+ designers who can make you a nice Figma file. I'm one of the few who'll also ship it to real users.",
+      "I started in web design and development, then moved into geospatial tools, education and enterprise product design. That background keeps my design decisions close to real implementation.",
       "I care about the part after the mock-up: clear states, sensible edge cases, developer handoff, QA and whether the product helps someone finish their work.",
     ],
     stats: [
@@ -687,7 +687,7 @@ export const content = {
         year: "2021",
         company: "IIDE",
         role: "Executive Web Designer",
-        desc: "+16% lead conversion via redesigning responsive course & marketing pages. Mentored 3 junior designers. Set up the team's first design QA ritual.",
+        desc: "Redesigned responsive course pages, improving course-page conversion by 16%. Mentored three junior designers and introduced a design QA review.",
       },
       {
         year: "2020",
@@ -1073,7 +1073,7 @@ export const workItems: WorkItem[] = [
         scope: "Marketplace UX + Procurement Flow",
         industry: "GIS / Satellite Imagery",
         users: "Government Agencies, GIS Teams, Enterprise Buyers",
-        impact: "Fresh imagery: 2–3 weeks → 2–3 days",
+        impact: "2–3 weeks → 2–3 days for fresh imagery",
       },
       problem: "Satellite imagery procurement was slow, manual, and hard to browse. Users had no simple India-first platform to preview, request, purchase, and download imagery.",
       myMove: "I designed the marketplace flow for archive imagery, fresh imagery requests, preview, purchase, and download so buyers could move faster with less manual coordination.",
