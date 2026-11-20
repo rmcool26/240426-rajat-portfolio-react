@@ -61,7 +61,7 @@ export const content = {
   meta: {
     name: "Rajat Mishra",
     handle: "RMCOOL26",
-    role: "UI/UX Lead · Systems Designer",
+    role: "Lead Product Designer · UI/UX Design Lead",
     location: "India",
     available: "Open to Senior / Lead roles",
   },
@@ -74,28 +74,28 @@ export const content = {
   ],
 
   hero: {
-    eyebrow: "UI/UX Design Lead · Programmatic Designer",
+    eyebrow: "Lead Product Designer · UI/UX Design Lead",
     title: "I make messy workflows work.",
-    sub: "Ideas to apps. Audits to fixes. I design websites, dashboards and web apps that simplify real work and stay close until they ship.",
+    sub: "For 10+ years, I’ve designed digital products across solar, geospatial and education. My work spans product structure, research, interface design, design systems and the details that make a handoff hold up in development.",
     primaryCta: { label: "View Work", href: "/work" },
     secondaryCta: { label: "About Rajat", href: "/about" },
     profileImage: profile,
     badges: [
       { label: "Figjam → Jira", value: "10+ Tools Mastered", emoji: "🛠️" },
-      { label: "Real users & results", value: "20+ Live Products", emoji: "🚀" },
+      { label: "Live products", value: "20+ distinct products", emoji: "🚀" },
       { label: "Shipping since 2016", value: "Hi, I'm Rajat Mishra", emoji: "👋" },
-      { label: "Delivered · Audited", value: "50+ Projects", emoji: "✨" },
-      { label: "Team Scaled", value: "2→12", emoji: "👥" },
+      { label: "pvNXT delivery", value: "50+ screens shipped", emoji: "✦" },
+      { label: "Design leadership", value: "4 designers managed", emoji: "👥" },
       /* { label: "Design Process", value: "Your idea → My Figma → Live Product", emoji: "👥" }, */
     ],
   },
 
   marquee: [
     "10+ years shipping",
-    "60+ projects",
-    "4 mobile apps",
-    "Scaled design 2 → 12",
-    "~30% faster task completion",
+    "20+ distinct live products",
+    "50+ pvNXT screens shipped",
+    "Managing 4 designers in a 12-person team",
+    "Solar delivery: 2–3 months → 2–3 weeks",
     "Mumbai 🇮🇳",
     "Open to Senior / Lead roles",
   ],
@@ -130,10 +130,10 @@ export const content = {
       ],
       cover: pvnxtSuite,
       stats: [
-        { value: "20+", label: "EPC Organisations" },
-        { value: "1k+", label: "End Users" },
-        { value: "50+", label: "Screen Shipped" },
-        { value: "10–15 min", label: "Site Roof analysis" },
+        { value: "4+", label: "EPC organisations" },
+        { value: "6+", label: "Real users" },
+        { value: "50+", label: "Screens shipped" },
+        { value: "10–15 min", label: "Roof analysis" },
         /* { value: "3 live portals", label: "Consumer · EPC · Installer" }, */
         /* { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" }, */
       ],
@@ -168,10 +168,10 @@ export const content = {
       body: "Solar EPCs ran on WhatsApp and Excel. I built the system that replaced all of it — end to end.\nEPC portal. Consumer portal. Installer portal. Web + mobile. One suite. Actually used by real people.",
       cover: pvnxtSuite,
       stats: [
-        { value: "20+", label: "EPCs Onboarded" },
-        { value: "100+", label: "Users" },
+        { value: "4+", label: "EPC organisations" },
+        { value: "6+", label: "Real users" },
         { value: "3+", label: "Portals" },
-        { value: "IIT Delhi", label: "Icubated At" },
+        { value: "FITT, IIT Delhi", label: "Incubation" },
       ],
       badge: "IIT Delhi",
       cta: { label: "See the case study", href: "/case/terranxt" },
@@ -213,10 +213,10 @@ export const content = {
       ],
       cover: pvnxtSuite,
       stats: [
-        { value: "20+", label: "EPC Organisations" },
-        { value: "1k+", label: "End Users" },
-        { value: "50+", label: "Screen Shipped" },
-        { value: "10–15 min", label: "Site Roof analysis" },
+        { value: "4+", label: "EPC organisations" },
+        { value: "6+", label: "Real users" },
+        { value: "50+", label: "Screens shipped" },
+        { value: "10–15 min", label: "Roof analysis" },
         /* { value: "3 live portals", label: "Consumer · EPC · Installer" }, */
         /* { value: "2–3 months → 1–2 weeks", label: "Manual process to connected execution" }, */
       ],
@@ -361,7 +361,7 @@ export const content = {
         },
         {
           label: "Result",
-          text: "Procurement dropped from 2–3 weeks to 2–3 days which help agencies moved faster and by creating a new standard for the industry.",
+          text: "Fresh imagery procurement moved from 2–3 weeks to 2–3 days, reducing the wait for government and enterprise buyers.",
         },
       ],
       link: "https://spade.suhora.com",
@@ -370,16 +370,16 @@ export const content = {
       slug: "iide",
       name: "IIDE — Learning & Marketing",
       company: "IIDE · 2021",
-      role: "Boosting course enrollment via CRO",
+      role: "Improving course-page conversion",
       tags: ["EdTech", "Redesign", "Product Strategy", "Frontend Logic"],
       description:
-        "Led the post-COVID redesign of core marketing pages. Engineered dynamic WordPress UI components to automate course deadlines, boosting yearly lead generation by 16%.",
+        "Redesigned high-intent course pages and improved the course information flow, contributing to a 16% improvement in course-page conversion.",
       cover: iideCourse,
       gallery: [iideCourse, iideCourse, iideCourse],
       stats: [
-        { value: "+16%", label: "Lead Conversion" },
-        { value: "3 Person", label: "Team Led" },
-        { value: "4+", label: "Portals managed" },
+        { value: "+16%", label: "Course-page conversion" },
+        { value: "3", label: "Designers mentored" },
+        { value: "16%", label: "Course-page conversion" },
       ],
       highlights: [
         {
@@ -392,7 +392,7 @@ export const content = {
         },
         {
           label: "Result",
-          text: "Drove a 16% increase in leads while reducing internal update time by ~30%.",
+          text: "Improved course-page conversion by 16% through clearer page structure and course information.",
         },
       ],
       link: "https://iide.co/bachelors-in-digital-business-program/",
@@ -654,15 +654,15 @@ export const content = {
     heading: "Not just a designer.",
     headingAccent: "A finisher.",
     paragraphs: [
-      "I work where design meets reality → messy briefs, tight timelines, real constraints. Most designers hand off. I stay until it ships.",
+      "I work across the full product path: understanding the workflow, shaping the experience, building the design system and working with engineering through implementation.",
       "There are 10,000+ designers who can make you a nice Figma file. I'm one of the few who'll also ship it to real users.",
-      "A decade of building real products has taught me one thing: reduce manual chaos, speed up dev, solve real problems. Everything else is decoration.",
+      "I care about the part after the mock-up: clear states, sensible edge cases, developer handoff, QA and whether the product helps someone finish their work.",
     ],
     stats: [
-      { value: "10+", label: "Years shipping" },
-      { value: "20+", label: "Live products" },
-      { value: "4", label: "Designers Mentored" },
-      { value: "6", label: "Developers Led" },
+      { value: "10+", label: "Years in design" },
+      { value: "20+", label: "Distinct live products" },
+      { value: "4", label: "Designers managed" },
+      { value: "12", label: "Cross-functional team" },
     ],
     highlights: [
       { label: "Systems, not screens", text: "Architect the flow, not just the frame." },
@@ -681,19 +681,19 @@ export const content = {
         year: "2022 — Now",
         company: "Terranxt (pvNXT)",
         role: "UI/UX Design Lead",
-        desc: "Joined as #2. Scaled team 2→12. Owned the full Solar Suite — EPC, Consumer, Installer + Mobile App. Built the pvNXT design system from zero.",
+        desc: "Joined as employee #2 and helped grow the organisation to a 12-person cross-functional team. Manage four designers and lead product design across the pvNXT suite, from workflows and design systems to handoff and QA.",
       },
       {
-        year: "2021 — 2022",
+        year: "2021",
         company: "IIDE",
         role: "Executive Web Designer",
         desc: "+16% lead conversion via redesigning responsive course & marketing pages. Mentored 3 junior designers. Set up the team's first design QA ritual.",
       },
       {
-        year: "2019 — 2021",
+        year: "2020",
         company: "Skymap Global",
         role: "Software Engineer (UI-Oriented)",
-        desc: "Designed govt-grade web applications for land monitoring by working alongside SOI / ERDAS engineers. First experience shipping real apps used by govt field officers.",
+        desc: "Worked on geospatial web applications for land monitoring, alongside GIS and ERDAS specialists.",
       },
       {
         year: "2016 — 2019",
@@ -847,7 +847,7 @@ export const workItems: WorkItem[] = [
     projectPageHref: "/case/terranxt",          // reuses existing case study page
     primaryAction: { label: "View Project", href: "/case/terranxt", isRoute: true },
     liveLink: "https://epc.pvnxt.com/",
-    statusLabel: "FITT IIT Delhi incubated",
+    statusLabel: "Incubated through FITT · IIT Delhi",
     whatItIs: "The umbrella pvNXT ecosystem connecting EPC teams, consumers, installers, field capture, proposals and monitoring into one solar product suite.",
     whatIDid: "Mapped workflows, named and structured the product family, designed key flows and screens, built the design system foundation, and supported handoff, QA and demos.",
     whyItMatters: "It turned scattered solar operations into a connected product suite built from scratch — now with 4+ EPC organisations, 6+ real users, 50+ screens shipped, 10–15 min roof analysis, and FITT IIT Delhi incubation.",
@@ -855,7 +855,7 @@ export const workItems: WorkItem[] = [
 
   {
     slug: "pvnxt-help",
-    name: "pvNXT Help",
+    name: "pvNXT Help Portal",
     company: "Terranxt · 2026",
     tagline: "Case study: one calm help centre for six solar portals, designed before the beta.",
     cover: pvnxtHelpCover,
@@ -863,14 +863,14 @@ export const workItems: WorkItem[] = [
     tags: ["Website", "Case Study", "Help centre"],
     filters: ["case-study", "website"],
     showInAll: true,
-    status: "review",
+    status: "wip",
     pvnxtEcosystem: true,
     projectPageHref: "/case/pvnxt-help",
     primaryAction: { label: "View Project", href: "/case/pvnxt-help", isRoute: true },
-    statusLabel: "Ready for beta",
+    statusLabel: "Built · ready for beta",
     whatItIs: "A search-first help centre (help.pvnxt.com) for Studio, Go, Connect, SCADA, Atlas and Artha.",
-    whatIDid: "Turned three long PDF guides into 58 short web guides, designed every page, and built and tested it with AI.",
-    whyItMatters: "Users can find answers themselves in a minute, on any device, and still reach a person on every page.",
+    whatIDid: "Audited three long user guides, restructured them into 58 task-led web guides, designed the help experience, and built and tested it with AI assistance.",
+    whyItMatters: "The help centre gives users one search-first place to find guidance across six portals, with a route to human support on every page. Usage outcomes will be measured after beta.",
   },
 
   {
@@ -993,11 +993,11 @@ export const workItems: WorkItem[] = [
         scope: "Redesign + Automation + Team Execution",
         industry: "Education / Digital Business",
         users: "Students, Counselors, Marketing Teams",
-        impact: "16% yearly growth across course pages",
+        impact: "+16% course-page conversion improvement",
       },
       problem: "IIDE had active WordPress websites and lead pages, but needed faster updates, stronger page UX, reusable systems, and better conversion support.",
       myMove: "I redesigned lead pages, built reusable header/footer/course-card systems, automated deadline updates, managed interns/junior developers, and shipped production fixes.",
-      result: "The redesign and operational improvements contributed to a reported 16% yearly increase across course pages.",
+      result: "The redesign contributed to a 16% improvement in course-page conversion.",
       designDecisions: [
         "Created reusable page blocks to reduce repeated WordPress edits.",
         "Connected forms, tracking, CRM, and automation tools into the page workflow.",
@@ -1006,7 +1006,7 @@ export const workItems: WorkItem[] = [
       punchLine: "Course pages that convert — cool systems behind the clicks.",
       whatItIs: "Post-COVID redesign of IIDE's core marketing and course pages with dynamic WordPress components.",
       whatIDid: "Led a 3-person team. Redesigned landing pages, engineered countdown logic, improved information hierarchy.",
-      whyItMatters: "+16% improvement in lead conversion. Automated deadline urgency that previously required manual updates.",
+      whyItMatters: "+16% course-page conversion improvement, supported by clearer course information and page structure.",
       resourceLinks: [
         { label: "IIDE Learn", href: "https://learn.iide.co/", external: true },
         { label: "IIDE Careers", href: "https://careers.iide.co/", external: true },
@@ -1073,7 +1073,7 @@ export const workItems: WorkItem[] = [
         scope: "Marketplace UX + Procurement Flow",
         industry: "GIS / Satellite Imagery",
         users: "Government Agencies, GIS Teams, Enterprise Buyers",
-        impact: "2–3 weeks reduced to 2–3 days",
+        impact: "Fresh imagery: 2–3 weeks → 2–3 days",
       },
       problem: "Satellite imagery procurement was slow, manual, and hard to browse. Users had no simple India-first platform to preview, request, purchase, and download imagery.",
       myMove: "I designed the marketplace flow for archive imagery, fresh imagery requests, preview, purchase, and download so buyers could move faster with less manual coordination.",
@@ -1086,7 +1086,7 @@ export const workItems: WorkItem[] = [
       punchLine: "Imagery, without the waiting game — Spade makes space searchable.",
       whatItIs: "India's first self-serve satellite imagery marketplace — browse, preview, order, download.",
     whatIDid: "Designed end-to-end procurement flow for govt and enterprise buyers. Replaced a 3-week manual process.",
-    whyItMatters: "Procurement dropped from 3 weeks to 2–3 days. Set a new standard for the industry.",
+    whyItMatters: "Fresh imagery procurement moved from 2–3 weeks to 2–3 days.",
   },
 
    {
