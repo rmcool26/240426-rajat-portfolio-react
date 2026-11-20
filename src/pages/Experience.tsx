@@ -19,7 +19,7 @@ const ExperiencePage = () => {
          subtext="I bring 10+ years of UI/UX, product and frontend-aware design thinking to teams that want clarity, momentum and cleaner execution."
          buttons={[
            {
-             label: "Download Resume",
+             label: "View Resume",
              href: content.contact.resume,
              variant: "primary",
              icon: <FileText className="h-4 w-4" />,
