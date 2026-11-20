@@ -27,7 +27,7 @@ try {
       quality: 90,
       animations: "disabled"
     });
-    const enterControl = page.getByText(/click\\s*to\\s*enter/i).first();
+    const enterControl = page.getByText(/click\s*to\s*enter/i).first();
     if (await enterControl.count()) {
       await enterControl.click({ timeout: 5000 });
       await page.waitForTimeout(2800);
