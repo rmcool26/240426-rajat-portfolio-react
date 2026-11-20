@@ -65,18 +65,18 @@ export const WorkGrid = () => {
                 key={filter.key}
                 type="button"
                 role="tab"
-                id={\`work-filter-\${filter.key}\`}
+                id={`work-filter-${filter.key}`}
                 aria-selected={selected}
                 aria-controls="project-grid"
                 onClick={() => selectFilter(filter.key)}
-                className={\`inline-flex shrink-0 items-center gap-2 border px-3.5 py-2 text-xs font-bold transition-colors \${
+                className={`inline-flex shrink-0 items-center gap-2 border px-3.5 py-2 text-xs font-bold transition-colors ${
                   selected
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border bg-card text-muted-foreground hover:border-primary hover:text-foreground"
-                }\`}
+                }`}
               >
                 {filter.label}
-                <span className={\`text-[10px] tabular-nums \${selected ? "text-primary-foreground/75" : "text-muted-foreground/65"}\`}>
+                <span className={`text-[10px] tabular-nums ${selected ? "text-primary-foreground/75" : "text-muted-foreground/65"}`}>
                   {count}
                 </span>
               </button>
@@ -90,7 +90,7 @@ export const WorkGrid = () => {
         layout
         className="grid grid-cols-1 gap-x-7 gap-y-10 md:grid-cols-2 2xl:grid-cols-3"
         role="tabpanel"
-        aria-labelledby={\`work-filter-\${active}\`}
+        aria-labelledby={`work-filter-${active}`}
       >
         <AnimatePresence mode="popLayout">
           {visibleItems.map((item, index) => (
@@ -114,7 +114,7 @@ export const WorkGrid = () => {
             className="inline-flex items-center gap-2 border border-border bg-card px-5 py-3 text-sm font-bold text-foreground transition-colors hover:border-primary hover:text-primary"
           >
             {allExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-            {allExpanded ? "Show selected projects" : \`View all \${workItems.length} projects\`}
+            {allExpanded ? "Show selected projects" : `View all ${workItems.length} projects`}
           </button>
         </div>
       )}
