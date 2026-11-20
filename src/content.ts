@@ -736,7 +736,7 @@ export const content = {
     phone: "+91 9719499553",
     linkedin: "https://www.linkedin.com/in/rmcool26/",
     whatsapp: "https://wa.me/919719499553?text=Hi%20Rajat%2C%20saw%20your%20portfolio%20—",
-    resume: "/RajatMishra_Resume.pdf",
+    resume: "/RajatMishra_Resume.html",
   },
 };
 
