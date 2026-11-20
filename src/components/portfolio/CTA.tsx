@@ -7,6 +7,7 @@ interface CTAButton {
   variant?: "primary" | "ghost";
   icon?: ReactNode;
   external?: boolean;
+  cursorLabel?: string;
 }
 
 interface CTAProps {
@@ -43,6 +44,7 @@ export const CTA = ({
                     : "border border-border bg-card text-foreground hover:border-primary hover:text-primary"
                 }\`}
                 data-cursor="hover"
+                data-cursor-label={button.cursorLabel || button.label}
               >
                 {button.icon}
                 {button.label}
