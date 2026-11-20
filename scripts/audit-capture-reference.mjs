@@ -27,8 +27,19 @@ try {
       quality: 90,
       animations: "disabled"
     });
+    const enterControl = page.getByText(/click\\s*to\\s*enter/i).first();
+    if (await enterControl.count()) {
+      await enterControl.click({ timeout: 5000 });
+      await page.waitForTimeout(2800);
+      await page.screenshot({
+        path: out + "/" + viewport.name + "-after-enter-first-fold.jpg",
+        type: "jpeg",
+        quality: 90,
+        animations: "disabled"
+      });
+    }
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-    await page.waitForTimeout(1200);
+    await page.waitForTimeout(1800);
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.screenshot({
       path: out + "/" + viewport.name + "-full.jpg",
