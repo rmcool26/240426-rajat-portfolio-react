@@ -38,11 +38,11 @@ export const CTA = ({
                 href={button.href}
                 target={button.external ? "_blank" : undefined}
                 rel={button.external ? "noreferrer" : undefined}
-                className={\`inline-flex min-h-12 items-center gap-2 px-5 text-sm font-bold transition-colors \${
+                className={`inline-flex min-h-12 items-center gap-2 px-5 text-sm font-bold transition-colors ${
                   button.variant === "primary"
                     ? "bg-primary text-primary-foreground hover:bg-foreground"
                     : "border border-border bg-card text-foreground hover:border-primary hover:text-primary"
-                }\`}
+                }`}
                 data-cursor="hover"
                 data-cursor-label={button.cursorLabel || button.label}
               >
