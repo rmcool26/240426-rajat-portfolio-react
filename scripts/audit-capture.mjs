@@ -1,6 +1,7 @@
 import { chromium } from "playwright";
 import { mkdir, writeFile } from "node:fs/promises";
 import { join } from "node:path";
+import { execFileSync } from "node:child_process";
 
 const baseUrl = process.env.BASE_URL || "http://127.0.0.1:8080";
 const label = process.env.AUDIT_LABEL || "stage";
@@ -20,7 +21,7 @@ const browser = await chromium.launch({ headless: true });
 const manifest = {
   label,
   sourceRef: process.env.SOURCE_REF || "unknown",
-  sourceSha: process.env.GITHUB_SHA || "unknown",
+  sourceSha: execFileSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).trim(),
   baseUrl,
   capturedAt: new Date().toISOString(),
   viewports,
