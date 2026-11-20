@@ -1,6 +1,8 @@
 name: Portfolio quality checks
 
 on:
+  push:
+    branches: [feat/royal-ink-portfolio-revamp]
   pull_request:
     branches: [stage]
     types: [opened, synchronize, reopened, ready_for_review]
