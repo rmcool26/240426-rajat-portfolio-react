@@ -63,7 +63,10 @@ jobs:
           AUDIT_LABEL: ${{ matrix.label }}
           SOURCE_REF: ${{ matrix.source_ref }}
           GITHUB_SHA: ${{ github.sha }}
-        run: node ../audit-tooling/scripts/audit-capture.mjs
+        run: |
+          mkdir -p scripts
+          cp ../audit-tooling/scripts/audit-capture.mjs scripts/audit-capture.mjs
+          node scripts/audit-capture.mjs
 
       - name: Upload preserved screenshots
         if: always()
