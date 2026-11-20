@@ -244,7 +244,7 @@ const WorkDetail = () => {
         <nav aria-label="Other projects" className="mt-16 grid gap-5 border-t border-border pt-7 sm:grid-cols-2">
           <div>
             {previous && (
-              <Link to={\`/work/\${previous.slug}\`} className="group block" data-cursor="hover">
+              <Link to={`/work/${previous.slug}`} className="group block" data-cursor="hover">
                 <p className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground">Previous project</p>
                 <p className="mt-2 inline-flex items-center gap-2 font-display text-lg font-extrabold text-foreground group-hover:text-primary">
                   <ArrowLeft className="h-4 w-4" /> {previous.name}
@@ -254,7 +254,7 @@ const WorkDetail = () => {
           </div>
           <div className="sm:text-right">
             {next && (
-              <Link to={\`/work/\${next.slug}\`} className="group inline-block" data-cursor="hover">
+              <Link to={`/work/${next.slug}`} className="group inline-block" data-cursor="hover">
                 <p className="text-[9px] font-extrabold uppercase tracking-[0.16em] text-muted-foreground">Next project</p>
                 <p className="mt-2 inline-flex items-center gap-2 font-display text-lg font-extrabold text-foreground group-hover:text-primary">
                   {next.name} <ArrowRight className="h-4 w-4" />
