@@ -37,8 +37,11 @@ export const Nav = () => {
           className="group inline-flex min-w-0 items-center gap-3"
           data-cursor="hover"
         >
-          <span className="grid h-9 w-9 shrink-0 place-items-center border border-primary/40 bg-primary text-[13px] font-extrabold tracking-[-0.08em] text-primary-foreground transition-transform group-hover:-rotate-3">
-            RM
+          <span className="grid h-10 w-10 shrink-0 place-items-center border border-primary/40 bg-primary text-primary-foreground transition-transform duration-300 group-hover:-rotate-3" aria-hidden="true">
+            <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.5 38V10.5h8.3c7 0 10.4 3.1 10.4 8.1s-3.5 8.3-10.4 8.3H7.5M18.4 27l9 11" stroke="currentColor" strokeWidth="2.6" strokeLinecap="square" strokeLinejoin="miter"/>
+              <path d="M26.5 38V10.5l7.4 11.2 7.1-11.2V38" stroke="currentColor" strokeWidth="2.6" strokeLinecap="square" strokeLinejoin="miter"/>
+            </svg>
           </span>
           <span className="hidden font-display text-sm font-extrabold tracking-[-0.04em] text-foreground sm:inline">
             Rajat Mishra
