@@ -1,0 +1,109 @@
+name: Preserve portfolio audit screenshots
+
+on:
+  push:
+    branches:
+      - audit/capture-portfolio-evidence
+
+permissions:
+  contents: read
+
+jobs:
+  capture-portfolio-versions:
+    name: Capture ${{ matrix.label }} baseline
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: stage
+            source_ref: stage
+          - label: rejected-revamp
+            source_ref: feat/royal-ink-portfolio-revamp
+    steps:
+      - name: Check out portfolio source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.source_ref }}
+          path: source
+
+      - name: Check out isolated capture tooling
+        uses: actions/checkout@v4
+        with:
+          ref: audit/capture-portfolio-evidence
+          path: audit-tooling
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: source/package-lock.json
+
+      - name: Install portfolio dependencies
+        working-directory: source
+        run: npm ci
+
+      - name: Install Chromium
+        working-directory: source
+        run: npx playwright install --with-deps chromium
+
+      - name: Start the selected portfolio version
+        working-directory: source
+        run: |
+          npm run dev -- --host 127.0.0.1 --port 8080 > /tmp/portfolio-${{ matrix.label }}.log 2>&1 &
+          echo $! > /tmp/portfolio-${{ matrix.label }}.pid
+          node -e 'const wait = async () => { for (let i = 0; i < 60; i++) { try { const r = await fetch("http://127.0.0.1:8080"); if (r.ok) return; } catch {} await new Promise(resolve => setTimeout(resolve, 500)); } throw new Error("Vite server did not start"); }; wait().catch(error => { console.error(error); process.exit(1); });'
+
+      - name: Capture desktop, tablet and mobile pages
+        working-directory: source
+        env:
+          BASE_URL: http://127.0.0.1:8080
+          AUDIT_LABEL: ${{ matrix.label }}
+          SOURCE_REF: ${{ matrix.source_ref }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: node ../audit-tooling/scripts/audit-capture.mjs
+
+      - name: Upload preserved screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-evidence-${{ matrix.label }}
+          path: source/audit-evidence/${{ matrix.label }}
+          if-no-files-found: warn
+          retention-days: 90
+
+  capture-reference:
+    name: Capture Devashish reference
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out audit tooling
+        uses: actions/checkout@v4
+        with:
+          ref: audit/capture-portfolio-evidence
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Capture reference site
+        run: node scripts/audit-capture-reference.mjs
+
+      - name: Upload reference screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-reference-devashish
+          path: audit-evidence/reference-devashish
+          if-no-files-found: warn
+          retention-days: 90
