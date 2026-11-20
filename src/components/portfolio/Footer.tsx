@@ -1,42 +1,34 @@
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { content } from "@/content";
 
 export const Footer = () => (
-  <footer className="bg-footer py-10">
-    <div className="container flex flex-col items-center justify-between gap-4 text-sm text-[hsl(var(--footer-fg)/0.7)] sm:flex-row">
-      <p className="font-display">
-        <span className="font-bold text-[hsl(var(--footer-fg))]">RMCOOL26</span>
-        <span className="mx-2">·</span>© {new Date().getFullYear()} {content.meta.name}
-      </p>
-      <p className="text-xs">Designed & coded with ❤️ by Rajat Mishra from {content.meta.location}</p>
-       <div className="flex items-center gap-6">
-         <a
-           href={content.contact.linkedin}
-           target="_blank"
-           rel="noreferrer"
-           data-cursor="hover"
-           data-cursor-label="See the professional trail"
-           className="transition-colors hover:text-[hsl(var(--footer-fg))]"
-         >
-           LinkedIn
-         </a>
-         <a
-           href={`mailto:${content.contact.email}`}
-           data-cursor="hover"
-           data-cursor-label="Send the brief"
-           className="transition-colors hover:text-[hsl(var(--footer-fg))]"
-         >
-           Email
-         </a>
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            data-cursor="hover" 
-            data-cursor-label="Back to the top" 
-            className="transition-colors hover:text-[hsl(var(--footer-fg))] bg-transparent border-none p-0 cursor-pointer text-left"
-          >
-            Back to top ↑
-          </button>
-       </div>
+  <footer className="bg-footer py-8">
+    <div className="container max-w-7xl">
+      <div className="flex flex-col gap-7 border-b border-[hsl(var(--footer-fg)/0.16)] pb-7 sm:flex-row sm:items-center sm:justify-between">
+        <Link to="/" aria-label="Rajat Mishra home" className="inline-flex items-center gap-3">
+          <span className="grid h-9 w-9 place-items-center border border-[hsl(var(--footer-fg)/0.4)] text-[12px] font-extrabold tracking-[-0.08em] text-[hsl(var(--footer-fg))]">RM</span>
+          <span className="font-display text-sm font-extrabold tracking-[-0.03em] text-[hsl(var(--footer-fg))]">Rajat Mishra</span>
+        </Link>
 
+        <nav aria-label="Footer navigation" className="flex flex-wrap gap-x-6 gap-y-3 text-xs font-semibold text-[hsl(var(--footer-fg)/0.68)]">
+          <Link to="/work" className="transition-colors hover:text-[hsl(var(--footer-fg))]">Work</Link>
+          <Link to="/about" className="transition-colors hover:text-[hsl(var(--footer-fg))]">About</Link>
+          <Link to="/experience" className="transition-colors hover:text-[hsl(var(--footer-fg))]">Experience</Link>
+          <Link to="/process" className="transition-colors hover:text-[hsl(var(--footer-fg))]">Process</Link>
+          <Link to="/contact" className="transition-colors hover:text-[hsl(var(--footer-fg))]">Contact</Link>
+        </nav>
+
+        <a href={content.contact.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-xs font-semibold text-[hsl(var(--footer-fg)/0.68)] transition-colors hover:text-[hsl(var(--footer-fg))]">
+          LinkedIn <ArrowUpRight className="h-3.5 w-3.5" />
+        </a>
+      </div>
+
+      <div className="flex flex-col gap-3 pt-5 text-[11px] text-[hsl(var(--footer-fg)/0.5)] sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} Rajat Mishra</p>
+        <p>Product design · Systems thinking · Delivery</p>
+        <a href={\`mailto:\${content.contact.email}\`} className="transition-colors hover:text-[hsl(var(--footer-fg))]">{content.contact.email}</a>
+      </div>
     </div>
   </footer>
 );
