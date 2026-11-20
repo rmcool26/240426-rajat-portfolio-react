@@ -35,11 +35,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Unit tests
-        run: npm run test
-
       - name: Install Chromium for browser QA
         run: npx playwright install --with-deps chromium
+
+      - name: Unit tests
+        run: npm run test
 
       - name: Start Vite development server
         run: |
