@@ -339,10 +339,10 @@ export const content = {
       slug: "spade",
       name: "Spade — Geo-Intelligence Marketplace",
       company: "Suhora · 2023",
-      role: "India's leading satellite imagery marketplace",
+      role: "Satellite imagery marketplace · B2B procurement",
       tags: ["B2B Procurement", "E-commerce", "Satellite Imagery"],
       description:
-        "Designed India's first self-serve platform for government agencies to purchase satellite imagery. Reduced a tedious 3-week procurement process into a fast 3-day flow with instant archive downloads.",
+        "Designed a self-serve satellite imagery marketplace for government and enterprise buyers. Fresh imagery procurement moved from 2–3 weeks to 2–3 days.",
       cover: sarCart,
       gallery: [sarCart, sarCart, sarCart],
       stats: [
@@ -1084,8 +1084,8 @@ export const workItems: WorkItem[] = [
         "Reduced procurement friction by clarifying preview, order, and download steps.",
       ],
       punchLine: "Imagery, without the waiting game — Spade makes space searchable.",
-      whatItIs: "India's first self-serve satellite imagery marketplace — browse, preview, order, download.",
-    whatIDid: "Designed end-to-end procurement flow for govt and enterprise buyers. Replaced a 3-week manual process.",
+      whatItIs: "A self-serve satellite imagery marketplace for government and enterprise buyers — browse, preview, order and download.",
+    whatIDid: "Designed the end-to-end procurement flow for government and enterprise buyers. Fresh imagery procurement moved from 2–3 weeks to 2–3 days.",
     whyItMatters: "Fresh imagery procurement moved from 2–3 weeks to 2–3 days.",
   },
 
