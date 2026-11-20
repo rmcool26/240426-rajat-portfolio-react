@@ -7,7 +7,12 @@ export const Footer = () => (
     <div className="container max-w-7xl">
       <div className="flex flex-col gap-7 border-b border-[hsl(var(--footer-fg)/0.16)] pb-7 sm:flex-row sm:items-center sm:justify-between">
         <Link to="/" aria-label="Rajat Mishra home" className="inline-flex items-center gap-3">
-          <span className="grid h-9 w-9 place-items-center border border-[hsl(var(--footer-fg)/0.4)] text-[12px] font-extrabold tracking-[-0.08em] text-[hsl(var(--footer-fg))]">RM</span>
+          <span className="grid h-10 w-10 place-items-center border border-[hsl(var(--footer-fg)/0.4)] text-[hsl(var(--footer-fg))]" aria-hidden="true">
+            <svg viewBox="0 0 48 48" className="h-7 w-7" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.5 38V10.5h8.3c7 0 10.4 3.1 10.4 8.1s-3.5 8.3-10.4 8.3H7.5M18.4 27l9 11" stroke="currentColor" strokeWidth="2.6" strokeLinecap="square" strokeLinejoin="miter"/>
+              <path d="M26.5 38V10.5l7.4 11.2 7.1-11.2V38" stroke="currentColor" strokeWidth="2.6" strokeLinecap="square" strokeLinejoin="miter"/>
+            </svg>
+          </span>
           <span className="font-display text-sm font-extrabold tracking-[-0.03em] text-[hsl(var(--footer-fg))]">Rajat Mishra</span>
         </Link>
 
