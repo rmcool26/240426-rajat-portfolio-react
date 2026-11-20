@@ -54,7 +54,7 @@ export function CaseHero({
 
         <motion.div {...reveal} className="mt-10 max-w-[820px]">
           <Eyebrow>{eyebrow}</Eyebrow>
-          <h1 className="mt-5 font-display text-[clamp(2.25rem,5.2vw,4rem)] font-bold leading-[1.04] tracking-tight text-balance">
+          <h1 className="mt-5 font-editorial text-[clamp(2.7rem,6vw,5.2rem)] font-normal leading-[0.96] tracking-tight text-balance">
             {title}
           </h1>
           <p className="mt-6 max-w-[680px] text-lg leading-relaxed text-muted-foreground md:text-xl">{lede}</p>
@@ -199,7 +199,7 @@ export function Sec({
       <Eyebrow>
         {num} · {label}
       </Eyebrow>
-      <h2 className="mt-4 font-display text-3xl font-bold leading-tight tracking-tight text-balance md:text-[2.4rem]">
+      <h2 className="mt-4 font-editorial text-4xl font-normal leading-[1.02] tracking-tight text-balance md:text-5xl">
         {title}
       </h2>
       <div className="case-prose mt-6 space-y-5 text-[17px] leading-[1.7] text-foreground/80">{children}</div>
@@ -242,7 +242,7 @@ export function Cards({ items, cols = 2 }: { items: { title: string; body: React
     <div className={`grid gap-3 sm:grid-cols-2 ${cols === 3 ? "lg:grid-cols-3" : ""}`}>
       {items.map((c) => (
         <article key={c.title} className="rounded-2xl border border-border bg-card p-5">
-          <h3 className="font-display text-base font-bold text-foreground">{c.title}</h3>
+          <h3 className="font-display text-base font-extrabold text-foreground">{c.title}</h3>
           <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{c.body}</p>
         </article>
       ))}

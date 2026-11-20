@@ -113,12 +113,12 @@ export default function CaseStudyPvNXTHelp() {
       <CaseHero
         eyebrow="Case study · Product design · 2026"
         title="pvNXT Help: one calm place to get unstuck, across six solar portals."
-        lede="Before the pvNXT beta, every question from a user ended up as a WhatsApp message, an email or a phone call. I designed a single help centre so people can find the answer themselves, in a minute, on any device, and still reach a person when they need one."
+        lede="Before the pvNXT beta, every question from a user ended up as a WhatsApp message, an email or a phone call. I designed a single help centre so people can search task-led guides on any device and still reach a person when they need one."
         meta={[
           { label: "My role", value: "Product designer. I did the research, set the direction and made every design call, using AI (Claude) to build and test." },
           { label: "Team", value: "Me, with the pvNXT team for content and product facts." },
           { label: "When", value: "October 2026, before the beta launch." },
-          { label: "Status", value: "Built, tested and ready to go live as help.pvnxt.com." },
+          { label: "Status", value: "Built and tested; prepared for beta at help.pvnxt.com." },
         ]}
         visual={
           <div className="relative pr-0 sm:pr-24 md:pr-32">
@@ -139,7 +139,7 @@ export default function CaseStudyPvNXTHelp() {
       <CaseSummary
         items={[
           { label: "The problem", body: "Six portals, one small support team, and no place to look things up. Help lived in long Word and PDF guides, so most questions came in by WhatsApp, email or phone." },
-          { label: "What I did", body: "Turned three long user guides into 58 short web guides, designed a calm search-first help site for every portal, and added a route to a real person on every page." },
+          { label: "What I did", body: "Turned three long user guides into 58 task-led web guides, designed a search-first help site for all six portals, and added a route to human support on every page." },
           { label: "Where it is now", body: "Ready for beta. No usage numbers yet, so I set up what we will measure from the first week instead of guessing." },
         ]}
       />

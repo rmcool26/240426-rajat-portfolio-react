@@ -1,62 +1,45 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { content } from "@/content";
 
 export const DesignProcess = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "end 30%"],
-  });
-  const lineWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const reduceMotion = useReducedMotion();
 
   return (
-    <section ref={ref} className="bg-background py-24 md:py-32">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Design Process</p>
-          <h2 className="font-display text-4xl font-bold tracking-tight md:text-5xl">
-            {content.process.heading}
-          </h2>
-          <p className="mt-4 text-muted-foreground">{content.process.sub}</p>
-        </motion.div>
-
-        <div className="relative mt-16 md:mt-24">
-          {/* Connector line — desktop */}
-          <div className="absolute left-0 right-0 top-10 hidden h-[2px] bg-border md:block" />
-          <motion.div
-            style={{ width: lineWidth }}
-            className="absolute left-0 top-10 hidden h-[2px] bg-gradient-to-r from-primary via-primary-glow to-primary md:block"
-          />
-
-          <div className="grid gap-10 md:grid-cols-4 md:gap-4">
-            {content.process.steps.map((step, i) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="relative flex flex-col items-center text-center"
-              >
-                <div className="relative z-10 grid h-20 w-20 place-items-center rounded-full border-2 border-border bg-background text-3xl shadow-soft transition-transform duration-300 hover:scale-110 hover:border-primary">
-                  {step.emoji}
-                  <span className="absolute -top-2 -right-2 grid h-6 w-6 place-items-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
-                    {i + 1}
-                  </span>
-                </div>
-                <h3 className="mt-5 font-display text-lg font-bold">{step.title}</h3>
-                <p className="mt-2 max-w-[180px] text-sm text-muted-foreground">{step.desc}</p>
-              </motion.div>
-            ))}
+    <section className="bg-background py-24 md:py-32">
+      <div className="container max-w-7xl">
+        <div className="grid gap-8 border-b border-border pb-10 md:grid-cols-[1fr_0.7fr] md:items-end">
+          <div>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary">Process / From brief to build</p>
+            <h2 className="mt-4 max-w-4xl font-editorial text-[clamp(3rem,6vw,5.5rem)] leading-[0.92] text-foreground">
+              A clear route through complex work.
+            </h2>
+          </div>
+          <div>
+            <p className="max-w-xl text-sm leading-[1.8] text-muted-foreground">{content.process.sub}</p>
+            <Link to="/process" className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-foreground">
+              View the process <ArrowUpRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
+
+        <ol className="mt-10 grid gap-0 border-y border-border md:grid-cols-4 md:divide-x md:divide-border">
+          {content.process.steps.map((step, index) => (
+            <motion.li
+              key={step.title}
+              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="border-b border-border py-7 last:border-b-0 md:border-b-0 md:px-6 md:first:pl-0 md:last:pr-0"
+            >
+              <p className="font-editorial text-4xl leading-none text-primary">{String(index + 1).padStart(2, "0")}</p>
+              <h3 className="mt-6 font-display text-xl font-extrabold text-foreground">{step.title}</h3>
+              <p className="mt-3 text-sm leading-[1.8] text-muted-foreground">{step.desc}</p>
+            </motion.li>
+          ))}
+        </ol>
       </div>
     </section>
   );

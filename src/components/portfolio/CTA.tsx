@@ -1,15 +1,13 @@
-import { motion } from "framer-motion";
-import { Mail, Linkedin, FileText, ArrowRight } from "lucide-react";
-import { content } from "@/content";
-import { MagneticButton } from "./MagneticButton";
+import { ArrowUpRight } from "lucide-react";
+import type { ReactNode } from "react";
 
 interface CTAButton {
   label: string;
   href: string;
   variant?: "primary" | "ghost";
-  icon?: React.ReactNode;
-  cursorLabel?: string;
+  icon?: ReactNode;
   external?: boolean;
+  cursorLabel?: string;
 }
 
 interface CTAProps {
@@ -19,75 +17,43 @@ interface CTAProps {
 }
 
 export const CTA = ({
-  title,
-  subtext,
-  buttons,
-}: CTAProps = {}) => {
-  const { contact } = content;
+  title = "Have a complex product problem?",
+  subtext = "Let’s start with the workflow, the people using it and what needs to get easier.",
+  buttons = [],
+}: CTAProps = {}) => (
+  <section className="bg-secondary/50 py-20 md:py-28">
+    <div className="container max-w-7xl">
+      <div className="grid gap-10 border-y border-border py-10 md:grid-cols-[1fr_0.7fr] md:items-end md:py-14">
+        <div>
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-primary">Next conversation</p>
+          <h2 className="mt-4 max-w-4xl font-editorial text-[clamp(3rem,6vw,5.6rem)] leading-[0.92] text-foreground">{title}</h2>
+          <p className="mt-5 max-w-2xl text-sm leading-[1.8] text-muted-foreground md:text-base">{subtext}</p>
+        </div>
 
-  // Defaults
-  const finalTitle = title || `Got a messy workflow? <br /><span className="text-primary">Let’s make it cool.</span>`;
-  const finalSubtext = subtext || "Send the brief — I’ll help turn it into something clean, usable and shippable.";
-  const finalButtons = buttons || [
-    {
-      label: "Email Me",
-      href: `mailto:${contact.email}`,
-      variant: "primary",
-      icon: <Mail className="h-4 w-4" />,
-      cursorLabel: "Shoot me an email",
-    },
-    {
-      label: "LinkedIn",
-      href: contact.linkedin,
-      variant: "ghost",
-      icon: <Linkedin className="h-4 w-4" />,
-      cursorLabel: "Connect on LinkedIn",
-      external: true,
-    },
-    {
-      label: "Download Resume",
-      href: contact.resume,
-      variant: "ghost",
-      icon: <FileText className="h-4 w-4" />,
-      cursorLabel: "View Resume",
-    },
-  ];
-
-  return (
-    <section className="relative isolate overflow-hidden bg-background py-20 md:py-32">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col items-center text-center"
-        >
-          <h2
-            className="font-display text-[clamp(2rem,5vw,3.5rem)] font-bold leading-tight tracking-tight text-foreground"
-            dangerouslySetInnerHTML={{ __html: finalTitle }}
-          />
-          <p className="mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
-            {finalSubtext}
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            {finalButtons.map((btn, i) => (
-              <MagneticButton
-                key={i}
-                href={btn.href}
-                variant={btn.variant || "ghost"}
-                data-cursor-label={btn.cursorLabel || btn.label}
-                target={btn.external ? "_blank" : undefined}
-                rel={btn.external ? "noopener noreferrer" : undefined}
+        {buttons.length > 0 && (
+          <div className="flex flex-wrap gap-3 md:justify-end">
+            {buttons.map((button) => (
+              <a
+                key={button.label}
+                href={button.href}
+                target={button.external ? "_blank" : undefined}
+                rel={button.external ? "noreferrer" : undefined}
+                className={`inline-flex min-h-12 items-center gap-2 px-5 text-sm font-bold transition-colors ${
+                  button.variant === "primary"
+                    ? "bg-primary text-primary-foreground hover:bg-foreground"
+                    : "border border-border bg-card text-foreground hover:border-primary hover:text-primary"
+                }`}
+                data-cursor="hover"
+                data-cursor-label={button.cursorLabel || button.label}
               >
-                {btn.icon}
-                {btn.label}
-                {btn.label === "View Work" && <ArrowRight className="ml-2 h-4 w-4" />}
-              </MagneticButton>
+                {button.icon}
+                {button.label}
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
             ))}
           </div>
-        </motion.div>
+        )}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);

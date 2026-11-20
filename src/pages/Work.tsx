@@ -15,7 +15,7 @@ const WorkPage = () => {
       <Nav />
       <FeaturedWork />
       <CTA
-        title="Seen enough proof? <br /><span className='text-primary'>Let’s talk about yours.</span>"
+        title="Seen enough proof? Let’s talk about yours."
         subtext="Bring the messy brief — I’ll help shape it into a clean, usable product story."
         buttons={[
           {
@@ -34,7 +34,7 @@ const WorkPage = () => {
             external: true,
           },
           {
-            label: "Download Resume",
+            label: "View Resume",
             href: content.contact.resume,
             variant: "ghost",
             icon: <FileText className="h-4 w-4" />,

@@ -1,0 +1,63 @@
+name: Portfolio quality checks
+
+on:
+  push:
+    branches: [feat/royal-ink-portfolio-revamp]
+  pull_request:
+    branches: [stage]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    name: Install, build, lint and test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Production build
+        run: npm run build
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Install Chromium for browser QA
+        run: npx playwright install --with-deps chromium
+
+      - name: Unit tests
+        run: npm run test
+
+      - name: Start Vite development server
+        run: |
+          npm run dev -- --host 127.0.0.1 --port 8080 > /tmp/portfolio-dev.log 2>&1 &
+          echo $! > /tmp/portfolio-dev.pid
+          node -e 'const wait = async () => { for (let i = 0; i < 40; i++) { try { const r = await fetch("http://127.0.0.1:8080"); if (r.ok) return; } catch {} await new Promise((resolve) => setTimeout(resolve, 500)); } throw new Error("Vite development server did not start"); }; wait().catch((e) => { console.error(e); process.exit(1); });'
+
+      - name: Browser smoke test against npm run dev
+        env:
+          BASE_URL: http://127.0.0.1:8080
+        run: node scripts/portfolio-smoke.mjs
+
+      - name: Upload browser screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: portfolio-browser-smoke
+          path: |
+            /tmp/portfolio-smoke-home.png
+            /tmp/portfolio-smoke-help.png
+          if-no-files-found: ignore

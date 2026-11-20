@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { content } from "@/content";
-import { Wrench, Rocket, UserRound, Sparkles, Users } from "lucide-react";
+import { Wrench, Rocket, UserRound, Sparkles, Users, type LucideIcon } from "lucide-react";
 
 // Positions around the profile photo (percent)
 const positions = [
@@ -11,7 +11,7 @@ const positions = [
   { top: "46%", left: "-40%", delay: 1.6 },
 ];
 
-const iconMap: Record<string, any> = {
+const iconMap: Record<string, LucideIcon> = {
   "Figjam → Jira": Wrench,
   "Real users & results": Rocket,
   "Shipping since 2016": UserRound,

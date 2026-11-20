@@ -1,58 +1,60 @@
-import { motion } from "framer-motion";
-import { Mail, Linkedin, FileDown } from "lucide-react";
+import { ArrowUpRight, Download, Linkedin, Mail, Phone } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { content } from "@/content";
-import { MagneticButton } from "./MagneticButton";
 
 export const Contact = () => {
+  const reduceMotion = useReducedMotion();
   const { contact } = content;
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-hero py-24 md:py-32">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 left-1/2 -z-10 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-primary/15 blur-3xl"
-      />
-
-      <div className="container">
+    <section id="contact" className="bg-foreground py-28 text-background md:py-36">
+      <div className="container max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={reduceMotion ? false : { opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.7 }}
-          className="mx-auto max-w-full text-center"
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="grid gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20"
         >
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-primary">Contact</p>
-          <h1 className="font-display text-4xl font-bold tracking-tight text-balance md:text-6xl">
-            Let’s build something{" "}
-            <span className="relative inline-block text-primary">
-              cool together.
-              {/* <span className="absolute -bottom-1 left-0 right-0 h-3 rounded-full bg-primary/15" /> */}
-            </span>
-          </h1>
-          <p className="mt-5 text-base text-muted-foreground md:text-lg">
-            Got a messy workflow, product idea, website, or dashboard that needs clarity? Send it over — I’ll help make it clean, usable and shippable.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-             <MagneticButton href={`mailto:${contact.email}`} variant="primary" data-cursor-label="Send the brief">
-               <Mail className="h-4 w-4" /> Email Me
-             </MagneticButton>
-             <MagneticButton href={contact.linkedin} variant="secondary" data-cursor-label="See the professional trail">
-               <Linkedin className="h-4 w-4" /> LinkedIn
-             </MagneticButton>
-             <MagneticButton href={contact.resume} variant="ghost" data-cursor-label="Download the proof">
-               <FileDown className="h-4 w-4" /> Resume
-             </MagneticButton>
-
+          <div>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary-glow">Contact / Start a conversation</p>
+            <h1 className="mt-5 max-w-4xl font-editorial text-[clamp(3.6rem,7vw,7rem)] leading-[0.9] text-background">
+              Have a difficult workflow? Let’s work through it.
+            </h1>
+            <p className="mt-8 max-w-xl text-base leading-[1.8] text-background/65 md:text-lg">
+              Send me the brief, the screen that isn’t working or the problem your team keeps working around. We can start with the problem and figure out what needs to change.
+            </p>
+            <a
+              href={`mailto:${contact.email}?subject=Portfolio%20enquiry`}
+              className="mt-10 inline-flex items-center gap-3 border-b border-primary-glow pb-2 text-xl font-semibold text-background transition-colors hover:text-primary-glow sm:text-2xl"
+            >
+              {contact.email}
+              <ArrowUpRight className="h-5 w-5 text-primary-glow" />
+            </a>
           </div>
 
-          <p className="mt-8 text-sm text-muted-foreground">
-            Or just say hi at {" "} 
-            <a href={`mailto:${contact.email}`} className="font-medium text-foreground underline-offset-4 hover:underline">
-              {contact.email}
-            </a>
-             {" "}  — I actually reply.
-          </p>
+          <div className="flex flex-col justify-end border-t border-background/20 pt-7 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-background/45">Direct links</p>
+            <div className="mt-4 divide-y divide-background/15 border-y border-background/15">
+              <a href={`mailto:${contact.email}`} className="flex items-center justify-between gap-4 py-5 text-sm font-semibold text-background/80 transition-colors hover:text-primary-glow">
+                <span className="inline-flex items-center gap-3"><Mail className="h-4 w-4 text-primary-glow" /> Email</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a href={contact.linkedin} target="_blank" rel="noreferrer" className="flex items-center justify-between gap-4 py-5 text-sm font-semibold text-background/80 transition-colors hover:text-primary-glow">
+                <span className="inline-flex items-center gap-3"><Linkedin className="h-4 w-4 text-primary-glow" /> LinkedIn</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="flex items-center justify-between gap-4 py-5 text-sm font-semibold text-background/80 transition-colors hover:text-primary-glow">
+                <span className="inline-flex items-center gap-3"><Phone className="h-4 w-4 text-primary-glow" /> {contact.phone}</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+              <a href={contact.resume} target="_blank" rel="noreferrer" className="flex items-center justify-between gap-4 py-5 text-sm font-semibold text-background/80 transition-colors hover:text-primary-glow">
+                <span className="inline-flex items-center gap-3"><Download className="h-4 w-4 text-primary-glow" /> View resume</span>
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
+            <p className="mt-7 text-xs leading-relaxed text-background/45">Based in India · Open to senior and lead product design roles.</p>
+          </div>
         </motion.div>
       </div>
     </section>

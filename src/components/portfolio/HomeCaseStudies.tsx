@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import suiteCover from "@/assets/projects/rmcool26-pvNXT-suite-675.svg";
@@ -8,85 +8,92 @@ const CASES = [
   {
     href: "/case/terranxt",
     cover: suiteCover,
-    eyebrow: "pvNXT Solar Suite · 2022 — now",
-    title: "From WhatsApp and Excel to one connected solar product suite.",
-    body: "Six products for EPCs, consumers, installers and O&M teams, built from scratch and live today.",
-    chip: "Live · FITT IIT Delhi incubated",
-    live: true,
+    number: "01",
+    eyebrow: "Terranxt · 2022 — present",
+    title: "A connected product system for the rooftop-solar journey.",
+    body: "Product design across consumer, EPC, installer, field and operations workflows. Built from the ground up with a shared design system.",
+    tag: "Flagship case study",
   },
   {
     href: "/case/pvnxt-help",
     cover: helpCover,
-    eyebrow: "pvNXT Help · 2026",
-    title: "One calm help centre for six solar portals.",
-    body: "Three long PDF guides became 58 short web guides, so users can get unstuck without messaging the team.",
-    chip: "New · Ready for beta",
-    live: false,
+    number: "02",
+    eyebrow: "Terranxt · 2026",
+    title: "A help centre designed around the moment someone gets stuck.",
+    body: "Three long user guides were restructured into 58 task-led web guides, with search and a clear route to human support across six portals.",
+    tag: "Built · pre-beta",
   },
 ];
 
-/** Two featured case studies on the home page. */
-export const HomeCaseStudies = () => (
-  <section className="bg-secondary/40 py-20 md:py-28">
-    <div className="container">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between"
-      >
-        <div>
-          <p className="text-sm font-medium uppercase tracking-widest text-primary">Featured case studies</p>
-          <h2 className="mt-3 font-display text-[clamp(2rem,4.5vw,3rem)] font-bold leading-tight tracking-tight">
-            How I think, start to finish.
-          </h2>
-        </div>
-        <Link to="/work" data-cursor="hover" className="text-sm font-semibold text-primary hover:text-primary-glow">
-          All work →
-        </Link>
-      </motion.div>
+export const HomeCaseStudies = () => {
+  const reduceMotion = useReducedMotion();
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {CASES.map((c, i) => (
-          <motion.div
-            key={c.href}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-          >
-            <Link
-              to={c.href}
-              data-cursor="hover"
-              data-cursor-label="Read the case study"
-              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant"
+  return (
+    <section className="bg-secondary/50 py-20 md:py-28">
+      <div className="container max-w-7xl">
+        <motion.div
+          initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="mb-10 grid gap-5 md:grid-cols-[1fr_auto] md:items-end"
+        >
+          <div>
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.2em] text-primary">Selected case studies</p>
+            <h2 className="mt-3 max-w-3xl font-editorial text-[clamp(2.6rem,5vw,4.6rem)] leading-[0.98] text-foreground">
+              The decisions behind the interface.
+            </h2>
+          </div>
+          <Link to="/work" className="inline-flex w-fit items-center gap-2 border-b border-primary pb-1 text-sm font-bold text-primary" data-cursor="hover">
+            View all work <ArrowUpRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
+
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          {CASES.map((item, index) => (
+            <motion.article
+              key={item.href}
+              initial={reduceMotion ? false : { opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: index * 0.08 }}
+              className="min-w-0"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-                <img
-                  src={c.cover}
-                  alt=""
-                  loading="lazy"
-                  className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-                <span className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-background/90 px-3 py-1.5 text-xs font-medium shadow-soft backdrop-blur">
-                  <span className={`h-1.5 w-1.5 rounded-full ${c.live ? "bg-green-500" : "bg-primary"}`} />
-                  {c.chip}
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-6 md:p-8">
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">{c.eyebrow}</p>
-                <h3 className="mt-3 font-display text-2xl font-bold leading-tight tracking-tight">{c.title}</h3>
-                <p className="mt-3 text-muted-foreground">{c.body}</p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary">
-                  Read the case study
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
-                </span>
-              </div>
-            </Link>
-          </motion.div>
-        ))}
+              <Link
+                to={item.href}
+                data-cursor="hover"
+                data-cursor-label="Read the case study"
+                className="group block h-full"
+              >
+                <div className={`relative overflow-hidden border border-border bg-card ${
+                  index === 0 ? "aspect-[16/10]" : "aspect-[16/10] lg:aspect-[16/11]"
+                }`}>
+                  <img
+                    src={item.cover}
+                    alt={index === 0 ? "pvNXT solar product suite interface" : "pvNXT Help Portal home page"}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.025]"
+                  />
+                  <span className="absolute left-4 top-4 bg-background/95 px-3 py-2 text-[10px] font-extrabold uppercase tracking-[0.16em] text-foreground">
+                    {item.tag}
+                  </span>
+                  <span className="absolute bottom-4 right-4 grid h-10 w-10 place-items-center bg-primary text-primary-foreground transition-transform duration-300 group-hover:rotate-45">
+                    <ArrowUpRight className="h-5 w-5" />
+                  </span>
+                </div>
+                <div className="grid gap-3 border-b border-border py-5 sm:grid-cols-[auto_1fr] sm:gap-5">
+                  <span className="font-editorial text-3xl text-primary">{item.number}</span>
+                  <div>
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-muted-foreground">{item.eyebrow}</p>
+                    <h3 className="mt-2 max-w-2xl font-display text-xl font-extrabold leading-tight text-foreground sm:text-2xl">{item.title}</h3>
+                    <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground">{item.body}</p>
+                  </div>
+                </div>
+              </Link>
+            </motion.article>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
